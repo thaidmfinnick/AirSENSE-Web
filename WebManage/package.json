@@ -1,0 +1,14 @@
+{
+  "name": "new-airsense",
+  "version": "1.0.0",
+  "description": "Website for Airsense Laboratory",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "airsense"
+  ],
+  "author": "TKGT",
+  "license": "ISC"
+}
