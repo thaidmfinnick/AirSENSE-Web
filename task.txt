@@ -1,0 +1,5 @@
+1. code base:
+ - WebManage 
+ - Khởi động nodejs
+ - Reactjs (admin, customer) (bao giờ làm thì create-react)
+
