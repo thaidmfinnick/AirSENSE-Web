@@ -1,0 +1,154 @@
+  .authen-center{
+    font-family: "Poppins", sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background: #e4edf7;
+    border-radius: 10px;
+  }
+  .authen-center form{
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+  .authen-center h1{
+      text-align: center;
+      padding-top: 15px;
+  }
+
+  .authen-center h4{
+    margin-left: 40px;
+    text-align: left;
+    padding-top: 15px ;
+}
+
+  .authen-label{
+      display: flex;
+      margin-top: 20px;
+      font-size:15px;
+  }
+  .authen-input {
+      width: 100%;
+      padding: 7px;
+      border: none;
+      border: 1px solid gray;
+      border-radius: 5px;
+      outline: none;
+  }
+  
+  .authen-pass{
+    margin: 20px 0 5px 350px;
+    color: #a6a6a6;
+    cursor: pointer;
+  }
+  
+  .authen-pass:hover{
+    text-decoration: underline;
+  }
+
+  .authen-submit-button{
+    margin-top: 20px;
+    margin-left: 190px;
+    width: 120px;
+    height: 40px;
+    border: 1px solid;
+    background: #2691d9;
+    font-size: 15px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .authen-submit-button-2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 200px;
+    width: 120px;
+    height: 40px;
+    border: 1px solid;
+    background: #2691d9;
+    font-size: 15px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+  }
+
+  .authen-submit-button:hover{
+    border-color: #2691d9;
+    transition: .5s;
+  }
+  .authen-signup_link{
+    margin: 30px 0;
+    text-align: center;
+    font-size: 16px;
+    color: #666666;
+  }
+  
+  .authen-signup input {
+    flex-basis: 31%; 
+    background: #616c74;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    cursor: pointer;
+    font-weight: 700;
+    color: #e9f4fb;
+    border: 1px solid;
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .authen-signup input:hover {
+    border-color: #2691d9;
+    transition: .5s;
+  }
+  
+  .authen-signup {
+    display: flex;
+    justify-content: center;
+  }
+
+  .authen-notice {
+    font-size: 13px;
+    color: #555;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+  .authen-alert-box {
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 30px 20px 40px;
+    border: 1px solid #f2c779;
+    background:#fff8c4 10px 50% ;
+}
+
+  .authen-alert-box span {
+      color: #f2c779;
+  }
+
+
+  .authen-center .gender {
+    display: flex;
+  }
+  .authen-center .gender .gen {
+      margin-left: 10px;
+  }
+  .authen-checkmark {
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
