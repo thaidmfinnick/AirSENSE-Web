@@ -1,106 +1,39 @@
-<header id="header" class="header has-sticky sticky-jump">
-    <div class="header-wrapper">
-        <div id="masthead" class="header-main ">
-            <div class="header-inner flex-row container logo-left medium-logo-center" role="navigation">
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
 
-                <!-- Logo -->
-                <div id="logo" class="flex-col logo">
-                    <!-- Header logo -->
-                    <a href="/" title="Airsense - Quan trắc chất lượng không khí" rel="home">
-                        <img width="200" height="90"
-                            src="/resource/airsense.vn/wp-content/uploads/2020/04/airsense.png"
-                            class="header_logo header-logo" alt="Airsense" /><img width="200" height="90"
-                            src="/resource/airsense.vn/wp-content/uploads/2020/04/airsense.png"
-                            class="header-logo-dark" alt="Airsense" /></a>
-                </div>
+        <img src="/resource/airsense/wp-content/img/airsense.png" class="logo me-auto" href="index.html" height="50">
 
-                <!-- Mobile Left Elements -->
-                <div class="flex-col show-for-medium flex-left">
-                    <ul class="mobile-nav nav nav-left ">
-                        <li class="nav-icon has-icon">
-                            <a href="#" data-open="#main-menu" data-pos="left" data-bg="main-menu-overlay"
-                                data-color="" class="is-small" aria-controls="main-menu" aria-expanded="false">
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-                                <i class="icon-menu"></i>
-                            </a>
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a class="nav-link scrollto active" href="#hero">Trang chủ</a></li>
+                <li><a class="nav-link scrollto" href="#about">Giới thiệu</a></li>
+                <li><a class="nav-link scrollto" href="#services">Map</a></li>
+                <li><a class="nav-link scrollto" href="#departments">Đào tạo</a></li>
+                <li><a class="nav-link scrollto" href="#doctors">Tin tức</a></li>
+                <li class="dropdown"><a href="#"><span>Hỗ trợ</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#">Drop Down 1</a></li>
+                        <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                            <ul>
+                                <li><a href="#">Deep Drop Down 1</a></li>
+                                <li><a href="#">Deep Drop Down 2</a></li>
+                                <li><a href="#">Deep Drop Down 3</a></li>
+                            </ul>
                         </li>
-                    </ul>
-                </div>
+                        <li><a href="#">Drop Down 2</a></li>
 
-                <!-- Left Elements -->
-                <div class="flex-col hide-for-medium flex-left
-    flex-grow">
-                    <ul class="header-nav header-nav-main nav nav-left  nav-uppercase">
                     </ul>
-                </div>
+                </li>
+                <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
 
-                <!-- Right Elements -->
-                <div class="flex-col hide-for-medium flex-right">
-                    <ul class="header-nav header-nav-main nav nav-right  nav-uppercase">
-                        <li id="menu-item-78"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-55 current_page_item active  menu-item-78">
-                            <a href="/" class="nav-top-link">Trang chủ</a></li>
-                        <li id="menu-item-86"
-                            class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-86"><a
-                                href="/blog/" class="nav-top-link">Blog</a></li>
-                        <li id="menu-item-142"
-                            class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-142"><a
-                                href="/about" class="nav-top-link">Về chúng tôi</a>
-                        </li>
-                        <li id="menu-item-142"
-                            class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-142"><a
-                                href="#" class="nav-top-link" id="managerAuthen">Đăng nhập</a>
-                        </li>
-                        <!-- <li id="menu-item-86"
-                            class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-86"><a
-                                href="/map/" class="nav-top-link">Bản đồ</a></li>
-                        <li class="header-divider"></li> -->
-                        <li
-                            class="header-search header-search-dropdown has-icon has-dropdown menu-item-has-children">
-                            <a href="#" class="is-small"><span class="material-icons">search</span></i></a>
-                            <ul class="nav-dropdown nav-dropdown-default">
-                                <li class="header-search-form search-form html relative has-icon">
-                                    <div class="header-search-form-wrapper">
-                                        <div class="searchform-wrapper ux-search-box relative form- is-normal">
-                                            <form method="get" class="searchform" action="/resource/airsense.vn/"
-                                                role="search">
-                                                <div class="flex-row relative">
-                                                    <div class="flex-col flex-grow">
-                                                        <input type="search" class="search-field mb-0" name="s"
-                                                            value="" id="s" placeholder="Search&hellip;" />
-                                                    </div><!-- .flex-col -->
-                                                    <div class="flex-col">
-                                                        <button type="submit"
-                                                            class="ux-search-submit submit-button secondary button icon mb-0">
-                                                            <span class="material-icons">search</span>
-                                                    </div><!-- .flex-col -->
-                                                </div><!-- .flex-row -->
-                                                <div class="live-search-results text-left z-top"></div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul><!-- .nav-dropdown -->
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Mobile Right Elements -->
-                <div class="flex-col show-for-medium flex-right">
-                    <ul class="mobile-nav nav nav-right ">
-                    </ul>
-                </div>
+        <a href="/login" class="appointment-btn scrollto"><span class="d-none d-md-inline">Đăng nhập</span></a>
 
-            </div><!-- .header-inner -->
-
-            <!-- Header divider -->
-            <div class="container">
-                <div class="top-divider full-width"></div>
-            </div>
-        </div><!-- .header-main -->
-        <div class="header-bg-container fill">
-            <div class="header-bg-image fill"></div>
-            <div class="header-bg-color fill"></div>
-        </div><!-- .header-bg-container -->
-    </div><!-- header-wrapper-->
+    </div>
 </header>
