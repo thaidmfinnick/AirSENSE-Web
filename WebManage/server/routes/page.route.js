@@ -11,6 +11,11 @@ route.get('/', (req, res) => {
     res.render('authen/login', { route: 'login' });
   });
 
+  route.get('/register', (req, res) => {
+    res.render('authen/register', { route: 'register' });
+  });
+
+
 
 
 
