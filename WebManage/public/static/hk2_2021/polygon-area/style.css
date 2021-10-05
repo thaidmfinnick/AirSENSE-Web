@@ -1,0 +1,17 @@
+.input-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.input-container .X {
+    padding-right: 15px;
+}
+
+h3 {
+    text-align: center;
+}
+
+.area-button {
+    margin-top: 15px;
+    margin-left: 140px;
+}

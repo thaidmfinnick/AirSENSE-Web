@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/mV.css">
+    <link rel="stylesheet" href="/assets/css/themify-icons/themify-icons.css">
+    <title>Chuyển đổi thể tích - khối lượng</title>
+</head>
+<body>
+    <header>
+        <div class="logo row">
+                <img src="/assets/img/logo-main2.jpg" alt="">
+                <ul class="subnav">
+                    <li><a href="https://www.facebook.com/set2010" class="ti-facebook"></a></li>
+                    <li><a href="https://set.hust.edu.vn/" class="ti-google"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCArkyL4-YzKsLWGGKk3uuEA" class="ti-youtube"></a></li>
+                    <li><button class="ti-search"></button></li>
+                </ul>              
+            </div>
+            <div id="first-header">
+                <div class="row">
+                    <ul class="nav">
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="mV.html">Chuyển đổi m-V</a></li>
+                        <li><a href="convertV.html">Thể tích chất lỏng</a></li>
+                        <li><a href="convertP.html">Đơn vị áp xuất</a></li>
+                        <li><a href="convertA.html">Đơn vị công</a></li>
+                    </ul>
+                </div>
+            </div>
+    </header>
+    <section class="row clear">
+        <div class="interface col-third">
+            <p>Thể tích, hay dung tích, của một vật là lượng không gian mà vật ấy chiếm. Thể tích có đơn vị đo là lập phương của khoảng cách (khoảng cách mũ 3). Trong hệ đo lường quốc tế, đơn vị đo của khoảng cách là mét, đơn vị đo của thể tích là mét khối, m³.</p>
+        </div>
+        <div class="selection tow-of-three">
+            <form>
+                <label for="select">Hãy chọn một chất</label>
+                <select id="select" name="select">
+                    <option value="11300">Chì</option>
+                    <option value="7800">Sắt</option>
+                    <option value="2700">Nhôm</option>
+                    <option value="2600">Đá</option>
+                    <option value="1200">Gạo</option>
+                    <option value="800">Gỗ</option>
+                    <option value="13600">Thủy ngân</option>
+                    <option value="1000">Nước</option>
+                    <option value="700">Xăng</option>
+                    <option value="800">Dầu hỏa</option>
+                    <option value="800">Dầu ăn</option>
+                    <option value="790">Rượu</option>
+                    <option value="">Khác</option>
+                </select>
+                <label for="m">Thông tin về khối lượng</label>
+                <input type="text" name="m" id="m">
+                <label for="V">Thông tin về thể tích</label>
+                <input type="text" name="V" id="V">
+                <button type="button" onclick="convertFunction()">Chuyển đổi</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="row clear">
+            <div class="col-third">
+                <img src="/assets/img/logo-bottom.jpg" alt="">
+                <p>Phòng 405 - C9, Đại học Bách Khoa Hà Nội</p>
+                <p><i class="ti-mobile"></i>(84)02438692242 / (84)02438694957</p>
+                <p><i class="ti-home"></i>1 Đại Cồ Việt, Hai Bà Trưng, Hà Nội</p>
+                <p><i class="ti-email"></i>set-office@hust.edu.vn</p>          
+            </div>
+            <div class="col-third s-footer">
+                <h2>Chương trình đào tạo</h2>
+                <ul class="fnav">
+                    <li><a href="">Đào tạo cử nhân/Kỹ sư</a></li>
+                    <li><a href="">Đào tạo Thạc sỹ</a></li>
+                    <li><a href="">Đào tạo Tiến sỹ</a></li>
+                </ul>
+            </div>
+            <div class="col-third t-footer">
+                <h2>Hay được tìm kiếm</h2>
+                <ul>
+                    <li>Đổi khối lượng giữa các chất</li>
+                    <li>Đo chiều cao của vật</li>
+                    <li>Các đơn vị tính công</li>
+                    <li>Các đơn vị của dòng điện</li>
+                    <li>Đồ thị Smith</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <div class="copyright">
+        <p class="row">Copyright © 2021 Viện Điện tử - Viễn thông.</p>
+    </div>
+    <script>
+        var convert=document.querySelector('.selection form input[type="submit"]');
+        function convertFunction() {
+        var value=parseInt(document.getElementById('select').value);
+            var m=parseFloat(document.getElementById('m').value);
+            console.log(m);
+            if(isNaN(m)){
+                var V=parseFloat(document.getElementById('V').value);
+                m=value*V;
+                document.getElementById('m').value=m.toFixed(3);
+            }
+            else{
+            var k=m/value;
+            console.log(k);
+            document.getElementById('V').value=k.toFixed(3);
+            }
+        }
+        
+    </script>
+</body>
+</html>

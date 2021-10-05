@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Grade Calculator For Student in School</title>
+  </head>
+  <body>
+    <h1 class="caption">Grade Calculator For Student in School</h1>
+    <div id="table">
+      <div class="infor">
+        <div class="container grid">
+          <span class="name in">Họ và tên: Đồng Minh Thái</span>
+          <p class="class in">Lớp: 12C</p>
+          <p class="indentity in">Năm học: 2016-2019</p>
+          <p class="grade in">Điểm tổng kết: <span class="cpa"></span></p>
+        </div>
+      </div>
+      <div class="data">
+        <div class="container-1 grid">
+          <!-- Row 1 -->
+          <p class="center order">STT</p>
+          <p class="center sub">Môn học</p>
+          <p class="center credit">Điểm miệng</p>
+          <p class="center pgrade">Điểm 15p</p>
+          <p class="center hterm">Điểm 1t</p>
+          <p class="center fterm">Điểm HK</p>
+          <p class="center 10">Điểm tổng</p>
+
+          <!-- Row 2 -->
+          <p class="center forder">1</p>
+          <p class="center fsub">Toán</p>
+          <!-- Nhap diem mieng -->
+          <input type="text" class="center fcredit" />
+          <!-- Diem 15p -->
+          <input type="text" class="center fpgrade" />
+          <!-- Diem 1 tiet -->
+          <input type="text" class="center fhgrade" />
+          <!-- Diem hoc ki -->
+          <input type="text" class="center ffgrade" />
+          <!-- In ra diem -->
+          <p class="center f10"></p>
+
+          <!-- Row 3 -->
+          <p class="center forder">2</p>
+          <p class="center fsub">Ngữ Văn</p>
+          <input type="text" class="center fcredit" />
+          <input type="text" class="center fpgrade" />
+          <input type="text" class="center fhgrade" />
+          <input type="text" class="center ffgrade" />
+          <p class="center f10"></p>
+
+          <!-- Row 4 -->
+          <p class="center forder">3</p>
+          <p class="center fsub">Tiếng Anh</p>
+          <input type="text" class="center fcredit" />
+          <input type="text" class="center fpgrade" />
+          <input type="text" class="center fhgrade" />
+          <input type="text" class="center ffgrade" />
+          <p class="center f10"></p>
+
+          <!-- Row 5 -->
+          <p class="center forder">4</p>
+          <p class="center fsub">Vật Lý</p>
+          <input type="text" class="center fcredit" />
+          <input type="text" class="center fpgrade" />
+          <input type="text" class="center fhgrade" />
+          <input type="text" class="center ffgrade" />
+          <p class="center f10"></p>
+
+          <!-- Row 6 -->
+          <p class="center forder">5</p>
+          <p class="center fsub">Hóa Học</p>
+          <input type="text" class="center fcredit" />
+          <input type="text" class="center fpgrade" />
+          <input type="text" class="center fhgrade" />
+          <input type="text" class="center ffgrade" />
+          <p class="center f10"></p>
+
+          <!-- Row 7 -->
+          <p class="center forder">6</p>
+          <p class="center fsub">Sinh học</p>
+          <input type="text" class="center fcredit" />
+          <input type="text" class="center fpgrade" />
+          <input type="text" class="center fhgrade" />
+          <input type="text" class="center ffgrade" />
+          <p class="center f10"></p>
+        </div>
+      </div>
+    </div>
+    <div class="calculate">
+      <button class="submit" onclick="calculate()">Calculate</button>
+    </div>
+    <script src="/Project3_CalStudent12/cal_student12.js"></script>
+  </body>
+</html>

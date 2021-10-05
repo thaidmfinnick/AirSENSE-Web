@@ -1,0 +1,91 @@
+const express = require('express');
+const multer = require('multer');
+const router = express.Router();
+const isAuthenticated = require('../middlewares/authenticate.js');
+
+const documentCtrl = require('../controllers/document.controller.js');
+const urlStaticLink=  require('../config/urlSetting.js');
+
+var detail_X=process.env.APP_PORT || 3000;
+var detailLink= process.env.APP_HOST+":"+ detail_X;
+
+
+
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, dirFolder + '/public/img/')
+    },
+    filename: (req, file, cb) => {
+      cb(null,Date.now().toString()+ file.originalname)
+    }
+  });
+
+  
+  var upload = multer({storage: storage});
+
+router.post('/uploadimage', upload.single("resumeFileBrowser"),  function (req, res) {
+  console.log("uploadimage",req);
+    req.file["urlAppend"]= 'http://' +urlStaticLink + '/img/' + req.file.filename;
+    res.send(req.file);
+});
+
+
+// writer pages
+router.route('/registerPages')
+.get( (req, res) => {
+  res.render('document/registerPages');
+})
+.post(isAuthenticated, (req, res) => {
+    documentCtrl.postAddPageToDataBase(req, res);
+});
+
+// writer pages
+router.route('/updatePages')
+.post(isAuthenticated, (req, res) => {
+    documentCtrl.postUpdatePageToDataBase(req, res);
+});
+// writer Advertisement
+router.route('/registerAdvertisement')
+.post(isAuthenticated, (req, res) => {
+    documentCtrl.postAddAdvertisementToDataBase(req, res);
+});
+
+// writer Advertisement
+router.route('/updateAdvertisement')
+.post(isAuthenticated, (req, res) => {
+    documentCtrl.postUpdateAdvertisementToDataBase(req, res);
+});
+
+
+router.route('/document_detail/:typePage').get( async (req, res) => {
+  var dataX = req.params.typePage;
+  console.log("e.responseText",dataX);
+  var data = await documentCtrl.getAllContentDetailPage(dataX);
+  res.send(JSON.stringify(data));
+});
+
+router.route('/lastest_detail/:typePage').get( async (req, res) => {
+  var dataX = req.params.typePage;
+  console.log("e.responseText",dataX);
+  var data = await documentCtrl.getAllContentLatestPage(dataX);
+  res.send(JSON.stringify(data));
+});
+
+router.route('/get_new').get( async (req, res) => {
+  var data = await documentCtrl.getAllContentStartPage();
+  res.send(JSON.stringify(data));
+});
+
+router.route('/group_page').post( async (req, res) => {
+  var data =  await documentCtrl.getAllInGroupPage(req);
+  res.send(JSON.stringify(data));
+});
+
+router.route('/get_advertisement').get( async (req, res) => {
+  var data = await documentCtrl.getAllContentAdvertisement();
+  res.send(JSON.stringify(data));
+});
+
+module.exports =  router;
+

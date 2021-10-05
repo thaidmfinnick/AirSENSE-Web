@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculator Grade For Student</title>
+  </head>
+  <body>
+    <h1 class="caption">Calculator Grade For Student</h1>
+    <div id="table">
+      <div class="infor">
+        <div class="container grid">
+          <span class="name in">Name: Dong Minh Thai</span>
+          <p class="class in">Class: Dien tu 03-K64</p>
+          <p class="indentity in">Student ID: 20193098</p>
+          <p class="grade in">Grade: <span class="cpa"></span></p>
+        </div>
+      </div>
+      <div class="data">
+        <div class="container-1 grid">
+          <!-- Row 1 -->
+          <p class="center order">Order</p>
+          <p class="center sub">Subject</p>
+          <p class="center credit">Credits</p>
+          <p class="center pgrade">P Grade</p>
+          <p class="center fterm">Term Grade</p>
+          <p class="center 10">Grade in 10</p>
+          <p class="center 4">Grade in 4</p>
+          <p class="center alpha">Grade in A</p>
+
+          <!-- Row 2 -->
+          <p class="center forder">1</p>
+          <p class="center fsub">Introduction to Electronics</p>
+          <p class="center fcredit">2</p>
+          <input type="text" class="center fpgrade" />
+          <input type="text" class="center ffgrade" />
+          <p class="center f10"></p>
+          <p class="center f4"></p>
+          <p class="center falpha"></p>
+
+          <!-- Row 3 -->
+          <p class="center forder">2</p>
+          <p class="center fsub">Analysis I</p>
+          <p class="center fcredit">4</p>
+          <input type="text" class="center fpgrade" />
+          <input type="text" class="center ffgrade" />
+          <p class="center f10"></p>
+          <p class="center f4"></p>
+          <p class="center falpha"></p>
+
+          <!-- Row 4 -->
+          <p class="center forder">3</p>
+          <p class="center fsub">Algebra</p>
+          <p class="center fcredit">4</p>
+          <input type="text" class="center fpgrade" />
+          <input type="text" class="center ffgrade" />
+          <p class="center f10"></p>
+          <p class="center f4"></p>
+          <p class="center falpha"></p>
+        </div>
+      </div>
+    </div>
+    <div class="calculate">
+      <button class="submit" onclick="outPut()">Calculate</button>
+    </div>
+    <script src="cal_stu.js"></script>
+  </body>
+</html>

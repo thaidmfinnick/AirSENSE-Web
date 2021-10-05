@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/convertP.css">
+    <title>Chuyển đổi đơn vị áp suất</title>
+</head>
+<body>
+    <header>
+        <div class="logo row">
+                <img src="/assets/img/logo-main2.jpg" alt="">
+                <ul class="subnav">
+                    <li><a href="https://www.facebook.com/set2010" class="ti-facebook"></a></li>
+                    <li><a href="https://set.hust.edu.vn/" class="ti-google"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCArkyL4-YzKsLWGGKk3uuEA" class="ti-youtube"></a></li>
+                    <li><button class="ti-search"></button></li>
+                </ul>              
+            </div>
+            <div id="first-header">
+                <div class="row">
+                    <ul class="nav">
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="mV.html">Chuyển đổi m-V</a></li>
+                        <li><a href="convertV.html">Thể tích chất lỏng</a></li>
+                        <li><a href="convertP.html">Đơn vị áp xuất</a></li>
+                        <li><a href="convertA.html">Đơn vị công</a></li>
+                    </ul>
+                </div>
+            </div>
+    </header>
+    <section class="row">
+        <div class="main-convert">
+            <div class="col-third">
+                <label for="At">At</label>
+                <input type="text" name="At" id="At">
+                <label for="Bar">Bar</label>
+                <input type="text" name="Bar" id="Bar">
+                <label for="cmHg">cmHg</label>
+                <input type="text" name="cmHg" id="cmHg">
+                <label for="kg/cm2">kg/cm<sup>2</sup></label>
+                <input type="text" name="kg/cm2" id="kg/cm2">
+                <label for="kg/m2">kg/m<sup>2</sup></label>
+                <input type="text" name="kg/m2" id="kg/m2">
+                <label for="kg/mm2">kg/mm<sup>2</sup></label>
+                <input type="text" name="kg/mm2" id="kg/mm2">
+                <label for="kPa">kPa</label>
+                <input type="text" name="kPa" id="kPa">
+            </div>
+            <div class="col-third">
+                <label for="kN/m2">kN/m<sup>2</sup></label>
+                <input type="text" name="kN/m2" id="kN/m2">
+                <label for="mmBar">mmBar</label>
+                <input type="text" name="mmBar" id="mmBar">
+                <label for="mH2O">mH<sub>2</sub>O</label>
+                <input type="text" name="mH2O" id="mH2O">
+                <label for="mmH2O">mmH<sub>2</sub>O</label>
+                <input type="text" name="mmH2O" id="mmH2O">
+                <label for="mmHg">mmHg</label>
+                <input type="text" name="mmHg" id="mmHg">
+                <label for="MPa">MPa</label>
+                <input type="text" name="MPa" id="MPa">
+                <label for="N/m2">N/m<sup>2</sup></label>
+                <input type="text" name="N/m2" id="N/m2">
+            </div>
+            <div class="col-third">
+                <label for="N/cm2">N/cm<sup>2</sup></label>
+                <input type="text" name="N/cm2" id="N/cm2">
+                <label for="N/mm2">N/mm<sup>2</sup></label>
+                <input type="text" name="N/mm2" id="N/mm2">
+                <label for="Pa">Pa</label>
+                <input type="text" name="Pa" id="Pa">
+                <label for="Psi">Psi</label>
+                <input type="text" name="Psi" id="Psi">
+                <label for="p/d2">pound/foot<sup>2</sup></label>
+                <input type="text" name="p/d2" id="p/d2">
+                <label for="t/p2">ton/foot<sup>2</sup></label>
+                <input type="text" name="t/p2" id="t/p2">
+                <label for="t/i2">ton/inch<sup>2</sup></label>
+                <input type="text" name="t/i2" id="t/i2">
+            </div>
+            <div style="text-align: center;"><button onclick="convertFunction()">Chuyển đổi</button></div>
+        </div>
+        <div class="clear">
+        <div class="explain">
+            <br><h4>Áp suất là gì ?</h4>
+            <p>Áp suất là một đại lượng vật lý được định nghĩa là lực trên một đơn vị diện tích tác dụng theo chiều vuông góc với bề mặt của vật thể. Nói một cách đơn giản hơn thì áp suất chính là độ lớn của lực tác động lên một bề mặt diện tích theo phương vuông góc. Vì thế đơn vị của áp suất là N/m² hay còn gọi là Pa (Pascal).</p>
+            <br><h4>Các đơn vị đo áp suất được sử dụng phổ biến hiện nay</h4>
+            <p>Có nhiều phương pháp để đo áp suất nhưng thông dụng nhất vẫn là sử dụng đồng hồ và cảm biến. Đối với đồng hồ thì việc chọn đơn vị đo cho nó sẽ phụ thuộc vào ứng dụng thực tế. Tuy nhiên một số đơn vị đo áp suất được sử dụng phổ biến nhất hiện nay có thể kể đến như: bar, Kpa, Mpa, mbar, psi, mmHg, mmH2O…</p>           
+            <br>
+            <p>Thông thường, trên mỗi đồng hồ đo áp suất chỉ có duy nhất một đơn vị là: bar, psi, Mpa,.. Tuy nhiên, trong một số trường hợp chúng ta hoàn toàn có thể chọn loại đồng hồ hiển thị cùng lúc 2 đơn vị đo khác nhau như: bar & psi; kg/cm2 & Mpa…..</p>
+            <br>           
+            <p>Đối với cảm biến áp suất thì hoàn toàn khác. Nó có nhiệm vụ là quy đổi từ giá trị áp suất sang giá trị điện (4-20mA hoặc 0-10V). Vì thế chúng ta không thể chọn cho nó đơn vị đo theo ý muốn. Mà chúng ta chỉ chọn range đo cho nó thấp hơn range đo thực tế. Để làm được điều này chúng ta cần nắm được mối liên hệ giữa các đơn vị đo áp suất. Bởi vì khi nắm được mối liên hệ này thì chúng ta hoàn toàn có thể chọn loại cảm biến áp suất bất kỳ mà không cần phụ thuộc vào đơn vị của nó.</p>
+            <br><h4>Bảng chuyển đổi giữa các đơn vị đo áp suất</h4>
+            </div>
+            <ul>
+            <h4>Bảng chuyển đổi giữa các đơn vị đo áp suất</h4>
+                <li>1 bar = 1000 mbar</li>
+                <li>1 bar = 0.1 Mpa</li>
+                <li>1 bar = 100 Kpa</li>
+                <li>1 bar = 1.02 kg/cm²</li>
+                <li>1 bar = 10197.16 kg/m²</li>
+                <li>1 bar = 100000 Pa</li>
+                <li>1 bar = 0.99 atm</li>
+                <li>1 bar = 0.0145 Ksi</li>
+                <li>1 bar = 14.5 psi</li>
+                <li>1 bar = 10.19 mH2O</li>
+                <li>1 bar = 10.19 mH2O</li>
+                <li>1 bar = 401.5 inH2O</li>
+                <li>1 bar = 750 Torr</li>
+            </ul>
+        </div>
+    </section>
+
+
+
+
+    <footer>
+        <div class="row clear">
+            <div class="col-third">
+                <img src="/assets/img/logo-bottom.jpg" alt="">
+                <p>Phòng 405 - C9, Đại học Bách Khoa Hà Nội</p>
+                <p><i class="ti-mobile"></i>(84)02438692242 / (84)02438694957</p>
+                <p><i class="ti-home"></i>1 Đại Cồ Việt, Hai Bà Trưng, Hà Nội</p>
+                <p><i class="ti-email"></i>set-office@hust.edu.vn</p>          
+            </div>
+            <div class="col-third s-footer">
+                <h2>Chương trình đào tạo</h2>
+                <ul class="fnav">
+                    <li><a href="">Đào tạo cử nhân/Kỹ sư</a></li>
+                    <li><a href="">Đào tạo Thạc sỹ</a></li>
+                    <li><a href="">Đào tạo Tiến sỹ</a></li>
+                </ul>
+            </div>
+            <div class="col-third t-footer">
+                <h2>Hay được tìm kiếm</h2>
+                <ul>
+                    <li>Đổi khối lượng giữa các chất</li>
+                    <li>Đo chiều cao của vật</li>
+                    <li>Các đơn vị tính công</li>
+                    <li>Các đơn vị của dòng điện</li>
+                    <li>Đồ thị Smith</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <div class="copyright">
+        <p class="row">Copyright © 2021 Viện Điện tử - Viễn thông.</p>
+    </div>
+    <script>
+        var allInputs=document.querySelectorAll('.main-convert input');
+        var arr=[1, 0.986923, 0.013158, 0.967841, 0.000097, 96.784111, 0.009869, 0.009869, 0.000987, NaN, 0.000097, 0.001316, 9.869233, 0.00001, 0.098692, 9.869233, 0.00001, 0.068046, 0.000473, 0.945083, 136.091928];
+        function convertFunction() {
+            for(let i=0; i<allInputs.length; ++i) {
+                if(isNaN(parseFloat(allInputs[i].value))==0) {
+                    let number=parseFloat(allInputs[i].value)*arr[i];
+                    console.log(number);
+                    display(number);
+                    break;
+                }
+            }
+        }
+        function display(parameter) {
+            for(let i=0; i<allInputs.length; ++i) {
+                console.log("ok");
+                allInputs[i].value=parameter/arr[i];
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style3.css">
+        <script src="script3.js"></script>
+    </head>
+    <body>
+        <p>Chuyển đổi đơn vị</p>
+        <div class="cvt-table">
+            <div class="cvt-type">
+                <div class="cvt-type-bar" onclick="toggle('cvt-type-list')">
+                    <span id='cvt-type-text' class="cvt-type-text">
+                        AQI
+                    </span>
+                </div>
+                <ul id="cvt-type-list" class="unit-list">
+                    <li><a href="concen_convert.html">Nồng Độ</a></li>
+                    <li><a href="AQI_convert.html">AQI</a></li>
+                </ul>
+            </div>
+            <div id='AQI' class="cvt-io">
+                <div class="cvt-input">
+                    <input id="AQI-input" type="number">
+                    <div class="unit">
+                        <div class="first-unit">
+                            <div class="unit-bar" onclick="toggle('AQI-parameters')">
+                                <span id="AQI-para" class="unit-text">SO<sub>2</sub></span>
+                            </div>
+                            <ul id="AQI-parameters" class="unit-list">
+                                <li onclick="chooseAQIpara(500,'SO<sub>2</sub>')">SO<sub>2</sub></li>
+                                <li onclick="chooseAQIpara(30000,'CO')">CO</li>
+                                <li onclick="chooseAQIpara(200,'NO<sub>2</sub>')">NO<sub>2</sub></li>
+                                <li onclick="chooseAQIpara(300,'SPM')">SPM</li>
+                            </ul>
+                        </div>
+                        <span>( μg / m<sup>3</sup> )</span>
+                    </div>
+                </div>
+                <button type="submit" onclick="convertAQI()">=</button>
+                <div class="cvt-output">
+                    <input id="AQI-output" type="number" readonly>                   
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

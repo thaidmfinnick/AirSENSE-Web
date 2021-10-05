@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zxx"> 
+<% include ../Layout/service/header.ejs %>
+    <body class="defult-home">
+        <% include ../Layout/service/menu.ejs %>
+
+        <section class="testimonials wrapper">
+            <center>
+                <h2> Sản phẩm mới</h2> 
+            </center>
+            <ul class="testi_boxs" id="info_service">
+                <li>
+                    <img class="avatar" src="/sale/image/client1.jpg"  alt=""/>
+                    <h2>Sản phẩm</h2>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur sint occaecat cupidatat.</p>
+                </li>
+                <li>
+                    <img class="avatar" src="/sale/image/client1.jpg"  alt=""/>
+                    <h2>Tư vấn</h2>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur sint occaecat cupidatat.</p>
+                </li>
+                <li>
+                    <img class="avatar" src="/sale/image/client1.jpg"  alt=""/>
+                    <h2>Hỗ trợ</h2>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur sint occaecat cupidatat.</p>
+                </li>
+
+                <li>
+                    <img class="avatar" src="/sale/image/client1.jpg"  alt=""/>
+                    <h2>Sản phẩm</h2>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur sint occaecat cupidatat.</p>
+                </li>
+                <li>
+                    <img class="avatar" src="/sale/image/client1.jpg"  alt=""/>
+                    <h2>Tư vấn</h2>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur sint occaecat cupidatat.</p>
+                </li>
+                <li>
+                    <img class="avatar" src="/sale/image/client1.jpg"  alt=""/>
+                    <h2>Hỗ trợ</h2>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur sint occaecat cupidatat.</p>
+                </li>
+                
+            </ul>
+        </section>
+    
+        
+    </body>
+
+    <script type="text/javascript">
+        function setFormToShow(items,itemHtml){
+            var htmlDetail = "";
+            items.forEach(element => {
+                var dataInfor= `<li> <a href="/service/detail?ssid=`+element.service_id+`">
+                                    <img class="avatar" src="`+element.image+`"  alt=""/>
+                                    <h2>`+element.name+`</h2>
+                                    <p>` + element.content+`</p> </a>
+                                </li>`;
+                htmlDetail+=dataInfor;
+            });  
+            console.log(htmlDetail);         
+            $(itemHtml).html(htmlDetail); 
+        }
+         
+     
+        $.ajax({
+              type: 'GET',
+              enctype: 'multipart/form-data',
+              url: '/api/customers/services',
+              data: {},
+              processData: false, //prevent jQuery from automatically transforming the data into a query string
+              contentType: false,
+              cache: false,
+              success: (data) => {
+              console.log(data);
+                 setFormToShow(data.result,"#info_service");
+              },
+              error: (e) => {
+                console.log(e.responseText);
+              },
+        });
+
+        
+    </script>
+
+</html>

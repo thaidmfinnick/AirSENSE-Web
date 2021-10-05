@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phần trăm của 1 số</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>TÍNH PHẦN TRĂM CỦA 1 SỐ</h2>
+        <p class="text">Số cần tính</p>
+        <input type="text" id="S">
+        <p class="text">Tỉ lệ phần trăm</p>
+        <input type="text" id="T">
+        <p id="result"></p>
+        <button id="btn" onClick="Tinh()">Kết quả</button>
+        <p id="info">Nhập số và tỉ lệ phần trăm của nó[%]</p>
+    </div>
+
+    <script type="text/javascript">
+		function Tinh() {
+			var S=document.getElementById('S').value;
+			var T=document.getElementById('T').value;
+			var tinh=S*T/100;
+			var ketqua=(tinh.toFixed(3));
+			document.getElementById("result").innerHTML=T +"% của "+S +" là " + ketqua;
+		}
+	</script>
+</body>
+</html>

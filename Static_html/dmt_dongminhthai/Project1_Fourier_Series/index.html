@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Fourier Series Calculator</title>
+  </head>
+  <body>
+    <h1 class="caption">Fourier Series Calculator</h1>
+    <div id="input">
+      <form class="properties">
+        Function:<input type="text" class="proper" id="func" /> <br />
+        Top:<input type="text" class="proper" id="top" /> <br />
+        Bottom:<input type="text" class="proper" id="bot" /> <br />
+        Number:<input type="text" class="proper" id="num" /> <br />
+      </form>
+      <input type="submit" class="btn" onclick="createRow()" />
+    </div>
+    <div id="result">
+      <h1 class="re">Result</h1>
+      <div class="container grid">
+        <p class="order title">Order</p>
+        <p class="an title">An</p>
+        <p class="bn title">Bn</p>
+      </div>
+    </div>
+    <script src="fourier.js"></script>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/convertA.css">
+    <link rel="stylesheet" href="/assets/css/themify-icons/themify-icons.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="logo row">
+                <img src="/assets/img/logo-main2.jpg" alt="">
+                <ul class="subnav">
+                    <li><a href="https://www.facebook.com/set2010" class="ti-facebook"></a></li>
+                    <li><a href="https://set.hust.edu.vn/" class="ti-google"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCArkyL4-YzKsLWGGKk3uuEA" class="ti-youtube"></a></li>
+                    <li><button class="ti-search"></button></li>
+                </ul>              
+            </div>
+            <div id="first-header">
+                <div class="row">
+                    <ul class="nav">
+                        <li><a href="/index.html">Trang chủ</a></li>
+                        <li><a href="/mV.html">Chuyển đổi m-V</a></li>
+                        <li><a href="convertV.html">Thể tích chất lỏng</a></li>
+                        <li><a href="/convertP.html">Đơn vị áp xuất</a></li>
+                        <li><a href="/convertA.html">Đơn vị công</a></li>
+                    </ul>
+                </div>
+            </div>
+    </header>
+<section>
+    <div class="row clear">
+        <div class="col-third explain">
+            <h4>Công suất</h4>
+            <p>Công suất là một đại lượng vật lý cho biết công được thực hiện hoặc tổng quát là năng lượng được truyền qua một bề mặt trong một đơn vị thời gian. Trong hệ đo lường quốc tế, công suất có đơn vị đo là "W" - oát. W = J/s (Oát bằng Jul trên giây). Ở đây, Jul là đơn vị đo năng lượng, giây là đơn vị đo thời gian của hệ đo lường quốc tế.</p>
+        </div>
+        <div class="col-third convert">
+            <label for="mlW">Miliwatt</label>
+            <input type="text" name="mlW" id="mlW">
+            <label for="W">W</label>
+            <input type="text" name="W" id="W">
+            <label for="kW">kW</label>
+            <input type="text" name="kW" id="kW">
+            <label for="J/s">J/s</label>
+            <input type="text" name="J/s" id="J/s">
+            <label for="hp">hp</label>
+            <input type="text" name="hp" id="hp">
+            </div>
+            <div class="col-third convert">
+            <label for="dBm">dBm</label>
+            <input type="text" name="dBm" id="dBm">
+            <label for="mlhm">Mã lực hệ mét</label>
+            <input type="text" name="mlhm" id="mlhm">
+            <label for="csd">Công suất điện</label>
+            <input type="text" name="csd" id="csd">
+            <label for="csnh">Công suất nồi hơi</label>
+            <input type="text" name="csnh" id="csnh">
+            <label for="ca/h">Calo trên giờ</label>
+            <input type="text" name="ca/h" id="ca/h">
+        </div>
+        <div class="submit" onclick="convertFunction()"><button>Chuyển đổi</button></div>
+    </div>
+</section>
+    <footer>
+        <div class="row clear">
+            <div class="col-third">
+                <img src="/assets/img/logo-bottom.jpg" alt="">
+                <p>Phòng 405 - C9, Đại học Bách Khoa Hà Nội</p>
+                <p><i class="ti-mobile"></i>(84)02438692242 / (84)02438694957</p>
+                <p><i class="ti-home"></i>1 Đại Cồ Việt, Hai Bà Trưng, Hà Nội</p>
+                <p><i class="ti-email"></i>set-office@hust.edu.vn</p>          
+            </div>
+            <div class="col-third s-footer">
+                <h2>Chương trình đào tạo</h2>
+                <ul class="fnav">
+                    <li><a href="">Đào tạo cử nhân/Kỹ sư</a></li>
+                    <li><a href="">Đào tạo Thạc sỹ</a></li>
+                    <li><a href="">Đào tạo Tiến sỹ</a></li>
+                </ul>
+            </div>
+            <div class="col-third t-footer">
+                <h2>Hay được tìm kiếm</h2>
+                <ul>
+                    <li>Đổi khối lượng giữa các chất</li>
+                    <li>Đo chiều cao của vật</li>
+                    <li>Các đơn vị tính công</li>
+                    <li>Các đơn vị của dòng điện</li>
+                    <li>Đồ thị Smith</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <div class="copyright">
+        <p class="row">Copyright © 2021 Viện Điện tử - Viễn thông.</p>
+    </div>
+    <script>
+        var allInputs=document.querySelectorAll('.convert input');
+        var arr=[1, 1000, 1000000, 1000, 7457000, 1.26, 735499, 746000, 9809500, 1.16];
+
+        function convertFunction() {
+            for(let i=0; i<allInputs.length; ++i) {
+                if(isNaN(parseFloat(allInputs[i].value))==0) {
+                    let number=parseFloat(allInputs[i].value)*arr[i];
+                    console.log(number);
+                    display(number);
+                    break;
+                }
+            }
+        }
+        function display(parameter) {
+            for(let i=0; i<allInputs.length; ++i) {
+                console.log("ok");
+                allInputs[i].value=parameter/arr[i];
+            }
+        }
+    </script>
+</body>
+</html>

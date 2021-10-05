@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Ampe to Electron</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+</style>
+<body>
+    <h1>Convert Ampe to Electron</h1>
+    <label>Nhập dòng điện(A): </label>
+    <input type="number" id="ampe"> <br>
+    <p>Số lượng Electron là: <span id="electron"></span></p>
+    <button id="click">CLICK</button>
+</body>
+<script>
+    $('#click').on('click', ()=>{
+        var ampe = $('#ampe').val()
+        var elec = $('#electron')
+        electron = ampe*6.24150948
+        elec.text(electron + '*10^18')
+    })
+</script>
+</html>

@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.caption {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  text-align: center;
+}
+
+.border {
+  border: 1px dashed black;
+}
+
+/* Input data */
+.box-input-data {
+  max-width: 80%;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: repeat(2, 1fr);
+  margin: auto;
+  gap: 5px;
+  border: 1.5px solid black;
+  padding: 20px;
+}
+
+.box-input-data .submit {
+  width: 50%;
+  justify-self: center;
+  background: black;
+  border: none;
+  color: white;
+  margin-left: 55px;
+  letter-spacing: 0.08rem;
+  font-size: 14px;
+}
+
+.box-input-data > *:nth-child(3),
+.box-input-data > *:first-child {
+  justify-self: right;
+}
+
+.box-input-data .input {
+  margin-left: 15px;
+  padding: 5px 0;
+  border: dashed;
+  font-size: 15px;
+  padding-left: 5px;
+}
+
+/* Result */
+.result .container {
+  max-width: 80%;
+  margin: auto;
+  padding: 30px 0;
+}
+
+.result .f {
+  background-color: green;
+  color: whitesmoke;
+}
+
+.result .l {
+  color: red;
+  font-weight: 600;
+}
+
+.result .grid {
+  grid-template-columns: 10% repeat(4, 1fr);
+}

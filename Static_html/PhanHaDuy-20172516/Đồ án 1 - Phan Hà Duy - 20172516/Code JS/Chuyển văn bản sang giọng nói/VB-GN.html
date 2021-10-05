@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Chuyển đổi cơ số/fontawesome-free-5.15.3-web/css/all.min.css">
+    <title>Tinh Tien Nước</title>
+    <link rel="stylesheet" href="VB-GN.css">
+</head>
+<body>
+    <div class="main">
+        <div class="grid">
+            <div class="nhaplieu">
+                <h1> Chuyển đổi cơ số </h1>
+                <div class="form-nhap">  
+                    <div class="value">
+                        <label for="" class="name"> Nhập văn bản</label>
+                        <input type="text" id="dauvao" class="control">
+                    </div>
+                    <select  class="select " name="" id="select1">
+                        <option value="VB">Văn bản</option>
+                    </select>
+                    <select  class="select " name="" id="select2">
+                        <option value="GN">Giọng nói</option>
+                    </select>
+                </div>
+                <div class="speaker">
+                    <i onclick="myFunction()" class="fas fa-volume-up"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function myFunction(){
+            let dauvao = document.getElementById('dauvao').value;
+            let select1 = document.getElementById('select1').value;
+            let select2 = document.getElementById('select2').value;
+            let msg = new SpeechSynthesisUtterance();
+            if(!(dauvao == 0)){
+                msg.text= dauvao;
+                window.speechSynthesis.speak(msg);
+            }
+        }
+    </script>
+</body>
+</html>

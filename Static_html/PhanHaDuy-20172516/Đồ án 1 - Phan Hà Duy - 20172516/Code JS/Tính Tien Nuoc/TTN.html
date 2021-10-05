@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinh Tien Nước</title>
+    <link rel="stylesheet" href="TTN.css">
+    <link rel="stylesheet" href="TTN.js">
+</head>
+<body>
+    <div class="main">
+        <div class="grid">
+            <div class="nhaplieu">
+                <h1> Tính toán tiền nước</h1>
+                <div class="form-nhap">
+                    <div class="value">
+                        <label for="" class="name"> Tên hộ gia đình</label>
+                        <input type="text" class="control">   
+                    </div>
+
+                    <div class="value">
+                        <label for="" class="name"> Số điện sử dụng (m3)</label>
+                        <input type="text" id="soLieu" class="control">
+                    </div>
+                </div>
+                <button type="submit" class="btn" onclick="myFunction()">Tính toán</button>
+                <div class="value">
+                    <label for="" class="name"> Số tiền cần thanh toán</label>
+                    <input type="text" id="ketQua">
+                </div>
+                <span>Hãy chú ý đóng tiền đúng quy định</span>
+                <span>Bạn có thể đóng tiền online
+                    <a href="">Tại đây</a>
+                </span>
+
+            </div>
+            <div class="image">
+                <h2>Bảng giá nước</h2>
+                <img src="../Img/gia-nuoc-sinh-hoat-anh1.jpg" alt="" width="70%">
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function myFunction(){
+            var soLieu = document.getElementById('soLieu').value;
+            var ketQua = 0
+            var donVi = ' VNĐ'
+            if(soLieu <= 10){
+                ketQua = 10*6869;
+            }
+            else if(soLieu <= 20){
+                ketQua = 10*6869 + (soLieu-10)*8110;
+            }
+            else if(soLieu <= 30){
+                ketQua = 10*(6869 + 8110) + (soLieu - 10*2)*9969;
+            }
+            else if(soLieu > 30){
+                ketQua = 10*(6869 + 8110 + 9969) +(soLieu - 10*3)*18318;
+            }
+        
+            document.getElementById('ketQua').value = ketQua + donVi; 
+        }
+    </script>
+</body>
+</html>

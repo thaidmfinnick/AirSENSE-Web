@@ -1,0 +1,287 @@
+/* CSS Document */
+.header{
+	height: 120px;
+	background-image: linear-gradient(0,#fe6433,#f53e2d);
+	z-index: 2;
+}
+
+.navbar{
+	display: flex;
+	justify-content: space-between;
+}
+.logo{
+	
+	width: 150px;
+	height: 120px;
+	
+}
+.list1,.list2 {
+	list-style: none;
+	padding-left: 0;
+	margin-top:44px;
+}
+.list2{
+	margin-left: auto;
+}
+.item{
+	margin: 0 8px;
+	position: relative;
+}
+
+.item--hover:hover .qrcode{
+	display: block;
+}
+
+.item,
+.link{
+	display: inline-block;
+	font-size: 1.1rem;
+	color: white;
+	text-decoration: none;
+	font-weight: 400;
+	
+}
+.item,
+.link{
+	display: inline-flex;
+	align-items: center;
+}
+
+.item:hover,
+.link:hover,
+.S1:hover,
+.icon:hover{
+	cursor: pointer;
+	color: rgba(255,255,255,0.70);
+}
+
+.link--bold{
+	font-weight: 600;
+}
+
+.icon{
+	color: white;
+	text-decoration: none;	
+	margin-top: 3.5px;
+	margin-right: 1px;
+	margin-left: 12px;
+}
+
+.icon-font{
+	font-size: 1.4rem;
+}
+
+.item--chia::after{
+	position: absolute;
+	content: "";
+	display: block;
+	border: 1px solid #fb9086;
+	height: 14px;
+	top:50%;
+	right: -11px;
+	transform: translateY(-50%);
+}
+/*Header QR code*/
+.qrcode{
+	width: 170px;
+	background-image: linear-gradient(0,#fe6433,#f53e2d);
+	position: absolute;
+	left: -170%;
+	top: 130%;
+	padding: 10px;
+	display: none;
+	animation: fadeIn ease-in 0.3s;
+	z-index: 2;
+	
+}
+.qrcode::before{
+	position: absolute;
+	width: 100%;
+	height: 20%;
+	left: 0%;
+	top: -20px;
+	content: "";
+	display: block;
+}
+
+.qrcode-img{
+	width: 100%;
+}
+.apps{
+	display: flex;
+	justify-content: space-between;
+}
+
+.app-link:nth-child(1){
+	margin-left: 0px;
+}
+.app-link:nth-child(2){
+	margin-right: -10px;
+}
+.download{
+	width: 90%;
+	height: 23px;
+	
+}
+/* Services */
+.menu{
+	background-image: linear-gradient(0,#fe6433,#f53e2d);
+	width: 180px;
+	position: absolute;
+	top: 130%;
+	left: -140%;
+	padding: 8px;
+	display:none;
+	z-index: 2;
+	animation: fadeIn ease-in 0.3s;
+}
+.menu::before{
+	position: absolute;
+	width: 100%;
+	height: 13%;
+	left: 0%;
+	top: -18px;
+	content: "";
+	display: block;
+}
+.menu-list{
+	list-style: none;
+	text-align: center;
+	padding: 6px 0px;
+	border-bottom: 1px solid #000;
+	position: relative;
+}
+.S1{
+	text-decoration: none;
+	color: white;
+}
+
+.item--hover:hover .menu{
+	display: block;
+}
+/*list-tool-1*/
+.list-tool-1{
+	background-image: linear-gradient(0,#fe6433,#f53e2d);
+	width: 180px;
+	position: absolute;
+	top: -10%;
+	left: -116%;
+	padding: 8px;
+	display: none;
+	z-index: 2;
+	animation: fadeIn ease-in 0.3s;
+}
+.list-tool-1::before{
+	position: absolute;
+	width: 8%;
+	height: 100%;
+	right:-5%;
+	top: 0;
+	content: "";
+	display: block;
+}
+.tool{
+	list-style: none;
+	text-align: center;
+	padding: 6px 0px;
+	border-bottom: 1px solid #000;
+	
+}
+
+.menu-list:hover .list-tool-1{
+	display: block;
+}
+/*list-tool-2*/
+.list-tool-2{
+	background-image: linear-gradient(0,#fe6433,#f53e2d);
+	width: 180px;
+	position: absolute;
+	top: -10%;
+	left: -116%;
+	padding: 8px;
+	display:none;
+	z-index: 2;
+	animation: fadeIn ease-in 0.3s;
+}
+.list-tool-2::before{
+	position: absolute;
+	width: 8%;
+	height: 100%;
+	right:-5%;
+	top: 0;
+	content: "";
+	display: block;
+}
+.tool{
+	list-style: none;
+	text-align: center;
+	padding: 6px 0px;
+	border-bottom: 1px solid #000;
+	
+}
+
+.menu-list:hover .list-tool-2{
+	display: block;
+}
+/*list-tool-3*/
+.list-tool-3{
+	background-image: linear-gradient(0,#fe6433,#f53e2d);
+	width: 180px;
+	position: absolute;
+	top: -10%;
+	left: -116%;
+	padding: 8px;
+	display:none;
+	z-index: 2;
+	animation: fadeIn ease-in 0.3s;
+}
+
+.list-tool-3::before{
+	position: absolute;
+	width: 8%;
+	height: 100%;
+	right:-5%;
+	top: 0;
+	content: "";
+	display: block;
+	
+}
+.tool{
+	list-style: none;
+	text-align: center;
+	padding: 6px 0px;
+	border-bottom: 1px solid #000;
+	
+}
+
+.menu-list:hover .list-tool-3{
+	display: block;
+}
+
+
+
+/* Mobile nav */
+.nav-btn{
+	width: 28px;
+	height: 28px;
+	display: none;
+	color: white;
+	margin-right: 8px;
+	
+}
+@media(max-width:1024){
+	.nav-btn{
+		display: block;
+	}
+	.list1{
+		display: none;
+	}
+	.list2{
+		display: none;
+	}
+}
+/* Container */
+.content{
+	opacity: 0.60;
+	z-index: 1;
+}

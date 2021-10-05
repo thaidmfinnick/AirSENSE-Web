@@ -1,0 +1,96 @@
+const express = require('express');
+const  authCtrl = require('../controllers/auth.controller.js');
+const isAuthenticated = require('../middlewares/authenticate.js');
+const validate = require('../config/joi.validate.js');
+const schema = require('../utils/validator.js');
+const User = require('../models/database/user.model.js');
+const router = express.Router();
+router.route('/login').post(validate(schema.login), (req, res) => {
+  authCtrl.login(req, res);
+});
+router.route('/login_customer').post(validate(schema.login), (req, res) => {
+  authCtrl.loginCustomer(req, res);
+});
+
+
+
+router.route('/user').get(isAuthenticated, (req, res) => {
+  console.log("req.currentUser",req.currentUser)
+  User.query({
+    where: { users_id: req.currentUser.users_id },
+    select: [
+      'email',
+      'username',
+      'permission_id',
+      'phone',
+      'avatar',
+      'fullname',
+    ],
+  })
+  .fetch({ require: false })
+  .then((user) => {
+      if (!user) {
+        res.status(HttpStatus.NOT_FOUND).json({ error: 'No such user' });
+      } else {
+        res.status(200).json({
+          user: user,
+        });
+      }
+  });
+});
+
+
+router.route('/customer').get(isAuthenticated, (req, res) => {
+  console.log("req.currentUser",req.currentUser)
+  User.query({
+    where: { users_id: req.currentUser.users_id },
+    select: [
+      'users_id',
+      'email',
+      'username',
+      'phone',
+      'avatar',
+      'fullname',
+      'birthday',
+      'passport',
+      'address',
+    ],
+  })
+  .fetch({ require: false })
+  .then((user) => {
+      if (!user) {
+        res.status(HttpStatus.NOT_FOUND).json({ error: 'No such user' });
+      } else {
+        res.status(200).json({
+          user: user,
+        });
+      }
+  });
+});
+
+
+
+var tockenToCheck=[];
+
+router.route('/generateTocken').post((req, res) => {
+  /*if(req.action=="create"){
+    tockenToCheck.push({tocken1:"sample1",tocken2:"sample2",time:new Date()});
+  }
+  else
+  {
+    let item=tockenToCheck.filter(function (i,n){
+      return n.tocken1===tocken1;
+    });
+    if(!!item){
+      tockenToCheck.push({tocken1:"sample1",tocken2:"sample2",time:new Date()});
+    }
+    
+  }*/
+
+  res.status(200).json({
+    user: "user",
+  });
+  
+});
+
+module.exports =  router;

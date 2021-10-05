@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dien tich dat dai</title>
+    <link rel="stylesheet" href="/static/hk2_2021/polygon-area/style.css">
+
+</head>
+<body>
+    <h2>Tính diện tích đất đai biết tọa độ các điểm - Thứ tự các điểm theo chiều kim đồng hồ</h2>
+    <div class="input-container">
+        <div class="vertices">
+            <input type="text" name="VERTICES" id="VERTICES" placeholder="Nhap so dinh">
+        </div>
+        <div class="X">
+        <form name="Xform">
+            <h3>X</h3>
+            <input type="text"  id="X0" placeholder="Nhap X"> <br>
+            <input type="text"  id="X1" placeholder="Nhap X"> <br>
+            <input type="text"  id="X2" placeholder="Nhap X"> <br>
+            <input type="text"  id="X3" placeholder="Nhap X"> <br>
+            <input type="text"  id="X4" placeholder="Nhap X"> <br>
+            <input type="text"  id="X5" placeholder="Nhap X"> <br>
+            <input type="text"  id="X6" placeholder="Nhap X"> <br>
+            <input type="text"  id="X7" placeholder="Nhap X"> <br>
+        </form>
+        </div>
+        <div class="Y">
+            <form name="Yform">
+                <h3>Y</h3>
+                <input type="text" id="Y0" placeholder="Nhap Y"> <br>
+                <input type="text" id="Y1" placeholder="Nhap Y"> <br>
+                <input type="text" id="Y2" placeholder="Nhap Y"> <br>
+                <input type="text" id="Y3" placeholder="Nhap Y"> <br>
+                <input type="text" id="Y4" placeholder="Nhap Y"> <br>
+                <input type="text" id="Y5" placeholder="Nhap Y"> <br>
+                <input type="text" id="Y6" placeholder="Nhap Y"> <br>
+                <input type="text" id="Y7" placeholder="Nhap Y"> <br>  
+            </form>
+        </div>
+    </div>
+    <div class="area-button">
+        <input type="button" value="Ket Qua" onclick="handleCalculate()">
+    </div>
+    <h3 id="AREA"></h3>
+    <script src="/static/hk2_2021/polygon-area/main.js"></script>
+</body>
+</html>

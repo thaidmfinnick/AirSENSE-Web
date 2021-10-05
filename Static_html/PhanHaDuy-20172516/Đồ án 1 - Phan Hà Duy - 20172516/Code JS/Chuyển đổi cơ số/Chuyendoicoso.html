@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fontawesome-free-5.15.3-web/css/all.min.css">
+    <title>Tinh Tien Nước</title>
+    <link rel="stylesheet" href="Chuyendoicoso.css">
+</head>
+<body>
+    <div class="main">
+        <div class="grid">
+            <div class="nhaplieu">
+                <h1> Chuyển đổi cơ số </h1>
+                <div class="form-nhap">  
+                    <div class="value">
+                        <label for="" class="name"> Nhập vào số cần chuyển</label>
+                        <input type="number" id="dauvao" class="control">
+                    </div>
+                    <select  class="select " name="" id="select1">
+                        <option value="h10">Hệ cơ số 10</option>
+                        <option value="h2">Hệ cơ số 2</option>
+                        <option value="h8">Hệ cơ số 8</option>
+                        <option value="h16">Hệ cơ số 16</option>
+                    </select>
+                    <div class="arrow">
+                            <i onclick="myFunction()" class="fas fa-arrow-circle-down">
+                            </i>
+                    </div>
+                    <select  class="select " name="" id="select2">
+                        <option value="h10">Hệ cơ số 10</option>
+                        <option value="h2">Hệ cơ số 2</option>
+                        <option value="h8">Hệ cơ số 8</option>
+                        <option value="h16">Hệ cơ số 16</option>
+                    </select>
+                </div>
+                <div class="value">
+                    <label for="" class="name"> Kết quả</label>
+                    <input type="number" id="ketQua">
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        function myFunction(){
+            let dauvao = document.getElementById('dauvao').value;
+            let dauvaoInt = parseInt(dauvao);
+            let select1 = document.getElementById('select1').value;
+            let select2 = document.getElementById('select2').value;
+            let p = 0;
+            let ketQua = 0 ;
+             
+            if(dauvao == 0 ){
+                alert('Hãy nhập giá trị');
+            }
+            if(select1 == select2){
+                ketQua = dauvaoInt;
+            }
+            if(select2 == 'h10'){
+                if(select1 == 'h2'){
+                    while( dauvaoInt > 0){
+                        ketQua  += (dauvaoInt % 10) * (2**p);
+                        ++p;
+                        dauvaoInt = parseInt(dauvaoInt / 10);
+                    }
+                }
+                else if(select1 == 'h8'){
+                    while( dauvaoInt > 0){
+                        ketQua  += (dauvaoInt % 10) * (8**p);
+                        ++p;
+                        dauvaoInt = parseInt(dauvaoInt / 10);
+                    }
+                }
+                else if(select2 == 'h16'){
+                    
+                }
+                
+            }
+            if(select1 == 'h10'){
+                if(select2 == 'h2'){
+                    while( dauvaoInt > 0){
+                        ketQua  += (dauvaoInt % 2) * (10**p);
+                        ++p;
+                        dauvaoInt = parseInt(dauvaoInt / 2);
+                    }
+                }
+                else if(select2 == 'h8'){
+                    while( dauvaoInt > 0){
+                        ketQua  += (dauvaoInt % 8) * (10**p);
+                        ++p;
+                        dauvaoInt = parseInt(dauvaoInt / 8);
+                    }
+                }
+                else if(select2 == 'h16'){
+                    
+                }
+            }
+            document.getElementById('ketQua').value = ketQua ; 
+
+
+
+           
+        }
+    </script>
+</body>
+</html>

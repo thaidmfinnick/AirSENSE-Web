@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <% include ../Layout/header.ejs %>
+  <body class="defult-home">
+    <!-- Main content Start -->
+    <div class="main-content">
+      <!--Full width header Start-->
+      <div class="full-width-header home8-style4">
+        <!--Header Start-->
+        <% include ../Layout/headerMenu.ejs %>
+        <!--Header End-->
+      </div>
+      <!--Full width header End-->
+      <div class="main-page">
+        <% include ../Layout/sideMenuSub.ejs %>
+        <div
+          class="inner-content"
+          style="
+            background-image: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0.5),
+                rgba(255, 255, 255, 0.3)
+              ),
+              url(/sparc_landing_page/images/tool/background-light.jpg);
+          "
+        >
+          <!-- About Section Start -->
+          <div class="rs-about style9 pt-80 md-pt-50">
+            <div class="container">
+              <div class="row align-items-center">
+                <!-- Caption Tech Tools -->
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <h2 class="text-center" style="color: #f4bf00">TECH TOOLS</h2>
+                </div>
+                <!-- Column 1/2 about Tools -->
+                <div class="col-lg-6 col-md-12 md-mb-40">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                      <div class="tool-image text-center">
+                        <img
+                          class="img-thumbnail img-fluid"
+                          src="/sparc_landing_page/images/tool/science.jpg"
+                          alt="images"
+                          style="width: 180px; height: 180px"
+                        />
+                        <a href="/detail_page/storeHtml+math-tool.html"
+                          ><h5 class="pt-10">Toán học - Vật lý</h5></a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                      <div class="tool-image text-center">
+                        <img
+                          class="img-thumbnail img-fluid"
+                          src="/sparc_landing_page/images/tool/finance.jpg"
+                          alt="images"
+                          style="height: 180px"
+                        />
+                        <a href="/detail_page/storeHtml+finance-tool.html"
+                          ><h5 class="pt-10">Kinh tế</h5></a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Column 2/2 about tools -->
+                <div class="col-lg-6 col-md-12 md-mb-40">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                      <div class="tool-image text-center">
+                        <img
+                          class="img-thumbnail"
+                          src="/sparc_landing_page/images/tool/image_processing.jpg"
+                          alt="images"
+                          style="height: 180px"
+                        />
+                        <a
+                          href="/detail_page/storeHtml+image-processing-tool.html"
+                          ><h5 class="pt-10">Xử lý ảnh</h5></a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                      <div class="tool-image text-center">
+                        <img
+                          class="img-thumbnail img-fluid"
+                          src="/sparc_landing_page/images/tool/design.jpg"
+                          alt="images"
+                          style="height: 180px"
+                        />
+                        <a href="/detail_page/storeHtml+design-tool.html"
+                          ><h5 class="pt-10">Design</h5></a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Last column about tools -->
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="tool-image text-center">
+                    <img
+                      src="/sparc_landing_page/images/tool/iot.jpg"
+                      class="img-thumbnail img-fluid"
+                      alt="images"
+                      style="width: 30%"
+                    />
+                    <a href="/detail_page/storeHtml+iot-tool.html"
+                      ><h5 class="pt-10">IOT</h5></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% include ../Layout/advertisement.ejs %>
+        <!-- About Section End -->
+      </div>
+      <% include ../Layout/footer.ejs %>
+
+      <!-- Categories Section End -->
+    </div>
+    <!-- Main content End -->
+  </body>
+  <script type="text/javascript">
+    var dataView = '<%= detail %>';
+    // document.getElementById("htmlToView").src = linkAcess;
+    var urlDetail= 'http://' + window.location.hostname +':' +window.location.port + '/';
+    getInfoDetailPages('htmlToView',dataView,urlDetail)
+    getInfoAbs('#new_pages_tile',dataView);
+
+   </script>
+</html>

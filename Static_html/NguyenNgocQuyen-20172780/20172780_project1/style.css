@@ -1,0 +1,157 @@
+html,body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: white;
+  
+}
+
+.nav {
+  background-image:linear-gradient(0,#6b6e70,#343a40) ;
+  height: 50px;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  font-size: 20px;
+  color: white;
+  line-height: 50px;
+  padding-left: 50px;
+  -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+}
+
+.content{
+  background-color: #e9ecef;
+  height: 100px;
+  margin-top:50px;
+}
+.content-1{
+  line-height: 60px;
+  padding-left: 20px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.content-2{ 
+  line-height: 1px;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.box-input{ 
+  display: flex;
+  margin-top: 50px;
+  
+}
+.form-control {
+	width: 250px;
+  height: 50px;
+  text-align: center;
+  font-size: medium;
+  border-radius: 5px;
+}
+.form-control:focus { 
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 20px #9ecaed; 
+  
+}
+.can_giua{
+  margin:auto;
+}
+.container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+#weight{
+  text-align: center;
+  
+}
+#length{
+  
+  text-align: center;
+}
+#temp{
+  
+  text-align: center;
+}
+
+button{
+  color:white;
+  background-color: #6c757d;
+  font-size: 20px;
+  border-radius: 4px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+button:hover {
+  background-color:crimson;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+button:focus { 
+  outline: none;
+  border-color: crimson;
+  box-shadow: 0 0 20px crimson;
+  background-color: crimson;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.results_box1{
+  background-color: #007bff;
+  border-radius: 5px;
+  color: white;
+  font-style: bold;
+  text-align: center;
+  
+}
+.results_box2{
+  background-color: #6c757d;
+  border-radius: 5px;
+  color: white;
+  font-style: bold;
+  text-align: center;
+}
+.results_box3{
+  background-color: #28a745;
+  border-radius: 5px;
+  color: white;
+  font-style: bold;
+  text-align: center;
+}
+.results_box4{
+  background-color: #17a2b8;
+  border-radius: 5px;
+  color: white;
+  font-style: bold;
+  text-align: center;
+}
+.results_box5{
+  background-color: #343a40;
+  border-radius: 5px;
+  color: white;
+  font-style: bold;
+  text-align: center;
+}
+
+.footer{
+  background-color: crimson;
+  border-top: crimson;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  
+}
+.foot{
+  margin: auto;
+  color: white;
+}
+
+
+
+
+

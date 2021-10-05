@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dien tich cac hinh</title>
+    <script src="myfunction.js"></script>
+</head>
+<body>
+    <h2>Tinh dien tich hinh chu nhat</h2>
+    <form name="hinhchunhatform">
+    <input type="text" name="dai" id="dai" placeholder="Nhap chieu dai"> <br>
+    <input type="text" name="rong" id="rong" placeholder="Nhap chieu rong"> <br>
+    <input type="button" value="Ket Qua" onclick="hinhchunhat()">
+    <h3 id="dientich"></h3>
+    </form>
+
+    <br>
+    <h2>Tinh dien tich hinh tam giac</h2>
+    <form name="hinhtamgiacform">
+        <input type="text" name="canh_a" id="canh_a" placeholder="Nhap canh a"> <br>
+        <input type="text" name="canh_b" id="canh_b" placeholder="Nhap canh b"> <br>    
+        <input type="text" name="canh_c" id="canh_c" placeholder="Nhap canh c"> <br>
+        <input type="button" value="Ket Qua" onclick="hinhtamgiac()">
+        <h3 id="dientichtamgiac"></h3>
+    </form> 
+    
+    <br>
+    <h2>Tinh dien tich hinh thang</h2> 
+    <form name="hinhthangform">
+        <input type="text" name="canh_day_1" id="canh_day_1" placeholder="Nhap canh day 1"> <br>
+        <input type="text" name="canh_day_2" id="canh_day_2" placeholder="Nhap canh day 2"> <br>
+        <input type="text" name="cao" id="cao" placeholder="Nhap chieu cao"> <br>
+        <input type="button" value="Ket Qua" onclick="hinhthang()">
+        <h3 id="dientichhinhthang"></h3>
+    </form>
+
+    <br>
+    <h2>Tinh dien tich hinh tron</h2>
+    <form name="hinhtronform">
+        <input type="text" name="R" id="R" placeholder="Nhap ban kinh"> <br>
+        <input type="button" value="Ket Qua" onclick="hinhtron()">
+        <h3 id="dientichhinhtron"></h3>
+    </form>
+</body>
+</html>
