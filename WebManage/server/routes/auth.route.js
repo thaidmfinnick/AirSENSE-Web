@@ -5,6 +5,24 @@ const validate = require('../config/joi.validate.js');
 const schema = require('../utils/validator.js');
 const User = require('../models/database/user.model.js');
 const router = express.Router();
+
+
+router.get('/login', (req, res) => {
+  res.render('authen/login', { route: 'login' });
+});
+
+router.get('/register', (req, res) => {
+  res.render('authen/register', { route: 'register' });
+});
+
+router.get('/resetPassword', (req, res) => {
+  res.render('authen/resetPassword', { route: 'resetPassword' });
+});
+
+router.get('/profile', (req, res) => {
+  res.render('authen/updateInfo', { route: 'updateInfomation' });
+});
+
 router.route('/login').post(validate(schema.login), (req, res) => {
   authCtrl.login(req, res);
 });

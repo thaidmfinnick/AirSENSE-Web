@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+ .authen-center{
+
+    font-family: "Poppins", sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background: #e4edf7;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+  }
+  .authen-center form{
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+  
+  .authen-center h2{
+      text-align: center;
+      padding-top: 15px;
+  }
+
+  .authen-center h4{
+    margin-left: 40px;
+    text-align: left;
+    padding-top: 15px ;
+}
+
+  .authen-text-field{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+  
+  .authen-text-field input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+  .authen-text-field label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+}
+  .authen-text-field span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2691d9;
+    transition: .5s;
+}
+  .authen-text-field input:focus ~ label,
+  .authen-text-field input:valid ~ label{
+    top: -5px;
+    color: #2691d9;
+}
+  .authen-text-field input:focus ~ span::before,
+  .authen-text-field input:valid ~ span::before{
+    width: 100%;
+}
+  
+  .authen-pass{
+    margin: 20px 0 5px 330px;
+    color: #a6a6a6;
+    cursor: pointer;
+  }
+  
+  .authen-pass:hover{
+    text-decoration: underline;
+  }
+
+  .authen-submit-button{
+    margin-top: 20px;
+    margin-left: 190px;
+    width: 120px;
+    height: 40px;
+    border: 1px solid;
+    background: #2691d9;
+    font-size: 15px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .authen-submit-button-2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 200px;
+    width: 120px;
+    height: 40px;
+    border: 1px solid;
+    background: #2691d9;
+    font-size: 15px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .authen-submit-button:hover{
+    border-color: #2691d9;
+    transition: .5s;
+  }
+  
+  .authen-signup-link{
+    margin: 30px 0;
+    text-align: center;
+    font-size: 16px;
+    color: #666666;
+    border-bottom: 1px solid #A6A6A6; 
+    line-height: 0.1em;
+  }
+
+  .authen-signup-link span {
+    background:#e4edf7; 
+    padding:0 10px;
+  }
+  
+  .authen-signup input {
+    flex-basis: 31%; 
+    background: #616c74;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    cursor: pointer;
+    font-weight: 700;
+    color: #e9f4fb;
+    border: 1px solid;
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .authen-signup input:hover {
+    border-color: #2691d9;
+    transition: .5s;
+  }
+  
+  .authen-signup {
+    display: flex;
+    justify-content: center;
+    padding: 5px 80px;
+  }
+
+  .authen-notice {
+    font-size: 13px;
+    color: #555;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+  .authen-alert-box {
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 30px 20px 40px;
+    border: 1px solid #f2c779;
+    background:#fff8c4 10px 50% ;
+}
+
+  .authen-alert-box span {
+      color: #f2c779;
+  }
+
+
+  .authen-center .gender {
+    display: flex;
+  }
+  .authen-center .gender .gen {
+      margin-left: 10px;
+  }
+  .authen-checkmark {
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }

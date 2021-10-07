@@ -64,14 +64,17 @@ class Oauthen2 extends CommonModel {
                 .set("deleteflag",0)
                 .set("time_relase",'NOW() + INTERVAL 1 DAY',{dontQuote: true});
         if(permission_id<TableManifest.NEW_REGISTER) {
-                authen2.set("value_manifest",listDataContain);
-                knex.raw(authen2.toString()).then(function(x) {
+                // authen2.set("value_manifest",listDataContain);
+                knex.raw(authen2.toString())
+                .then(function(x) {
                     res.json({
                         success: true,
-                        token:dataTocken,
+                        tocken:dataTocken,
                         email: user.get('email'),
+                        userName: user.get('name')
                     });
-                }).catch(function(err1){
+                })
+                .catch(function(err1){
                     res.status(HttpStatus.UNAUTHORIZED).json({
                         success: false,
                         message: 'Problem SQL.',
@@ -100,8 +103,8 @@ class Oauthen2 extends CommonModel {
                     for(var i=0;i<x[0].length;i++){
                         listDataEnterprise_id+=","+x[0][i].enterprise_id; 
                     }
-                    authen2.set("value_manifest",listDataContain)
-                        .set("enterprise_id",listDataEnterprise_id);
+                    // authen2.set("value_manifest",listDataContain)
+                        // .set("enterprise_id",listDataEnterprise_id);
                     knex.raw(authen2.toString()).then(function(xa) {
                             res.json({
                                 success: true,

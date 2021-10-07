@@ -22,6 +22,7 @@ var authCtrl={};
  */
  authCtrl.login = function(req, res) {
   const { email, password } = req.body;
+  console.log(email + password);
   lstLogin =lstLogin.filter(o=>((Date.now() - o.time)<2000));
   var emailExist=lstLogin.filter(o=>o.email==email);
   if(emailExist.length==1){
@@ -40,18 +41,27 @@ var authCtrl={};
       console.log("user...........................",user);
       if (user) {
         console.log("user Inval",user);
+
         lstLogin =lstLogin.filter(o=>o.email!=email);
-        bcrypt.compare(password,  user.get('password')).then(function(result) {
-          console.log("user Inval",result);
-          if(result)
-            oauthen2.responseLogin(res,user);        
-          else
+        // bcrypt.compare(password,  user.get('password')).then(function(result) {
+        //   console.log("user Inval",result);
+        //   if(result)
+        //     oauthen2.responseLogin(res,user);        
+        //   else
+        //     return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
+        // })
+        // .catch(()=>{
+        //   return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
+        // });
+        const passwordUser = user.get('password');
+        if(password == passwordUser) {
+            oauthen2.responseLogin(res,user); 
+        }       
+        else 
             return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
-        })
-        .catch(()=>{
-          return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
-        });
-      } else {
+
+      } 
+      else {
         lstLogin.push({email:email,count:1,time:Date.now()});
         return returnNotAuthen(res,{success: false,message:'Invalid username or password.'});
       }
