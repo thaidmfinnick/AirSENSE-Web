@@ -62,7 +62,7 @@ CREATE TABLE `users` (
   `password` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `contact` varchar(255) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `addrid` int(11) NOT NULL,
-  `avartar` varchar(255) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
+  `avatar` varchar(255) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `id_created` int(11) NOT NULL,
@@ -76,11 +76,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`users_id`, `name`, `fullname`, `phone`, `email`, `password`, `contact`, `addrid`, `avartar`, `created_at`, `updated_at`, `id_created`, `id_updated`, `note`, `permission_id`, `deleteflag`) VALUES
+INSERT INTO `users` (`users_id`, `name`, `fullname`, `phone`, `email`, `password`, `contact`, `addrid`, `avatar`, `created_at`, `updated_at`, `id_created`, `id_updated`, `note`, `permission_id`, `deleteflag`) VALUES
 (1, 'Hiền Trần', 'Trần Thị Hồng Hiền', '', 'hienttt@gmail.com', '123456a@', '', 0, '', '2021-01-18 23:21:43', '2021-01-18 23:21:43', 43, 43, '', 1, 0),
-(17, 'registerbycomputer', 'admins', '1234567', 'sparcLab@email.comdd', 'password', 'SPARC', 0, '', '2020-04-19 23:22:20', '2020-10-18 08:36:27', 0, 22, '', 1, 1),
-(19, 'Lu', 'admins', '1234567', 'sparcLab@email.comdd', 'sadasd', 'SPARC', 0, '0', '2020-08-05 23:42:59', '2020-10-18 08:36:19', 17, 22, '', 1, 1),
-(20, 'Lu', 'admins', '1234567', 'sparcLab@email.comdd', 'khongbietdau', 'SPARC', 0, '', '2020-10-18 09:03:27', '2020-10-20 08:12:40', 22, 22, '', 1, 1),
+(2, 'Giang', 'Phùng Bá Trường Giang', '0123456789', 'admin@gmail.com', '123456', 'SPARC lab', 0, '', '2021-10-13 9:14:24', '2021-10-13 9:14:24', 99, 99, 'admin', 1, 0),
+(17, 'registerbycomputer', 'admins', '1234567', 'sparcLab@email.comdd', 'password', 'SPARC', 0, '', '2020-04-19 23:22:20', '2020-10-18 08:36:27', 0, 22, '', 1, 0),
+(19, 'Lu', 'admins', '1234567', 'sparcLab@email.comdd', 'sadasd', 'SPARC', 0, '0', '2020-08-05 23:42:59', '2020-10-18 08:36:19', 17, 22, '', 1, 0),
+(20, 'Lu', 'admins', '1234567', 'sparcLab@email.comdd', 'khongbietdau', 'SPARC', 0, '', '2020-10-18 09:03:27', '2020-10-20 08:12:40', 22, 22, '', 1, 0),
 (22, 'registerbycomputer', 'admins', '1234567', 'sparcLab@email.comdd', 'default', 'SPARC', 0, '', '2020-10-20 16:34:49', '2020-10-20 16:50:23', 22, 22, 'note', 1, 1),
 (29, 'Lu', 'admins', '1234567', 'sparcLab@email.comdd', 'khongbiet', 'SPARC', 0, '', '2020-10-20 08:44:38', '2020-10-20 16:50:05', 22, 22, 'xxxx', 10, 1),
 (30, 'Lu', 'admins', '1234567', 'sparcLab@email.comdd', 'khongbiet', 'SPARC', 0, '', '2020-08-08 23:06:58', '2020-10-20 08:45:25', 19, 22, '', 1, 1),
@@ -100,14 +101,14 @@ INSERT INTO `users` (`users_id`, `name`, `fullname`, `phone`, `email`, `password
 (44, 'LeDuyNhat', 'admins', '1234567', 'nhat.cobb@gmail.com', 'leduynhat', 'SPARC', 0, '', '2021-01-31 17:21:45', '2021-01-31 17:21:45', 44, 43, '', 1, 0),
 (45, '', 'admins', '1234567', 'sparcLab@email.comdd', 'leduynhat', 'SPARC', 0, '', '2020-10-20 19:29:18', '2020-10-20 19:30:35', 43, 44, NULL, 1, 1),
 (46, 'hoangvannguyen', 'admins', '1234567', 'sparcLab@email.com', 'airsense', 'SPARC', 0, '', '2020-12-26 12:21:12', '2020-12-26 12:21:12', 44, 43, '', 1, 0),
-(47, 'hoangvannguyen', 'admins', '1234567', 'sparcLab@email.comdd', 'airsense', 'SPARC', 0, '', '2020-11-04 10:18:17', '2020-11-04 10:18:57', 44, 44, NULL, 3, 1),
+(47, 'hoangvannguyen', 'admins', '1234567', 'sparcLab@email.comdd', 'airsense', 'SPARC', 0, '', '2020-11-04 10:18:17', '2020-11-04 10:18:57', 44, 44, NULL, 3, 0),
 (48, 'admin', 'admins', '1234567', 'sparcLab@email.comdd', 'SPARCLab', 'SPARC', 0, '', '2020-10-20 16:51:19', '2020-11-19 17:43:51', 22, 43, NULL, 1, 1),
 (49, 'admin', 'admins', '1234567', 'sparcLab@email.comdd', 'SPARCLab', 'SPARC', 0, '', '2020-11-19 17:43:51', '2020-11-19 17:44:02', 22, 43, NULL, 1, 1),
 (50, '', 'admins', '1234567', 'sparcLab@email.comdd', '', 'SPARC', 0, '', '2020-12-04 12:32:25', '2020-12-04 12:32:31', 43, 43, '', 1, 1),
-(51, 'hoangvannguyen', 'admins', '1234567', 'sparcLab@email.comdd', 'airsense', 'SPARC', 0, '', '2020-11-04 10:18:57', '2020-12-26 12:21:12', 44, 43, NULL, 1, 1),
+(51, 'hoangvannguyen', 'admins', '1234567', 'sparcLab@email.comdd', 'airsense', 'SPARC', 0, '', '2020-11-04 10:18:57', '2020-12-26 12:21:12', 44, 43, NULL, 1, 0),
 (52, 'LeDuyNhat', 'admins', '1234567', 'sparcLab@email.comdd', 'leduynhat', 'SPARC', 0, '', '2020-10-20 19:30:35', '2020-12-26 12:21:18', 43, 43, NULL, 1, 1),
 (53, 'namlb', 'admins', '1234567', 'sparcLab@email.comdd', '123456a@', 'SPARC', 0, '', '2020-10-20 16:31:55', '2020-12-26 12:21:24', 22, 43, NULL, 1, 1),
-(54, 'admin', 'admins', '1234567', 'sparcLab@email.comjj', 'SPARCLab', 'SPARC', 0, 'img/avatar.jpg', '2020-11-19 17:44:02', '2020-12-26 12:21:41', 43, 43, NULL, 1, 1),
+(54, 'admin', 'admins', '1234567', 'sparcLab@email.comjj', 'SPARCLab', 'SPARC', 0, 'img/avatar.jpg', '2020-11-19 17:44:02', '2020-12-26 12:21:41', 43, 43, NULL, 1, 0),
 (56, 'inest1', 'inest', '000000000', 'inest1', 'inest1', '', 0, '', '2021-01-21 15:54:09', '2021-01-26 16:22:50', 43, 43, '', 3, 1),
 (57, 'inest1', 'inest', '000000000', '', 'hello', '', 0, '', '2021-01-21 15:52:22', '2021-01-21 15:53:16', 43, 43, NULL, 3, 1),
 (58, 'inest1', 'inest', '000000000', 'inest1', 'hello', '', 0, '', '2021-01-21 15:53:16', '2021-01-21 15:54:09', 43, 43, NULL, 3, 1),

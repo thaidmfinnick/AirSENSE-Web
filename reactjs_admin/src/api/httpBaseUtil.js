@@ -138,6 +138,10 @@ export const getCurUser = () => {
   return  httpGetData(API_URL + 'auth/user');
 }
 
+export const Register = () => {
+  
+}
+
 export const addOneDataToTable = (table, data) => {
   return  httpPostData(API_URL + 'users/manager_add' ,Object.assign(data, { table: table }));
 }

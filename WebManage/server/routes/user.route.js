@@ -3,7 +3,6 @@ const  userCtrl = require('../controllers/user.controller.js');
 const isAuthenticated = require('../middlewares/authenticate.js');
 const validate = require('../config/joi.validate.js');
 const schema = require('../utils/validator.js');
-
 const router = express.Router();
 
 
@@ -33,9 +32,5 @@ const router = express.Router();
   });
 
   
-
-  router.route('/register').post((req, res) => {
-      userCtrl.registerUser(req, res);
-  });
 
 module.exports =  router;

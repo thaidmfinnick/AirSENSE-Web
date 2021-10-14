@@ -113,6 +113,7 @@ let ManagerData={
       if((!!!ManagerData.saveInfoUser.is_checked)||(ManagerData.saveInfoUser.is_checked)){
           ManagerData.saveInfoUser.is_checked=false;
           getCurUser().then((infoUser)=>{
+            console.log(infoUser);
             for(var k in infoUser.data.user) {
               ManagerData.saveInfoUser[k]=infoUser.data.user[k];
             }

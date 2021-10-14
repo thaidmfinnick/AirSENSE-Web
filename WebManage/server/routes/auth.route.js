@@ -1,6 +1,8 @@
 const express = require('express');
 const  authCtrl = require('../controllers/auth.controller.js');
+const userCtrl = require('../controllers/user.controller');
 const isAuthenticated = require('../middlewares/authenticate.js');
+const authenNewUser = require('../middlewares/authenNewUser.js');
 const validate = require('../config/joi.validate.js');
 const schema = require('../utils/validator.js');
 const User = require('../models/database/user.model.js');
@@ -23,8 +25,16 @@ router.get('/profile', (req, res) => {
   res.render('authen/updateInfo', { route: 'updateInfomation' });
 });
 
+router.post('/logout', (req, res) => {
+  authCtrl.logOut(req, res);
+});
+
 router.route('/login').post(validate(schema.login), (req, res) => {
   authCtrl.login(req, res);
+});
+// note
+router.route('/register').post(validate(schema.register), authenNewUser, (req, res) => {
+  userCtrl.registerUser(req, res);
 });
 router.route('/login_customer').post(validate(schema.login), (req, res) => {
   authCtrl.loginCustomer(req, res);
@@ -34,15 +44,17 @@ router.route('/login_customer').post(validate(schema.login), (req, res) => {
 
 router.route('/user').get(isAuthenticated, (req, res) => {
   console.log("req.currentUser",req.currentUser)
+  console.log(isAuthenticated);
   User.query({
     where: { users_id: req.currentUser.users_id },
     select: [
       'email',
-      'username',
+      'name',
       'permission_id',
       'phone',
       'avatar',
       'fullname',
+      'contact'
     ],
   })
   .fetch({ require: false })

@@ -20,6 +20,15 @@ module.exports =  {
     password: Joi.string().min(6).required(),
   }),
 
+  register: Joi.object({
+    name: Joi.string().required(),
+    fullname: Joi.string().min(4).required(),
+    email: Joi.string().required(),
+    contact: Joi.string().required(),
+    phone: Joi.string().min(6).required(),
+    password: Joi.string().min(6).required()
+  }),
+
   storeEnterprise: Joi.object({
     name: Joi.string().required(),
     token: Joi.string().required(),

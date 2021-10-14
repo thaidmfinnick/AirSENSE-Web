@@ -25,40 +25,5 @@
         <% include ../Layout/footer.ejs %>
 
     </body>
-    <script>
-      var tocken = localStorage.getItem("tocken_AIRSENSE");
-        var allInfoStation=null;
-        console.log('gpbt');
-
-        function gotoCheckUserStorage() {
-    var userData = localStorage.getItem("username_AIRSENSE");
-    console.log(userData);
-    let managerAuthen = document.getElementById('managerAuthen');
-    console.log(managerAuthen);
-    managerAuthen.setAttribute('href', '/api/auth/login');
-    managerAuthen.innerHTML=userData;
-    if (userData) {
-        managerAuthen.setAttribute('href', '/api/auth/profile');
-        managerAuthen.innerHTML=userData;
-        // $("#managerAuthen").attr("href", "profile");
-        // $("#managerAuthen").html(userData);
-        $("#managerLogout").attr("href", "logout");
-        $("#managerLogout").html("Đăng xuất");
-    }
-    else {
-        managerAuthen.setAttribute('href', '/api/auth/login');
-        managerAuthen.innerHTML='Đăng nhập';
-        // $("#managerAuthen").attr("href", "api/auth/login");
-        // $("#managerAuthen").html('Đăng nhập');
-        $("#managerLogout").attr("href", "logout");
-        $("#managerLogout").html("");
-    }
-}
-
-
-
-
-        gotoCheckUserStorage();
-    </script>
-
+    
 </html>

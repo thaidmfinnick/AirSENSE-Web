@@ -15,6 +15,7 @@ import DetailsIcon from '@material-ui/icons/Details';
 import { Comment, Settings, Send, Contacts, FeaturedPlayList, KeyboardBackspace, TextFormat, Business, GroupWork } from '@material-ui/icons';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Admin, Resource, ListGuesser ,Layout } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import { configureStore } from '@reduxjs/toolkit'
@@ -41,6 +42,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import messageInfo  from './reducers/index';
 import MenuHeader from './container/head/menuHeader';
 import LoginPage from './container/authen/LoginPage';
+import InfoAccount from './container/authen/account';
 const App = () => {
 
     return (
@@ -87,8 +89,9 @@ const App = () => {
             <Resource name="customer" options={{label:'Khách hàng',"menuParent": "customers" }} icon={Contacts}  list={NomalTable} />
             <Resource name="detailbank" options={{label:'Ngân hàng',"menuParent": "customers" }} icon={AccountBalanceIcon}  list={NomalTable} />
             <Resource name="enterprise" options={{label:'Doanh nghiệp',"menuParent": "customers" }} icon={LocationCityIcon} list={NomalTable} />
-        
             <Resource name="comments" options={{label:'comments'  }} icon={Comment} list={DialogChat} />
+
+            <Resource name="infoUser" options={{label:'Thông tin tài khoản'  }} icon={AccountCircleIcon} list={InfoAccount} />
             <Resource name="chatbox" options={{label:'Nhắn tin'}} icon={Send} list={FormChatBox} />
             <Resource name="logout" options={{label:'Đăng xuất'  }} icon={KeyboardBackspace} list={LogoutPage} />
             <FooterChat />

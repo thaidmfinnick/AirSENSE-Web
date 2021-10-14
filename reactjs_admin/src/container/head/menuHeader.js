@@ -43,7 +43,7 @@ const MenuHeader = props => {
                 className={'menu-header-title'}
                 id="react-admin-title"
             />
-            Hệ thống quản lý dữ liệu
+            Hệ thống quản lý dữ liệu Airsense
             <span className={'menu-header-spacer'} />
         </AppBar>
     );

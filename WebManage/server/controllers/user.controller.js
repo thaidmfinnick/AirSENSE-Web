@@ -226,46 +226,50 @@ userCtrl.registerUser = function (req, res) {
   var table ='users';
   var tableSelect=mangerModelAdmin(table);
   if(!!tableSelect){
-    var tableSelect=mangerModelAdmin(table);
     if(!tableSelect.checkDataAddDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+    console.log('hi guys')
+      
       return returnNotFound(res,{ message: "Database inval" });
     }  
+    console.log('guys')
+
     checkDatataBaseInval=true;
     var userToget = squel.select().from('users').
                         where( squel.expr()
                                     .and("phone='"+req.body["phone"]+"'")
                                     .or("email='"+req.body["email"]+"'")
                         ).where("deleteflag=0");
+    console.log(userToget.toString());
 
-    knex.raw(userToget.toString())
-          .then(result => {
-              let data=req.body;
-              let dataUser=  tableSelect.getFieldToAdd();//  DataTableFieldAdd[table];
-              var authen = squel.insert().into(tableSelect.getNameTable());
-              for(var i=0;i<dataUser.valueSetup.length;i++){
-                  let item=dataUser.valueSetup[i];
-                  if(!!!data[item]) authen.set(item,null);
-                  else
-                  authen.set(item,data[item]);
-              }
-              authen.set("id_created",0).set("id_updated",0)
-              .set("created_at","NOW()",{dontQuote: true}) 
-              .set("updated_at","NOW()",{dontQuote: true})
-              .set("deleteflag",0);
-              knex.raw(authen.toString())
-                .then(result => {
-                  return returnOK(res,{result:"Please waitting admin comfirm"});
-                }
-                , 
-                error => {
-                  return returnFalse(res,error);
-                });
-          }
-          , 
-          error => {
-            return returnFalse(res,{ message: "phone and email is existing" } );
-          });
-        }
+    // knex.raw(userToget.toString())
+    //       .then(result => {
+    //           let data=req.body;
+    //           let dataUser=  tableSelect.getFieldToAdd();//  DataTableFieldAdd[table];
+    //           var authen = squel.insert().into(tableSelect.getNameTable());
+    //           for(var i=0;i<dataUser.valueSetup.length;i++){
+    //               let item=dataUser.valueSetup[i];
+    //               if(!!!data[item]) authen.set(item,null);
+    //               else
+    //               authen.set(item,data[item]);
+    //           }
+    //           authen.set("id_created",0).set("id_updated",0)
+    //           .set("created_at","NOW()",{dontQuote: true}) 
+    //           .set("updated_at","NOW()",{dontQuote: true})
+    //           .set("deleteflag",0);
+    //           knex.raw(authen.toString())
+    //             .then(result => {
+    //               return returnOK(res,{result:"Please waitting admin comfirm"});
+    //             }
+    //             , 
+    //             error => {
+    //               return returnFalse(res,error);
+    //             });
+    //       }
+    //       , 
+    //       error => {
+    //         return returnFalse(res,{ message: "phone and email is existing" } );
+    //       });
+  }
 }
 
 userCtrl.resetPass= async function  (req, res) {

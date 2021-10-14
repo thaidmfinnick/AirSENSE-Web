@@ -1,13 +1,12 @@
 const HttpStatus = require('http-status-codes');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+var squel = require("squel");
 const User = require('../models/database/user.model.js');
 const Customer = require('../models/database/customer.model.js');
 const Oauthen2 = require('../models/database/oAuthen2.model.js');
 const OAuthen2Customer = require('../models/database/oAuthen2Customer.model.js');
 const {returnOK,returnNotAuthen,returnNotFound } = require('../utils/returnResponse.js');
-
-
 var oauthen2=new Oauthen2();
 var oAuthen2Customer=new OAuthen2Customer();
 var lstLogin=[];
@@ -22,7 +21,6 @@ var authCtrl={};
  */
  authCtrl.login = function(req, res) {
   const { email, password } = req.body;
-  console.log(email + password);
   lstLogin =lstLogin.filter(o=>((Date.now() - o.time)<2000));
   var emailExist=lstLogin.filter(o=>o.email==email);
   if(emailExist.length==1){
@@ -68,6 +66,23 @@ var authCtrl={};
     });
 }
 
+
+
+
+authCtrl.logOut = function(req, res) {
+  var stringTocken = request.headers["authorization"];
+        var stringData = stringTocken.split("Bearer ");
+        var data = squel.update().table("oauthen2").set("deleteflag", 1)
+            .set("updated_at", "NOW()", { dontQuote: true }).where("tocken = '" + stringData[1] + "'");
+        var SQL = data.toString();
+        // mySQLConfig.queryDbSQL(SQL).then(function (result) {
+        //     callback(true);
+        // })
+        //     .catch(function (err) { callback(false, err); });
+        // Oauthen2.query(SQL)
+        console.log(SQL);
+
+}
 
 authCtrl.loginCustomer = function(req, res) {
   const { email, password } = req.body;

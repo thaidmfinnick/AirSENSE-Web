@@ -69,7 +69,7 @@ class Oauthen2 extends CommonModel {
                 .then(function(x) {
                     res.json({
                         success: true,
-                        tocken:dataTocken,
+                        token:dataTocken,
                         email: user.get('email'),
                         userName: user.get('name')
                     });
