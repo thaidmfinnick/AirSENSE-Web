@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <% include ../Layout/header.ejs %>
+
+<body>
+<% include ../Layout/topBar.ejs %>
+ 
+    <div class="register">  
+      <h2>Đăng Ký</h2>
+      <div class="center">
+        <form>
+          <label for="rname">Tên người dùng</label>
+          <input type="text" id="rname" name="rname" placeholder="">
+          <label for="rfullname">Họ và tên đầy đủ</label>
+          <input type="text" id="rfullname" name="rfullname" placeholder="">
+          <label for="rphone">Số điện thoại</label>
+          <input type="text" id="rphone" name="rphone" placeholder="">
+          <label for="rcontact">Liên lạc</label>
+          <input type="text" id="rcontact" name="rcontact" placeholder="">
+          <label for="remail">Email</label>
+          <input type="text" id="remail" name="remail" placeholder="">
+          <label for="rpass">Mật khẩu</label>
+          <input type="text" id="rpass" name="rpass" placeholder="">
+          <label for="rcheckpass">Nhập lại mật khẩu</label>
+          <input type="text" id="rcheckpass" name="rcheckpass" placeholder="">
+          <input id="checkbox_2" required="" type="checkbox">
+          <label for="checkbox_2"> Tôi đồng ý với <span class="txt-primary">điều khoản dịch vụ</span>
+          </label>
+          <button class="" type="submit" onclick="submitUser()">Tạo tài khoản</button>
+        </form>
+        
+      </div>
+      
+      
+    </div>
+  <% include ../Layout/footer.ejs %>
+    <script>
+      
+    //console.log(dataLink);
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    function submitUser(){
+        if ($('#rfullname').val().length < 4) {
+            alert("độ dài Họ tên lớn hơn 4");
+            return;
+        }
+        if ($('#rpass').val().length < 8) {
+            alert("pass quá ngắn");
+            return;
+        }
+        
+
+        var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        if (!$('#rphone').val().match(phoneno)) {
+            alert("Số điện thoại không hợp lệ");
+            return;
+        }
+        if (!validateEmail($('#remail').val())) {
+            alert("Sai định dạng email");
+            return;
+        }
+
+        if ($('#rcontact').val().length < 4) {
+            alert("Xin vui lòng nhập địa chỉ");
+            return;
+        }
+
+
+                $.ajax({
+                        type: 'post',
+                        method: 'POST',
+                        url: '/api/auth/register',
+                     //   body: JSON.stringify({type:dataView}), // body data type must match "Content-Type" header
+                        data: JSON.stringify( {
+                            name: $('#rname').val(),
+                            fullname: $('#rfullname').val(),
+                            phone: $('#rphone').val(),
+                            password: $('#rpass').val(),
+                            email: $('#remail').val(),
+                            contact: $('#rcontact').val()
+                        }), // body data type must match "Content-Type" header
+                        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                        credentials: 'same-origin', // include, *same-origin, omit
+                        redirect: 'follow', // manual, *follow, error
+                        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                        dataType: 'json',
+                        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                        credentials: 'same-origin', // include, *same-origin, omit
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Beard ' + localStorage.getItem('token'),
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+   
+   
+          success: function(loadcofig) {
+              console.log(loadcofig);
+              console.log(loadcofig);
+              if (loadcofig.tocken) {
+                  window.location.href = "/";
+              } else {
+                  alert("Thông tin đăng nhập lỗi,Xin vui lòng thử lại");
+              }
+          },
+          complete: function(loadcofig) {
+              console.log(loadcofig.responseText);
+          },
+          error: function(loadcofig) {
+              console.log(loadcofig);
+          }
+      });
+      }
+
+    // When the user clicks anywhere outside of the modal, close it
+    </script>
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zxx"> 
+<% include ../Layout/header.ejs %>
+    <body class="defult-home">
+		<!-- Main content Start -->
+        <div class="main-content">
+            <!--Full width header Start-->
+            <div class="full-width-header home8-style4 home9">
+                <!--Header Start-->
+                <% include ../Layout/headerMenu.ejs %>
+                <!--Header End-->
+            </div>
+            <!--Full width header End-->
+      <!-- About Section Start -->
+      <div class="rs-about style9 pt-40 pb-100 md-pt-70 md-pb-70">
+        <div class="container" id="htmlToView">
+          <!--  <iframe  id="htmlToView" style="width:100%;height:1000px;" ></iframe>  -->
+        </div>
+      </div>
+      <!-- About Section End -->
+
+      <!-- Categories Section End -->
+    </div>
+    <!-- Main content End -->
+    <% include ../Layout/footer.ejs %>
+    <script type="text/javascript">
+      var dataView = '<%= detail %>';
+      var linkAcess =
+        'http://' + window.location.hostname +':' +window.location.port + '/' +
+       dataView.replaceAll('+', '/');
+        console.log(linkAcess);
+     // document.getElementById("htmlToView").src = linkAcess;
+
+      $.ajax({
+           type: 'GET',
+           enctype: 'multipart/form-data',
+           url: linkAcess,
+           data: {},
+           processData: false, //prevent jQuery from automatically transforming the data into a query string
+           contentType: false,
+           cache: false,
+           success: (data) => {
+           console.log(data);
+             $('#htmlToView').html(data); //.replaceAll("</p>","<br/>").replaceAll("<p>","<br/>")
+              $('html, body').animate({ scrollTop: 0 }, 'fast');
+           },
+           error: (e) => {
+             console.log(e.responseText);
+           },
+       });
+   </script>
+  </body>
+</html>

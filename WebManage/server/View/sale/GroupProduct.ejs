@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <% include ../Layout/sale/header.ejs %>
+    <body>
+        <% include ../Layout/sale/menuSale.ejs %>
+        <div class="single-product-area">
+            <div class="zigzag-bottom"></div>
+            <div class="container">
+                <div class="row"  id="detailProduct" >              
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-pagination text-center">
+                            <nav>
+                            <ul class="pagination" id="paginationNumber">
+                           
+                            </ul>
+                            </nav>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <% include ../Layout/sale/footer.ejs %>
+        <script type="text/javascript">
+                var dataView = '<%= detail %>';
+                dataView = dataView.replaceAll('type=', '');
+                var selectInfo=[];
+                selectMenu();
+
+                function selectMenu(){
+                    var htmlMenu=`<li ><a href="/sale">Trang chủ</a></li>`;
+                    if(dataView=='1'){
+                        htmlMenu = htmlMenu + `<li class="active"><a href="/sale/product?type=1">Link kiện</a></li>
+                                                <li><a href="/sale/product?type=2">IC</a></li>
+                                                <li><a href="/sale/product?type=3">Thiết bị</a></li>`;
+                    } else if(dataView=='2'){
+                        htmlMenu = htmlMenu + `<li><a href="/sale/product?type=1">Link kiện</a></li>
+                                                <li class="active"><a href="/sale/product?type=2">IC</a></li>
+                                                <li><a href="/sale/product?type=3">Thiết bị</a></li>`;
+                    }else if(dataView=='3'){
+                        htmlMenu = htmlMenu + `<li><a href="/sale/product?type=1">Link kiện</a></li>
+                                                <li><a href="/sale/product?type=2">IC</a></li>
+                                                <li class="active"><a href="/sale/product?type=3">Thiết bị</a></li>`;
+                    }
+                    htmlMenu = htmlMenu +`<li><a href="/about">Contact</a></li>`;
+                    $("#selectMenu").html(htmlMenu);  
+                }
+                function getNumberData(data){
+                    var htmlMenu=`<li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>`;
+                    var nummber=1;
+                    for(var i=0;i<data.length;i+=16){
+                        htmlMenu = htmlMenu +`<li><a href="#">`+nummber+`</a></li>`;
+                    }
+                    
+                    htmlMenu = htmlMenu +`<li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>`;
+                    $("#paginationNumber").html(htmlMenu);  
+                }
+
+                function getInfoProduct(data){
+                    var htllProduct=``;
+                    for(var i=0;i<data.length;i++){
+                        htllProduct  = htllProduct+`<div class="col-md-3 col-sm-6">
+                                                        <div class="single-shop-product">
+                                                            <div class="product-upper">`;
+                        htllProduct  = htllProduct+`<img src="` +data[i].image+ `" alt="">`;
+                        htllProduct  = htllProduct+`</div>
+                                        <h2><a href="/sale/product_detail?type=`+data[i].product_id+`">` +data[i].content+ `</a></h2>`;
+                        htllProduct  = htllProduct+`<div class="product-carousel-price"><ins>$` +data[i].cost+ `</ins> <del>$` +data[i].cost+`</del>
+                                                            </div>  
+                                                            <div class="product-option-shop">
+                                                                <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
+                                                            </div>                       
+                                                        </div>
+                                                    </div>` ;
+                    }
+                    $("#detailProduct").html(htllProduct);         
+                }
+
+                $.ajax({
+                        type: 'post',
+                        method: 'POST',
+                        url: '/api/customers/info_product',
+                     //   body: JSON.stringify({type:dataView}), // body data type must match "Content-Type" header
+                        data: JSON.stringify({type:dataView}), // body data type must match "Content-Type" header
+                        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                        credentials: 'same-origin', // include, *same-origin, omit
+                        redirect: 'follow', // manual, *follow, error
+                        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                        dataType: 'json',
+                        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                        credentials: 'same-origin', // include, *same-origin, omit
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        success: function (data) {
+                            getNumberData(data.result);
+                            getInfoProduct(data.result);
+                            console.log(data.result);
+                           
+                        // $("#detailAcess").html(dataReturn.user.email);
+                        },
+                        error: function (loadcofig) {
+                            console.log(loadcofig);
+                        }
+                });
+
+             
+                
+
+
+        </script>
+
+
+    </body>
+</html>
