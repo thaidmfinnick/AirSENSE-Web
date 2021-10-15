@@ -1,0 +1,48 @@
+{
+    "database": {
+        "host": "103.1.238.170",
+        "database": "admin_python",
+        "user": "sparclab",
+        "password": "LabSPARC"
+    },
+    "fields": {
+        "station_id": "",
+        "Time": "",
+        "PM2p5": "",
+        "PM10": "",
+        "PM1": "",
+        "Temperature": "",
+        "Humidity": "",
+        "Pressure": "",
+        "SO2": "",
+        "NO2": "",
+        "CO2": "",
+        "CO" : "",
+        "O3": "",
+        "NO2W":"",
+        "NO2A":"",
+        "O3W":"",
+        "O3A":"",
+        "COW":"",
+        "COA":"",
+        "SO2W":"",
+        "SO2A":""
+    },
+    "mqtt": [
+        {
+            "port": 1883,
+            "clientId": "mqtt_1883_default_key",
+            "username": "sparc",
+            "useNewUrlParser": true,
+            "password": "sparcXZAairsenseATU"
+        },
+        {
+            "port": 1884,
+            "clientId": "mqtt_1884_default_key",
+            "username": "sparc",
+            "useNewUrlParser": true,
+            "password": "sparcXZAairsenseATU"
+        }
+    ],
+    "maxItemMemory": 1
+}
