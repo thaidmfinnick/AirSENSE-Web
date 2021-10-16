@@ -41,25 +41,33 @@ var authCtrl={};
         console.log("user Inval",user);
 
         lstLogin =lstLogin.filter(o=>o.email!=email);
+        console.log(user.get('password'));
+        console.log(password);
         // bcrypt.compare(password,  user.get('password')).then(function(result) {
         //   console.log("user Inval",result);
-        //   if(result)
-        //     oauthen2.responseLogin(res,user);        
-        //   else
+        //   if(result) {
+        //     console.log(a)
+        //     oauthen2.responseLogin(res,user);  
+        //   }      
+        //   else{
+        //     console.log('b')
         //     return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
+        //   }
         // })
         // .catch(()=>{
+        //   console.log('c');
         //   return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
         // });
-        const passwordUser = user.get('password');
-        if(password == passwordUser) {
-            oauthen2.responseLogin(res,user); 
-        }       
-        else 
+        const userPassword = user.get('password');
+        if(password==userPassword) {
+          oauthen2.responseLogin(res,user); 
+        }
+        else{
             return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
+        }
 
       } 
-      else {
+        else {
         lstLogin.push({email:email,count:1,time:Date.now()});
         return returnNotAuthen(res,{success: false,message:'Invalid username or password.'});
       }

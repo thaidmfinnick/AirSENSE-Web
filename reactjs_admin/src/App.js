@@ -31,7 +31,7 @@ import ChatBoxInternal  from './container/message/ChatBoxInternal.js';
 import FormChatBox  from './compoment/chat/chatbox.js';
 import DialogChat  from './container/message/DialogChat';
 import FooterChat  from './container/message/FooterChat';
-//import './styles/index.js';
+import './styles/style.css';
 import Dashboard from './container/manager/Dashboard';
 import authProvider from './api/authProvider';
 import {HOST_HTTP}  from './config/config.js';
@@ -43,17 +43,18 @@ import messageInfo  from './reducers/index';
 import MenuHeader from './container/head/menuHeader';
 import LoginPage from './container/authen/LoginPage';
 import InfoAccount from './container/authen/account';
+import Header from './compoment/header/header.js'
 const App = () => {
 
     return (
-    <div>
+    <div>   
         <Admin
             dataProvider={jsonServerProvider(HOST_HTTP)}
             authProvider={authProvider}
             loginPage = {LoginPage}
             dashboard={Dashboard}
             customReducers={{ messageInfo }}
-            layout={(props) => <Layout {...props} menu={TreeMenu}  appBar={MenuHeader}  />}
+            layout={(props) => <Layout {...props} menu={TreeMenu} appBar={MenuHeader} />}
             >
             <Resource name="users" options={{label:'Tài khoản'  }} icon={UserIcon} list={UserList} />
             {/*  Mqtt*/}

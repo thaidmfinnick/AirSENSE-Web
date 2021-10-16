@@ -79,6 +79,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`users_id`, `name`, `fullname`, `phone`, `email`, `password`, `contact`, `addrid`, `avatar`, `created_at`, `updated_at`, `id_created`, `id_updated`, `note`, `permission_id`, `deleteflag`) VALUES
 (1, 'Hiền Trần', 'Trần Thị Hồng Hiền', '', 'hienttt@gmail.com', '123456a@', '', 0, '', '2021-01-18 23:21:43', '2021-01-18 23:21:43', 43, 43, '', 1, 0),
 (2, 'Giang', 'Phùng Bá Trường Giang', '0123456789', 'admin@gmail.com', '123456', 'SPARC lab', 0, '', '2021-10-13 9:14:24', '2021-10-13 9:14:24', 99, 99, 'admin', 1, 0),
+(3, 'AIRSENSE', 'Airsense admin', '0123456789', 'airsense@gmail.com', '12345678', 'Do an 1', 0, '', '2021-10-16 15:12:25', '2021-10-16 15:12:25', 68, 68, 'do an 1', 1, 0),
 (17, 'registerbycomputer', 'admins', '1234567', 'sparcLab@email.comdd', 'password', 'SPARC', 0, '', '2020-04-19 23:22:20', '2020-10-18 08:36:27', 0, 22, '', 1, 0),
 (19, 'Lu', 'admins', '1234567', 'sparcLab@email.comdd', 'sadasd', 'SPARC', 0, '0', '2020-08-05 23:42:59', '2020-10-18 08:36:19', 17, 22, '', 1, 0),
 (20, 'Lu', 'admins', '1234567', 'sparcLab@email.comdd', 'khongbietdau', 'SPARC', 0, '', '2020-10-18 09:03:27', '2020-10-20 08:12:40', 22, 22, '', 1, 0),

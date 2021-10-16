@@ -225,21 +225,49 @@ userCtrl.updateFistPages= async  function (req, res) {
 userCtrl.registerUser = function (req, res) {
   var table ='users';
   var tableSelect=mangerModelAdmin(table);
-  if(!!tableSelect){
-    if(!tableSelect.checkDataAddDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
-    console.log('hi guys')
-      
-      return returnNotFound(res,{ message: "Database inval" });
-    }  
-    console.log('guys')
 
-    checkDatataBaseInval=true;
-    var userToget = squel.select().from('users').
-                        where( squel.expr()
-                                    .and("phone='"+req.body["phone"]+"'")
-                                    .or("email='"+req.body["email"]+"'")
-                        ).where("deleteflag=0");
-    console.log(userToget.toString());
+  if(!!tableSelect){
+    var newUser = squel.insert().into('users')
+                  .set('name', req.body.name)
+                  .set('fullname', req.body.fullname)
+                  .set('email', req.body.email)
+                  .set('password', req.body.password)
+                  .set('contact', req.body.contact)
+                  .set('addrid', '0')
+                  .set('avatar', '')
+                  .set('created_at', 'NOW()',{dontQuote: true})
+                  .set('updated_at', 'NOW()',{dontQuote: true})
+                  .set('note', '')
+                  .set('permission_id', req.currentUser.permission_id)
+                  .set('deleteflag', '0');
+                  
+                  
+              knex.raw(newUser.toString())
+                  .then(function(x) {
+                      res.json({
+                          success: true,
+                          message: "Đăng kí thành công, xin chờ admin cấp quyền"
+                      });
+                  })
+                  .catch(function(err1){
+                      res.status(HttpStatus.UNAUTHORIZED).json({
+                          success: false,
+                          message: 'Problem SQL.',
+                      });
+                  });
+    // if(!tableSelect.checkDataAddDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+      
+    //   return returnNotFound(res,{ message: "Database inval" });
+    // }  
+    // console.log('guys')
+
+    // checkDatataBaseInval=true;
+    // var userToget = squel.select().from('users').
+    //                     where( squel.expr()
+    //                                 .and("phone='"+req.body["phone"]+"'")
+    //                                 .or("email='"+req.body["email"]+"'")
+    //                     ).where("deleteflag=0");
+    // console.log(userToget.toString());
 
     // knex.raw(userToget.toString())
     //       .then(result => {

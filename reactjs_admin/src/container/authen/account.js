@@ -4,41 +4,49 @@ import ManagerData from '../../actions/ManagerData.js'
 
 const InfoAccount = () => {
     const user = ManagerData.saveInfoUser;
-    console.log(user);
 
     return (
-        <div className='user-data'>
-        <div className="info">  
-  <h2>Thông tin cá nhân</h2>
-  <div className="center">
-    <form>
-      <label>Tên người dùng</label>
-      <input type="text" placeholder value={user.name} />
-      <label>Họ và tên</label>
-      <input type="text" placeholder value={user.fullname} />
-      <label>Email</label>
-      <input type="text" placeholder value={user.email} />
-      <label>Số điện thoại</label>
-      <input type="text" placeholder value={user.phone} />
-      <label>Địa chỉ</label>
-      <input type="text" placeholder />
-      <label>Liên hệ</label>
-      <input type="text" placeholder value={user.contact}/>
-      <label>Vai trò</label>
-      <input type="text" placeholder />
-    </form>
-    <div className="change-info">
-      <button className="submit2">Hủy</button>
-      <button className="submit2">Lưu thay đổi</button>
-    </div>
+        <div className='new-user-data'>
+        <div className="account-info">  
+      <h2 className='account-info-title'>Thông tin cá nhân</h2>
+    <form className='account-info-user'>
+      <div className='account-form-divide'>
+      <div className='account-form-item-half'>
+      <label className='account-label'>Tên người dùng</label>
+      <input className='account-field' type="text" placeholder value={user.name} />
+      </div>
+      <div className='account-form-item-half'>
+      <label className='account-label'>Họ và tên</label>
+      <input className='account-field' type="text" placeholder value={user.fullname} />
+      </div>
+      <div className='account-form-item-half'>
+      <label className='account-label'>Email</label>
+      <input className='account-field' type="text" placeholder value={user.email} />
+      </div>
+      <div className='account-form-item-half'>
+      <label className='account-label'>Số điện thoại</label>
+      <input className='account-field' type="text" placeholder value={user.phone} />
+      </div>
+      </div>
+      <label className='account-label'>Địa chỉ</label>
+      <input className='account-field' type="text" placeholder value={user.contact}/>
+      <label className='account-label'>Vai trò</label>
+      <input className='account-field' type="text" placeholder />
+      
+      <div className="account-image">
+    <img className='account-img' src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg' />
+    <a href="#">Chọn ảnh đại diện khác</a>
   </div>
-  <div className="img">
-    <div className="user-img" />
-    <p>Chọn ảnh đại diện khác</p>
-    <a href="#">Chọn file</a>
-  </div>
-</div>
 
+
+    </form>
+
+    <div className="account-button">
+      <button type='submit' className="account-button-item">Lưu thay đổi</button>
+    </div>
+    <a href="#">Thay đổi mật khẩu</a>
+
+  </div>
         </div>
     )
 }
