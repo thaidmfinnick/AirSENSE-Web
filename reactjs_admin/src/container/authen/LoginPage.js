@@ -21,7 +21,7 @@ const LoginPage = () => {
 
         return (
           <div className="authen-center">
-  <form>
+  <form className='authen-form'>
     <div className="authen-text-field">
       <input type="text" placeholder="Tên đăng nhập" value={userName} onChange={e =>setUserName(e.target.value)} />
 

@@ -15,14 +15,14 @@
           <input type="text" id="rfullname" name="rfullname" placeholder="">
           <label for="rphone">Số điện thoại</label>
           <input type="text" id="rphone" name="rphone" placeholder="">
-          <label for="rcontact">Liên lạc</label>
+          <label for="rcontact">Địa chỉ</label>
           <input type="text" id="rcontact" name="rcontact" placeholder="">
           <label for="remail">Email</label>
           <input type="text" id="remail" name="remail" placeholder="">
           <label for="rpass">Mật khẩu</label>
-          <input type="text" id="rpass" name="rpass" placeholder="">
+          <input type="password" id="rpass" name="rpass" placeholder="">
           <label for="rcheckpass">Nhập lại mật khẩu</label>
-          <input type="text" id="rcheckpass" name="rcheckpass" placeholder="">
+          <input type="password" id="rcheckpass" name="rcheckpass" placeholder="">
           <input id="checkbox_2" required="" type="checkbox">
           <label for="checkbox_2"> Tôi đồng ý với <span class="txt-primary">điều khoản dịch vụ</span>
           </label>
@@ -68,6 +68,8 @@
             return;
         }
 
+    
+
 
                 $.ajax({
                         type: 'post',
@@ -101,10 +103,11 @@
           success: function(loadcofig) {
               console.log(loadcofig);
               console.log(loadcofig);
-              if (loadcofig.tocken) {
+              if (loadcofig.message) {
                   window.location.href = "/";
+                  alert(loadcofig.message)
               } else {
-                  alert("Thông tin đăng nhập lỗi,Xin vui lòng thử lại");
+                  alert("Thông tin đăng nhập lỗi, Xin vui lòng thử lại");
               }
           },
           complete: function(loadcofig) {

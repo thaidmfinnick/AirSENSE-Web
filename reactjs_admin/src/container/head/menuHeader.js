@@ -7,7 +7,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import SettingsIcon from "@material-ui/icons/Settings";
 import Avatar from '@material-ui/core/Avatar';
 import ManagerData from '../../actions/ManagerData';
-
+import Header from '../../compoment/header/header';
 
   
 
@@ -22,6 +22,7 @@ const UserMenuData = (props) => {
     };
     setTimeout(()=>{checkUser() },5000);
     return (
+        <>
       <UserMenu  label={nameUser}  {...props}
         icon={
             <Avatar
@@ -30,13 +31,16 @@ const UserMenuData = (props) => {
         }
       >
       </UserMenu>
+      </>
     );
 };
   
 
 const MenuHeader = props => {
     return (
-        <AppBar {...props} color="primary"  userMenu={<UserMenuData />} >
+        <>
+        <Header />
+        {/* <AppBar {...props} color="primary"  userMenu={<UserMenuData />} >
             <Typography
                 variant="h6"
                 color="inherit"
@@ -45,7 +49,8 @@ const MenuHeader = props => {
             />
             Hệ thống quản lý dữ liệu Airsense
             <span className={'menu-header-spacer'} />
-        </AppBar>
+        </AppBar> */}
+        </>
     );
 };
 

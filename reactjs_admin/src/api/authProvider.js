@@ -7,6 +7,7 @@ export default {
         return new Promise((resolve, reject) =>
                 { login({email:username , password: password})
                     .then((value)=>{
+                        console.log(value);
                         localStorage.setItem('username', username);
                         resolve(value);
                     })
