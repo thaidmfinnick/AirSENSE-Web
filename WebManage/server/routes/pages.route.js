@@ -42,27 +42,28 @@ router.get('/tech/:typePage', async (req, res) => {
 });
 
 
-router.get('/document/:typePage',async (req, res) => {
+router.get('/blog/:typePage',async (req, res) => {
   var data = req.params.typePage;
-  var itemvalue =["head","math", "program","electric","phy","project","skill"]
+  var itemvalue =["head","mathematic", "program","electric","phy","project","skill"]
   var index = itemvalue.findIndex(o=>o==data);
   var dataMAin=20+index;
   if(dataMAin<21) {
     dataMAin = '21,22,23,24,25,26';
   }
+  console.log('Thai dep trai');
   
-  res.render('document/document',  { detail: dataMAin, route: 'document' });
+  // res.render('blog/document',  { detail: dataMAin, route: 'blog' });
 });
 
 router.get('/curriculum/:typePage',async (req, res) => {
   var data = req.params.typePage;
-  var itemvalue =["head","math", "program","electric","phy"]
+  var itemvalue =["head","maths", "program","electric","phy"]
   var index = itemvalue.findIndex(o=>o==data);
   var dataMAin=30+index;
   if(dataMAin<31) {
     dataMAin = '31,32,33,34';
   }
-  res.render('document/document', { detail: dataMAin, route: 'curriculum' });
+  res.render('blog/document', { detail: dataMAin, route: 'curriculum' });
 });
 
 router.get('/tool/:typePage',async (req, res) => {
