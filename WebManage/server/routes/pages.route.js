@@ -8,35 +8,25 @@ router.get('/', (req, res) => {
 
 var arrayMenuPages =[
   {
-      typePage: "Công nghệ",
-      route: 'tech',
-      sideMenu :{}
-  },
-  {
-    typePage: "Tài liệu",
+    typePage: "Đào tạo",
     route: 'tech',
+    sideMenu :{}
+  },
+
+  {
+    typePage: "Blog",
+    route: 'document',
     sideMenu :{}
   }
-  ,
-  {
-    typePage: "Giáo trình",
-    route: 'tech',
-    sideMenu :{}
-  },
-  {
-    typePage: "Công cụ",
-    route: 'tool',
-    sideMenu :{}
-  },
 ] 
 
-router.get('/tech/:typePage', async (req, res) => {
+router.get('/education/:typePage', async (req, res) => {
   var data = req.params.typePage;
-  var itemvalue =["head","news", "it","electric","phy"]
+  var itemvalue =["head","news", "documentary"]
   var index = itemvalue.findIndex(o=>o==data);
-  var dataMAin=index;
-  if(index<1) {
-    dataMAin = '1,2,3,4';
+  var dataMAin=10+index;
+  if(index<10) {
+    dataMAin = '11,12';
   }
   res.render('tech/tech' , { detail: dataMAin, route: 'tech' });
 });
@@ -44,15 +34,14 @@ router.get('/tech/:typePage', async (req, res) => {
 
 router.get('/blog/:typePage',async (req, res) => {
   var data = req.params.typePage;
-  var itemvalue =["head","mathematic", "program","electric","phy","project","skill"]
+  var itemvalue =["head","stem", "environment", "climate"]
   var index = itemvalue.findIndex(o=>o==data);
-  var dataMAin=20+index;
-  if(dataMAin<21) {
-    dataMAin = '21,22,23,24,25,26';
+  var dataMAin=index;
+  if(dataMAin<1) {
+    dataMAin = '1,2,3';
   }
-  console.log('Thai dep trai');
   
-  // res.render('blog/document',  { detail: dataMAin, route: 'blog' });
+  res.render('document/blog',  { detail: dataMAin, route: 'document' });
 });
 
 router.get('/curriculum/:typePage',async (req, res) => {
