@@ -10,7 +10,7 @@ const pagesRouters = require('./routes/pages.route.js');
 });*/
 // Router
 app.use('/api', routes);
-app.use('/', pagesRouters);
+app.use('', pagesRouters);
 app.get('/u', (req, res) => {
   res.send(JSON.stringify({sample:false}));
   // res.sendFile(path.join(__dirname, '../public/dist/index.html'));

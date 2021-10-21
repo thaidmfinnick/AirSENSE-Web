@@ -28,7 +28,7 @@ function setFormToMenuShowAds(dataJson,itemToSet){
 
 
     function setFormToShowPages(item,urlDetail){
-      var start =  '<div class="rs-about style9 pt-20 md-pt-70"><div class="container container-title-hust-tech">';
+      var start =  '<div class="p-3"><div class="container container-title-hust-tech">';
       var limkUrl= '<a href="'+urlDetail;
       if(item.is_main_pages_id==-1){
         limkUrl += 'group_page/'+item.pages_content_id +'" style="font-size: 20px;">';
@@ -39,7 +39,7 @@ function setFormToMenuShowAds(dataJson,itemToSet){
         }
       
       var content = ' <div class="row align-items-center">  <div class="col-lg-3"> <div class="img-part js-tilt">'           
-                 + '<img src="' +item.content_img +'" alt="images"  />  </div> </div>'
+                 + '<img src="' +item.content_img +'" alt="images"  style="width: 60%"/>  </div> </div>'
                  +'<div class="col-lg-9"> <div class="div-font-title-hust-tech">'+item.title +'</div> <div class="content div-font-info-hust-tech "><br/>' +item.content
                  + '</div></div></div></div></div>';
 
