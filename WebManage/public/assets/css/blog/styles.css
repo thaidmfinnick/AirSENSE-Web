@@ -1,11 +1,6 @@
-body{
-  padding-top: 9%;
-
-}
-
 .carousel {
   width: 100%;
-  margin-left:auto;
+  margin-left: auto;
 }
 
 .carousel-caption {
@@ -29,53 +24,46 @@ body{
     color: #fff;
     text-align: left;
     font-size: 0.8rem;
-
   }
 
-  h5{
+  h5 {
     font-size: 1rem;
   }
 
-  .navbar-brand{
+  .navbar-brand {
     margin-right: -15rem;
   }
 }
 
-.w-100{
-    border-radius: 40px;
+.w-100 {
+  border-radius: 40px;
 }
 
 .carousel-control-prev {
   border-radius: 40px;
-
 }
 
 .carousel-control-next {
   border-radius: 40px;
-
 }
 
-
-.container-fluid{
+.container-fluid {
   padding: 7% 10%;
 }
 
-
-
-#title .container-fluid{
+#title .container-fluid {
   padding: 1% 5%;
   text-align: left;
   background-color: #fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.carousel-item{
-    height: 300px;
+.carousel-item {
+  height: 300px;
 }
-.carousel-item img{
-    height: 300px;
+.carousel-item img {
+  height: 300px;
 }
-
 
 .sidenav {
   height: 80%;
@@ -111,20 +99,23 @@ body{
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
 
-.content2{
+.content2 {
   padding-top: 5%;
 }
 
-.heading1{
+.heading1 {
   display: flex;
-  align-items: baseline
-
+  align-items: baseline;
 }
 
-.heading1 a{
-padding-left: 80%;
+.heading1 a {
+  padding-left: 80%;
 }
