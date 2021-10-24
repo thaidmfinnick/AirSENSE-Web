@@ -12,18 +12,22 @@
 
 html {
     font-size: 100%;
-    font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 body {
     line-height: 1.6;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 ::-webkit-scrollbar {
     width: 6px;
 }
-
 
 ::-webkit-scrollbar-thumb {
     background: #aaa;
@@ -98,11 +102,12 @@ hr {
     color: #757575;
 }
 
-.blog-heading{
+.blog-heading {
     color: var(--title-color);
     font-size: 40px;
     font-weight: 700;
     margin-bottom: 80px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .detail__avatar {
@@ -253,7 +258,7 @@ hr {
     padding-bottom: 40px;
 }
 
-.blog-bottom__action{
+.blog-bottom__action {
     margin: 8px 0;
 }
 
@@ -356,7 +361,6 @@ hr {
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.2);
-
 }
 
 @keyframes modalFadeIn {
@@ -375,7 +379,6 @@ hr {
     transform: translateX(100%);
 }
 
-
 .comment-container {
     /* display: none; */
     background-color: #fff;
@@ -384,7 +387,7 @@ hr {
     right: 0;
     height: 100%;
     width: 50%;
-    padding: 40px;
+    padding: 40px 40px 0px;
     overflow-y: auto;
     opacity: 1;
     transform: translateX(0);
@@ -409,6 +412,11 @@ hr {
     font-size: 18px;
     font-weight: 600;
 }
+
+.comment-heading h4 {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 .my-comment-wrapper {
     margin-top: 40px;
 }
@@ -491,7 +499,7 @@ hr {
     font-weight: 400;
 }
 
-@media (max-width: 1113px) and (min-width: 740px) {
+@media (max-width: 1113px) and (min-width: 763px) {
     .blog-aside-wrapper {
         display: none;
     }
@@ -504,7 +512,7 @@ hr {
     }
 }
 
-@media (max-width: 739px) {
+@media (max-width: 975px) {
     .blog-aside-wrapper {
         display: none;
     }
@@ -523,7 +531,7 @@ hr {
         margin: 0 auto;
         margin-top: 12px;
         background-color: #fff;
-        height: 70%;
+        height: 74%;
         width: calc(100% - 24px);
         padding: 40px;
         overflow-y: auto;
