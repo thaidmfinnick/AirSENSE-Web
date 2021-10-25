@@ -27,20 +27,22 @@ function setFormToMenuShowAds(dataJson,itemToSet){
 
 
   function setFormToShowPages(item,urlDetail){
-    var start =  '<div class="row content2">';
+    var start =  '<div class="ItemBlog">';
     var limkUrl= '<a href="'+urlDetail;
     if(item.is_main_pages_id==-1){
-      limkUrl += 'group_page/'+item.pages_content_id +'" style="font-size: 20px;">';
+      limkUrl += 'group_page/'+item.pages_content_id + '\"style="" class="btn btn-primary">Xem thêm</a>';
       }
       else
       {
-        limkUrl +='detail_page/'+ item.filesave.replace('/', '+')+' " style="font-size: 20px;">';
+        limkUrl +='detail_page/'+ item.filesave.replace('/', '+')+ '\"style="" class="btn btn-primary">Xem thêm</a>';
       }
-    
-      var content = ' <div class="col-2"></div><div class="col-10"><div class="row"><div class="col-sm-4 col-md-4"><div class="card">'           
+      // console.log(limkUrl)
+      var content = 
+        '<div class="col-sm-4 col-md-4"><div class="card">'           
       + '<img src="' +item.content_img +'" alt="images"  class="card-img-top"/> <div class="card-body">'
       +'<h5 class="card-title">'+item.title +'</h5> <p class="card-text">' +item.content
-      + '</p><a href="'+urlDetail+'" class="btn btn-primary">Xem thêm</a></div></div></div></div></div></div></div>';
+      + '</p>'+ limkUrl +'</div></div></div></div>';
+      console.log(content)
     return (start+content);
   }
 
@@ -64,14 +66,24 @@ function setFormToMenuShowAds(dataJson,itemToSet){
                });
                console.log(dataJson);
                var titleSub="";
+               var startRow = '<div class="row" style="display: grid; grid-template-columns: repeat(3, 1fr);">'
+               var closeRow = '</div>'
                for(var i =0;i<dataJson.length;i++){
-                 if(dataJson[i].group_content!=titleSub){
-                   titleSub = dataJson[i].group_content;
-                   textHtml+= "<center><H2>"+dataJson[i].group_content+"</H2></center>";
+                 if(dataJson[i].group_content!=titleSub) {
+                   if (dataJson[i] == 0) {
+                    titleSub = dataJson[i].group_content;
+                    textHtml+= "<center><H2>"+titleSub+"</H2></center>" + startRow;
+                   }
+                   else {
+                    textHtml += closeRow;
+                    titleSub = dataJson[i].group_content;
+                    textHtml+= "<center><H2>"+titleSub+"</H2></center>" + startRow;
+                   }
                  }
                  textHtml += setFormToShowPages(dataJson[i],urlDetail);
                }
-               
+               textHtml += closeRow;
+               console.log(textHtml);
                $('#'+nameDivControl).html(textHtml); //.replaceAll("</p>","<br/>").replaceAll("<p>","<br/>")
             },
             error: (e) => {
