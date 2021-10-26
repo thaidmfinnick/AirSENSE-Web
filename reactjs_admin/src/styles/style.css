@@ -23,7 +23,8 @@ main {
 /* CSS for header, footer and general */
 
 body {
-  font-family: "Open Sans", sans-serif;
+  /* font-family: "Open Sans", sans-serif; */
+  font-family: Arial;
   color: #444444;
 }
 

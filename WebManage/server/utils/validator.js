@@ -15,6 +15,20 @@ module.exports =  {
     password: Joi.string().min(6).required(),
   }),
 
+  updateInfoUser: Joi.object({
+    table: Joi.string().required(),
+    name: Joi.string().required(),
+    fullname: Joi.string().required(),
+    phone: Joi.string().required(),
+    contact: Joi.string().required(),
+  }),
+
+  changePassword: Joi.object({
+    table: Joi.string().required(),
+    oldPassword: Joi.string().min(6).required(),
+    newPassword: Joi.string().min(6).required(),
+  }),
+
   login: Joi.object({
     email: Joi.string().required(),
     password: Joi.string().min(6).required(),
@@ -32,6 +46,16 @@ module.exports =  {
   storeEnterprise: Joi.object({
     name: Joi.string().required(),
     token: Joi.string().required(),
+  }),
+
+  resetPassword: Joi.object({
+    email: Joi.string().email().required()
+  }),
+
+  newResetPassword: Joi.object({
+    password: Joi.string().required(),
+    token: Joi.string().required(),
+    userId: Joi.string().required()
   }),
 
   storeGroup: Joi.object({
