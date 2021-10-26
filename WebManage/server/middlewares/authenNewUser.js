@@ -1,5 +1,4 @@
 const TableManifest = require("../models/middlewareDatabase/TableManifest");
-
 module.exports = (req, res, next) => {
 
     req.currentUser = {

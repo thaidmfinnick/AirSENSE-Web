@@ -44,7 +44,8 @@ CREATE TABLE `oauthen2` (
   `id_created` INT(11) NOT NULL,
   `id_updated` INT(11) NOT NULL,
   `deleteflag` INT(11) NOT NULL,
-  `time_relase` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `time_relase` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `check_reset` VARCHAR(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
