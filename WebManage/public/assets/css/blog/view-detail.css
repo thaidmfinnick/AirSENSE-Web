@@ -21,8 +21,17 @@ body {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Josefin Sans', sans-serif;
+}
+
+.content-wrapper{
+    margin: 0 auto;
 }
 
 ::-webkit-scrollbar {
@@ -499,14 +508,21 @@ hr {
     font-weight: 400;
 }
 
+@media (min-width: 992px) {
+    .content-wrapper {
+        max-width: 904px;
+    }
+}
+
 @media (max-width: 1113px) and (min-width: 763px) {
+    .content-padding {
+        padding: 0 50px;
+    }
+
     .blog-aside-wrapper {
         display: none;
     }
-    .blog-wrapper {
-        max-width: 100%;
-        padding: 0 48px;
-    }
+
     .comment-container {
         width: 64%;
     }
