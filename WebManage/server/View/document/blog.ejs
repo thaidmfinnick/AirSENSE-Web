@@ -11,10 +11,9 @@
         <!--Header End-->
       </div>
       <!--Full width header End-->
-      <div class="main-page">
-        <div class="inner-content" id="htmlToView" >
+      <div class="main-page" style="padding-top: 100px">
+        <div class="inner-content" id="htmlToView">
           <!-- About Section Start -->
-          
         </div>
         <!-- About Section End -->
       </div>
@@ -25,13 +24,12 @@
     <!-- Main content End -->
   </body>
   <script type="text/javascript">
-      var dataView = '<%= detail %>';
-        
-      // document.getElementById("htmlToView").src = linkAcess;
-      var urlDetail= 'http://' + window.location.hostname +':' +window.location.port + '/';
-      getInfoDetailPages('htmlToView',dataView,urlDetail)
-      getInfoAbs('#new_pages_tile',dataView);
-
+    var dataView = "<%= detail %>";
+    // document.getElementById("htmlToView").src = linkAcess;
+    var urlDetail =
+      "http://" + window.location.hostname + ":" + window.location.port + "/";
+    getInfoDetailPages("htmlToView", dataView, urlDetail);
+    getInfoAbs("#new_pages_tile", dataView);
+    console.log(urlDetail);
   </script>
-
 </html>
