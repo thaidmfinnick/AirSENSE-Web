@@ -72,12 +72,12 @@ function setFormToMenuShowAds(dataJson,itemToSet){
                  if(dataJson[i].group_content!=titleSub) {
                    if (dataJson[i] == 0) {
                     titleSub = dataJson[i].group_content;
-                    textHtml+= "<center><H2>"+titleSub+"</H2></center>" + startRow;
+                    textHtml+= "<center><H2 class='heading-blog'>"+titleSub+"</H2></center>" + startRow;
                    }
                    else {
                     textHtml += closeRow;
                     titleSub = dataJson[i].group_content;
-                    textHtml+= "<center><H2>"+titleSub+"</H2></center>" + startRow;
+                    textHtml+= "<center><H2 class='heading-blog'>"+titleSub+"</H2></center>" + startRow;
                    }
                  }
                  textHtml += setFormToShowPages(dataJson[i],urlDetail);

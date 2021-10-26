@@ -73,6 +73,7 @@
   left: 5%;
   background-color: transparent;
   overflow-x: hidden;
+  margin-bottom: 100px;
 }
 
 .sidenav a {
@@ -89,7 +90,7 @@
 }
 
 .sidenav a:hover {
-  color: #cda3a3;
+  color: #27e450;
 }
 
 .main {
@@ -118,4 +119,45 @@
 
 .heading1 a {
   padding-left: 80%;
+}
+
+.card {
+  min-width: 270%;
+  border-radius: 20px;
+}
+
+.card-body {
+  height: 200px;
+}
+
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 270px;
+}
+
+.btn-primary {
+  position: absolute;
+  bottom: 20px;
+  left: 180px;
+}
+
+.ItemBlog {
+  padding-top: 10%;
+}
+
+.card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 270px;
+  text-align: justify;
+}
+
+.heading-blog {
+  margin: 20px 0 0;
+}
+
+.footer-top {
+  margin-top: 20px;
 }
