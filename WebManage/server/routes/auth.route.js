@@ -8,14 +8,34 @@ const schema = require('../utils/validator.js');
 const User = require('../models/database/user.model.js');
 const router = express.Router();
 
-
+// authen
+// login -> ok
 router.get('/login', (req, res) => {
   res.render('authen/login', { route: 'login' });
 });
-
+// register -> ok
 router.get('/register', (req, res) => {
   res.render('authen/register', { route: 'register' });
 });
+
+
+
+// note
+router.route('/register').post(validate(schema.register), authenNewUser, (req, res) => {
+  userCtrl.registerUser(req, res);
+});
+
+//change information
+router.route('/changeInfo').put(validate(schema.updateInfoUser), isAuthenticated, (req, res) => {  
+  userCtrl.updateUser(req, res);
+})
+
+
+// change password
+
+router.route('/changePassword').put(validate(schema.changePassword), isAuthenticated,(req, res) => {
+userCtrl.changePassword(req, res);
+})
 
 router.get('/resetPassword', (req, res) => {
   res.render('authen/resetPassword', { route: 'resetPassword' });
@@ -32,10 +52,19 @@ router.post('/logout', (req, res) => {
 router.route('/login').post(validate(schema.login), (req, res) => {
   authCtrl.login(req, res);
 });
-// note
-router.route('/register').post(validate(schema.register), authenNewUser, (req, res) => {
-  userCtrl.registerUser(req, res);
+
+router.route('/resetPassword').post(validate(schema.resetPassword), (req, res) => {
+  userCtrl.resetPass(req, res);
 });
+
+router.route('/newResetPass').post(validate(schema.newResetPassword),(req, res) => {
+  userCtrl.newResetPassword(req, res);
+})
+
+router.route('/resetPassword/:id/:token').get( (req, res) => {
+  res.render('authen/updatePassword');
+});
+
 router.route('/login_customer').post(validate(schema.login), (req, res) => {
   authCtrl.loginCustomer(req, res);
 });
@@ -54,7 +83,8 @@ router.route('/user').get(isAuthenticated, (req, res) => {
       'phone',
       'avatar',
       'fullname',
-      'contact'
+      'contact',
+      'users_id'
     ],
   })
   .fetch({ require: false })

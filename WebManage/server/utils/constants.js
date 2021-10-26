@@ -3,3 +3,4 @@ exports.BillStatus = {
   Pending: "Pending",
   Charged: "Charged",
 };
+

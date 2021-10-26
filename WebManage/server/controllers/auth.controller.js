@@ -32,7 +32,7 @@ var authCtrl={};
   }
 
   User.query({
-    where: {email:email, deleteflag: 0},
+    where: {email:email, deleteflag: 0}
   })
     .fetch({ require: false })
     .then((user) => {
@@ -41,8 +41,6 @@ var authCtrl={};
         console.log("user Inval",user);
 
         lstLogin =lstLogin.filter(o=>o.email!=email);
-        console.log(user.get('password'));
-        console.log(password);
         // bcrypt.compare(password,  user.get('password')).then(function(result) {
         //   console.log("user Inval",result);
         //   if(result) {
