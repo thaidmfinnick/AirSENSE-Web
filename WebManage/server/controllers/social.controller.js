@@ -6,6 +6,8 @@ const TableManifest= require('../models/middlewareDatabase/TableManifest.js');
 const mangerModel = require('../models/database/managerAll.model.js');
 const {returnOK,returnFalse,returnNotFound } = require('../utils/returnResponse.js');
 const {getRamdomData} = require('../utils/utilsString.js');
+const ReportManager = require("../models/manager/ReportManager.js");
+var reportManager= new ReportManager();
 var socialCtrl={};
  
 
@@ -70,6 +72,12 @@ socialCtrl.checkEmailRegister =async function (req, res) {
   } 
 }
 
+socialCtrl.gethome =async function(request, response) {
+    let content=request.body["content"];
+    reportManager.reportPage(content).then(function(result) {
+        return response.send(result);	
+    }).catch(function(err){ return  response.send(false);	} );
+}
 
 
 module.exports = socialCtrl;

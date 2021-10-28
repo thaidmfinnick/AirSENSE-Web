@@ -74,6 +74,15 @@ class User extends CommonModel {
     return false;
   }
 
+  async checkInvalUserExistingToRegister(request) {
+      var checkInfo = squel.select().from("users").where(
+      squel.expr().and("phone='" + request["phone"] + "'").or("email='" + request["email"] + "'"));
+      var info= await knex.raw(checkInfo.toString());
+      if((info!=null)&&(info.length>0)) {
+        return true;
+      }
+      return false;
+  }
 
 }
 
