@@ -30,7 +30,7 @@ h6 {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-.content-wrapper{
+.content-wrapper {
     margin: 0 auto;
 }
 
@@ -370,6 +370,8 @@ hr {
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.2);
+    will-change: opacity;
+    transition: all ease 0.4s;
 }
 
 @keyframes modalFadeIn {
@@ -383,11 +385,6 @@ hr {
     }
 }
 
-.fadeOut {
-    opacity: 0;
-    transform: translateX(100%);
-}
-
 .comment-container {
     /* display: none; */
     background-color: #fff;
@@ -399,9 +396,9 @@ hr {
     padding: 40px 40px 0px;
     overflow-y: auto;
     opacity: 1;
-    transform: translateX(0);
-    animation: modalFadeIn ease 0.4s;
-    /* transition: all ease 0.4; */
+    transform: translateX(0%);
+    animation: modalFadeIn ease-out 0.4s;
+    transition: all ease-out 0.4s;
 }
 
 .modal.modal--show {
