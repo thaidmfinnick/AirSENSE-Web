@@ -397,8 +397,8 @@ hr {
     overflow-y: auto;
     opacity: 1;
     transform: translateX(0%);
-    animation: modalFadeIn ease-out 0.4s;
-    transition: all ease-out 0.4s;
+    animation: modalFadeIn ease 0.4s;
+    transition: all ease 0.4s;
 }
 
 .modal.modal--show {

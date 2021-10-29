@@ -333,7 +333,9 @@
         transform: 'translateX(0%)',
         opacity: '1',
       });
+
       modal.classList.add('modal--show')
+
     };
 
     messageButtons.forEach((messageButton) => {
@@ -341,10 +343,19 @@
     });
 
     const closeComment = () => {
-      Object.assign(commentContainer.style, {
-        transform: 'translateX(100%)',
-        opacity: '0',
-      });
+
+      if (document.body.offsetWidth >= 970) {
+        Object.assign(commentContainer.style, {
+          transform: 'translateX(200%)',
+          opacity: '0',
+        });
+      } else {
+        Object.assign(commentContainer.style, {
+          transform: 'translateY(-200%)',
+          opacity: '0',
+        });
+      }
+
       setTimeout(function () {
         modal.classList.remove('modal--show')
       }, 200);
@@ -355,7 +366,6 @@
     modal.onclick = () => closeComment();
 
     commentContainer.onclick = (event) => event.stopPropagation();
-
 
   </script>
 
