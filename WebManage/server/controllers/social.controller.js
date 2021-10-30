@@ -82,4 +82,33 @@ socialCtrl.gethome =async function(request, response) {
     }).catch(function(err){ return  response.send(false);	} );
 }
 
+
+socialCtrl.getTotalPosts = function(request, response) {
+    blogManager.getTotalPosts().then(function(result) {
+        response.send(JSON.stringify({total:result}));
+    })
+};
+socialCtrl.getPostsPagination = function(request, response) {
+    var pageSize = request.query.pageSize;
+    var pageNumber = request.query.pageNumber;
+    blogManager.getPostsPagination(pageSize, (pageNumber-1)*pageSize).then(function(result) {
+        response.send(JSON.stringify(result));
+    });
+};
+
+socialCtrl.getPosts= function(request, response) {
+    blogManager.getPosts().then(function(result) {
+        response.send(JSON.stringify(result));
+    })
+}
+
+socialCtrl.savePost= function(request, response) {
+    var post = request.body;
+    blogManager.savePost(post).then(function(result) {
+        response.send(JSON.stringify(result));
+    })
+}
+
+
 module.exports = socialCtrl
+
