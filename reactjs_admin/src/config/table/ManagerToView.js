@@ -45,7 +45,9 @@ export const exportColumeData = (table,callback=null) =>{
     var nameConvert=classesFactorryMapping[table];
     if(!!nameConvert){
         var tableSelect=new classesFactory[nameConvert]();
-        if(!!tableSelect) return tableSelect.getColumeShow(callback);
+        if(!!tableSelect){
+            return tableSelect.getColumeShow(callback);
+        }
     }
     return [];
 };

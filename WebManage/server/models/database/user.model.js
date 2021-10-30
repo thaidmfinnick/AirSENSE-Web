@@ -49,16 +49,16 @@ class User extends CommonModel {
       };
   }
   
-  
+  // change db.username -> db.email, dc.email
   getSQLReport(currentUser){
     console.log("getSQLReport...2....... " ,currentUser.permission_id); 
-      return ('SELECT users.users_id,users.username,users.email,users.phone,users.avatar,users.fullname,users.permission_id,users.address,users.note'
-      +',db.username  As name_create, dc.username  As name_update ,de.content As manifest_content FROM users LEFT JOIN users db ON db.users_id=users.id_created LEFT JOIN users dc ON dc.users_id=users.id_updated  LEFT JOIN permission de ON de.permission_id=users.permission_id');
+      return ('SELECT users.users_id,users.name,users.fullname,users.email,users.phone,users.avatar,users.permission_id,users.contact,users.note'
+      +',db.email  As name_create, dc.email  As name_update ,de.content As manifest_content FROM users LEFT JOIN users db ON db.users_id=users.id_created LEFT JOIN users dc ON dc.users_id=users.id_updated  LEFT JOIN permission de ON de.permission_id=users.permission_id');
    //       + defineManifest.checkManifestTableUser(currentUser.permission_id,currentUser.users_id,currentUser.value_manifest));
   }
 
   getConditionManisfest(info){
-    return "users.deleteflag=0 AND users.permission_id>"+info.permission_id+ " ";
+    return "users.deleteflag=0 AND users.permission_id>="+info.permission_id+ " ";
   }
 
   getJsonTofind(){

@@ -18,6 +18,7 @@ var userCtrl={};
                           
 userCtrl.getTableData =function (req, res) {
   var startPage=0;
+  console.log('this is the request');
   if(!!req.body.startPage) startPage=req.body.startPage;
   var tableSelect=mangerModelAdmin(req.body.table);
   if(!!tableSelect){
@@ -27,6 +28,10 @@ userCtrl.getTableData =function (req, res) {
 
    startPage =startPage*1000;
    var itemSelect=tableSelect.getValueToSelectToFind(req.body.dataFind);
+   // notice here
+   console.log('this is the current user');
+   console.log(req.currentUser);
+   console.log('The end !!!');
    var dataTableSQL=tableSelect.getSQLReport(req.currentUser) 
                   +" WHERE "+ 
                   tableSelect.getConditionManisfest(req.currentUser) 

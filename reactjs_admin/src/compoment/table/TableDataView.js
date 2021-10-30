@@ -39,12 +39,15 @@ class TableDataView extends Component {
     }
     componentDidMount(){
         const columns = exportColumeData(this.state.table,this.callBackEdit);
+        console.log('this is the colunms');
+        console.log(columns);
         this.setState({columns: columns });
         ManagerData.initdialogueCustomization(this.state.table);
         ManagerData.getLstDataPromise(this.state.table)
         .then((data)=>{
           this.setState({ data: ManagerData.getTable(this.state.table),
           });
+          console.log(this.state.data);
         });
     }
 

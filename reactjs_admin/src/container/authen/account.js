@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ManagerData from '../../actions/ManagerData.js'
 import { updateInfomation, changePassword } from '../../api/authen.js';
-
+import { PERMISSION } from '../../config/permissionId';
 const InfoAccount = () => {
   // change information user
     const user = ManagerData.saveInfoUser;
+    const permissionId = user.permission_id;
+    // Chưa hiển thị được quyền
+    // Chưa upload được ảnh cá nhân
+  // console.log(PERMISSION[permissionId].title);
     const [changePasswordBlock, setChangePasswordBlock] = useState(0);
     const [name, setName] = useState(user.name);
-    
     const [fullname, setFullname] = useState(user.fullname);
     const [phone, setPhone] = useState(user.phone);
     const [contact, setContact] = useState(user.contact);
+
+  useEffect(() => {
+    setFullname(user.fullname);
+    setName(user.name);
+    setContact(user.contact);
+    setPhone(user.phone);
+  }, [user])
+
+
 
     const updateInfo = (e) => {
       e.preventDefault();
@@ -21,7 +33,6 @@ const InfoAccount = () => {
         phone: phone,
         contact: contact
       };
-      console.log(data);
       updateInfomation(data);
     }
 
@@ -69,7 +80,7 @@ const InfoAccount = () => {
       <label className='account-label'>Địa chỉ</label>
       <input className='account-field' type="text" placeholder value={contact} onChange={(e) => setContact(e.target.value) }/>
       <label className='account-label'>Vai trò</label>
-      <input className='account-field' type="text" placeholder />
+      <input className='account-field' type="text" placeholder  readOnly />
       
       <div className="account-image">
     <img className='account-img' src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg' />

@@ -12,7 +12,7 @@ class User_View  {
               width: 40,
             },
             {
-              field: 'username',
+              field: 'name',
               headerName: 'Thông tin khách hàng',
               width: 200,
             },
@@ -64,7 +64,7 @@ class User_View  {
       return {
         mainID:'users_id',
         mainInfo:{
-            field: 'username',
+            field: 'name',
             headerName: 'Thông tin khách hàng',
             width: 200,
         },
@@ -75,7 +75,7 @@ class User_View  {
             width: 140,
           },
           {
-            field: 'username',
+            field: 'name',
             headerName: 'Thông tin khách hàng',
             width: 200,
           },
@@ -94,11 +94,11 @@ class User_View  {
     }
     
     getInfoToAdd(){
-      return  ["username","email","password","phone","avatar","fullname","permission_id","address","note" ];
+      return  ["name","email","password","phone","avatar","fullname","permission_id","contact","note" ];
     }
     getTitleToAdd(){
-      return  ["username","email","password","phone",
-                "avatar","fullname","permission_id","address",
+      return  ["name","email","password","phone",
+                "avatar","fullname","permission_id","contact",
                 "note"];
     }
     getHtmlAdd(){
