@@ -260,18 +260,23 @@ userCtrl.updateFistPages= async  function (req, res) {
 }
 
 
-userCtrl.registerUser = function (req, res) {
-  var table ='users';
-  var tableSelect=mangerModelAdmin(table);
-
-  if(!!tableSelect){
+userCtrl.registerUser = async function (req, res) {
+    var table ='users';
+    var tableSelect=mangerModelAdmin(table);
+    var exittingUser= await tableSelect.checkInvalUserExistingToRegister(req.body);
+    if(exittingUser) {
+      res.status(HttpStatus.UNAUTHORIZED).json({
+          success: false,
+          message: 'Tài khoản đã tồn tại xin vui lòng kiểm tra lại',
+      });
+    }
     const saltRounds = 10;
     bcrypt.genSalt(saltRounds, function(err, salt) {
-      bcrypt.hash(req.body.password, salt, function(err, hash) {
-          // Store hash in your password DB.
-        req.body.password = hash;
-      });
-  });
+        bcrypt.hash(req.body.password, salt, function(err, hash) {
+            // Store hash in your password DB.
+          req.body.password = hash;
+        });
+    });
     var newUser = squel.insert().into('users')
                   .set('name', req.body.name)
                   .set('fullname', req.body.fullname)
@@ -313,49 +318,6 @@ userCtrl.registerUser = function (req, res) {
                           message: 'Problem SQL.',
                       });
                   });
-    // if(!tableSelect.checkDataAddDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
-      
-    //   return returnNotFound(res,{ message: "Database inval" });
-    // }  
-    // console.log('guys')
-
-    // checkDatataBaseInval=true;
-    // var userToget = squel.select().from('users').
-    //                     where( squel.expr()
-    //                                 .and("phone='"+req.body["phone"]+"'")
-    //                                 .or("email='"+req.body["email"]+"'")
-    //                     ).where("deleteflag=0");
-    // console.log(userToget.toString());
-
-    // knex.raw(userToget.toString())
-    //       .then(result => {
-    //           let data=req.body;
-    //           let dataUser=  tableSelect.getFieldToAdd();//  DataTableFieldAdd[table];
-    //           var authen = squel.insert().into(tableSelect.getNameTable());
-    //           for(var i=0;i<dataUser.valueSetup.length;i++){
-    //               let item=dataUser.valueSetup[i];
-    //               if(!!!data[item]) authen.set(item,null);
-    //               else
-    //               authen.set(item,data[item]);
-    //           }
-    //           authen.set("id_created",0).set("id_updated",0)
-    //           .set("created_at","NOW()",{dontQuote: true}) 
-    //           .set("updated_at","NOW()",{dontQuote: true})
-    //           .set("deleteflag",0);
-    //           knex.raw(authen.toString())
-    //             .then(result => {
-    //               return returnOK(res,{result:"Please waitting admin comfirm"});
-    //             }
-    //             , 
-    //             error => {
-    //               return returnFalse(res,error);
-    //             });
-    //       }
-    //       , 
-    //       error => {
-    //         return returnFalse(res,{ message: "phone and email is existing" } );
-    //       });
-  }
 }
 
 userCtrl.resetPass= async function  (req, res) {
