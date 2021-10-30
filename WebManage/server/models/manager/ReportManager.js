@@ -4,9 +4,9 @@ var squel = require("squel");
 const knex = require('../../config/knex.js');
 
 class ReportManager extends CommonModel{
-    constructor() {
+    // constructor() {
     
-    }
+    // }
 
 
     reportListSql(sqlCommandTable){

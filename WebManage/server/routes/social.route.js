@@ -12,28 +12,28 @@ const router = express.Router();
 router.route('/check_email').post((req, res) => {
   socialCtrl.checkEmailRegister(req, res);
 })
-router.route('/gethome').get(socialCtrl.gethome);
-router.route('/mainPages').post(socialCtrl.gethome);
-router.route('/userdetail').post(socialCtrl.gethome);
-router.route('/getThreshold').get(iotCtrl.getThreshhold);
-router.route('/getdata').post(iotCtrl.reportDataSensor);
+router.route('/gethome').get( (req, res) => socialCtrl.gethome(req, res));
+router.route('/mainPages').post( (req, res) => socialCtrl.gethome(req, res));
+router.route('/userdetail').post( (req, res) => socialCtrl.gethome(req, res));
+router.route('/getThreshold').get( (req, res) => iotCtrl.getThreshhold(req, res));
+router.route('/getdata').post( (req, res) => iotCtrl.reportDataSensor(req, res));
 
-router.route('/getStation').get(isAuthenticated,iotCtrl.getStationServer);
-router.route('/getStationHome').get(iotCtrl.getStationHome);
-router.route('/getdatalimit').post(isAuthenticated,iotCtrl.reportDataStationLimit);
-router.route('/getReportStations').post(isAuthenticated,iotCtrl.getReportStations);
-router.route('/getAbnormalData').post(iotCtrl.getAbnormalData);
-
-
-router.route('/getTotalPosts').get(socialCtrl.getTotalPosts);
-router.route('/getBlogsPagination').get(socialCtrl.getPostsPagination);
-router.route('/getPosts').get(socialCtrl.getPosts);
-router.route('/savePost').post(socialCtrl.savePost);
+router.route('/getStation').get(isAuthenticated, (req, res) => iotCtrl.getStationServer(req, res));
+router.route('/getStationHome').get( (req, res) => iotCtrl.getStationHome(req, res));
+router.route('/getdatalimit').post(isAuthenticated, (req, res) => iotCtrl.reportDataStationLimit(req, res));
+router.route('/getReportStations').post(isAuthenticated, (req, res) => iotCtrl.getReportStations(req, res));
+router.route('/getAbnormalData').post( (req, res) => iotCtrl.getAbnormalData(req, res));
 
 
-router.route('/getCurrentAQI').get(iotCtrl.getCurrentAQI);
-router.route('/getAqiData').post(iotCtrl.getAqiData);//get aqi in recent 24h
-router.route('/getDataRecent').post(iotCtrl.getDataRecent);
+router.route('/getTotalPosts').get( (req, res) => socialCtrl.getTotalPosts(req, res));
+router.route('/getBlogsPagination').get( (req, res) => socialCtrl.getPostsPagination(req, res));
+router.route('/getPosts').get( (req, res) => socialCtrl.getPosts(req, res));
+router.route('/savePost').post( (req, res) => socialCtrl.savePost(req, res));
+
+
+router.route('/getCurrentAQI').get( (req, res) => iotCtrl.getCurrentAQI(req, res));
+router.route('/getAqiData').post( (req, res) => iotCtrl.getAqiData(req, res));//get aqi in recent 24h
+router.route('/getDataRecent').post( (req, res) => iotCtrl.getDataRecent(req, res));
 
 
 
