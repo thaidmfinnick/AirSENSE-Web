@@ -1,21 +1,13 @@
-html {
-    font-size: 62.5%;
-}
-
 * {
     box-sizing: border-box;
-}
-
-body {
-    font-size: 1.6rem;
 }
 
 .activities {
     width: 1080px;
     height: 340px;
-    margin: 10rem auto;
+    margin: 100px auto;
     background-color: rgba(128, 128, 128, 0.164);
-    border-radius: 1rem;
+    border-radius: 10px;
     display: flex;
     overflow: hidden;
 }
@@ -26,7 +18,7 @@ body {
 
 .activities__content {
     width: 540px;
-    padding-left: 3rem;
+    padding-left: 30px;
     margin-left: 15px;
 }
 

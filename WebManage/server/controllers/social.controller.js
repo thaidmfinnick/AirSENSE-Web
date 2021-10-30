@@ -9,6 +9,7 @@ const {getRamdomData} = require('../utils/utilsString.js');
 const ReportManager = require("../models/manager/ReportManager.js");
 var reportManager= new ReportManager();
 var socialCtrl={};
+
  
 const BlogManager = require("../models/manager/BlogManager");
 var blogManager = new BlogManager();
@@ -81,6 +82,7 @@ socialCtrl.gethome =async function(request, response) {
     }).catch(function(err){ return  response.send(false);	} );
 }
 
+
 socialCtrl.getTotalPosts = function(request, response) {
     blogManager.getTotalPosts().then(function(result) {
         response.send(JSON.stringify({total:result}));
@@ -108,4 +110,5 @@ socialCtrl.savePost= function(request, response) {
 }
 
 
-module.exports = socialCtrl;
+module.exports = socialCtrl
+
