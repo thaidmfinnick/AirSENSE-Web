@@ -161,6 +161,10 @@ router.get('/test5', (req, res) => {
   res.render('sale/SalePages');
 });
 
+router.get('/old', (req, res) => {
+  res.render('old/home');
+});
+
 
 module.exports = router;
 

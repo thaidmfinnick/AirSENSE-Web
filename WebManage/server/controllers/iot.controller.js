@@ -124,9 +124,9 @@ iotCtrl.getStationServer = function(request, response) {
 };
 
 iotCtrl.getStationHome = function(request, response) {
-    if (request.currentUser.permission_id < 4) {
+    //if (request.currentUser.permission_id < 4) {
         var tableSelect = mangerModelAdmin("sparc_location_sensor");
-        var dataTableSQL=tableSelect.getSQLReport(req.currentUser);
+        var dataTableSQL=tableSelect.getSQLReport(request.currentUser);
         //var itemSelect=tableSelect.getValueToSelectToFind(req.body.dataFind);  
         knex.raw(dataTableSQL)
         .then(result => {
@@ -135,10 +135,10 @@ iotCtrl.getStationHome = function(request, response) {
         , error => {
             return returnNotFound(response,error);
         });
-    }
-    else {
-        return response.send(JSON.stringify({ logout: true }));
-    }
+   // }
+   // else {
+   //     return response.send(JSON.stringify({ logout: true }));
+    //}
 };
 
 iotCtrl.reportDataStationLimit = function(request, response) {
