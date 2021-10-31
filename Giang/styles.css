@@ -1,0 +1,45 @@
+h1 {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.row {
+  padding-top: 5%;
+}
+
+p {
+  text-align: justify;
+}
+
+.right-img {
+  float: right;
+}
+
+.example2 {
+  padding: 0;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.example2 .trans {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  line-height: 30px;
+  text-align: justify;
+  list-style-type: none;
+  /* Apply animation to this element */
+  animation: example2 1.5s ease-out;
+}
+/* Move it (define the animation) */
+@keyframes example2 {
+  0% {
+    transform: translateY(200%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
