@@ -103,6 +103,9 @@ router.get('/about', (req, res) => {
   res.render('home/about');
 });
 
+router.get('/map', (req, res) => {
+  res.render('home/map');
+});
 
 router.get('/sale', (req, res) => {
   res.render('sale/Sale');
