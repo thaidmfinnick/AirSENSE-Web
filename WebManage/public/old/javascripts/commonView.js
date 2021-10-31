@@ -3,9 +3,9 @@
 function checkUserAuthen2() {
     var mname = localStorage.getItem("tocken_LVC");
     $.ajax({
-        type: 'post',
+        type: 'get',
         dataType: 'json',
-        url: '/checkUserAuthen2',
+        url: '/api/auth/user',
         data: {
             user: "check"
         },
@@ -17,7 +17,7 @@ function checkUserAuthen2() {
             if (!authen) {
                 $("#managerAuthen").attr("href", "login");
                 $("#managerAuthen").html('Login');
-                window.location.href = "/login";
+               // window.location.href = "/login";
             }
 
         },
@@ -36,9 +36,9 @@ function checkUserAuthenSecsion() {
     localStorage.setItem("role", "none");
     var mname = localStorage.getItem("tocken_LVC");
     $.ajax({
-        type: 'post',
+        type: 'get',
         dataType: 'json',
-        url: '/checkUserAuthen2',
+        url: '/api/auth/user',
         data: { user: "check" },
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', 'Bearer ' + mname);
@@ -48,7 +48,7 @@ function checkUserAuthenSecsion() {
                 console.log("authen falsejjjj")
                 $("#managerAuthen").attr("href", "login");
                 $("#managerAuthen").html('Login');
-                window.location.href = "/login";
+               // window.location.href = "/login";
             }
             localStorage.setItem("role", authen.role);
             var role = localStorage.getItem("role");
@@ -66,7 +66,7 @@ function checkUserAuthenSecsion() {
             console.log(authen);
             $("#managerAuthen").attr("href", "login");
             $("#managerAuthen").html('Login');
-            window.location.href = "/login";
+            //window.location.href = "/login";
         }
     });
 }

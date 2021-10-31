@@ -10,16 +10,17 @@ $( document ).ready(function() {
 
     function getUser() {
         showLoader();
-        var link = "/getUser";
+        var link = "/api/auth/user";
         $.ajax({
-            type: 'post',
+            type: 'get',
             dataType: 'json',
             url: link,
             data: {},
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Bearer '+mname);
             },
-            success: function (user) {
+            success: function (data) {
+                var user =data.user;
                 hideLoader();
                 $('#userid').val(user.userid);
                 $('#fullname').val(user.fullname);

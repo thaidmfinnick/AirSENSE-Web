@@ -150,12 +150,12 @@
 
 
         function loadAllContent(){
-            var Link='http://localhost:3000/report/sparc_location_sensor';
+            var Link='http://localhost:3000/report';
                 $.ajax({
                     type: 'post',
                     dataType: 'json',
                     url: Link,
-                    data: { },
+                    data: {table:'sparc_location_sensor' },
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader('Authorization', 'Bearer '+mname);
                     },

@@ -130,7 +130,7 @@ function checkUserAuthen2() {
           if (!authen) {
               $("#managerAuthen").attr("href", "login");
               $("#managerAuthen").html('Login');
-              window.location.href = "/login";
+             // window.location.href = "/login";
           }
 
       },
@@ -161,7 +161,7 @@ function checkUserAuthenSecsion() {
               console.log("authen falsejjjj")
               $("#managerAuthen").attr("href", "login");
               $("#managerAuthen").html('Login');
-              window.location.href = "/login";
+             // window.location.href = "/login";
           }
           localStorage.setItem("role", authen.role);
           var role = localStorage.getItem("role");
@@ -179,7 +179,7 @@ function checkUserAuthenSecsion() {
           console.log(authen);
           $("#managerAuthen").attr("href", "login");
           $("#managerAuthen").html('Login');
-          window.location.href = "/login";
+         // window.location.href = "/login";
       }
   });
 }
