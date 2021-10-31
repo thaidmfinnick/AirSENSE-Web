@@ -1833,26 +1833,6 @@ CREATE TABLE `status_history_device` (
 
 
 --
--- Cấu trúc bảng cho bảng `sparc_sensor_warning`
---
-
-CREATE TABLE `sparc_sensor_warning` (
-  `id` INT(11) NOT NULL,
-  `station_id` INT(11) NOT NULL,
-  `content` VARCHAR(1024) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `createat` DATETIME NOT NULL,
-  `updateat` DATETIME NOT NULL,
-  `id_create` INT(11) NOT NULL,
-  `id_update` INT(11) NOT NULL,
-  `deleteflag` INT(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
-
--- --------------------------------------------------------
-
---
 -- Chỉ mục cho các bảng đã đổ
 --
 
