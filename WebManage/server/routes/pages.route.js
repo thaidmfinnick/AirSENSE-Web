@@ -167,7 +167,45 @@ router.get('/test5', (req, res) => {
 router.get('/old', (req, res) => {
   res.render('old/home');
 });
-
+router.get('/old_map', (req, res) => {
+  res.render('old/map');
+});
+router.get('/old_register', (req, res) => {
+  res.render('old/Account/register');
+});
+router.get('/old_profile', (req, res) => {
+  res.render('old/Account/profile');
+});
+router.get('/old_addUser', (req, res) => {
+  res.render('old/Account/addUsers');
+});
+router.get('/old_station', (req, res) => {
+  res.render('old/Manager/StationManager');
+});
+router.get('/old_groupstation', (req, res) => {
+  res.render('old/Manager/GroupStationManager');
+});
+router.get('/old_setupstation', (req, res) => {
+  res.render('old/Manager/SetupStationManager');
+});
+router.get('/old_reportstation', (req, res) => {
+  res.render('old/reportStation');
+});
+router.get('/old_manifeststation', (req, res) => {
+  res.render('old/Manager/ManifestStationManager"');
+});
+router.get('/old_abnormalIndex', (req, res) => {
+  res.render('old/Manager/AbnormalIndex');
+});
+router.get('/old_blog', (req, res) => {
+  res.render('old/blog');
+});
+router.get('/old_manageBlog', (req, res) => {
+  res.render('old/Manager/BlogManager');
+});
+router.get('/old_login', (req, res) => {
+  res.render('old/Account/login');
+});
 
 module.exports = router;
 

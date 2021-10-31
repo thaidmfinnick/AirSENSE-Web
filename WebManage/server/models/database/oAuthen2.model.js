@@ -47,13 +47,13 @@ class Oauthen2 extends CommonModel {
     }
     responseLogin(res,user){
         var dataTocken= getRamdomData(256);
-        var permission_id=user.get('permission_id');
-        var current_id=user.get('users_id');
+        var manifestid=user.get('manifestid');
+        var current_id=user.get('userid');
         var listDataContain="";
         var listDataEnterprise_id="";
         listDataContain+=current_id;
         var authen2 = squel.insert().into("oauthen2")
-                .set("permission_id",permission_id)
+                .set("manifestid",manifestid)
                 .set("userid",current_id)
                 .set("tocken",dataTocken)
                 .set("id_updated",current_id)
@@ -61,9 +61,9 @@ class Oauthen2 extends CommonModel {
                 .set("deleteflag",0)
                 .set("created_at",'NOW()',{dontQuote: true})
                 .set("updated_at",'NOW()',{dontQuote: true})
-                .set("deleteflag",0)
                 .set("time_relase",'NOW() + INTERVAL 1 DAY',{dontQuote: true});
-        if(permission_id<TableManifest.NEW_REGISTER) {
+        console.log("<TableManifest.NEW_REGISTER",manifestid);
+        if(manifestid<TableManifest.NEW_REGISTER) {
                 // authen2.set("value_manifest",listDataContain);
                 knex.raw(authen2.toString())
                 .then(function(x) {
@@ -75,6 +75,7 @@ class Oauthen2 extends CommonModel {
                     });
                 })
                 .catch(function(err1){
+                    console.log("<TableManifest.NEW_REGISTER",err1);
                     res.status(HttpStatus.UNAUTHORIZED).json({
                         success: false,
                         message: 'Problem SQL.',
@@ -84,7 +85,7 @@ class Oauthen2 extends CommonModel {
         else 
         {
             var sqlMain="SELECT users_id FROM users WHERE deleteflag=0 and id_created="+current_id;
-            if(permission_id<TableManifest.ADMIN)
+            if(manifestid<TableManifest.ADMIN)
             {
                     sqlMain +=" UNION "+ "SELECT id_member FROM decentralization_access WHERE id_admin="+current_id
                     + " and deleteflag=0 and id_member!=0";
@@ -94,7 +95,7 @@ class Oauthen2 extends CommonModel {
                     listDataContain+=","+x[0][i].users_id; 
                 }
                 var sqlMain1="SELECT enterprise_id FROM decentralization_access WHERE deleteflag=0 and id_member="+current_id;
-                if(permission_id<TableManifest.ADMIN)
+                if(manifestid<TableManifest.ADMIN)
                 {
                     sqlMain1="SELECT enterprise_id FROM decentralization_access WHERE deleteflag=0 and id_admin="+current_id;
                 }
@@ -112,12 +113,14 @@ class Oauthen2 extends CommonModel {
                                 email: user.get('email'),
                             });
                     }).catch(function(err1){
+                        console.log("<TableManifest.NEW_REGIưSTE 2R",err1);
                                 res.status(HttpStatus.UNAUTHORIZED).json({
                                     success: false,
                                     message: 'Problem SQL.',
                                 });
                     });
                 }).catch(function(err1){
+                    console.log("<TableManifest.NEW_REGISTE 2R",err1);
                     res.status(HttpStatus.UNAUTHORIZED).json({
                         success: false,
                         message: 'Problem SQL.',
@@ -125,6 +128,7 @@ class Oauthen2 extends CommonModel {
                 });
                 
             }).catch(function(err1){
+                console.log("<TableManifest.NEW_sssssREGISTE 2R",err1);
                 res.status(HttpStatus.UNAUTHORIZED).json({
                     success: false,
                     message: 'Problem SQL.',

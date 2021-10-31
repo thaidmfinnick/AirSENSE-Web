@@ -55,11 +55,11 @@
                                         <h6 class="text-center nonecase-font txt-grey">Nhập thông tin của bạn dưới đây</h6>
                                     </div>
                                     <div class="form-wrap">
-                                        <form action="#">
+                                        <form>
                                             <div class="form-group">
                                                 <label class="control-label mb-10" for="exampleInputEmail_2" >Email</label>
                                                 <br/>
-                                                <input type="email" class="form-control" required="" id="username" placeholder="Email" style="width:100%;">
+                                                <input type="email" class="form-control" required="" id="email" placeholder="Email" style="width:100%;">
                                             </div>
                                             <div class="form-group mt-10">
                                                 <label class="pull-left control-label mb-10" for="exampleInputpwd_2">Mật khẩu</label>
@@ -74,7 +74,7 @@
                                                 <div class="clearfix"></div>
                                             </div>
                                             <div  style="display: flex; justify-content: center;" class="form-group text-center">
-                                                <button  type="submit" onclick="LoginUser()" class="btn btn-primary  btn-rounded">Đăng nhập</button>
+                                                <button  onclick="LoginUser()" class="btn btn-primary  btn-rounded">Đăng nhập</button>
                                             </div>
                                         </form>
                                     </div>
@@ -117,37 +117,54 @@
     }
 
     function LoginUser() {
-        var mname = document.getElementById("username").value;
+        var mname = document.getElementById("email").value;
         var mpass = document.getElementById("password").value;
-
         $.ajax({
-            type: 'post',
-            dataType: 'json',
-            url: '/login',
-            data: {
-                user: mname,
-                password: mpass
-            },
-            success: function(loadcofig) {
-                console.log(loadcofig);
-                console.log(loadcofig);
-                if (loadcofig.tocken) {
-                    localStorage.setItem("tocken_LVC", loadcofig.tocken);
+                        type: 'post',
+                        method: 'POST',
+                        url: '/api/auth/login',
+                     //   body: JSON.stringify({type:dataView}), // body data type must match "Content-Type" header
+                        data: JSON.stringify( { email: mname, password: mpass}), // body data type must match "Content-Type" header
+                        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                        credentials: 'same-origin', // include, *same-origin, omit
+                        redirect: 'follow', // manual, *follow, error
+                        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                        dataType: 'json',
+                        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                        credentials: 'same-origin', // include, *same-origin, omit
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Beard ' + localStorage.getItem('token'),
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+   
+   
+          success: function(loadcofig) {
+              console.log(loadcofig);
+              console.log(loadcofig);
+              if (loadcofig.token) {
+                    localStorage.setItem("tocken_LVC", loadcofig.token);
                     localStorage.setItem("name_LVC", mname);
-                    window.location.href = "/";
-                } else {
-                    alert("Thông tin đăng nhập lỗi,Xin vui lòng thử lại");
+                    localStorage.setItem("tocken_AIRSENSE", loadcofig.token);
+                    localStorage.setItem("name_AIRSENSE", mname);
+                    localStorage.setItem("username_AIRSENSE", loadcofig.userName);
+                 // window.location.href = "/";
+              } else {
+                  alert("Thông tin đăng nhập lỗi,Xin vui lòng thử lại");
+              }
+          },
+          complete: function(loadcofig) {
+              console.log(loadcofig.responseText);
+          },
+          error: function(loadcofig) {
+              console.log(loadcofig);
+          }
+      });
 
-                }
 
-            },
-            complete: function(loadcofig) {
-                console.log(loadcofig.responseText);
-            },
-            error: function(loadcofig) {
-                console.log(loadcofig);
-            }
-        });
+        
     }
 
     function gotoRegister() {
