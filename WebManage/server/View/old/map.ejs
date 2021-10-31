@@ -231,14 +231,25 @@
 
         function loadAllData(){
                 //var mname=localStorage.getItem("tocken_LVC");
-                var Link='/getdatalimit';
+                var Link='/api/social/getdatalimit';
                     $.ajax({
                         type: 'post',
-                    dataType: 'json',
+                        method: 'POST',
                     url: Link,
-                    data: {data:1000 },
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader('Authorization', 'Bearer '+mname);
+                    data:JSON.stringify( {data:1000 }),
+                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    redirect: 'follow', // manual, *follow, error
+                    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                    dataType: 'json',
+                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Beard ' + mname,
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
                     },
                     success: function (loadcofig) {
                         console.log("Show Data..........................................");
@@ -253,8 +264,6 @@
                             var marker=createMaker(checklola,createcontent(loadcofig,v),{},NewMarker);
                          
                         }
-                       
-                        
                     },
                       error: function (loadcofig) {
                         console.log('error');

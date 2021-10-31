@@ -21,7 +21,7 @@ module.exports =  (req, res, next) => {
   if (token) {
     oauthen2.checkInvalUserExistingTocken(token).then((user) => {
         req.currentUser = {
-          permission_id:user[0].permission_id,
+          manifestid:user[0].manifestid,
           users_id:user[0].userid,
           enterprise_id:user[0].enterprise_id,
           value_manifest:user[0].value_manifest

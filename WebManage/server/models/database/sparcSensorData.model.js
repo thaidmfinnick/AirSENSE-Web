@@ -58,9 +58,9 @@ getFieldToDelete(){
   
   
   getSQLReport(currentUser){
-    console.log("getSQLReport...2....... " ,currentUser.permission_id); 
+    console.log("getSQLReport...2....... " ,currentUser.manifestid); 
       return ('SELECT sparc_sensor_data.* FROM sparc_sensor_data ');
-       //   + defineManifest.checkManifestTableUser(currentUser.permission_id,currentUser.users_id,currentUser.value_manifest));
+       //   + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
   getJsonTofind(){
       return [];

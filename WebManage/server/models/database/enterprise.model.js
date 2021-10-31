@@ -49,9 +49,9 @@ class Enterprise extends CommonModel {
   
   
   getSQLReport(currentUser){
-    console.log("getSQLReport...2....... " ,currentUser.permission_id); 
+    console.log("getSQLReport...2....... " ,currentUser.manifestid); 
       return ('SELECT enterprise.* FROM enterprise ');
-         // + defineManifest.checkManifestTableUser(currentUser.permission_id,currentUser.users_id,currentUser.value_manifest));
+         // + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
   getJsonTofind(){
       return [];

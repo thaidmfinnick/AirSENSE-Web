@@ -50,9 +50,9 @@ class GroupContentSub extends CommonModel {
   
   
   getSQLReport(currentUser){
-    console.log("getSQLReport...2....... " ,currentUser.permission_id); 
+    console.log("getSQLReport...2....... " ,currentUser.manifestid); 
       return ('SELECT group_content_sub.* ,group_content.group_content as group_content_main FROM group_content_sub LEFT JOIN group_content ON group_content.group_content_id=group_content_sub.group_content_id ');
-       //   + defineManifest.checkManifestTableUser(currentUser.permission_id,currentUser.users_id,currentUser.value_manifest));
+       //   + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
   getJsonTofind(){
       return [];

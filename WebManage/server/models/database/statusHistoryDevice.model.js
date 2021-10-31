@@ -49,7 +49,7 @@ class StatusHistoryDevice extends CommonModel {
   
   
   getSQLReport(currentUser){
-    console.log("getSQLReport...2....... " ,currentUser.permission_id); 
+    console.log("getSQLReport...2....... " ,currentUser.manifestid); 
     return ('SELECT status_history_device.* FROM status_history_device ');
   }
   getJsonTofind(){

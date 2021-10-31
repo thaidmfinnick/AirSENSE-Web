@@ -99,7 +99,7 @@ class CommonModel extends bookshelf.Model {
     async checkManifestSpecialTable(table,request){
         console.log("checkManifestSpecialTable",table);
         if(table=='users'){
-            if(request.currentUser.permission_id<=TableManifest.NEW_REGISTER)
+            if(request.currentUser.manifestid<=TableManifest.NEW_REGISTER)
             {
                 var checkUsser = squel.select().from('users')
                               .where("email='"+request.body["email"]+"'")
@@ -107,8 +107,8 @@ class CommonModel extends bookshelf.Model {
                 var result= await knex.raw(checkUsser.toString());
                 console.log("checkManifestSpecialTable result",result[0]);
                 if ((result==null)||(result[0].length==0)) {
-                    console.log("checkManifestSpecialTable result s",request.currentUser.permission_id,request.body.permission_id);
-                    if(request.currentUser.permission_id<=request.body.permission_id){
+                    console.log("checkManifestSpecialTable result s",request.currentUser.manifestid,request.body.permission_id);
+                    if(request.currentUser.manifestid<=request.body.permission_id){
                         return true;
                     }
                 }
@@ -245,21 +245,21 @@ class CommonModel extends bookshelf.Model {
         }
         if(req.body.table=='users'){
         //console.log(" req.currentUser req.currentUser  2",req.currentUser,result[0][0]);
-        console.log(" req.currentUser req.currentUser 2",result[0][0].permission_id,req.currentUser.permission_id);
-            if(result[0][0].permission_id==req.currentUser.permission_id){
+        console.log(" req.currentUser req.currentUser 2",result[0][0].permission_id,req.currentUser.manifestid);
+            if(result[0][0].permission_id==req.currentUser.manifestid){
                 console.log(" req.currentUser req.currentUser 1");
                 if(result[0][0].users_id==req.currentUser.users_id)  return true;
                 console.log(" req.currentUser req.currentUser 1 a");
             }
-            else if(result[0][0].permission_id <req.currentUser.permission_id){
+            else if(result[0][0].permission_id <req.currentUser.manifestid){
                 console.log(" req.currentUser req.currentUser 2");
                 return false;
-            } else if(result[0][0].permission_id >req.currentUser.permission_id){
+            } else if(result[0][0].permission_id >req.currentUser.manifestid){
                 console.log(" req.currentUser req.currentUser 2");
                 return true;
             }
             console.log(" req.currentUser req.currentUser 3a",req.currentUser);
-            if((req.currentUser.permission_id==TableManifest.MASTER)){
+            if((req.currentUser.manifestid==TableManifest.MASTER)){
                 return true;
             }
             else
@@ -273,8 +273,8 @@ class CommonModel extends bookshelf.Model {
         }
         else
         {
-            if((req.currentUser.permission_id==TableManifest.MASTER)||
-                    (req.currentUser.permission_id==TableManifest.MANAGER )){
+            if((req.currentUser.manifestid==TableManifest.MASTER)||
+                    (req.currentUser.manifestid==TableManifest.MANAGER )){
                 return true;
             }
             else

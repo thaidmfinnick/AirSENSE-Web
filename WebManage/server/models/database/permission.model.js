@@ -46,7 +46,7 @@ class Permission extends CommonModel {
   
   getSQLReport(currentUser){
       return 'SELECT permission.*, db.username  As namecreate ,dc.username  As nameupdate FROM permission LEFT JOIN users db ON db.users_id=permission.id_created LEFT JOIN users dc ON dc.users_id=permission.id_updated '
-      + defineManifest.checkManifestTableNomal(TABLE_NAME,currentUser.permission_id,currentUser.users_id,currentUser.value_manifest);
+      + defineManifest.checkManifestTableNomal(TABLE_NAME,currentUser.manifestid,currentUser.users_id,currentUser.value_manifest);
   }
     getJsonTofind(){
         return [];

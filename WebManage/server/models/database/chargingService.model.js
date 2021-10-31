@@ -49,9 +49,9 @@ class ChargingService extends CommonModel {
   
   
   getSQLReport(currentUser){
-    console.log("getSQLReport...2....... " ,currentUser.permission_id); 
+    console.log("getSQLReport...2....... " ,currentUser.manifestid); 
       return ('SELECT charging_service.*,customer.email,service.name FROM charging_service LEFT JOIN customer ON customer.customer_id=charging_service.bill_service_id LEFT JOIN service ON service.service_id=charging_service.service_id ');
-         // + defineManifest.checkManifestTableUser(currentUser.permission_id,currentUser.users_id,currentUser.value_manifest));
+         // + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
   getJsonTofind(){
       return [];
