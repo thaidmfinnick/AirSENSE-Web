@@ -6,7 +6,7 @@ This is the application built while following the [tutorial](https://marmelab.co
 
 npm i
 
-start 
+### start 
 
 npm run startx
 
