@@ -267,8 +267,6 @@
       },
     });
 
-
-
     // Bookmark
     const bookmark = document.querySelector('.blog-detail__icon-bookmark');
     bookmark.onclick = () =>
@@ -334,6 +332,7 @@
         opacity: '1',
       });
 
+
       modal.classList.add('modal--show')
 
     };
@@ -342,6 +341,13 @@
       messageButton.addEventListener('click', showComment);
     });
 
+    const closeComment = () => {
+
+      modal.classList.add('modal--show')
+    };
+    messageButtons.forEach((messageButton) => {
+      messageButton.addEventListener('click', showComment);
+    });
     const closeComment = () => {
 
       if (document.body.offsetWidth >= 970) {
@@ -361,12 +367,16 @@
       }, 200);
     };
 
+
     closeButton.onclick = () => closeComment();
 
     modal.onclick = () => closeComment();
 
     commentContainer.onclick = (event) => event.stopPropagation();
 
+    closeButton.onclick = () => closeComment();
+    modal.onclick = () => closeComment();
+    commentContainer.onclick = (event) => event.stopPropagation();
   </script>
 
 </html>

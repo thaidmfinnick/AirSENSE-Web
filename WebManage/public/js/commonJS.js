@@ -1,5 +1,4 @@
 
-
 function setItemFormITemAds(item){
     var html=' <div class="sb-img-hust-tech ">  <img class="image-hust-tech" src ="'+item.content_img+'"/>'
                 +'</div>' 
@@ -27,24 +26,25 @@ function setFormToMenuShowAds(dataJson,itemToSet){
 
 
 
-    function setFormToShowPages(item,urlDetail){
-      var start =  '<div class="p-3"><div class="container container-title-hust-tech">';
-      var limkUrl= '<a href="'+urlDetail;
-      if(item.is_main_pages_id==-1){
-        limkUrl += 'group_page/'+item.pages_content_id +'" style="font-size: 20px;">';
-        }
-        else
-        {
-          limkUrl +='detail_page/'+ item.filesave.replace('/', '+')+' " style="font-size: 20px;">';
-        }
-      
-      var content = ' <div class="row align-items-center">  <div class="col-lg-3"> <div class="img-part js-tilt">'           
-                 + '<img src="' +item.content_img +'" alt="images"  style="width: 60%"/>  </div> </div>'
-                 +'<div class="col-lg-9"> <div class="div-font-title-hust-tech">'+item.title +'</div> <div class="content div-font-info-hust-tech "><br/>' +item.content
-                 + '</div></div></div></div></div>';
-
-      return (limkUrl +start+content + ' </a>');
-    }
+  function setFormToShowPages(item,urlDetail){
+    var start =  '<div class="ItemBlog">';
+    var limkUrl= '<a href="'+urlDetail;
+    if(item.is_main_pages_id==-1){
+      limkUrl += 'group_page/'+item.pages_content_id + '\"style="" class="btn btn-primary">Xem thêm</a>';
+      }
+      else
+      {
+        limkUrl +='detail_page/'+ item.filesave.replace('/', '+')+ '\"style="" class="btn btn-primary">Xem thêm</a>';
+      }
+      // console.log(limkUrl)
+      var content = 
+        '<div class="col-sm-4 col-md-4"><div class="card">'           
+      + '<img src="' +item.content_img +'" alt="images"  class="card-img-top"/> <div class="card-body">'
+      +'<h5 class="card-title">'+item.title +'</h5> <p class="card-text">' +item.content
+      + '</p>'+ limkUrl +'</div></div></div></div>';
+      console.log(content)
+    return (start+content);
+  }
 
 
     function  getInfoDetailPages(nameDivControl,dataView,urlDetail){
@@ -66,14 +66,24 @@ function setFormToMenuShowAds(dataJson,itemToSet){
                });
                console.log(dataJson);
                var titleSub="";
+               var startRow = '<div class="row" style="display: grid; grid-template-columns: repeat(3, 1fr);">'
+               var closeRow = '</div>'
                for(var i =0;i<dataJson.length;i++){
-                 if(dataJson[i].group_content!=titleSub){
-                   titleSub = dataJson[i].group_content;
-                   textHtml+= "<center><H2>"+dataJson[i].group_content+"</H2></center>";
+                 if(dataJson[i].group_content!=titleSub) {
+                   if (dataJson[i] == 0) {
+                    titleSub = dataJson[i].group_content;
+                    textHtml+= "<center><H2 class='heading-blog'>"+titleSub+"</H2></center>" + startRow;
+                   }
+                   else {
+                    textHtml += closeRow;
+                    titleSub = dataJson[i].group_content;
+                    textHtml+= "<center><H2 class='heading-blog'>"+titleSub+"</H2></center>" + startRow;
+                   }
                  }
                  textHtml += setFormToShowPages(dataJson[i],urlDetail);
                }
-               
+               textHtml += closeRow;
+               console.log(textHtml);
                $('#'+nameDivControl).html(textHtml); //.replaceAll("</p>","<br/>").replaceAll("<p>","<br/>")
             },
             error: (e) => {
@@ -102,5 +112,3 @@ function setFormToMenuShowAds(dataJson,itemToSet){
         },
       });
     }
-
-
