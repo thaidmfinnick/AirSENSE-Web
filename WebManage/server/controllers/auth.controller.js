@@ -36,9 +36,9 @@ var authCtrl={};
   })
     .fetch({ require: false })
     .then((user) => {
-      console.log("user...........................",user);
+     
       if (user) {
-        console.log("user Inval",user);
+       
 
         lstLogin =lstLogin.filter(o=>o.email!=email);
         // bcrypt.compare(password,  user.get('password')).then(function(result) {
@@ -57,6 +57,7 @@ var authCtrl={};
         //   return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
         // });
         const userPassword = user.get('password');
+        console.log("user Inval",userPassword);
         if(password==userPassword) {
           oauthen2.responseLogin(res,user); 
         }

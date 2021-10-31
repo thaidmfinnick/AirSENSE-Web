@@ -1251,7 +1251,7 @@
         function gotoCheckData(isShowLoader){  
             console.log("go to check data");
             var data=document.getElementById("selectTable").value;
-            var Link='/getdata';
+            var Link='/api/social/getdata';
             var fromTime = new Date($('#fromTime').val());
             var now = new Date().getTime()/1000;
             if(fromTime==undefined || now-fromTime/1000>3*24*60*60) {
@@ -1267,6 +1267,8 @@
             if(isShowLoader != false) {
                 showLoader();
             }
+            if(!!!data) return;
+            console.log(" data .............request.body.....",{data:data, fromTime: fromTime, toTime: toTime});
             document.getElementsByClassName("dashboard")[0].style.display = "none";
             $.ajax({
                 type: 'post',
@@ -1294,7 +1296,7 @@
         var threshold = [];
         getThreshold();
         function getThreshold() {
-            var Link='/getThreshold';
+            var Link='/api/social/getThreshold';
             $.ajax({
                 type: 'get',
                 dataType: 'json',
@@ -1504,7 +1506,7 @@
 
         function showMaker() {
             showLoader();
-            var link = 'getCurrentAQI';
+            var link = '/api/social/getCurrentAQI';
             $.ajax({
                 type: 'get',
                 dataType: 'json',

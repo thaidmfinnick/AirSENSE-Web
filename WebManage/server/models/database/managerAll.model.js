@@ -27,16 +27,22 @@ const StoreProduct = require('./storeProduct.model.js');
 const AdvertisementContent = require('./advertisementContent.model.js');
 
 const SparcPosts = require('./sparcPosts.model');
-const sparcSensorWarning = require('./sparcSensorWarning.model');
-const sparcSensorMaxMin = require('./sparcSensorMaxMin.model');
+const SparcSensorWarning = require('./sparcSensorWarning.model');
+const SparcSensorMaxMin = require('./sparcSensorMaxMin.model');
+const SparcSensorData = require('./sparcSensorData.model');
 const SparcAcessLocationSensor = require('./sparcAcessLocationSensor.model');
+const SparcGroupLocationSensor = require('./sparcGroupLocationSensor.model');
+const SparcAqi = require('./sparcAqi.model');
+const SparcLocationSensor = require('./sparcLocationSensor.model');
 
 
 
 const classesFactory = {User,Permission ,Adress,DecentralizationAccess,GroupContent,
     MqttMicroservice,MqttUser,PagesContent,GroupContentSub,BackProduct,
     BillService,BuyProduct,BuyProductDetail,ChargingService,Company,Customer,DetailBank,
-    Enterprise,LostProduct,Product,ReturnService,Service ,StoreProduct,AdvertisementContent};
+    Enterprise,LostProduct,Product,ReturnService,Service ,StoreProduct,AdvertisementContent,
+    SparcPosts,SparcSensorWarning,SparcSensorMaxMin,SparcSensorData,SparcAcessLocationSensor,
+    SparcGroupLocationSensor,SparcAqi ,ProductImage,SparcLocationSensor};
 const classesFactorryMapping = {  users:"User" , permission:"Permission",adress:"Adress" ,
                             decentralization_access:"DecentralizationAccess",group_content:"GroupContent" 
                             , mqtt_microservice:"MqttMicroservice", 
@@ -48,7 +54,12 @@ const classesFactorryMapping = {  users:"User" , permission:"Permission",adress:
                             product:"Product",return_service:"ReturnService",
                             service:"Service" ,storeproduct:"StoreProduct",
                             advertisement_content:'AdvertisementContent',
-                            product_image:"ProductImage"
+                            product_image:"ProductImage",
+                            sparc_posts:"SparcPosts",sparc_sensor_warning:"SparcSensorWarning",
+                            sparc_sensor_max_min:"SparcSensorMaxMin",sparc_sensor_data:"SparcSensorData",
+                            sparc_access_location_sensor:"SparcAcessLocationSensor",
+                            sparc_group_location_sensor:"SparcGroupLocationSensor",sparc_aqi:"SparcAqi",
+                            sparc_location_sensor:"SparcLocationSensor"
                         };
                         
 const classesFactorryMappingUser = {  adress:"Adress" ,
@@ -61,7 +72,11 @@ const classesFactorryMappingUser = {  adress:"Adress" ,
                         product:"Product",return_service:"ReturnService",
                         service:"Service" ,storeproduct:"StoreProduct",
                         advertisement_content:'AdvertisementContent',
-                        product_image:"ProductImage"
+                        product_image:"ProductImage",
+                        sparc_posts:"SparcPosts",sparc_sensor_warning:"SparcSensorWarning",
+                        sparc_sensor_max_min:"SparcSensorMaxMin",sparc_sensor_data:"SparcSensorData",
+                        sparc_access_location_sensor:"SparcAcessLocationSensor",
+                        sparc_group_location_sensor:"SparcGroupLocationSensor",sparc_aqi:"SparcAqi"
                     };      
 
 

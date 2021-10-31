@@ -86,6 +86,7 @@ iotCtrl.getThreshhold = function(request, response) {
 
 iotCtrl.reportDataSensor = function(request, response) {
     var data = request.body["data"];
+    console.log(" data .............request.body.....",request.body);
     var fromTime = request.body["fromTime"];
     var toTime = request.body["toTime"];
     var now = new Date().getTime()/1000;

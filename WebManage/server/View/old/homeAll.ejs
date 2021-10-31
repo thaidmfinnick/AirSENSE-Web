@@ -733,7 +733,7 @@
 
         loadAllContent();
         function loadAllContent(){
-            var Link='/getStation';
+            var Link='/api/social/getStation';
                 $.ajax({
                     type: 'get',
                     dataType: 'json',
@@ -786,7 +786,7 @@
         }
 
         function gotoCheckData(data){  
-                var Link='http://localhost:3000/getdata';
+                var Link='/api/social/getdata';
                 $.ajax({
                     type: 'post',
                     dataType: 'json',
@@ -811,7 +811,7 @@
         var threshold;
         getThreshold();
         function getThreshold() {
-            var Link='http://localhost:3000/getThreshold';
+            var Link='/api/socialgetThreshold';
             $.ajax({
                 type: 'get',
                 dataType: 'json',
