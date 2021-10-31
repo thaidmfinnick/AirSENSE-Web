@@ -26,6 +26,12 @@ const Service = require('./service.model.js');
 const StoreProduct = require('./storeProduct.model.js');
 const AdvertisementContent = require('./advertisementContent.model.js');
 
+const SparcPosts = require('./sparcPosts.model');
+const sparcSensorWarning = require('./sparcSensorWarning.model');
+const sparcSensorMaxMin = require('./sparcSensorMaxMin.model');
+const SparcAcessLocationSensor = require('./sparcAcessLocationSensor.model');
+
+
 
 const classesFactory = {User,Permission ,Adress,DecentralizationAccess,GroupContent,
     MqttMicroservice,MqttUser,PagesContent,GroupContentSub,BackProduct,
