@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zxx"> 
+<% include ../Layout/header.ejs %>
+<body>
+    <% include ../Layout/topbar.ejs %>
+
+<div id="map"></div>
+<% include ../Layout/footer.ejs %>
+
+<script>
+
+
+    var mapObj=null;
+        var defaultLocation=[21.0277644,105.83415979999995];
+        var Mapconfig={
+            attributionControl:true,
+            center: defaultLocation,
+            zoom:7
+        }
+    window.onload=function(){
+            mapObj=L.map('map',Mapconfig);
+            var southWest = L.latLng(20, 104);
+            var northEast = L.latLng(22, 106);
+            bounds = L.latLngBounds(southWest, northEast);
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            }).addTo(mapObj);
+        }
+
+</script>
+</body>
+</html>
