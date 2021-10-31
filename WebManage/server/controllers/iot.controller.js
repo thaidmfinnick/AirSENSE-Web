@@ -108,13 +108,14 @@ iotCtrl.reportDataSensor = function(request, response) {
 };
 
 iotCtrl.getStationServer = function(request, response) {
-    if (request.currentUser.permission_id < 4) {
+    console.log("request.currentUser",request.currentUser);
+    if (request.currentUser.manifestid < 4) {
         var tableSelect = mangerModelAdmin("sparc_location_sensor");
         //var itemSelect=tableSelect.getValueToSelectToFind(req.body.dataFind);
-        var dataTableSQL=tableSelect.getSQLReport(req.currentUser);
+        var dataTableSQL=tableSelect.getSQLReport(request.currentUser);
         knex.raw(dataTableSQL)
         .then(result => {
-            return response.send(JSON.stringify(result));
+            return response.send(JSON.stringify({result:result[0]}));
         }
         , error => {
             return returnNotFound(response,error);
@@ -126,7 +127,7 @@ iotCtrl.getStationServer = function(request, response) {
 };
 
 iotCtrl.getStationHome = function(request, response) {
-    //if (request.currentUser.permission_id < 4) {
+    //if (request.currentUser.manifestid < 4) {
         var tableSelect = mangerModelAdmin("sparc_location_sensor");
         var dataTableSQL=tableSelect.getSQLReport(request.currentUser);
         //var itemSelect=tableSelect.getValueToSelectToFind(req.body.dataFind);  
@@ -144,10 +145,10 @@ iotCtrl.getStationHome = function(request, response) {
 };
 
 iotCtrl.reportDataStationLimit = function(request, response) {
-    var dataTableSQL= 'SELECT * FROM `sparc_sensor_data`  ORDER BY timestampe DESC LIMIT '+request.body["data"];
+    var dataTableSQL= 'SELECT * FROM `sparc_sensor_data`  ORDER BY Time DESC LIMIT '+request.body["data"];
     knex.raw(dataTableSQL)
     .then(result => {
-        return returnOK(response,result);
+        return returnOK(response,result[0]);
     }
     , error => {
         return returnNotFound(response,error);
@@ -155,7 +156,7 @@ iotCtrl.reportDataStationLimit = function(request, response) {
 };
 
 iotCtrl.getReportStations = function(request, response) {
-    if (request.currentUser.permission_id < 4)  {
+    if (request.currentUser.manifestid < 4)  {
             var role = result[0];
             var fromTime = request.body.fromTime;
             var toTime = request.body.toTime;

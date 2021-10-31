@@ -52,7 +52,7 @@ class AdvertisementContent extends CommonModel {
   
   getSQLReport(currentUser){
       return ('SELECT advertisement_content.* FROM advertisement_content ');
-       //   + defineManifest.checkManifestTableUser(currentUser.permission_id,currentUser.users_id,currentUser.value_manifest));
+       //   + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
   getJsonTofind(){
       return ["group_content_sub_id","is_main_pages_id"];

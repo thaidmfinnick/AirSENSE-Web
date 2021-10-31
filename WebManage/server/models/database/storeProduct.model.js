@@ -49,9 +49,9 @@ class StoreProduct extends CommonModel {
   
   
   getSQLReport(currentUser){
-    console.log("getSQLReport...2....... " ,currentUser.permission_id); 
+    console.log("getSQLReport...2....... " ,currentUser.manifestid); 
       return ('SELECT storeproduct.* ,company.companyname,product.name FROM storeproduct LEFT JOIN company on company.company_id=storeproduct.company_id LEFT JOIN product on product.product_id=storeproduct.store_product_id ');
-         // + defineManifest.checkManifestTableUser(currentUser.permission_id,currentUser.users_id,currentUser.value_manifest));
+         // + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
   getJsonTofind(){
       return [];

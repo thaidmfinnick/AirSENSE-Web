@@ -21,7 +21,7 @@ userCtrl.getTableData =function (req, res) {
   if(!!req.body.startPage) startPage=req.body.startPage;
   var tableSelect=mangerModelAdmin(req.body.table);
   if(!!tableSelect){
-    if(!tableSelect.checkAcessGetDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+    if(!tableSelect.checkAcessGetDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
       return returnNotFound(res,{ message: "Database inval" });
     }
 
@@ -53,7 +53,7 @@ userCtrl.getTableDataByGroup =function (req, res) {
   if(!!req.body.startPage) startPage=req.body.startPage;
   var tableSelect=mangerModelAdmin(table);
   if(!!tableSelect){
-    if(!tableSelect.checkAcessGetDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+    if(!tableSelect.checkAcessGetDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
       return returnNotFound(res,{ message: "Database inval" });
     }
     startPage =startPage*1000;
@@ -83,7 +83,7 @@ userCtrl.getNumberPages =function (req, res) {
   var table =req.body.table;
   var tableSelect=mangerModelAdmin(table);
   if(!!tableSelect){
-    if(!tableSelect.checkAcessGetDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+    if(!tableSelect.checkAcessGetDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
       return returnNotFound(res,{ message: "Database inval" });
     }
     var itemSelect= tableSelect.getConditionManisfest(req.currentUser) +tableSelect.getValueToSelectToFind(req.body.dataFind); 
@@ -107,7 +107,7 @@ userCtrl.addDataToTable= async  function (req, res) {
   var tableSelect=mangerModelAdmin(table);
   if(!!tableSelect){
     let data=req.body;
-    if(!tableSelect.checkDataAddDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+    if(!tableSelect.checkDataAddDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
       return returnNotFound(res,{ message: "Database inval" });
     }
     var checkInaval =await tableSelect.checkManifestSpecialTable(table,req);
@@ -140,7 +140,7 @@ userCtrl.deleteData= async function (req, res) {
   if(!!!tableSelect){
     return returnNotFound(res,{ message: "Database inval" });
   }
-  if(!tableSelect.checkDataDeleteDatabase(req.currentUser.permission_id,tableSelect.getTypeTable()))  
+  if(!tableSelect.checkDataDeleteDatabase(req.currentUser.manifestid,tableSelect.getTypeTable()))  
   {
     return returnFalse(res,{ message: "Database not access lv1" });
   }
@@ -170,7 +170,7 @@ userCtrl.updateData= async  function (req, res) {
   if(!!!tableSelect){
     return returnNotFound(res,{ message: "Database inval" });
   }
-  if(!tableSelect.checkDataEditDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+  if(!tableSelect.checkDataEditDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
 
     return returnNotFound(res,{ message: "Database not Acess 1" });
   }
@@ -222,7 +222,7 @@ userCtrl.updateUser = async (req, res) => {
   if(!!!tableSelect){
     return returnNotFound(res,{ message: "Database inval" });
   }
-  if(!tableSelect.checkDataEditDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+  if(!tableSelect.checkDataEditDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
 
     return returnNotFound(res,{ message: "Database not Acess 1" });
   }
@@ -247,7 +247,7 @@ userCtrl.updateUser = async (req, res) => {
 
 userCtrl.updateFistPages= async  function (req, res) {
   var tableSelect=mangerModelAdmin('pages_content');  
-  if(!tableSelect.checkDataEditDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+  if(!tableSelect.checkDataEditDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
     return returnNotFound(res,{ message: "Database inval" });
   }
   var sqlUpdate = 'UPDATE pages_content SET set_to_fist = ( SELECT MAX(set_to_fist) + 1 ) WHERE deleteflag =0 and pages_content_id='+
@@ -288,7 +288,7 @@ userCtrl.registerUser = async function (req, res) {
                   .set('created_at', 'NOW()',{dontQuote: true})
                   .set('updated_at', 'NOW()',{dontQuote: true})
                   .set('note', '')
-                  .set('permission_id', req.currentUser.permission_id)
+                  .set('permission_id', req.currentUser.manifestid)
                   .set('deleteflag', '0');
                   
                   
@@ -483,7 +483,7 @@ userCtrl.changePassword = async (req, res) => {
   if(!!!tableSelect){
     return returnNotFound(res,{ message: "Database inval" });
   }
-  if(!tableSelect.checkDataEditDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+  if(!tableSelect.checkDataEditDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
 
     return returnNotFound(res,{ message: "Database not Acess 1" });
   }

@@ -49,9 +49,9 @@ class SparcPosts extends CommonModel {
   
   
   getSQLReport(currentUser){
-    console.log("getSQLReport...2....... " ,currentUser.permission_id); 
+    console.log("getSQLReport...2....... " ,currentUser.manifestid); 
       return ("SELECT sparc_posts.id as id, sparc_posts.post_title as post_title, sparc_posts.post_status as post_status, sparc_posts.post_date as post_date, u.fullname as post_author FROM sparc_posts LEFT JOIN users u ON u.userid=sparc_posts.post_author where sparc_posts.post_status = 'publish' AND (sparc_posts.post_title IS NOT NULL AND sparc_posts.post_title !='') AND sparc_posts.post_type = 'post'");
-       //   + defineManifest.checkManifestTableUser(currentUser.permission_id,currentUser.users_id,currentUser.value_manifest));
+       //   + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
   getJsonTofind(){
       return [];

@@ -32,7 +32,7 @@ customerCtrl.getTableData =function (req, res) {
   if(!!req.body.startPage) startPage=req.body.startPage;
   var tableSelect=mangerModelUser(req.body.table);
   if(!!tableSelect){
-    if(!tableSelect.checkAcessGetDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+    if(!tableSelect.checkAcessGetDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
       return returnNotFound(res,{ message: "Database inval" });
     }
     var checkInaval = tableSelect.checkManifestSpecialCustomer("view");
@@ -65,7 +65,7 @@ customerCtrl.getTableDataByGroup =function (req, res) {
   if(!!req.body.startPage) startPage=req.body.startPage;
   var tableSelect=mangerModelUser(table);
   if(!!tableSelect){
-    if(!tableSelect.checkAcessGetDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+    if(!tableSelect.checkAcessGetDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
       return returnNotFound(res,{ message: "Database inval" });
     }
     var checkInaval = tableSelect.checkManifestSpecialCustomer("view");
@@ -97,7 +97,7 @@ customerCtrl.getNumberPages =function (req, res) {
   var table =req.body.table;
   var tableSelect=mangerModelUser(table);
   if(!!tableSelect){
-    if(!tableSelect.checkAcessGetDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+    if(!tableSelect.checkAcessGetDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
       return returnNotFound(res,{ message: "Database inval" });
     }
     var checkInaval = tableSelect.checkManifestSpecialCustomer("view");
@@ -125,7 +125,7 @@ customerCtrl.addDataToTable= async  function (req, res) {
   var tableSelect=mangerModelUser(table);
   if(!!tableSelect){
     let data=req.body;
-    if(!tableSelect.checkDataAddDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+    if(!tableSelect.checkDataAddDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
       return returnNotFound(res,{ message: "Database inval" });
     }
     var checkInaval = tableSelect.checkManifestSpecialCustomer("add");
@@ -167,7 +167,7 @@ customerCtrl.deleteData= async function (req, res) {
   if(!!!tableSelect){
     return returnNotFound(res,{ message: "Database inval" });
   }
-  if(!tableSelect.checkDataDeleteDatabase(req.currentUser.permission_id,tableSelect.getTypeTable()))  
+  if(!tableSelect.checkDataDeleteDatabase(req.currentUser.manifestid,tableSelect.getTypeTable()))  
   {
     return returnFalse(res,{ message: "Database not access lv1" });
   }
@@ -205,7 +205,7 @@ customerCtrl.updateData= async  function (req, res) {
   if(!checkInaval){
     return returnNotFound(res,{ message: "Database Not Acess 2"});
   }
-  if(!tableSelect.checkDataEditDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+  if(!tableSelect.checkDataEditDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
     return returnNotFound(res,{ message: "Database not Acess" });
   }
   if(!await tableSelect.checkDataToEdit(req)){
@@ -274,7 +274,7 @@ customerCtrl.registerUser = function (req, res) {
   var tableSelect=mangerModelUser(table);
   if(!!tableSelect){
     var tableSelect=mangerModelUser(table);
-    if(!tableSelect.checkDataAddDatabase(req.currentUser.permission_id,tableSelect.getTypeTable())){
+    if(!tableSelect.checkDataAddDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
       return returnNotFound(res,{ message: "Database inval" });
     }  
     var checkInaval = tableSelect.checkManifestSpecialCustomer("edit");
