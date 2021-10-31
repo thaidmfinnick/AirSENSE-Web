@@ -241,12 +241,14 @@
   </body>
 
   <script type="text/javascript">
+
     var dataView = '<%= detail %>';
     var linkAcess =
       'http://' + window.location.hostname + ':' + window.location.port + '/' +
       dataView.replaceAll('+', '/');
     console.log(linkAcess);
     // document.getElementById("htmlToView").src = linkAcess;
+
     $.ajax({
       type: 'GET',
       enctype: 'multipart/form-data',
@@ -264,23 +266,28 @@
         console.log(e.responseText);
       },
     });
+
     // Bookmark
     const bookmark = document.querySelector('.blog-detail__icon-bookmark');
     bookmark.onclick = () =>
       bookmark.classList.toggle('blog-detail__icon-bookmark--active');
+
     // Like
     const likeAside = document.querySelector('.blog-aside__like');
     const likeBottom = document.querySelector('.blog-bottom__like');
     const likeAsideIcon = document.querySelector('.blog-aside__like-icon');
     const likeBottomIcon = document.querySelector('.blog-bottom__like-icon');
+
     likeBottom.onclick = () => {
       likeBottomIcon.classList.toggle('blog-bottom__like-icon--active');
       likeAsideIcon.classList.toggle('blog-aside__like-icon--active');
     };
+
     likeAside.onclick = () => {
       likeBottomIcon.classList.toggle('blog-bottom__like-icon--active');
       likeAsideIcon.classList.toggle('blog-aside__like-icon--active');
     };
+
     // Option
     const ellipsis = document.querySelector('.blog-detail__ellipsis');
     const option = document.querySelector('.blog-detail__option');
@@ -291,6 +298,7 @@
     ellipsis.onclick = () => {
       option.classList.add('blog-detail__option--show');
     };
+
     const check = function (eventTarget, optionElements) {
       let i = 0;
       optionElements.forEach(function (item) {
@@ -302,6 +310,7 @@
         return false;
       }
     };
+
     window.onclick = (event) => {
       if (
         event.target != ellipsis &&
@@ -310,22 +319,37 @@
         option.classList.remove('blog-detail__option--show');
       }
     };
+
     // Comment
     const messageButtons = [document.querySelector('.blog-aside__comment'), document.querySelector('.blog-bottom__comment')];
     const closeButton = document.querySelector('.comment-close');
     const modal = document.querySelector('.modal');
     const commentContainer = document.querySelector('.comment-container');
+
     const showComment = () => {
       Object.assign(commentContainer.style, {
         transform: 'translateX(0%)',
         opacity: '1',
       });
+
+
+      modal.classList.add('modal--show')
+
+    };
+
+    messageButtons.forEach((messageButton) => {
+      messageButton.addEventListener('click', showComment);
+    });
+
+    const closeComment = () => {
+
       modal.classList.add('modal--show')
     };
     messageButtons.forEach((messageButton) => {
       messageButton.addEventListener('click', showComment);
     });
     const closeComment = () => {
+
       if (document.body.offsetWidth >= 970) {
         Object.assign(commentContainer.style, {
           transform: 'translateX(200%)',
@@ -337,10 +361,19 @@
           opacity: '0',
         });
       }
+
       setTimeout(function () {
         modal.classList.remove('modal--show')
       }, 200);
     };
+
+
+    closeButton.onclick = () => closeComment();
+
+    modal.onclick = () => closeComment();
+
+    commentContainer.onclick = (event) => event.stopPropagation();
+
     closeButton.onclick = () => closeComment();
     modal.onclick = () => closeComment();
     commentContainer.onclick = (event) => event.stopPropagation();
