@@ -176,6 +176,7 @@ router.get('/old_register', (req, res) => {
 router.get('/old_profile', (req, res) => {
   res.render('old/Account/profile');
 });
+/*
 router.get('/old_addUser', (req, res) => {
   res.render('old/Account/addUsers');
 });
@@ -202,7 +203,7 @@ router.get('/old_blog', (req, res) => {
 });
 router.get('/old_manageBlog', (req, res) => {
   res.render('old/Manager/BlogManager');
-});
+});*/
 router.get('/old_login', (req, res) => {
   res.render('old/Account/login');
 });
