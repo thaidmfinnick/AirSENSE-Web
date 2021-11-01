@@ -37,13 +37,13 @@ class User extends CommonModel {
   }
   getFieldToAdd(){
       return {
-          valueSetup: ["username","email","password","phone","avatar","fullname","permission_id","address","note" ]
+          valueSetup: ["name","fullname","phoneNumber","email","contact","addrid","avartar","note","manifestid" ]
       };
   }
   getFieldToDelete(){
       return {
-          arrayCoppy:["username","email","password","phone","avatar","fullname","permission_id","address","note" ,"created_at","id_created"],
-          locationSelect:"users_id",
+          arrayCoppy:["name","fullname","phoneNumber","email","contact","addrid","avartar","note","manifestid","created_at","id_created"],
+          locationSelect:"userid",
           valueSelect:"deleteflag",
           userUpdate:"id_updated"
       };

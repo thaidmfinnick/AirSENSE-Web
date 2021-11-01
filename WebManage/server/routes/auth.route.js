@@ -77,6 +77,7 @@ router.route('/user').get(isAuthenticated, (req, res) => {
   User.query({
     where: { userid: req.currentUser.users_id },
     select: [
+      'userid',
       'name',
       'fullname',
       'phoneNumber',
@@ -103,12 +104,12 @@ router.route('/user').get(isAuthenticated, (req, res) => {
 router.route('/customer').get(isAuthenticated, (req, res) => {
   console.log("req.currentUser",req.currentUser)
   User.query({
-    where: { users_id: req.currentUser.users_id },
+    where: { userid: req.currentUser.users_id },
     select: [
-      'users_id',
+      'userid',
       'email',
-      'username',
-      'phone',
+      'name',
+      'phoneNumber',
       'avatar',
       'fullname',
       'birthday',
@@ -118,6 +119,7 @@ router.route('/customer').get(isAuthenticated, (req, res) => {
   })
   .fetch({ require: false })
   .then((user) => {
+      user.userid=req.currentUser.users_id;
       if (!user) {
         res.status(HttpStatus.NOT_FOUND).json({ error: 'No such user' });
       } else {
