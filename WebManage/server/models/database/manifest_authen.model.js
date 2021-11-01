@@ -1,14 +1,14 @@
 const TypeModel= require('../middlewareDatabase/TypeModel.js');
 const TableView= require('../middlewareDatabase/TableView.js');
 const TableManifest= require('../middlewareDatabase/TableManifest.js');
-const TABLE_NAME = 'sparc_group_location_sensor';
+const TABLE_NAME = 'manifest_authen';
 const CommonModel= require('../middlewareDatabase/CommonModel.js');
 const  defineManifest  = require('../../middlewares/CheckManifest.js');
 const CustomerAcess= require('../middlewareDatabase/CustomerAcess.js');
 /**
  * User model.
  */
-class SparcAcessLocationSensor extends CommonModel {
+class manifest_authen extends CommonModel {
   /**
    * Get table name.
    */
@@ -35,13 +35,15 @@ class SparcAcessLocationSensor extends CommonModel {
   }
   getFieldToAdd(){
       return {
-          valueSetup: ["name_group"]
+          valueSetup: ["role","content"]
       };
   }
+  
+
   getFieldToDelete(){
       return {
-          arrayCoppy:["name_group"],
-          locationSelect:"id_group",
+          arrayCoppy:["role","content","created_at","id_created"],
+          locationSelect:"manifestid",
           valueSelect:"deleteflag",
           userUpdate:"id_updated"
       };
@@ -50,7 +52,7 @@ class SparcAcessLocationSensor extends CommonModel {
   
   getSQLReport(currentUser){
     console.log("getSQLReport...2....... " ,currentUser.manifestid); 
-      return ('SELECT sparc_group_location_sensor.* FROM sparc_group_location_sensor ');
+      return ('SELECT extended_data.* FROM extended_data ');
        //   + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
   getJsonTofind(){
@@ -60,4 +62,4 @@ class SparcAcessLocationSensor extends CommonModel {
 
 }
 
-module.exports =  SparcAcessLocationSensor;
+module.exports =  manifest_authen;
