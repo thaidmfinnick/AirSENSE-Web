@@ -1,14 +1,14 @@
 const TypeModel= require('../middlewareDatabase/TypeModel.js');
 const TableView= require('../middlewareDatabase/TableView.js');
 const TableManifest= require('../middlewareDatabase/TableManifest.js');
-const TABLE_NAME = 'sparc_group_location_sensor';
+const TABLE_NAME = 'location';
 const CommonModel= require('../middlewareDatabase/CommonModel.js');
 const  defineManifest  = require('../../middlewares/CheckManifest.js');
 const CustomerAcess= require('../middlewareDatabase/CustomerAcess.js');
 /**
  * User model.
  */
-class SparcAcessLocationSensor extends CommonModel {
+class Location extends CommonModel {
   /**
    * Get table name.
    */
@@ -33,31 +33,31 @@ class SparcAcessLocationSensor extends CommonModel {
              add:CustomerAcess.NOT_ACESS,
              view:CustomerAcess.NOT_ACESS  }; 
   }
+  
   getFieldToAdd(){
       return {
-          valueSetup: ["name_group"]
+          valueSetup: ["Latitude","Longtitude","Altitude","Type","PictureLinks","StartTime","StopTime","Description","ReverseGeocode","NodeId","Name","DateCreated","Status","Note","Contact","NoteStatus","Implement_TestingDate"]
       };
   }
   getFieldToDelete(){
       return {
-          arrayCoppy:["name_group"],
-          locationSelect:"id_group",
-          valueSelect:"deleteflag",
-          userUpdate:"id_updated"
+          arrayCoppy:["Latitude","Longtitude","Altitude","Type","PictureLinks","StartTime","StopTime","Description","ReverseGeocode","NodeId","Name","DateCreated","Status","Note","Contact","NoteStatus","Implement_TestingDate"],
+          locationSelect:"Id",
+          valueSelect:"",
+          userUpdate:""
       };
   }
   
   
   getSQLReport(currentUser){
     console.log("getSQLReport...2....... " ,currentUser.manifestid); 
-      return ('SELECT sparc_group_location_sensor.* FROM sparc_group_location_sensor ');
+      return ('SELECT location.*  FROM location ');
        //   + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
   getJsonTofind(){
       return [];
   }
 
-
 }
 
-module.exports =  SparcAcessLocationSensor;
+module.exports =  Location;

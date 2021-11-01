@@ -12,28 +12,24 @@ const SparcAcessLocationSensor = require('./sparcAcessLocationSensor.model');
 const SparcGroupLocationSensor = require('./sparcGroupLocationSensor.model');
 const SparcAqi = require('./sparcAqi.model');
 const SparcLocationSensor = require('./sparcLocationSensor.model');
-const ExtendedData = require('./extendedData.model');
-const Location = require('./location.model');
-const StatusHistoryDevice = require('./statusHistoryDevice.model');
 
 
 
-
-const classesFactory = {User ,Adress,GroupContent,ExtendedData,Location,
-    PagesContent,GroupContentSub,StatusHistoryDevice,
+const classesFactory = {User ,Adress,GroupContent,
+    PagesContent,GroupContentSub,
     SparcPosts,SparcSensorWarning,SparcSensorMaxMin,SparcSensorData,SparcAcessLocationSensor,
     SparcGroupLocationSensor,SparcAqi ,SparcLocationSensor};
-const classesFactorryMapping = {  users:"User" , adress:"Adress" , extended_data:"ExtendedData",
-                            group_content:"GroupContent" ,location:"Location",
+const classesFactorryMapping = {  users:"User" , adress:"Adress" ,
+                            group_content:"GroupContent" ,
                             pages_content:"PagesContent",group_content_sub:"GroupContentSub",
                             sparc_posts:"SparcPosts",sparc_sensor_warning:"SparcSensorWarning",
                             sparc_sensor_max_min:"SparcSensorMaxMin",sparc_sensor_data:"SparcSensorData",
                             sparc_access_location_sensor:"SparcAcessLocationSensor",
                             sparc_group_location_sensor:"SparcGroupLocationSensor",sparc_aqi:"SparcAqi",
-                            sparc_location_sensor:"SparcLocationSensor",status_history_device:"StatusHistoryDevice"
+                            sparc_location_sensor:"SparcLocationSensor"
                         };
                         
-const classesFactorryMappingUser = {  adress:"Adress" ,extended_data:"ExtendedData",
+const classesFactorryMappingUser = {  adress:"Adress" ,
                         group_content:"GroupContent" ,
                         pages_content:"PagesContent",group_content_sub:"GroupContentSub",
                         sparc_posts:"SparcPosts",sparc_sensor_warning:"SparcSensorWarning",
