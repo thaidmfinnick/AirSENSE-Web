@@ -42,13 +42,13 @@ class Adress extends CommonModel {
   
   getFieldToAdd(){
       return {
-          valueSetup: ["user_id","name","contactPhoneNumber","province","city","streetaddr","postCode"]
+          valueSetup: ["userid","name","contactPhoneNumber","province","city","streetaddr","postCode"]
       };
   }
   getFieldToDelete(){
       return {
-          arrayCoppy:["user_id","name","contactPhoneNumber","province","city","streetaddr","postCode" ,"created_at","id_created"],
-          locationSelect:"addr_id",
+          arrayCoppy:["userid","name","contactPhoneNumber","province","city","streetaddr","postCode","created_at","id_created"],
+          locationSelect:"addrid",
           valueSelect:"deleteflag",
           userUpdate:"id_updated"
       };
