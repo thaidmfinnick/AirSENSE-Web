@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 var squel = require("squel");
 const User = require('../models/database/user.model.js');
-const Customer = require('../models/database/customer.model.js');
 const Oauthen2 = require('../models/database/oAuthen2.model.js');
 const OAuthen2Customer = require('../models/database/oAuthen2Customer.model.js');
 const {returnOK,returnNotAuthen,returnNotFound } = require('../utils/returnResponse.js');
@@ -91,43 +90,5 @@ authCtrl.logOut = function(req, res) {
 
 }
 
-authCtrl.loginCustomer = function(req, res) {
-  const { email, password } = req.body;
-  lstLoginCustomer =lstLoginCustomer.filter(o=>((Date.now() - o.time)<2000));
-  var emailExist=lstLoginCustomer.filter(o=>o.email==email);
-  if(emailExist.length==1){
-    return returnNotAuthen(res,{success: false,message: 'Bạn dang đăng nhập tài khoản hơn 2 lần trong 1s.'});
-  }
-  else if(emailExist.length>1)
-  {
-    return returnNotAuthen(res,{success: false,message: 'Bạn dang đăng nhập tài khoản hơn 2 lần trong 1s.'});
-  }
-
-  Customer.query({
-    where: {email:email, deleteflag: 0},
-  })
-    .fetch({ require: false })
-    .then((user) => {
-      console.log("user",user);
-      if (user) {
-        lstLoginCustomer =lstLoginCustomer.filter(o=>o.email!=email);
-        bcrypt.compare(password,  user.get('password')).then(function(result) {
-          console.log("user Inval");
-          if(result)
-            oAuthen2Customer.responseLogin(res,user); 
-          else
-            return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
-                  
-        })
-        .catch(()=>{
-          console.log("not Inval");
-          return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
-        })
-      } else {
-        lstLoginCustomer.push({email:email,count:1,time:Date.now()});
-        return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
-      }
-    });
-}
 
 module.exports =authCtrl;
