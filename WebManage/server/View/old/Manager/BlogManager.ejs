@@ -125,14 +125,25 @@
         function gotoCheckUser(tableSelect) {
             console.log('gotoCheckUser')
             if (tableSelect.length < 1) return;
-            var Link = '/report/' + tableSelect;
+            var Link = '/api/users/report';
             $.ajax({
                 type: 'post',
                 dataType: 'json',
                 url: Link,
-                data: {},
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer ' + mname);
+                data: JSON.stringify({table:tableSelect}),
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                redirect: 'follow', // manual, *follow, error
+                referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                dataType: 'json',
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + mname,
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 success: function (posts) {
                     console.log('success: ',posts)
@@ -150,14 +161,25 @@
 
 
         function loadAllContent() {
-            var Link = '/report/sparc_posts';
+            var Link = '/api/users/report';
             $.ajax({
                 type: 'post',
                 dataType: 'json',
                 url: Link,
-                data: {},
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer ' + mname);
+                data: JSON.stringify({table:"sparc_posts"}),
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                redirect: 'follow', // manual, *follow, error
+                referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                dataType: 'json',
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + mname,
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 success: function (loadcofig) {
                     console.log(loadcofig);

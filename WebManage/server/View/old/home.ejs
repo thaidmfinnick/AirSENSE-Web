@@ -1274,10 +1274,25 @@
                 type: 'post',
                 dataType: 'json',
                 url: Link,
-                data: {data:data, fromTime: fromTime, toTime: toTime},
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer '+mname);
+                //data: {data:data, fromTime: fromTime, toTime: toTime},
+                data: JSON.stringify({data:data, fromTime: fromTime, toTime: toTime}), // body data type must match "Content-Type" header
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                redirect: 'follow', // manual, *follow, error
+                referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                dataType: 'json',
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Beard ' + mname,
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
+                /*beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer '+mname);
+                },*/
                 success: function (loadcofig) {
                     hideLoader();
                     document.getElementsByClassName("dashboard")[0].style.display = "block";
