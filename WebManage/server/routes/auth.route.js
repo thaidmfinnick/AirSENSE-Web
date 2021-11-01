@@ -65,10 +65,6 @@ router.route('/resetPassword/:id/:token').get( (req, res) => {
   res.render('authen/updatePassword');
 });
 
-router.route('/login_customer').post(validate(schema.login), (req, res) => {
-  authCtrl.loginCustomer(req, res);
-});
-
 
 
 router.route('/user').get(isAuthenticated, (req, res) => {
@@ -99,38 +95,6 @@ router.route('/user').get(isAuthenticated, (req, res) => {
       }
   });
 });
-
-
-router.route('/customer').get(isAuthenticated, (req, res) => {
-  console.log("req.currentUser",req.currentUser)
-  User.query({
-    where: { userid: req.currentUser.users_id },
-    select: [
-      'userid',
-      'email',
-      'name',
-      'phoneNumber',
-      'avatar',
-      'fullname',
-      'birthday',
-      'passport',
-      'address',
-    ],
-  })
-  .fetch({ require: false })
-  .then((user) => {
-      user.userid=req.currentUser.users_id;
-      if (!user) {
-        res.status(HttpStatus.NOT_FOUND).json({ error: 'No such user' });
-      } else {
-        res.status(200).json({
-          user: user,
-        });
-      }
-  });
-});
-
-
 
 var tockenToCheck=[];
 

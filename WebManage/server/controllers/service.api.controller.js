@@ -2,7 +2,6 @@ const HttpStatus = require("http-status-codes");
 const joi = require("joi");
 const knex = require("../config/knex");
 const { BillStatus } = require("../utils/constants");
-const BillServiceModel = require("../models/database/billService.model");
 const { date } = require("joi");
 
 const ForTestingOnly = {
