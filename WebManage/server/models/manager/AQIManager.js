@@ -259,6 +259,7 @@ class AQIManager  {
         .where("Time > ?", fromTime)
         .where("Time < ?", currentTime)
         .where("station_id = ?", stationId);
+        console.log(query.toString());
         return new Promise( ( resolve, reject ) => {
             knex.raw(query.toString()).then(function(result) {  
                 resolve( result);
@@ -275,6 +276,7 @@ class AQIManager  {
         .where("Time > ?", fromTime)
         .where("Time < ?", currentTime)
         .where("station_id = ?", stationId);
+        console.log(query.toString());
         return new Promise( ( resolve, reject ) => {
             knex.raw(query.toString()).then(function(result) {  
                 resolve( result);
