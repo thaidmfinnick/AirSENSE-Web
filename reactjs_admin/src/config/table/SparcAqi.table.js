@@ -13,29 +13,14 @@ class SparcAqi  {
               width: 140,
             },
             {
-              field: 'group_file',
-              headerName: 'group_file',
+              field: 'station_id',
+              headerName: 'station_id',
               width: 200,
             },
             {
-              field: 'filesave',
-              headerName: 'filesave',
+              field: 'aqi',
+              headerName: 'aqi',
               width: 200,
-            },
-            {
-              field: 'title',
-              headerName: 'Số title thoại',
-              width: 240,
-            },
-            {
-              field: 'content',
-              headerName: 'content',
-              width: 240,
-            },
-            {
-              field: 'content_img',
-              headerName: 'content_img',
-              width: 240,
             },
             {
               field: 'action',
@@ -67,36 +52,24 @@ class SparcAqi  {
       return {
         mainID:'advertisement_id',
         mainInfo:{
-          field: 'title',
-          headerName: 'Chi tiết bài báo',
+          field: 'station_id',
+          headerName: 'station_id',
           width: 240,
         },
         detailEdit:[
           {
-            field: 'group_file',
-            headerName: 'group_file',
+            field: 'station_id',
+            headerName: 'station_id',
             width: 200,
           },
           {
-            field: 'filesave',
-            headerName: 'filesave',
+            field: 'aqi',
+            headerName: 'aqi',
             width: 200,
           },
-          {
-            field: 'title',
-            headerName: 'Số title thoại',
-            width: 240,
-          },
-          {
-            field: 'content',
-            headerName: 'content',
-            width: 240,
-          },
-          {
-            field: 'content_img',
-            headerName: 'content_img',
-            width: 240,
-          },
+
+          
+         
         ]
       }
     }

@@ -24,12 +24,22 @@ import ChargingService from './ChargingService.table';
 import Service from './Service.table';
 import GroupContentSub from './GroupContentSub.table';
 import {validateEmail,validatePhone,isNumeric,validateDate } from '../../utils/commonUtil';
+import SparcAqi from './SparcAqi.table';
+import ExtendedData   from './ExtendedData.table';
+import Location from './Location.table';
+import SparcAcessLocationSensor from './SparcAcessLocationSensor.table';
+import sparcGroupLocationSensor from './sparcGroupLocationSensor.table';
+import SparcLocationSensor from './SparcLocationSensor.table';
+
 
 
 const classesFactory = {User_View ,Adress,DecentralizationAccess,GroupContent,
     MqttMicroservice,MqttUser,PagesContent ,AdvertisementContent ,BillService
     ,LostProduct,Enterprise ,DetailBank ,Customer ,Company ,StoreProduct ,Product,BuyProductDetail
-    ,BuyProduct,BackProduct,ReturnService ,ChargingService ,Service,GroupContentSub};
+    ,BuyProduct,BackProduct,ReturnService ,ChargingService ,Service,GroupContentSub,SparcAqi,ExtendedData,
+    Location,SparcAcessLocationSensor,sparcGroupLocationSensor,SparcLocationSensor
+
+};
 const classesFactorryMapping = {  users:"User_View", adress:"Adress" ,
                                 decentralization_access:"DecentralizationAccess",group_content:"GroupContent" 
                                 , mqtt_microservice:"MqttMicroservice",
@@ -39,7 +49,11 @@ const classesFactorryMapping = {  users:"User_View", adress:"Adress" ,
                                 ,detailbank:"DetailBank", customer:"Customer",company:"Company" ,
                                 storeproduct:"StoreProduct" ,product:"Product",buyproductdetail:"BuyProductDetail",
                                 buyproduct:"BuyProduct",return_service:"ReturnService",charging_service:"ChargingService",
-                                service:"Service",group_content_sub:"GroupContentSub" };   
+                                service:"Service",group_content_sub:"GroupContentSub",
+                                sparc_aqi:"SparcAqi",extended_data:"ExtendedData",
+                                location:"Location",sparc_access_location_sensor:"SparcAcessLocationSensor",
+                                sparc_group_location_sensor:"sparcGroupLocationSensor",sparc_location_sensor:"SparcLocationSensor",
+                                };   
 
 export const exportColumeData = (table,callback=null) =>{
     var nameConvert=classesFactorryMapping[table];
