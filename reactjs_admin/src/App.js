@@ -57,8 +57,7 @@ const App = () => {
             layout={(props) => <Layout {...props} menu={TreeMenu} appBar={MenuHeader} />}
             >
             <Resource name="users" options={{label:'Tài khoản'  }} icon={UserIcon} list={UserList} />
-            <Resource name="station" options={{label:'Quản lí trạm'  }} icon={UserIcon} list={UserList} />
-            <Resource name="reportstation" options={{label:'Báo cáo'  }} icon={UserIcon} list={UserList} />
+            
 
             {/*  Mqtt*/}
             <Resource name="mqtt" options={{label:'Quản lý mqtt' ,"isMenuParent": true }} icon={BuildIcon} list={LockScreen} />
