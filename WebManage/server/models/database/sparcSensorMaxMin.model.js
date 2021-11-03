@@ -8,7 +8,7 @@ const CustomerAcess= require('../middlewareDatabase/CustomerAcess.js');
 /**
  * User model.
  */
-class SparcSensorWarning extends CommonModel {
+class SparcSensorMaxMin extends CommonModel {
   /**
    * Get table name.
    */
@@ -68,4 +68,4 @@ class SparcSensorWarning extends CommonModel {
 
 }
 
-module.exports =  SparcSensorWarning;
+module.exports =  SparcSensorMaxMin;
