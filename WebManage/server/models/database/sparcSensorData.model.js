@@ -51,8 +51,8 @@ getFieldToDelete(){
                         "SO2","NO2","CO2","CO","O3","NO2A","NO2W","O3W","O3A","COW","COA","SO2W",
                         "SO2A"],
           locationSelect:"Time",
-          valueSelect:"deleteflag",
-          userUpdate:"id_updated"
+          valueSelect:"",
+          userUpdate:""
       };
   }
   
