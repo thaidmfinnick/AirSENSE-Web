@@ -95,8 +95,7 @@ iotCtrl.reportDataSensor = function(request, response) {
     if (data.includes(",")) {
         var listItem = data.split(",");
         reportManager.getDataForChart(fromTime, toTime, result1).then(function (result2) {
-
-            return response.send(JSON.stringify(result2));
+            return response.send(JSON.stringify(result2[0]));
         }).catch(function (err1) { return response.send("false"); });
 
     } else {

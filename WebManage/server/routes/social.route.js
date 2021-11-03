@@ -15,10 +15,8 @@ router.route('/check_email').post((req, res) => {
 router.route('/gethome').get( (req, res) => socialCtrl.gethome(req, res));
 router.route('/mainPages').post( (req, res) => socialCtrl.gethome(req, res));
 router.route('/userdetail').post( (req, res) => socialCtrl.gethome(req, res));
-router.route('/getThreshold').get( (req, res) => {
-  iotCtrl.getThreshhold(req, res)});
-router.route('/getdata').post( (req, res) =>{ 
-  iotCtrl.reportDataSensor(req, res)});
+router.route('/getThreshold').get( (req, res) => iotCtrl.getThreshhold(req, res));
+router.route('/getdata').post( (req, res) => iotCtrl.reportDataSensor(req, res));
 
 router.route('/getStation').get(isAuthenticated, (req, res) => iotCtrl.getStationServer(req, res));
 router.route('/getStationHome').get( (req, res) => iotCtrl.getStationHome(req, res));
@@ -34,8 +32,7 @@ router.route('/savePost').post( (req, res) => socialCtrl.savePost(req, res));
 
 
 router.route('/getCurrentAQI').get( (req, res) => iotCtrl.getCurrentAQI(req, res));
-router.route('/getAqiData').post( (req, res) => {
-  iotCtrl.getAqiData(req, res)});//get aqi in recent 24h
+router.route('/getAqiData').post( (req, res) => iotCtrl.getAqiData(req, res));//get aqi in recent 24h
 router.route('/getDataRecent').post( (req, res) => iotCtrl.getDataRecent(req, res));
 
 

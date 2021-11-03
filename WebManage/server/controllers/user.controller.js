@@ -229,8 +229,9 @@ userCtrl.updateUser = async (req, res) => {
     return returnNotFound(res,{ message: "Database not Acess 1" });
   }
   let data=req.body;
+  var userid=req.currentUser.users_id;
   let dataUser=tableSelect.getFieldToDelete();
-  var userid=data[dataUser.locationSelect];
+  //var userid=data[dataUser.locationSelect];
   var authen = squel.update().table(tableSelect.getNameTable());
   authen.where(dataUser.locationSelect+'='+userid)
               .set('name', data.name)
@@ -515,8 +516,7 @@ userCtrl.changePassword = async (req, res) => {
           var authen = squel.update().table(tableSelect.getNameTable());
             authen.where(dataUser.locationSelect+'='+data[dataUser.locationSelect])
               .set('password', data.newPassword)
-              .set('updated_at', 'NOW()',{dontQuote: true})
-              .set("oldid", data[dataUser.locationSelect])
+              .set('updated_at', 'NOW()',{dontQuote: true});
           console.log("updateDataauthen.toString() ",authen.toString());
           knex.raw(authen.toString())
           .then(function(x) {

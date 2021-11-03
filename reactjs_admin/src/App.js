@@ -57,8 +57,6 @@ const App = () => {
             layout={(props) => <Layout {...props} menu={TreeMenu} appBar={MenuHeader} />}
             >
             <Resource name="users" options={{label:'Tài khoản'  }} icon={UserIcon} list={UserList} />
-            
-
             {/*  Mqtt*/}
             <Resource name="mqtt" options={{label:'Quản lý mqtt' ,"isMenuParent": true }} icon={BuildIcon} list={LockScreen} />
             <Resource name="mqtt_microservice" options={{label:'Tạo microservice',"menuParent": "mqtt"}} icon={BuildIcon} list={NomalTable} />
@@ -68,31 +66,22 @@ const App = () => {
             <Resource name="group_content_sub" options={{label:'Nhóm bài báo' ,"menuParent": "sPages"}} icon={FeaturedPlayList} list={NomalTable} />
             <Resource name="managerpages" options={{label:'Quản lý bài báo',"menuParent": "sPages" }} icon={Settings} list={PagesContent} />
             <Resource name="registerPage" options={{label:'viết bài',"menuParent": "sPages" }} icon={TextFormat} list={RegisterPage} />
-            {/* Quảng bá*/}
-            <Resource name="advertisementDetail" options={{label:'Quảng bá' ,"isMenuParent": true }} icon={ExtensionIcon} list={LockScreen} />
-            <Resource name="advertisement_content" options={{label:'Danh sách',"menuParent": "advertisementDetail" }} icon={ListAltIcon}  list={NomalTable} />
-            <Resource name="advertisementPages" options={{label:'Quảng cáo',"menuParent": "advertisementDetail" }} icon={ExtensionIcon} list={AdvertisementPage} />
-            {/* Dịch vụ*/}
-            <Resource name="service_x" options={{label:'Dịch vụ' ,"isMenuParent": true }} icon={RoomServiceIcon}  list={LockScreen} />
-            <Resource name="service" options={{label:'Danh sách dịch vụ',"menuParent": "service_x" }} icon={ListAltIcon}  list={NomalTable} />
-            <Resource name="bill_service" options={{label:'Hóa đơn',"menuParent": "service_x" }} icon={ReceiptIcon}  list={NomalTable} />
-            <Resource name="charging_service" options={{label:'Nạp tiền',"menuParent": "service_x" }} icon={AttachMoneyIcon}  list={NomalTable} />
-            <Resource name="return_service" options={{label:'Trả lại dịch vụ',"menuParent": "service_x" }} icon={KeyboardReturnIcon}  list={NomalTable} />
-            {/* Sản phẩm*/}
-            <Resource name="products" options={{label:'Sản phẩm' ,"isMenuParent": true }} icon={ShoppingCartIcon}  list={LockScreen} />
-            <Resource name="backproduct" options={{label:'Trả lại hàng',"menuParent": "products" }} icon={KeyboardReturnIcon}  list={NomalTable} />
-            <Resource name="buyproduct" options={{label:'Mua hàng',"menuParent": "products" }} icon={ShoppingCartIcon}  list={NomalTable} />
-            <Resource name="buyproductdetail" options={{label:'Hóa đơn',"menuParent": "products" }} icon={ReceiptIcon}  list={NomalTable} />
-            <Resource name="lostproduct" options={{label:'Thất lạc',"menuParent": "products" }} icon={HighlightOffIcon}  list={NomalTable} />
-            <Resource name="product" options={{label:'Chi tiết sản phẩm',"menuParent": "products" }} icon={DetailsIcon}  list={NomalTable} />
-            <Resource name="storeproduct" options={{label:'Kho',"menuParent": "products" }} icon={GroupWork}  list={NomalTable}  />
-            {/* Khách hàng */}
-            <Resource name="customers" options={{label:'Khách hàng' ,"isMenuParent": true }} icon={Contacts}  list={LockScreen} />
-            <Resource name="company" options={{label:'Công ty',"menuParent": "customers" }} icon={Business}  list={NomalTable} />
-            <Resource name="customer" options={{label:'Khách hàng',"menuParent": "customers" }} icon={Contacts}  list={NomalTable} />
-            <Resource name="detailbank" options={{label:'Ngân hàng',"menuParent": "customers" }} icon={AccountBalanceIcon}  list={NomalTable} />
-            <Resource name="enterprise" options={{label:'Doanh nghiệp',"menuParent": "customers" }} icon={LocationCityIcon} list={NomalTable} />
-            <Resource name="comments" options={{label:'comments'  }} icon={Comment} list={DialogChat} />
+            {/* Trạm*/}
+            <Resource name="service_x" options={{label:'Trạm' ,"isMenuParent": true }} icon={RoomServiceIcon}  list={LockScreen} />
+            <Resource name="location" options={{label:'Vị trí',"menuParent": "service_x" }} icon={ListAltIcon}  list={NomalTable} />
+            <Resource name="sparc_access_location_sensor" options={{label:'Vị trí quản lý sensor',"menuParent": "service_x" }} icon={ReceiptIcon}  list={NomalTable} />
+            <Resource name="sparc_group_location_sensor" options={{label:'Nhóm vị trí',"menuParent": "service_x" }} icon={AttachMoneyIcon}  list={NomalTable} />
+            <Resource name="sparc_location_sensor" options={{label:'Vị trí của sensor',"menuParent": "service_x" }} icon={KeyboardReturnIcon}  list={NomalTable} />
+            <Resource name="status_history_device" options={{label:'Lịch sử thiết bị',"menuParent": "service_x" }} icon={KeyboardReturnIcon}  list={NomalTable} />
+            
+            {/* Giá trị sensor*/}
+            <Resource name="products" options={{label:'sensor' ,"isMenuParent": true }} icon={ShoppingCartIcon}  list={LockScreen} />
+            <Resource name="sparc_aqi" options={{label:'aQI',"menuParent": "products" }} icon={KeyboardReturnIcon}  list={NomalTable} />
+            <Resource name="extended_data" options={{label:'Mỏ rộng',"menuParent": "products" }} icon={ShoppingCartIcon}  list={NomalTable} />
+            <Resource name="sparc_sensor_data" options={{label:'Dữ liệu sensor',"menuParent": "products" }} icon={ReceiptIcon}  list={NomalTable} />
+            <Resource name="sparc_sensor_max_min" options={{label:'Cài đặt MaxMin',"menuParent": "products" }} icon={HighlightOffIcon}  list={NomalTable} />
+            <Resource name="sparc_sensor_warning" options={{label:'warning',"menuParent": "products" }} icon={DetailsIcon}  list={NomalTable} />
+           
 
             <Resource name="infoUser" options={{label:'Thông tin tài khoản'  }} icon={AccountCircleIcon} list={InfoAccount} />
             <Resource name="chatbox" options={{label:'Nhắn tin'}} icon={Send} list={FormChatBox} />
