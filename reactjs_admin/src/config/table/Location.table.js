@@ -73,29 +73,49 @@ class Location  {
         },
         detailEdit:[
           {
-            field: 'group_file',
-            headerName: 'group_file',
-            width: 200,
+            field: 'Latitude',
+            headerName: 'Latitude',
+            width: 100,
           },
           {
-            field: 'filesave',
-            headerName: 'filesave',
-            width: 200,
+            field: 'Longtitude',
+            headerName: 'Longtitude',
+            width: 100,
           },
           {
-            field: 'title',
-            headerName: 'Số title thoại',
-            width: 240,
+            field: 'Altitude',
+            headerName: 'Altitude',
+            width: 100,
           },
           {
-            field: 'content',
-            headerName: 'content',
-            width: 240,
+            field: 'Type',
+            headerName: 'Type',
+            width: 100,
           },
           {
-            field: 'content_img',
-            headerName: 'content_img',
-            width: 240,
+            field: 'PictureLinks',
+            headerName: 'PictureLinks',
+            width: 100,
+          },
+          {
+            field: 'StartTime',
+            headerName: 'StartTime',
+            width: 100,
+          },
+          {
+            field: 'PictureLinks',
+            headerName: 'PictureLinks',
+            width: 100,
+          },
+          {
+            field: 'PictureLinks',
+            headerName: 'PictureLinks',
+            width: 100,
+          },
+          {
+            field: 'PictureLinks',
+            headerName: 'PictureLinks',
+            width: 100,
           },
         ]
       }

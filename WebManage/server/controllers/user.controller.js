@@ -25,13 +25,13 @@ userCtrl.getTableData =function (req, res) {
       return returnNotFound(res,{ message: "Database inval" });
     }
 
-   startPage =startPage*1000;
-   var itemSelect=tableSelect.getValueToSelectToFind(req.body.dataFind);
-   var dataTableSQL=tableSelect.getSQLReport(req.currentUser) 
-                  +" WHERE "+ 
-                  tableSelect.getConditionManisfest(req.currentUser) 
-                  + itemSelect
-                  + " LIMIT "+startPage +","+(startPage+1000);
+    startPage =startPage*1000;
+    var itemSelect=tableSelect.getValueToSelectToFind(req.body.dataFind);
+    var dataTableSQL=tableSelect.getSQLReport(req.currentUser);
+    if(tableSelect.getFieldToDelete().valueSelect!=""){
+        dataTableSQL= dataTableSQL +" WHERE "+   tableSelect.getConditionManisfest(req.currentUser) +itemSelect; 
+    }
+    dataTableSQL =dataTableSQL + " LIMIT "+startPage +","+(startPage+1000);
     console.log("dataTableSQL   ",dataTableSQL);
     knex.raw(dataTableSQL)
     .then(result => {
