@@ -8,7 +8,7 @@ const CustomerAcess= require('../middlewareDatabase/CustomerAcess.js');
 /**
  * User model.
  */
-class SparcAcessLocationSensor extends CommonModel {
+class sparcGroupLocationSensor extends CommonModel {
   /**
    * Get table name.
    */
@@ -50,7 +50,7 @@ class SparcAcessLocationSensor extends CommonModel {
   
   getSQLReport(currentUser){
     console.log("getSQLReport...2....... " ,currentUser.manifestid); 
-      return ('SELECT sparc_sensor_warning.* FROM sparc_sensor_warning ');
+      return ('SELECT sparc_group_location_sensor.* FROM sparc_group_location_sensor ');
        //   + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
   getJsonTofind(){
@@ -60,4 +60,4 @@ class SparcAcessLocationSensor extends CommonModel {
 
 }
 
-module.exports =  SparcAcessLocationSensor;
+module.exports =  sparcGroupLocationSensor;

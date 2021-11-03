@@ -1,14 +1,14 @@
 const TypeModel= require('../middlewareDatabase/TypeModel.js');
 const TableView= require('../middlewareDatabase/TableView.js');
-const TABLE_NAME = 'permission';
+const TableManifest= require('../middlewareDatabase/TableManifest.js');
+const TABLE_NAME = 'manifest_authen';
 const CommonModel= require('../middlewareDatabase/CommonModel.js');
 const  defineManifest  = require('../../middlewares/CheckManifest.js');
-const TableManifest= require('../middlewareDatabase/TableManifest.js');
 const CustomerAcess= require('../middlewareDatabase/CustomerAcess.js');
 /**
- * Enterprise model.
+ * User model.
  */
-class Permission extends CommonModel {
+class manifest_authen extends CommonModel {
   /**
    * Get table name.
    */
@@ -22,8 +22,12 @@ class Permission extends CommonModel {
   get hasTimestamps() {
     return true;
   }
+/*
+  verifyPassword(password) {
+    return this.get('password') === password;
+  } */
   getNameTable(){ return TABLE_NAME;}
-  getTypeTable(){ return TypeModel.SELL_PRODUCT;}
+  getTypeTable(){ return TypeModel.NEWS;}
   customerAcess(){ 
     return  {edit:CustomerAcess.NOT_ACESS,
              add:CustomerAcess.NOT_ACESS,
@@ -31,13 +35,15 @@ class Permission extends CommonModel {
   }
   getFieldToAdd(){
       return {
-          valueSetup: [ "content"]
+          valueSetup: ["role","content"]
       };
   }
+  
+
   getFieldToDelete(){
       return {
-          arrayCoppy:["content","created_at","id_created"],
-          locationSelect:"permission_id",
+          arrayCoppy:["role","content","created_at","id_created"],
+          locationSelect:"manifestid",
           valueSelect:"deleteflag",
           userUpdate:"id_updated"
       };
@@ -45,13 +51,15 @@ class Permission extends CommonModel {
   
   
   getSQLReport(currentUser){
-      return 'SELECT permission.*, db.username  As namecreate ,dc.username  As nameupdate FROM permission LEFT JOIN users db ON db.users_id=permission.id_created LEFT JOIN users dc ON dc.users_id=permission.id_updated '
-      + defineManifest.checkManifestTableNomal(TABLE_NAME,currentUser.manifestid,currentUser.users_id,currentUser.value_manifest);
+    console.log("getSQLReport...2....... " ,currentUser.manifestid); 
+      return ('SELECT extended_data.* FROM extended_data ');
+       //   + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
-    getJsonTofind(){
-        return [];
-    }
+  getJsonTofind(){
+      return [];
+  }
+
 
 }
 
-module.exports =  Permission;
+module.exports =  manifest_authen;

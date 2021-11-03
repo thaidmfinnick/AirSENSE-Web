@@ -1,14 +1,14 @@
 const TypeModel= require('../middlewareDatabase/TypeModel.js');
 const TableView= require('../middlewareDatabase/TableView.js');
 const TableManifest= require('../middlewareDatabase/TableManifest.js');
-const TABLE_NAME = 'mqtt_microservice';
+const TABLE_NAME = 'location';
 const CommonModel= require('../middlewareDatabase/CommonModel.js');
 const  defineManifest  = require('../../middlewares/CheckManifest.js');
 const CustomerAcess= require('../middlewareDatabase/CustomerAcess.js');
 /**
  * User model.
  */
-class MqttMicroservice extends CommonModel {
+class Location extends CommonModel {
   /**
    * Get table name.
    */
@@ -27,31 +27,32 @@ class MqttMicroservice extends CommonModel {
     return this.get('password') === password;
   } */
   getNameTable(){ return TABLE_NAME;}
-  getTypeTable(){ return TypeModel.SELL_PRODUCT;}
+  getTypeTable(){ return TypeModel.NEWS;}
   customerAcess(){ 
     return  {edit:CustomerAcess.NOT_ACESS,
              add:CustomerAcess.NOT_ACESS,
              view:CustomerAcess.NOT_ACESS  }; 
   }
+  
   getFieldToAdd(){
       return {
-          valueSetup: ["content","mqtt_pub","mqtt_sub","mqtt_user","mqtt_pass","mqtt_id"]
+          valueSetup: ["Latitude","Longtitude","Altitude","Type","PictureLinks","StartTime","StopTime","Description","ReverseGeocode","NodeId","Name","DateCreated","Status","Note","Contact","NoteStatus","Implement_TestingDate"]
       };
   }
   getFieldToDelete(){
       return {
-          arrayCoppy:["content","mqtt_pub","mqtt_sub","mqtt_user","mqtt_pass","mqtt_id","created_at","id_created"],
-          locationSelect:"mqtt_microservice_id",
-          valueSelect:"deleteflag",
-          userUpdate:"id_updated"
+          arrayCoppy:["Latitude","Longtitude","Altitude","Type","PictureLinks","StartTime","StopTime","Description","ReverseGeocode","NodeId","Name","DateCreated","Status","Note","Contact","NoteStatus","Implement_TestingDate"],
+          locationSelect:"Id",
+          valueSelect:"",
+          userUpdate:""
       };
   }
   
   
   getSQLReport(currentUser){
     console.log("getSQLReport...2....... " ,currentUser.manifestid); 
-      return ('SELECT mqtt_microservice.* FROM mqtt_microservice ');
-        //  + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
+      return ('SELECT location.*  FROM location ');
+       //   + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
   getJsonTofind(){
       return [];
@@ -59,4 +60,4 @@ class MqttMicroservice extends CommonModel {
 
 }
 
-module.exports =  MqttMicroservice;
+module.exports =  Location;

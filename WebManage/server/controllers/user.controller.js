@@ -107,6 +107,7 @@ userCtrl.addDataToTable= async  function (req, res) {
   var tableSelect=mangerModelAdmin(table);
   if(!!tableSelect){
     let data=req.body;
+    console.log("checkInaval..........",req.currentUser);
     if(!tableSelect.checkDataAddDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
       return returnNotFound(res,{ message: "Database inval" });
     }
@@ -167,6 +168,7 @@ userCtrl.deleteData= async function (req, res) {
 userCtrl.updateData= async  function (req, res) {
 
   var tableSelect=mangerModelAdmin(req.body.table);  
+  console.log("req.body.table....",req.body);
   if(!!!tableSelect){
     return returnNotFound(res,{ message: "Database inval" });
   }

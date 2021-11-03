@@ -80,7 +80,7 @@ iotCtrl.checkEmailRegister =async function (req, res) {
 
 iotCtrl.getThreshhold = function(request, response) {
     reportManager.getThreshholdIndex().then(function(result){
-        return response.send(JSON.stringify(result));
+        return response.send(JSON.stringify(result[0]));
     });
 };
 
@@ -95,7 +95,7 @@ iotCtrl.reportDataSensor = function(request, response) {
     if (data.includes(",")) {
         var listItem = data.split(",");
         reportManager.getDataForChart(fromTime, toTime, result1).then(function (result2) {
-            console.log(JSON.stringify(result2))
+
             return response.send(JSON.stringify(result2));
         }).catch(function (err1) { return response.send("false"); });
 
@@ -103,7 +103,7 @@ iotCtrl.reportDataSensor = function(request, response) {
         var listItem = [];
         listItem.push(data);
         reportManager.getDataForChart(fromTime, toTime, data).then(function (result2) {
-            return response.send(JSON.stringify(result2));
+            return response.send(JSON.stringify(result2[0]));
         }).catch(function (err1) { return response.send("false"); });
     }
 };
@@ -134,7 +134,7 @@ iotCtrl.getStationHome = function(request, response) {
         //var itemSelect=tableSelect.getValueToSelectToFind(req.body.dataFind);  
         knex.raw(dataTableSQL)
         .then(result => {
-            return returnOK(response,result);
+            return returnOK(response,result[0]);
         }
         , error => {
             return returnNotFound(response,error);
@@ -234,7 +234,7 @@ iotCtrl.getAbnormalData = function(request, response) {
 
 iotCtrl.getCurrentAQI= function(request, response) {
     aqiManager.getCurrentAQIFromDb().then((stations)=> {
-        response.send(JSON.stringify(stations));
+        response.send(JSON.stringify(stations[0]));
     }) 
 };
 iotCtrl.getAqiData= function(request, response) {

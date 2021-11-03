@@ -44,8 +44,8 @@ class SparcAqi extends CommonModel {
       return {
           arrayCoppy:["aqi","SO2_aqi","PM25_aqi","station_id","PM10_aqi","NO2_aqi","PM1_aqi","CO_aqi","O3_aqi","CO2_aqi"],
           locationSelect:"time",
-          valueSelect:"deleteflag",
-          userUpdate:"id_updated"
+          valueSelect:"",
+          userUpdate:""
       };
   }
   

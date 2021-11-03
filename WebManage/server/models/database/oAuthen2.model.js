@@ -149,12 +149,12 @@ class Oauthen2 extends CommonModel {
     }
     getFieldToAdd(){
         return {
-            valueSetup: [ "permission_id","userid","tocken","value_manifest"]
+            valueSetup: [ "manifestid","userid","tocken","value_manifest"]
         };
     }
     getFieldToDelete(){
         return {
-            arrayCoppy:["permission_id","userid","tocken","value_manifest","created_at","id_created"],
+            arrayCoppy:["manifestid","userid","tocken","value_manifest","created_at","id_created"],
             locationSelect:"id",
             valueSelect:"deleteflag",
             userUpdate:"id_updated"
