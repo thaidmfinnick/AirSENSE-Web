@@ -39,7 +39,7 @@ var authCtrl={};
         lstLogin =lstLogin.filter(o=>o.email!=email);
         console.log(user);
         const userPassword = user.get('password');
-        console.log("user Inval",userPassword,password);
+        console.log("user Inval",userPassword);
         if(password==userPassword) {
           oauthen2.responseLogin(res,user); 
         }
@@ -50,7 +50,7 @@ var authCtrl={};
       } 
         else {
         lstLogin.push({email:email,count:1,time:Date.now()});
-        return returnNotAuthen(res,{success: false,message:'Invalid username or password _XX.'});
+        return returnNotAuthen(res,{success: false,message:'Invalid username or password.'});
       }
     });
 }

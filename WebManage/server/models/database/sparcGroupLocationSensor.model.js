@@ -8,7 +8,7 @@ const CustomerAcess= require('../middlewareDatabase/CustomerAcess.js');
 /**
  * User model.
  */
-class sparcGroupLocationSensor extends CommonModel {
+class SparcAcessLocationSensor extends CommonModel {
   /**
    * Get table name.
    */
@@ -60,4 +60,4 @@ class sparcGroupLocationSensor extends CommonModel {
 
 }
 
-module.exports =  sparcGroupLocationSensor;
+module.exports =  SparcAcessLocationSensor;

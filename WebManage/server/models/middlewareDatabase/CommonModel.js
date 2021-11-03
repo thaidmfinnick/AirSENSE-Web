@@ -314,10 +314,7 @@ class CommonModel extends bookshelf.Model {
         return stringData;
     }
     getConditionManisfest(info){
-        if(this.getFieldToDelete().valueSelect=="")
-            return "";
-        else
-            return this.getNameTable()  +".deleteflag=0 ";
+        return this.getNameTable()  +".deleteflag=0 ";
     }
 
   }
