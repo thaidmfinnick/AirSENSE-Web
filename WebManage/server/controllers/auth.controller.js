@@ -36,28 +36,12 @@ var authCtrl={};
   })
     .fetch({ require: false })
     .then((user) => {
-     
       if (user) {
-       
-
         lstLogin =lstLogin.filter(o=>o.email!=email);
-        // bcrypt.compare(password,  user.get('password')).then(function(result) {
-        //   console.log("user Inval",result);
-        //   if(result) {
-        //     console.log(a)
-        //     oauthen2.responseLogin(res,user);  
-        //   }      
-        //   else{
-        //     console.log('b')
-        //     return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
-        //   }
-        // })
-        // .catch(()=>{
-        //   console.log('c');
-        //   return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
-        // });
+        console.log(user);
         const userPassword = user.get('password');
         console.log("user Inval",userPassword);
+        console.log(password+userPassword)
         if(password==userPassword) {
           oauthen2.responseLogin(res,user); 
         }

@@ -37,13 +37,13 @@ class User extends CommonModel {
   }
   getFieldToAdd(){
       return {
-          valueSetup: ["username","email","password","phone","avatar","fullname","permission_id","address","note" ]
+          valueSetup: ["name","email","password","phoneNumber","avatar","fullname","manifestid","address","note" ]
       };
   }
   getFieldToDelete(){
       return {
-          arrayCoppy:["username","email","password","phone","avatar","fullname","permission_id","address","note" ,"created_at","id_created"],
-          locationSelect:"users_id",
+          arrayCoppy:["username","email","password","phoneNumber","avatar","fullname","manifestid","address","note" ,"created_at","id_created"],
+          locationSelect:"userid",
           valueSelect:"deleteflag",
           userUpdate:"id_updated"
       };
@@ -52,13 +52,13 @@ class User extends CommonModel {
   
   getSQLReport(currentUser){
     console.log("getSQLReport...2....... " ,currentUser.manifestid); 
-      return ('SELECT users.users_id,users.name,users.email,users.phone,users.avatar,users.fullname,users.permission_id,users.contact,users.note'
-      +',db.email  As name_create, dc.email  As name_update ,de.content As manifest_content FROM users LEFT JOIN users db ON db.users_id=users.id_created LEFT JOIN users dc ON dc.users_id=users.id_updated  LEFT JOIN permission de ON de.permission_id=users.permission_id');
+      return ('SELECT users.userid,users.name,users.email,users.phoneNumber,users.avartar,users.fullname,users.manifestid,users.contact,users.note'
+      +',db.email  As name_create, dc.email  As name_update ,de.content As manifest_content FROM users LEFT JOIN users db ON db.userid=users.id_created LEFT JOIN users dc ON dc.userid=users.id_updated  LEFT JOIN manifest_authen de ON de.manifestid=users.manifestid');
    //       + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
 
   getConditionManisfest(info){
-    return "users.deleteflag=0 AND users.permission_id>="+info.permission_id+ " ";
+    return "users.deleteflag=0 AND users.manifestid>="+info.manifestid+ " ";
   }
 
   getJsonTofind(){
@@ -76,7 +76,7 @@ class User extends CommonModel {
 
   async checkInvalUserExistingToRegister(request) {
       var checkInfo = squel.select().from("users").where(
-      squel.expr().and("phone='" + request["phone"] + "'").or("email='" + request["email"] + "'"));
+      squel.expr().and("phoneNumber='" + request["phoneNumber"] + "'").or("email='" + request["email"] + "'"));
       var info= await knex.raw(checkInfo.toString());
       if((info!=null)&&(info.length>0)) {
         return true;

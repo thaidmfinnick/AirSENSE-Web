@@ -41,9 +41,7 @@ router.get('/resetPassword', (req, res) => {
   res.render('authen/resetPassword', { route: 'resetPassword' });
 });
 
-router.get('/profile', (req, res) => {
-  res.render('authen/updateInfo', { route: 'updateInfomation' });
-});
+
 
 router.post('/logout', (req, res) => {
   authCtrl.logOut(req, res);
@@ -77,6 +75,7 @@ router.route('/user').get(isAuthenticated, (req, res) => {
   User.query({
     where: { userid: req.currentUser.users_id },
     select: [
+      'userid',
       'name',
       'fullname',
       'phoneNumber',
@@ -84,7 +83,9 @@ router.route('/user').get(isAuthenticated, (req, res) => {
       'password',
       'fullname',
       'contact',
-      'avartar','note','manifestid'
+      'avartar',
+      'note',
+      'manifestid'
     ],
   })
   .fetch({ require: false })

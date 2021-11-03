@@ -227,14 +227,15 @@ userCtrl.updateUser = async (req, res) => {
     return returnNotFound(res,{ message: "Database not Acess 1" });
   }
   let data=req.body;
-  var userid=req.currentUser.users_id;
   let dataUser=tableSelect.getFieldToDelete();
+  var userid=data[dataUser.locationSelect];
   var authen = squel.update().table(tableSelect.getNameTable());
   authen.where(dataUser.locationSelect+'='+userid)
               .set('name', data.name)
               .set('fullname', data.fullname)
-              .set('phone', data.phone)
+              .set('phoneNumber', data.phone)
               .set('contact', data.contact)
+              .set("oldid", data[dataUser.locationSelect])
               .set('updated_at', 'NOW()',{dontQuote: true})
   console.log("updateDataauthen.toString() ",authen.toString());
   knex.raw(authen.toString()).then(function(x) {
@@ -270,54 +271,32 @@ userCtrl.registerUser = async function (req, res) {
           message: 'Tài khoản đã tồn tại xin vui lòng kiểm tra lại',
       });
     }
-    const saltRounds = 10;
-    bcrypt.genSalt(saltRounds, function(err, salt) {
-        bcrypt.hash(req.body.password, salt, function(err, hash) {
-            // Store hash in your password DB.
-          req.body.password = hash;
-        });
-    });
     var newUser = squel.insert().into('users')
                   .set('name', req.body.name)
                   .set('fullname', req.body.fullname)
                   .set('email', req.body.email)
                   .set('password', req.body.password)
+                  .set('phoneNumber', req.body.phoneNumber)
                   .set('contact', req.body.contact)
                   .set('addrid', '0')
-                  .set('avatar', '')
+                  .set('avartar', '')
                   .set('created_at', 'NOW()',{dontQuote: true})
                   .set('updated_at', 'NOW()',{dontQuote: true})
+                  .set('id_created', 0)
+                  .set('id_updated', 0)
                   .set('note', '')
-                  .set('permission_id', req.currentUser.manifestid)
-                  .set('deleteflag', '0');
-                  
-                  
-              knex.raw(newUser.toString())
-                  .then(function(x) {
-                    var authen = squel.update().table('users');
-                    authen.where('email='+req.body.email)
-                      .set('password', PASSWORD(`${req.body.password}`))
-                      .set('updated_at', 'NOW()',{dontQuote: true})
-                  console.log("updateDataauthen.toString() ",authen.toString());
-                  knex.raw(authen.toString())
-                  .then(function(x) {
-                        return returnOK(res,'Thay đổi mật khẩu thành công');
-                    })
-                    .catch(function(err){
-                        return returnFalse(res,err);
-                })
-
-                      res.json({
-                          success: true,
-                          message: "Đăng kí thành công, xin chờ admin cấp quyền"
-                      });
-                  })
-                  .catch(function(err1){
-                      res.status(HttpStatus.UNAUTHORIZED).json({
-                          success: false,
-                          message: 'Problem SQL.',
-                      });
-                  });
+                  .set('manifestid', req.currentUser.manifestid)
+                  .set('deleteflag', '0')
+                  .set('oldid', '0');
+                console.log(newUser.toString());
+                knex.raw(newUser.toString())
+                .then(result => {
+                  return returnOK(res,{result:"Please waitting admin comfirm"});
+                }
+                , 
+                error => {
+                  return returnFalse(res,error);
+                });
 }
 
 userCtrl.resetPass= async function  (req, res) {
@@ -325,8 +304,9 @@ userCtrl.resetPass= async function  (req, res) {
   User.query({
     where: {email: data.email},
     select: [
-      'users_id',
-      'permission_id'
+      'userid',
+      'fullname',
+      'manifestid'
     ]
   })
   .fetch({ require: false })
@@ -334,7 +314,8 @@ userCtrl.resetPass= async function  (req, res) {
       if (!user) {
         res.status(HttpStatus.NOT_FOUND).json({ error: 'No such this email' });
       } else {
-      const userid = user.get('users_id');
+      const userid = user.get('userid');
+      const nameUser = user.get('fullname');
       var transporter = nodemailer.createTransport({
         // cofig mail server
         host: 'smtp.gmail.com',
@@ -356,14 +337,41 @@ userCtrl.resetPass= async function  (req, res) {
       console.log(URLtogetLink);
       var content = '';
     content += `
-        <div style="padding: 10px; background-color: #003375">
-            <div style="padding: 10px; background-color: white;">
-                <h4 style="color: #0085ff">Xin chào, chúng tôi đến hệ thống Airsense</h4>
-                <p style="color: black">Có phải bạn đang yêu cầu lấy lại mật khẩu, vui lòng không cung cấp địa chỉ URL này cho bất cứ ai</p>
-                <span style="color: black">${URLtogetLink}</span>
-                <p style="color: red">Xin chân thành cảm ơn</p>
-            </div>
+    <div id="cover-mail" style=" width: 950px; background-color: #ccc; position: relative; margin: 0 auto;">
+    <div class="logo-ass" style="position: absolute ;width:186px ; height:46px ; background: url(./assets/font-logo/airsense.png) top center / cover no-repeat; left: 0; right: 0; top: 36px; margin: 0 auto; "></div>
+<div class="container" style="position: absolute; background-color: #fff; width: 625px; height: 267px;  left: 0; right: 0; top: 120px; margin: 0 auto;">
+    <h2 style="font-family: Whitney,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #4f545c;
+    letter-spacing: 0.27px; margin-top: 56px;"${nameUser} này,</h2>
+    <p style=" margin-bottom: 35px;    color: #737f8d;
+    font-family: Whitney,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;">Mật khẩu Airsense của bạn có thể được reset bằng nút bên dưới. Nếu bạn không yêu cầu mật khẩu mới, hãy bỏ qua email này.</p>
+    <div style=" width:150px ; height: 44px; margin-left: auto; margin-right: auto; margin-bottom: 42px;">
+    <a href=${URLtogetLink} style=" border-radius: 1px; color: #fff; background: rgb(88, 219, 88); text-align: center; display: block; line-height: 44px; text-decoration: none;     color: white;
+        font-family: Ubuntu,Helvetica,Arial,sans-serif;
+        font-size: 15px;
+        font-weight: normal;
+        text-transform: none;">Reset Mật Khẩu</a></div>
+    <div class="line" style="margin-bottom: 39px; background-color: #bec7d4; width: 100%; height: 2px;"></div>
+    <p style="color: #747f8d;
+    font-family: Whitney,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: left;">Cần giúp đỡ? <a href="">Liên hệ nhóm hỗ trợ</a> hoặc thông qua Twitter <a href="">@discord</a>. </br>
+        Muốn cung cấp phản hồi? Hãy cho chúng tôi biết ý kiến của bạn trên <a href="">trang phản hồi</a>.</p>
+        <div id="footer-mail"  style="background-color: #f9f9f9; margin-top: 74px; color: #99aab5;
+        font-family: Whitney,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+        font-size: 12px;
+        line-height: 24px;
+        text-align: center;">Được gửi từ hệ thống <a href="" style="text-decoration: none;">Airsense</a>
+            - Địa chỉ: Số 1, Đại Cồ Việt, Hai Bà Trưng, Hà Nội 
         </div>
+        </div>
+    </div>
     `;
       // thiết lập đối tượng, nội dung gửi email
     var mainOptions = { 
@@ -381,9 +389,9 @@ userCtrl.resetPass= async function  (req, res) {
     } else {
         console.log('Message sent: ' +  info.response);
         const current_id = userid;
-        const permission_id = user.get('permission_id');
+        const manifestId = user.get('manifestid');
         var authen2 = squel.insert().into("oauthen2")
-                .set("permission_id",permission_id)
+                .set("manifestid",manifestid)
                 .set("userid",current_id)
                 .set("tocken",token)
                 .set("id_updated",current_id)
@@ -435,7 +443,7 @@ userCtrl.newResetPassword = async function(req, res) {
     console.log(tokenDB);
     if(tokenDB == data.token) {
       var authen = squel.update().table('users');
-            authen.where('users_id='+data.userId)
+            authen.where('usersid='+data.userId)
               .set('password', data.password)
               .set('updated_at', 'NOW()',{dontQuote: true})
           console.log("updateDataauthen.toString() ",authen.toString());
@@ -488,10 +496,9 @@ userCtrl.changePassword = async (req, res) => {
     return returnNotFound(res,{ message: "Database not Acess 1" });
   }
   let data=req.body;
-  var userid=req.currentUser.users_id;
   let dataUser=tableSelect.getFieldToDelete();
   User.query({
-    where: {users_id: userid},
+    where: {userid: data[dataUser.locationSelect]},
     select: [
       'password'
     ]
@@ -503,11 +510,11 @@ userCtrl.changePassword = async (req, res) => {
       } else {
         const password = user.get('password');
         if(password === data.oldPassword) {
-          console.log('OK');
           var authen = squel.update().table(tableSelect.getNameTable());
-            authen.where(dataUser.locationSelect+'='+userid)
+            authen.where(dataUser.locationSelect+'='+data[dataUser.locationSelect])
               .set('password', data.newPassword)
               .set('updated_at', 'NOW()',{dontQuote: true})
+              .set("oldid", data[dataUser.locationSelect])
           console.log("updateDataauthen.toString() ",authen.toString());
           knex.raw(authen.toString())
           .then(function(x) {
