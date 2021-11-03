@@ -35,7 +35,7 @@ var authCtrl={};
   })
     .fetch({ require: false })
     .then((user) => {
-     
+
       if (user) {
        
 
@@ -56,7 +56,7 @@ var authCtrl={};
         //   return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
         // });
         const userPassword = user.get('password');
-        console.log("user Inval",userPassword);
+        console.log("user Inval",userPassword,password);
         if(password==userPassword) {
           oauthen2.responseLogin(res,user); 
         }
@@ -67,7 +67,7 @@ var authCtrl={};
       } 
         else {
         lstLogin.push({email:email,count:1,time:Date.now()});
-        return returnNotAuthen(res,{success: false,message:'Invalid username or password.'});
+        return returnNotAuthen(res,{success: false,message:'Invalid username or password _XX.'});
       }
     });
 }
