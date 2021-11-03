@@ -360,7 +360,8 @@ class ReportManager extends CommonModel{
         }
         if(station_id.includes(",")) {
             query = query.where("sparc_sensor_data.station_id IN "+station_id);
-        } else query = query.where("sparc_sensor_data.station_id = '"+station_id+"'");
+        } 
+        else query = query.where("sparc_sensor_data.station_id = '"+station_id+"'");
         return new Promise( ( resolve, reject ) => {
             knex.raw(query.toString()).then(function(result) {  
                 resolve( result);

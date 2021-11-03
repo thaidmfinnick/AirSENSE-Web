@@ -9,6 +9,7 @@ export default {
                     .then((value)=>{
                         console.log(value);
                         localStorage.setItem('username', username);
+                        // localStorage.setItem('tocken_LVC', token)
                         resolve(value);
                     })
                     .catch((err)=>{

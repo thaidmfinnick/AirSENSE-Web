@@ -17,6 +17,7 @@ module.exports =  {
 
   updateInfoUser: Joi.object({
     table: Joi.string().required(),
+    userid: Joi.number().required(),
     name: Joi.string().required(),
     fullname: Joi.string().required(),
     phone: Joi.string().required(),
@@ -25,6 +26,7 @@ module.exports =  {
 
   changePassword: Joi.object({
     table: Joi.string().required(),
+    userid: Joi.number().required(),
     oldPassword: Joi.string().min(6).required(),
     newPassword: Joi.string().min(6).required(),
   }),
@@ -39,7 +41,7 @@ module.exports =  {
     fullname: Joi.string().min(4).required(),
     email: Joi.string().required(),
     contact: Joi.string().required(),
-    phone: Joi.string().min(6).required(),
+    phoneNumber: Joi.string().min(6).required(),
     password: Joi.string().min(6).required()
   }),
 

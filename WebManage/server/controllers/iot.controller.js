@@ -95,7 +95,8 @@ iotCtrl.reportDataSensor = function(request, response) {
     if (data.includes(",")) {
         var listItem = data.split(",");
         reportManager.getDataForChart(fromTime, toTime, result1).then(function (result2) {
-            return response.send(JSON.stringify(result2[0]));
+
+            return response.send(JSON.stringify(result2));
         }).catch(function (err1) { return response.send("false"); });
 
     } else {
@@ -237,7 +238,7 @@ iotCtrl.getCurrentAQI= function(request, response) {
     }) 
 };
 iotCtrl.getAqiData= function(request, response) {
-    var stationId = request.body["stationId"];
+    var stationId = request.body.stationId;
     aqiManager.getAqiData(stationId).then((result)=> {
         response.send(JSON.stringify(result));
     }) 

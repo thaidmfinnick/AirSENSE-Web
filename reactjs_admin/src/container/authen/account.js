@@ -7,15 +7,15 @@ const InfoAccount = () => {
     const user = ManagerData.saveInfoUser;
     const [changePasswordBlock, setChangePasswordBlock] = useState(0);
     const [name, setName] = useState(user.name);
-    
     const [fullname, setFullname] = useState(user.fullname);
-    const [phone, setPhone] = useState(user.phone);
+    const [phone, setPhone] = useState(user.phoneNumber);
     const [contact, setContact] = useState(user.contact);
 
     const updateInfo = (e) => {
       e.preventDefault();
       const data = {
         table: 'users',
+        userid: user.userid,
         name: name,
         fullname: fullname,
         phone: phone,
@@ -36,6 +36,7 @@ const InfoAccount = () => {
       e.preventDefault();
       const data = {
         table: 'users',
+        userid: user.userid,
         oldPassword: oldPass,
         newPassword: newPass
       }
