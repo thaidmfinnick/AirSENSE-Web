@@ -12,7 +12,7 @@
             <div id="Map">
             </div>
             <div class="scroll-down">
-                <button class="btn-info">View Chart</button>
+                <button class="btn-info link-to-chart">View Chart</button>
             </div>
         </div>
   
@@ -24,7 +24,7 @@
                         </div>
               
         
-        <main id="main" class="">
+        <main id="main-map" class="">
             <div id="primary" class="content-area">
                 <main id="main" class="site-main" role="main">
                     <div class="gap-element" style="display:block; height:auto; padding-top:31px" class="clearfix">
@@ -910,9 +910,8 @@
             if(data.length){
                 var arrayData={};
                 var arrayID=[];
-                let getData = data[0]
-                for(var i=0;i<getData.length;i++){
-                    let dataview=getData[i];
+                for(var i=0;i<data.length;i++){
+                    let dataview=data[i];
                     var stationid='station'+dataview.station_id;
                     if(arrayData[stationid]) { // Covers 'undefined' as well
                         
@@ -1047,11 +1046,12 @@
                     url: Link,
                     data: { },
                     success: function (loadcofig) {
+                        console.log(loadcofig);
                         var showData='<option value="">None</option>';
                         var groupID=[];
                         var nameGroupID=[];
-                        allInfoStation=loadcofig.result[0];
-                        defaultStation = loadcofig.result[0].station_id;
+                        allInfoStation=loadcofig.result;
+                        defaultStation = loadcofig.result.station_id;
                         for(var k=0;k< allInfoStation.length;k++) {
                             let v=allInfoStation[k];
                             if(k===0) {
@@ -1229,7 +1229,9 @@
                 drawRightBarChart(station.station_id,'temp-chart', 'Nhiệt độ', 'Temperature');
                 drawRightBarChart(station.station_id,'humid-chart', 'Độ ẩm', 'Humidity');
                 $('#selectTable').val(this.options.stationId);
+                
                 setTimeout(gotoCheckData(false),500);
+
             });
             return marker;
         }
@@ -1368,8 +1370,8 @@
                 url: link,
                 data: {},
                 success: function (stations) {
-                    var getStation = stations[0];
-                    getStation.forEach(station => {
+                   
+                    stations.forEach(station => {
                         var latlon = [station.lat, station.lon];
                         createMaker(latlon,station);
                     });
@@ -1628,8 +1630,7 @@
                     console.log('aqi data: ', result);
                     let datasets = [];
                     let data = [];
-                    let getResult = result[0];
-                    getResult.map(item => data.push({x: new Date(item.time*1000),y:item.aqi}));
+                    result.map(item => data.push({x: new Date(item.time*1000),y:item.aqi}));
                     datasets.push({
                         label: "AQI",
                         backgroundColor: 'green',
