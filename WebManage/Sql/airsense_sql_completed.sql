@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 31, 2021 lúc 06:10 PM
--- Phiên bản máy phục vụ: 10.1.36-MariaDB
--- Phiên bản PHP: 7.2.11
+-- Host: 127.0.0.1
+-- Generation Time: Nov 06, 2021 at 03:13 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `airsense`
+-- Database: `airsense`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `address`
+-- Table structure for table `address`
 --
 
 CREATE TABLE `address` (
@@ -37,33 +36,34 @@ CREATE TABLE `address` (
   `city` varchar(100) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `streetaddr` varchar(100) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `postCode` varchar(12) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `address`
+-- Dumping data for table `address`
 --
 
-INSERT INTO `address` (`addrid`, `userid`, `name`, `contactPhoneNumber`, `province`, `city`, `streetaddr`, `postCode`, `createat`, `updateat`, `id_create`, `id_update`, `deleteflag`) VALUES
-(1, 16, '17 phan dinh phung', '09887667765', 'ha noi', 'ha noi', '39 nguyen dinhlap', '1000', '2020-05-21 00:00:00', '2020-06-09 23:07:38', 16, 16, 1),
-(2, 16, '17 phan dinh phung', '09887667763', 'ha noi', 'ha noi', '39 nguyen dinhlap', '1000', '2020-06-09 23:07:38', '2020-06-09 23:07:38', 16, 16, 0),
-(3, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-28 01:21:18', '2020-07-28 01:21:18', 17, 17, 0),
-(4, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-28 01:39:19', '2020-07-28 01:39:19', 17, 17, 0),
-(5, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-28 01:39:48', '2020-07-28 01:39:48', 17, 17, 0),
-(6, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-28 21:26:14', '2020-07-28 21:26:14', 17, 17, 0),
-(7, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-28 21:28:14', '2020-07-28 21:28:14', 17, 17, 0),
-(8, 0, 'Lu', '0389992137', 'âssssssssss', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-28 21:40:44', '2020-07-28 21:40:44', 17, 17, 0),
-(9, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-29 00:03:19', '2020-07-29 00:03:19', 17, 17, 0),
-(10, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-29 00:04:34', '2020-07-29 00:04:34', 17, 17, 0);
+INSERT INTO `address` (`addrid`, `userid`, `name`, `contactPhoneNumber`, `province`, `city`, `streetaddr`, `postCode`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+(1, 16, '17 phan dinh phung', '09887667765', 'ha noi', 'ha noi', '39 nguyen dinhlap', '1000', '2020-05-21 00:00:00', '2020-06-09 23:07:38', 16, 16, 1, 0),
+(2, 16, '17 phan dinh phung', '09887667763', 'ha noi', 'ha noi', '39 nguyen dinhlap', '1000', '2020-06-09 23:07:38', '2020-06-09 23:07:38', 16, 16, 0, 0),
+(3, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-28 01:21:18', '2020-07-28 01:21:18', 17, 17, 0, 0),
+(4, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-28 01:39:19', '2020-07-28 01:39:19', 17, 17, 0, 0),
+(5, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-28 01:39:48', '2020-07-28 01:39:48', 17, 17, 0, 0),
+(6, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-28 21:26:14', '2020-07-28 21:26:14', 17, 17, 0, 0),
+(7, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-28 21:28:14', '2020-07-28 21:28:14', 17, 17, 0, 0),
+(8, 0, 'Lu', '0389992137', 'âssssssssss', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-28 21:40:44', '2020-07-28 21:40:44', 17, 17, 0, 0),
+(9, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-29 00:03:19', '2020-07-29 00:03:19', 17, 17, 0, 0),
+(10, 0, 'Lu', '0389992137', 'Hà N?i', 'Hai Bà Tr?ng', 'so 15 ngõ Lê tr?ng t?n Thanh xuân hà n?i', '123456789', '2020-07-29 00:04:34', '2020-07-29 00:04:34', 17, 17, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `extended_data`
+-- Table structure for table `extended_data`
 --
 
 CREATE TABLE `extended_data` (
@@ -77,7 +77,7 @@ CREATE TABLE `extended_data` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `extended_data`
+-- Dumping data for table `extended_data`
 --
 
 INSERT INTO `extended_data` (`NodeId`, `Time`, `CO`, `CO2`, `SO2`, `NO2`, `O3`) VALUES
@@ -36538,24 +36538,63 @@ INSERT INTO `extended_data` (`NodeId`, `Time`, `CO`, `CO2`, `SO2`, `NO2`, `O3`) 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `group_content`
+-- Table structure for table `group_content`
 --
 
 CREATE TABLE `group_content` (
-  `id` int(11) NOT NULL,
+  `group_content_id` int(11) NOT NULL,
   `group_content` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `title` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `group_content`
+--
+
+INSERT INTO `group_content` (`group_content_id`, `group_content`, `title`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+(1, 'Blog', 'Blog', '2021-06-15 00:00:00', '2021-06-10 00:00:00', 0, 0, 0, 0),
+(2, 'Đào tạo', 'Đào tạo', '2021-06-15 00:00:00', '2021-06-10 00:00:00', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `history_delivery_warehouse_return`
+-- Table structure for table `group_content_sub`
+--
+
+CREATE TABLE `group_content_sub` (
+  `group_content_sub_id` int(11) NOT NULL,
+  `group_content` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
+  `group_content_id` int(11) NOT NULL,
+  `title` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `group_content_sub`
+--
+
+INSERT INTO `group_content_sub` (`group_content_sub_id`, `group_content`, `group_content_id`, `title`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+(1, 'STEM', 1, 'STEM', '2021-10-20 00:00:00', '2021-10-20 00:00:00', 0, 0, 0, 0),
+(2, 'Environment', 1, 'Môi trường', '2021-06-16 00:00:00', '2021-06-16 00:00:00', 0, 0, 0, 0),
+(3, 'Climate', 1, 'Khí hậu', '2021-06-16 00:00:00', '2021-06-16 00:00:00', 0, 0, 0, 0),
+(11, 'News', 2, 'Tin tức', '2021-06-16 00:00:00', '2021-06-16 00:00:00', 0, 0, 0, 0),
+(12, 'Documentary', 2, 'Tài liệu', '2021-06-16 00:00:00', '2021-06-16 00:00:00', 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history_delivery_warehouse_return`
 --
 
 CREATE TABLE `history_delivery_warehouse_return` (
@@ -36563,17 +36602,18 @@ CREATE TABLE `history_delivery_warehouse_return` (
   `idreturn` int(11) NOT NULL,
   `id_user_send` int(11) NOT NULL,
   `id_adress` int(11) NOT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `location`
+-- Table structure for table `location`
 --
 
 CREATE TABLE `location` (
@@ -36598,7 +36638,7 @@ CREATE TABLE `location` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `location`
+-- Dumping data for table `location`
 --
 
 INSERT INTO `location` (`Id`, `Latitude`, `Longtitude`, `Altitude`, `Type`, `PictureLinks`, `StartTime`, `StopTime`, `Description`, `ReverseGeocode`, `NodeId`, `Name`, `DateCreated`, `Status`, `Note`, `Contact`, `NoteStatus`, `Implement_TestingDate`) VALUES
@@ -36627,34 +36667,35 @@ INSERT INTO `location` (`Id`, `Latitude`, `Longtitude`, `Altitude`, `Type`, `Pic
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `manifest_authen`
+-- Table structure for table `manifest_authen`
 --
 
 CREATE TABLE `manifest_authen` (
   `manifestid` int(11) NOT NULL,
   `role` varchar(20) NOT NULL,
   `content` varchar(100) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `manifest_authen`
+-- Dumping data for table `manifest_authen`
 --
 
-INSERT INTO `manifest_authen` (`manifestid`, `role`, `content`, `createat`, `updateat`, `id_create`, `id_update`, `deleteflag`) VALUES
-(1, 'manager', 'Quản trị viên', '2020-08-02 18:20:27', '2020-08-02 18:20:27', 17, 17, 0),
-(3, 'supporter', 'Cộng tác viên', '2020-08-02 18:21:21', '2020-08-02 18:21:21', 17, 17, 0),
-(4, 'user', 'Người dùng', '2020-08-02 18:21:34', '2020-08-02 18:21:34', 17, 17, 0),
-(10, 'none', 'Chưa chỉ định quyền', '2020-08-02 20:41:40', '2020-08-02 20:41:40', 17, 17, 0);
+INSERT INTO `manifest_authen` (`manifestid`, `role`, `content`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+(1, 'manager', 'Quản trị viên', '2020-08-02 18:20:27', '2020-08-02 18:20:27', 17, 17, 0, 0),
+(3, 'supporter', 'Cộng tác viên', '2020-08-02 18:21:21', '2020-08-02 18:21:21', 17, 17, 0, 0),
+(4, 'user', 'Người dùng', '2020-08-02 18:21:34', '2020-08-02 18:21:34', 17, 17, 0, 0),
+(10, 'none', 'Chưa chỉ định quyền', '2020-08-02 20:41:40', '2020-08-02 20:41:40', 17, 17, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `oauthen2`
+-- Table structure for table `oauthen2`
 --
 
 CREATE TABLE `oauthen2` (
@@ -36664,25 +36705,28 @@ CREATE TABLE `oauthen2` (
   `tocken` varchar(256) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `id_updated` datetime NOT NULL,
-  `id_created` datetime NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `id_created` int(11) NOT NULL,
   `deleteflag` int(11) NOT NULL,
-  `time_relase` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `oldid` int(11) DEFAULT NULL,
+  `time_relase` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `oauthen2`
+-- Dumping data for table `oauthen2`
 --
 
-INSERT INTO `oauthen2` (`id`, `manifestid`, `userid`, `tocken`, `created_at`, `updated_at`, `id_updated`, `id_created`, `deleteflag`, `time_relase`) VALUES
-(0, 1, 1, 'rk2qBjcGxiddbvTas60XVmiGehpCWkXcxWoh5xeaEDDGQahaHZLR8ULCRE9Ljj3CBmDrKVH5wXnf1iLEGnXiBPsPcKCmeY2mKRcCYl62TN5SXqgJTr1Zq4LdAMw5RsaCP6MM684GsxZF53j6rZDdqG0MKf5qiZ1kkKPg0fS5j9voFGEWe6RpKpIUHd8dw7lsKRhUWPkbay6FuslgjWqxsYMynDcO8rEqltQVJIzoTq5DyeyW53lYmLGwgtgWHyHv', '2021-10-31 23:22:29', '2021-10-31 23:22:29', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2021-11-01 16:22:29'),
-(0, 1, 1, 'CIn08qY1S5JacryFnMQmqjJJ0N9gbHg7zjmjfB2slBfjUoiEMxg6Dq9nRmaEYjJOiwLg19ilwKDripfQKANBn9EXP9P1YzGSaXrQabruLs0vecVcvUU98dv92YrJxMM8CYqMRpB3jDQYaOKfizMTZji28PSOZ6hsN6Mj1BYpJF2DIsB6HbbNEZ9WTbQSj1K08kjWNK8tbM79hVZvJkc8lHlWM5t36h3qChdP3qE2qeaCz3mcgRkwXJOuxpAXzhsT', '2021-10-31 23:27:01', '2021-10-31 23:27:01', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2021-11-01 16:27:01'),
-(0, 1, 1, '5IkDK6AThaF23E0ZZnjMjFXtvKP0MWpw6eClhFl7XOgdV4JPogow53NAg85wJ3yoyMKV2Oa9wkujyGmg3XzWhBuaqoOL2Uy9VHB7GcPBWE5RrgNrVFIqEZ3YkaY7l8pQHrlQbbmPEUEVEtq3AHCACGEvgTLDIAIjTRxkXunJqZWwRj4VizADvcquxNWJcdhmrG1J7yxu1PMPGa2PRbJTR9IhtU5uANC6sC1iZI6lmE3frsEyyKTfytMfO773smy5', '2021-10-31 23:27:37', '2021-10-31 23:27:37', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2021-11-01 16:27:37');
+INSERT INTO `oauthen2` (`id`, `manifestid`, `userid`, `tocken`, `created_at`, `updated_at`, `id_updated`, `id_created`, `deleteflag`, `oldid`, `time_relase`) VALUES
+(1, 1, 1, 'oEjsbzgSulnsjPlQ0YZAz5YnrK2VjtcwruHAfDyv3mId68mdjOnazXsFeUTFiM0QyrbiyGfdDr0JMEWlq4AuemIdrnHzf98w0tB5tdG58ctrWbQdNGBtOR4mWWMws2OnZ854ySfxcExzNh0786q6SKSpyJHbClk2udIyQ5xXWRmBuYT3KrC9dyEMyULkuDUi4V0sXlDYMgBeCSejR6Biw3gTZry1g4QwBzUBKHPq3cOb6H2vn0KH63NpIBqH6F3N', '2021-11-05 18:05:33', '2021-11-05 18:05:33', 0, 0, 0, 0, '2021-11-06 11:05:33'),
+(2, 1, 1, 'IgPVwCU83X5BjVydk76mqcPBkG2fBHmnzi5LJ9MK1ivMxzn0Eb9OAqoqSO3UTeLQ24Uob342rWbXKEoyYEJzjoMsLgg5moQk5MZIEceEeLbFp1tduLPSzdi5TRxzTAYNP2g4fIT8K5grQplRAhiruyDEhd3PjM7WS1G3Y3dZaoHh9MeCfJaAdr3PviPgGqurWmnTtt1Zj0bkwlIWseCckC4db0rvlAzvRaX8gZNJ9zNEGKrzE0STUUVKYRfStO3k', '2021-11-05 18:33:10', '2021-11-05 18:33:10', 0, 0, 0, 0, '2021-11-06 11:33:10'),
+(3, 1, 1, 'AUuHIOy7WtsGe4fS5ticcikYD6BsLPzLSXdwf4SgVl8nHXoA99cN6ggwBojPH042WEeGks6JhB2E2BwF9zrQaQ5u8HKougnUT3VZwBQci6mLFADckVnm37B8LTZu35m3fuSuug70z86CGdaX8NZCxs3r1r5bXkxgzv4bNqsSaVCXzC8QVGwLowoiFjJ4jmdQFjXLc9ptd5FXjTLeYUF6I7hczF6zHyuoMOi2zYtsZHXvHadJLPD4WcPdkBlpD3Zf', '2021-11-05 18:33:14', '2021-11-05 18:33:14', 0, 0, 0, 0, '2021-11-06 11:33:14'),
+(4, 1, 1, 'BEVi98yMakYRKla8LzNCqvY80JGNISY9eUOqVJ3pdsDk8FKzvr5eGJH3fXfxMa9eWMHttbxhtvnkBOiRSCuJYDWoyFTH0q82ajIGTnQQy0GhmJYc8y2I28xLeLyYQNMOSwJXAe4Pyyd4YVn3cdjSDifq1mH3GAtokYIWTlpWiK29NQmICpDMvAS8JQPcSLWWc90Zq40c8fNjju4KrjqcAUihudGYNOoyCm5RrU3zIuLJBnvaCV9Qz8caXhqNvmkF', '2021-11-05 18:33:21', '2021-11-05 18:33:21', 0, 0, 0, 0, '2021-11-06 11:33:21'),
+(5, 1, 1, 'iLE9xQokbeoaX60kCp0rM0DOeAMErAgY5JgY93AKSlPv3IAaBHWSpXZoGk91IqRhAmAyRwJtMeIasaHiD6Vis7uVwSoE9xbxlotYAvC7zhFgmprCht98Se1X7r2mQ8Da7IitHrILq1E8AXUQeq5zYOIBjsmyJcjMqiRJtxDRx9PrW609q2G3Wrk9ZTdZZKg1ev7VvAMCSYmA4fOUKvs3NBVGTGi23KiVuKzooq4fynfYWCpGLOAHiMws2TiAPC3g', '2021-11-05 19:04:16', '2021-11-05 19:04:16', 1, 1, 0, NULL, '2021-11-06 12:04:16');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `oauthen2design`
+-- Table structure for table `oauthen2design`
 --
 
 CREATE TABLE `oauthen2design` (
@@ -36691,18 +36735,19 @@ CREATE TABLE `oauthen2design` (
   `userid` int(11) NOT NULL,
   `link` varchar(200) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `tocken` varchar(256) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
   `time_release` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `oauthen2design_data`
+-- Table structure for table `oauthen2design_data`
 --
 
 CREATE TABLE `oauthen2design_data` (
@@ -36711,17 +36756,18 @@ CREATE TABLE `oauthen2design_data` (
   `link` varchar(200) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `tocken` varchar(256) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `linkfile` varchar(200) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `orders_sale`
+-- Table structure for table `orders_sale`
 --
 
 CREATE TABLE `orders_sale` (
@@ -36734,17 +36780,18 @@ CREATE TABLE `orders_sale` (
   `width` float NOT NULL,
   `height` float NOT NULL,
   `length` float NOT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `orders_sale_historyshiper`
+-- Table structure for table `orders_sale_historyshiper`
 --
 
 CREATE TABLE `orders_sale_historyshiper` (
@@ -36755,36 +36802,51 @@ CREATE TABLE `orders_sale_historyshiper` (
   `shipperid` int(11) NOT NULL,
   `location` varchar(256) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `adressid` int(11) NOT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `pages_content`
+-- Table structure for table `pages_content`
 --
 
 CREATE TABLE `pages_content` (
-  `id` int(11) NOT NULL,
-  `group_file` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `filesave` varchar(100) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `title` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `content` varchar(1024) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `pages_content_id` int(11) NOT NULL,
+  `group_content_sub_id` int(11) NOT NULL,
+  `group_file` varchar(50) DEFAULT NULL,
+  `filesave` varchar(100) DEFAULT NULL,
+  `title` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `content` varchar(1024) CHARACTER SET utf8 DEFAULT NULL,
+  `content_img` varchar(1024) CHARACTER SET utf8 DEFAULT NULL,
+  `is_main_pages_id` int(11) NOT NULL,
+  `set_to_fist` bigint(20) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pages_content`
+--
+
+INSERT INTO `pages_content` (`pages_content_id`, `group_content_sub_id`, `group_file`, `filesave`, `title`, `content`, `content_img`, `is_main_pages_id`, `set_to_fist`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+(527, 0, 'group_file', 'storeHtml/filePpjDTJLJABzSfZa1Sn0S1636114058247.html', 'a', 'b', 'http://127.0.0.1:3000/uploads/datas/1636114045913-MicrosoftTeams-image.png', 0, 0, '2021-11-05 19:07:38', '2021-11-05 19:07:38', 1, 1, 0, 0),
+(528, 0, 'group_file', 'storeHtml/fileL0Cz8yQi7M6UC9bvT01a1636135612765.html', 'a', 'b', 'http://127.0.0.1:3000/uploads/datas/1636135568238-MicrosoftTeams-image (2).png', 0, 0, '2021-11-06 01:06:52', '2021-11-06 01:06:52', 1, 1, 0, 0),
+(529, 1, 'group_file', 'storeHtml/fileMnY4UsjHR1FXE8GI7o121636160929005.html', 'a', 'b', 'http://127.0.0.1:3000/uploads/datas/1636160916989-MicrosoftTeams-image (2).png', 0, 0, '2021-11-06 08:08:49', '2021-11-06 08:08:49', 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `setup_device`
+-- Table structure for table `setup_device`
 --
 
 CREATE TABLE `setup_device` (
@@ -36792,17 +36854,18 @@ CREATE TABLE `setup_device` (
   `user_setup_id` int(11) NOT NULL,
   `customerid` int(11) NOT NULL,
   `note` varchar(256) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `setup_device_bill`
+-- Table structure for table `setup_device_bill`
 --
 
 CREATE TABLE `setup_device_bill` (
@@ -36810,17 +36873,18 @@ CREATE TABLE `setup_device_bill` (
   `deviceid` int(11) NOT NULL,
   `setupid` int(11) NOT NULL,
   `km` float NOT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sparc_access_location_sensor`
+-- Table structure for table `sparc_access_location_sensor`
 --
 
 CREATE TABLE `sparc_access_location_sensor` (
@@ -36829,24 +36893,25 @@ CREATE TABLE `sparc_access_location_sensor` (
   `id_group` int(11) NOT NULL,
   `station_id` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `manifestid` int(11) NOT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `sparc_access_location_sensor`
+-- Dumping data for table `sparc_access_location_sensor`
 --
 
-INSERT INTO `sparc_access_location_sensor` (`id_access`, `userid`, `id_group`, `station_id`, `manifestid`, `createat`, `updateat`, `id_create`, `id_update`, `deleteflag`) VALUES
-(2, 0, 1, '87971959659413', 1, '2020-08-16 14:34:55', '2020-08-16 14:34:55', 17, 17, 0);
+INSERT INTO `sparc_access_location_sensor` (`id_access`, `userid`, `id_group`, `station_id`, `manifestid`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+(2, 0, 1, '87971959659413', 1, '2020-08-16 14:34:55', '2020-08-16 14:34:55', 17, 17, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sparc_aqi`
+-- Table structure for table `sparc_aqi`
 --
 
 CREATE TABLE `sparc_aqi` (
@@ -36864,7 +36929,7 @@ CREATE TABLE `sparc_aqi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `sparc_aqi`
+-- Dumping data for table `sparc_aqi`
 --
 
 INSERT INTO `sparc_aqi` (`time`, `station_id`, `aqi`, `SO2_aqi`, `PM25_aqi`, `PM10_aqi`, `NO2_aqi`, `PM1_aqi`, `CO_aqi`, `O3_aqi`, `CO2_aqi`) VALUES
@@ -36892,7 +36957,7 @@ INSERT INTO `sparc_aqi` (`time`, `station_id`, `aqi`, `SO2_aqi`, `PM25_aqi`, `PM
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sparc_group_location_sensor`
+-- Table structure for table `sparc_group_location_sensor`
 --
 
 CREATE TABLE `sparc_group_location_sensor` (
@@ -36902,13 +36967,14 @@ CREATE TABLE `sparc_group_location_sensor` (
   `updated_at` datetime NOT NULL,
   `id_updated` datetime NOT NULL,
   `id_created` datetime NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sparc_location_sensor`
+-- Table structure for table `sparc_location_sensor`
 --
 
 CREATE TABLE `sparc_location_sensor` (
@@ -36919,189 +36985,190 @@ CREATE TABLE `sparc_location_sensor` (
   `location_long` float NOT NULL,
   `adress` varchar(256) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `content` varchar(256) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
   `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL,
   `id_group` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `sparc_location_sensor`
+-- Dumping data for table `sparc_location_sensor`
 --
 
-INSERT INTO `sparc_location_sensor` (`id`, `mac`, `station_id`, `location_lat`, `location_long`, `adress`, `content`, `createat`, `updateat`, `id_create`, `id_update`, `deleteflag`, `id_group`) VALUES
-(3, 'DC4F227E6793', '242232439236499', 21.0785, 105.818, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2021-01-23 09:26:48', '2021-01-23 09:26:48', 43, 59, 0, 0),
-(4, 'DC4F227DCCD1', '242232439196881', 21.0695, 105.855, '220 Phố Bắc Cầu, Ngọc Thụy, Long Biên, Hà Nội, Việt Nam', 'Trạm 2', '2020-09-03 15:21:26', '2020-09-03 15:21:31', 19, 19, 0, 2),
-(5, 'DC4F227DC9FA', '242232439196154', 21.0087, 105.801, 'Phòng 2301 Tòa A, Nhà N04, Hoàng Đạo Thúy, Việt Nam, Trung Hoà, Cầu Giấy, Hà Nội, Việt Nam', 'Trạm 3', '2020-09-04 15:21:26', '2020-09-04 15:21:31', 19, 19, 0, 3),
-(6, 'BCDDC26BA2D4', '207660635628244', 20.9714, 105.84, 'Số 33,khu tập thể 492,tổ 12Hoàng Liệt ,Hoàng Mai Hà Nội', 'Trạm 4', '2020-11-29 21:41:12', '2020-11-29 21:41:12', 19, 44, 0, 0),
-(7, 'DC4F227DCC45', '242232439196741', 21.0153, 105.8, '3 Trung Yên 10A, Trung Hoà, Cầu Giấy, Hà Nội, Việt Nam', 'Trạm 5', '2020-09-06 15:21:26', '2020-09-06 15:21:31', 19, 19, 0, 5),
-(8, 'DC4F227E68C4', '242232439236804', 20.9953, 105.808, '334 Nguyễn Trãi, Thanh Xuân Trung, Thanh Xuân, Hà Nội, Việt Nam', 'Trạm 6', '2020-09-07 15:21:26', '2020-09-07 15:21:31', 19, 19, 0, 6),
-(9, '50029167E8F2', '87971959662834', 20.9851, 105.864, '409 Đường Tam Trinh, Hoàng Văn Thụ, Hoàng Mai, Hà Nội, Việt Nam', 'Trạm 7', '2020-09-08 15:21:26', '2020-09-08 15:21:31', 19, 19, 0, 7),
-(10, 'DC4F227DCA68', '242232439196264', 21.0415, 105.815, '6 Quần Ngựa, Liễu Giai, Ba Đình, Hà Nội, Việt Nam', 'Trạm 8', '2020-09-09 15:21:26', '2020-09-09 15:21:31', 19, 19, 0, 8),
-(11, 'DC4F227DCFF6', '242232439197686', 21.0469, 105.795, 'Số 1 D1, Ngõ 106 - Hoàng Quốc Việt, Nghĩa Đô, Cầu Giấy, Hà Nội, Việt Nam', 'Trạm 9', '2020-09-10 15:21:26', '2020-11-26 22:25:16', 19, 43, 1, 9),
-(12, 'DC4F2222F3A0', '242232433243040', 21.0893, 105.801, '359 An Dương Vương, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 10', '2020-09-11 15:21:26', '2020-09-11 15:21:31', 19, 19, 0, 10),
-(13, '50029167E731', '87971959662385', 21.0634, 105.823, '20 Hẻm 12/2/5 Đặng Thai Mai, Quảng An, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 11', '2020-09-12 15:21:26', '2020-09-12 15:21:31', 19, 19, 1, 11),
-(14, 'DC4F227E65F4', '242232439236084', 20.9765, 105.834, 'P. Trịnh Đình Cửu, Định Công, Thanh Xuân, Hà Nội, Việt Nam', 'Trạm 12', '2020-09-13 15:21:26', '2020-09-13 15:21:31', 19, 19, 0, 12),
-(15, 'DC4F227E57D1', '242232439232465', 21.0162, 105.952, '17A, ngõ 87, Yên Sở, Hoàng Mai, Hà Nội', 'Trạm 13', '2020-11-26 22:37:08', '2020-11-26 22:37:08', 43, 43, 0, 0),
-(16, '50029167E78E', '87971959662478', 21.0149, 105.776, 'villa D25, Phố Trần Văn Lai, Mỹ Đình, Từ Liêm, Hà Nội, Việt Nam', 'Trạm 14', '2020-12-24 16:21:14', '2020-12-24 16:22:11', 19, 43, 1, 0),
-(17, 'DC4F227E57DA', '242232439232474', 20.9853, 105.84, '6 Định Công, Phương Liệt, Thanh Xuân, Hà Nội, Việt Nam', 'Trạm 15', '2020-09-16 15:21:26', '2020-09-16 15:21:31', 19, 19, 0, 15),
-(18, 'BCDDC26C4CF4', '207660635671796', 21.0058, 105.844, 'C5 Đại học Bách Khoa Hà Nội', 'Trạm 16', '2021-04-01 21:48:52', '2021-04-01 21:48:52', 19, 43, 0, 0),
-(19, 'DC4F227DC944', '242232439195972', 20.9689, 105.78, '119 Đường Cổ Linh, Bồ Đề, Long Biên, Hà Nội, Việt Nam', 'Trạm 17', '2020-09-18 15:21:26', '2020-09-18 15:21:31', 19, 19, 0, 17),
-(20, 'BCDDC26BA2C6', '207660635628230', 20.9714, 105.84, 'Số 33,khu tập thể 492,tổ 12Hoàng Liệt ,Hoàng Mai Hà Nội', 'Trạm 18', '2020-11-29 21:42:20', '2020-11-29 21:42:20', 19, 44, 0, 0),
-(21, '50029167DB95', '87971959659413', 21.0153, 105.8, '3 Trung Yên 10A, Trung Hoà, Cầu Giấy, Hà Nội, Việt Nam', 'Trạm 19', '2020-09-20 15:21:26', '2020-09-20 15:21:31', 19, 19, 0, 19),
-(23, '5002914ED2D3', '87971958018771', 21.0047, 105.8, 'chưa xác định', 'Trạm 21', '2020-11-02 23:12:47', '2020-11-02 23:12:47', 22, 44, 0, 0),
-(29, '240AC458BC74', '39628662422644', 21.0054, 105.845, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618', '2021-01-23 09:01:31', '2021-01-23 09:01:31', 43, 59, 0, 0),
-(31, '240AC458ABD4', '39628662418388', 21.1149, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-25 22:12:25', '2020-11-25 22:12:25', 44, 43, 0, 0),
-(32, 'F008D1D35124', '263920670691620', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 3', '2020-11-26 08:31:18', '2020-11-26 08:31:18', 44, 44, 0, 0),
-(34, NULL, '39628662418388', 21.0054, 105.03, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-10-24 00:50:22', '2020-11-02 21:17:03', 44, 43, 1, NULL),
-(35, NULL, '39628662418388', 21.0054, 105.04, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 21:17:03', '2020-11-02 21:17:20', 44, 43, 1, NULL),
-(36, NULL, '39628662418388', 21.0054, 105.004, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 21:17:20', '2020-11-02 21:22:33', 43, 43, 1, NULL),
-(37, NULL, '39628662418388', 21.0054, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 21:22:33', '2020-11-02 21:56:12', 43, 43, 1, NULL),
-(38, NULL, '39628662418388', 21.0055, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 21:56:12', '2020-11-02 21:59:24', 43, 43, 1, NULL),
-(39, NULL, '39628662418388', 21.0056, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 21:59:24', '2020-11-02 22:02:05', 43, 43, 1, NULL),
-(40, NULL, '39628662418388', 21.0057, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 22:02:05', '2020-11-02 22:17:44', 43, 43, 1, NULL),
-(41, NULL, '87971958018771', 21, 105.8, 'chưa xác định', 'Trạm 21', '2020-10-20 16:40:51', '2020-11-02 23:12:47', 19, 44, 1, NULL),
-(43, NULL, '39628662418388', 21.0055, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 22:17:44', '2020-11-06 12:50:05', 43, 43, 1, NULL),
-(44, NULL, '39628662418388', 21.0055, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-06 12:50:05', '2020-11-06 12:50:13', 43, 43, 1, NULL),
-(45, NULL, '39628662418388', 21.0055, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 3', '2020-11-06 12:50:13', '2020-11-06 12:50:57', 43, 43, 1, NULL),
-(46, NULL, '39628662418388', 21.0055, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-06 12:50:57', '2020-11-11 20:09:11', 43, 44, 1, NULL),
-(47, 'DC4F227DCD00', '242232439196928', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 23', '2020-11-25 22:16:06', '2020-11-25 22:16:06', 44, 43, 1, 0),
-(48, 'DC4F227E67C4', '242232439236548', 20.9721, 105.87, '17A, ngõ 87, Yên Sở, Hoàng Mai, Hà Nội', 'Trạm 24', '2020-11-26 22:32:28', '2020-11-26 22:32:28', 44, 43, 0, 0),
-(49, '4C11AE109277', '83638818476663', 21.1131, 105.831, 'Hà Nội', 'Trạm 25', '2021-02-23 16:45:29', '2021-02-23 16:45:29', 43, 44, 0, 0),
-(50, NULL, '242232439236548', 21.0047, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 24', '2020-11-24 11:03:22', '2020-11-25 11:15:15', 44, 46, 1, NULL),
-(51, NULL, '242232439236499', 21.0785, 105.816, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2020-09-02 15:21:26', '2020-11-25 11:20:57', 19, 46, 1, NULL),
-(52, NULL, '242941108840388', 21.0047, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 24', '2020-11-25 11:15:15', '2020-11-25 11:28:56', 44, 46, 1, NULL),
-(53, NULL, '242232439236548', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 3', '2020-11-25 11:28:56', '2020-11-25 11:31:48', 46, 46, 1, NULL),
-(54, 'DC4F227DD01F', '242232439197727', 20.972, 105.829, '2B, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 27', '2020-11-29 10:58:55', '2020-11-29 10:58:55', 43, 44, 0, 0),
-(55, '3C71BF63E0F78', '1063347839438712', 21.0054, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm V3 01', '2020-11-26 08:30:34', '2020-11-26 08:30:34', 44, 44, 0, 0),
-(56, NULL, '123456', 12, 105.04, 'sssss', '', '2020-11-25 21:48:03', '2020-11-25 21:50:55', 43, 43, 1, 0),
-(57, NULL, '22222', 33, 33, 'dddddd', '', '2020-11-25 21:48:51', '2020-11-25 21:50:52', 43, 43, 1, 0),
-(58, NULL, '333333', 33, 33, 'eeeeee', '', '2020-11-25 21:50:03', '2020-11-25 21:50:58', 43, 43, 1, 0),
-(59, NULL, '44444', 22, 22, 'dddd', '', '2020-11-25 21:52:33', '2020-11-25 22:09:48', 43, 43, 1, 0),
-(60, NULL, '33333', 44, 44, 'ssss', '', '2020-11-25 21:53:53', '2020-11-25 22:09:41', 43, 43, 1, 0),
-(61, '333333334', '333333334', 22, 22, 'ssss', '', '2020-11-25 22:00:24', '2020-11-25 22:10:37', 43, 43, 1, 0),
-(62, '788888', '788888', 44, 44, 'ffff', '', '2020-11-25 22:02:55', '2020-11-25 22:10:32', 43, 43, 1, 0),
-(63, '33444343', '33444343', 33, 33, 'ddddd', '', '2020-11-25 22:03:25', '2020-11-25 22:10:34', 43, 43, 1, 0),
-(64, 'qwerty', 'NaN', 33, 666, 'ddd', '', '2020-11-25 22:05:16', '2020-11-25 22:10:13', 43, 43, 1, 0),
-(65, 'qqqq', 'NaN', 22, 22, 'dddd', '', '2020-11-25 22:06:23', '2020-11-25 22:10:23', 43, 43, 1, 0),
-(66, 'aaaa', '43690', 22, 22, 'ddd', '', '2020-11-25 22:10:01', '2020-11-25 22:10:42', 43, 43, 1, 0),
-(67, NULL, '39628662418388', 21.1149, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-11 20:09:11', '2020-11-25 22:12:25', 43, 43, 1, NULL),
-(68, NULL, '39628662422644', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618', '2020-10-23 21:16:21', '2020-11-25 22:12:43', 44, 43, 1, NULL),
-(69, NULL, '66459239964920', 21.0047, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 1', '2020-11-02 11:12:52', '2020-11-25 22:13:02', 44, 43, 1, NULL),
-(70, NULL, '83638818476663', 21.0054, 105.83, 'Hà Nội', 'Trạm 25', '2020-11-25 10:12:47', '2020-11-25 22:13:17', 44, 43, 1, NULL),
-(71, NULL, '242232439196928', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 23', '2020-11-24 10:52:09', '2020-11-25 22:16:06', 44, 43, 1, NULL),
-(72, 'aaaaa12', '178956818', 55, 55, 'fff', '', '2020-11-25 22:23:30', '2020-11-25 22:23:35', 43, 43, 1, 0),
-(73, NULL, '43690', 55, 55, 'fff', '', '2020-11-25 22:17:13', '2020-11-25 22:22:10', 43, 43, 1, NULL),
-(74, NULL, '43690', 55, 55, 'fff', '', '2020-11-25 22:22:10', '2020-11-25 22:22:21', 43, 43, 1, NULL),
-(75, NULL, '43690', 55, 55, 'fff', '', '2020-11-25 22:22:21', '2020-11-25 22:23:18', 43, 43, 1, NULL),
-(76, NULL, '43690', 55, 55, 'fff', '', '2020-11-25 22:23:18', '2020-11-25 22:23:30', 43, 43, 1, NULL),
-(77, NULL, '83638818476663', 21.0054, 105.83, 'Hà Nội', 'Trạm 25', '2020-11-25 22:13:17', '2020-11-26 08:24:01', 44, 44, 1, NULL),
-(78, NULL, '1063347839438712', 21.0054, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm V3 01', '2020-11-25 16:50:19', '2020-11-26 08:30:34', 44, 44, 1, NULL),
-(79, NULL, '263920670691620', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 3', '2020-10-24 00:55:23', '2020-11-26 08:31:18', 44, 44, 1, NULL),
-(80, NULL, '242232439197727', 21.1149, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 27', '2020-11-25 11:46:23', '2020-11-26 08:31:41', 46, 44, 1, NULL),
-(81, NULL, '242232439232703', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 22', '2020-11-04 11:17:34', '2020-11-26 08:31:58', 44, 44, 1, NULL),
-(82, NULL, '242232439236548', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 24', '2020-11-25 11:31:48', '2020-11-26 08:32:15', 46, 44, 1, NULL),
-(84, NULL, '242232439197727', 21.1149, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 27', '2020-11-26 08:31:41', '2020-11-26 15:30:54', 46, 43, 1, NULL),
-(85, NULL, '242232439197727', 20.9673, 105.838, 'Trường THCS Hoàng Liệt, Ngõ 2 - Hoàng Liệt, Khu đô thị Linh Đàm, Hoang Liet, Hoàng Mai, Hanoi', 'Trạm 27', '2020-11-26 15:30:54', '2020-11-26 15:32:19', 44, 43, 1, NULL),
-(86, NULL, '242232439232703', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 22', '2020-11-26 08:31:58', '2020-11-26 15:33:07', 44, 43, 1, NULL),
-(87, 'DC4F227E58BF', '242232439232703', 20.9676, 105.838, '2B, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 22', '2020-11-29 10:56:40', '2020-11-29 10:56:40', 43, 44, 0, 0),
-(88, 'DC4F227DCFF6', '242232439197686', 20.9668, 105.834, 'Lô 19, Ơ 2, Bán Đảo Linh Đàm', 'Trạm 9', '2020-11-29 21:34:37', '2020-11-29 21:34:37', 43, 44, 0, 0),
-(89, ' F4CFA26D8597', '269172620494231', 20.972, 105.84, 'P1003, 19 Đại Từ, Hoàng Mai, Hà Nội', 'Trạm 42', '2020-11-29 21:37:47', '2020-11-29 21:37:47', 43, 44, 0, 0),
-(90, '500291E7C1F0', '87971968041456', 20.9632, 105.832, 'P810, nơ 10, bán đảo Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 44', '2020-11-29 21:57:53', '2020-11-29 21:57:53', 43, 44, 0, 0),
-(91, '500291E7B4C3', '87971968038083', 20.9715, 105.828, 'P516, CT4BX2, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 43', '2021-02-05 15:01:35', '2021-02-05 15:01:35', 43, 43, 0, 0),
-(92, NULL, '102265619723459', 20.9715, 105.828, 'P516, CT4BX2, Linh Đàm, Hoàng Mai, Hà Nội', '', '2020-11-26 22:23:48', '2020-11-26 22:26:52', 43, 43, 1, NULL),
-(93, NULL, '242232439197686', 20.9668, 105.834, 'Lô 19, Ơ 2, Bán Đảo Linh Đàm', 'DC4F227DCFF6', '2020-11-26 22:01:54', '2020-11-26 22:27:39', 43, 43, 1, NULL),
-(94, NULL, '242232439232703', 20.9676, 105.838, '2B, Linh Đàm, Hoàng Mai, Hà Nội', '', '2020-11-26 21:47:56', '2020-11-26 22:28:17', 43, 43, 1, NULL),
-(95, NULL, '242232439236548', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 24', '2020-11-26 08:32:15', '2020-11-26 22:32:28', 46, 43, 1, NULL),
-(96, NULL, '242232439197727', 20.9673, 105.838, 'sân Trường THCS Hoàng Liệt, Ngõ 2 - Hoàng Liệt, Khu đô thị Linh Đàm, Hoang Liet, Hoàng Mai, Hanoi', 'Trạm 27', '2020-11-26 15:32:19', '2020-11-26 22:34:57', 43, 43, 1, NULL),
-(97, NULL, '242232439232465', 21.0162, 105.952, 'X8 - KDT Dang Xa, Đặng Xá, Gia Lâm, Hà Nội, Việt Nam', 'Trạm 13', '2020-09-14 15:21:26', '2020-11-26 22:36:05', 19, 43, 1, NULL),
-(98, NULL, '242232439232465', 21.0162, 105.952, '17A, ngõ 87, Yên Sở, Hoàng Mai, Hà Nội', 'Trạm 13', '2020-11-26 22:36:05', '2020-11-26 22:37:08', 19, 43, 1, NULL),
-(99, 'F4CFA26D3677', '269172620473975', 20.9668, 105.834, 'Lô 19, Ơ 2, Bán Đảo Linh Đàm', 'Trạm 40', '2020-11-29 20:34:15', '2020-11-29 20:34:15', 43, 43, 0, 0),
-(100, 'ECFABCC231D5', '260561652822485', 20.9715, 105.828, 'P516, CT4BX2, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 51', '2020-11-26 22:40:51', '2020-11-26 22:40:51', 43, 43, 0, 0),
-(101, '50029167CB88', '87971959655304', 20.9632, 105.832, 'P810, nơ 10, bán đảo Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 50', '2020-11-26 22:41:41', '2020-11-26 22:41:41', 43, 43, 0, 0),
-(102, NULL, '242232439232703', 20.9676, 105.838, '2B, Linh Đàm, Hoàng Mai, Hà Nội', '22', '2020-11-26 22:28:17', '2020-11-29 10:56:40', 43, 44, 1, NULL),
-(103, NULL, '242232439197727', 20.9676, 105.838, '2B, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 27', '2020-11-26 22:34:57', '2020-11-29 10:58:55', 43, 44, 1, NULL),
-(104, 'F4CFA26D397F', '269172620474751', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', 'Trạm 49', '2020-11-29 18:06:27', '2020-11-29 18:06:27', 44, 44, 0, 0),
-(105, 'F4CFA26D397F', '269172620474751', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', 'Trạm 49', '2020-11-29 20:28:32', '2020-11-29 20:29:06', 43, 43, 1, 0),
-(106, NULL, '269172620474751', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', '', '2020-11-29 18:03:48', '2020-11-29 18:06:27', 44, 44, 1, NULL),
-(107, NULL, '154664821965876', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', '', '2020-11-29 18:04:27', '2020-11-29 18:07:44', 44, 44, 1, NULL),
-(108, NULL, '269172620474751', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', 'Trạm 52', '2020-11-29 18:07:44', '2020-11-29 18:09:40', 44, 44, 1, NULL),
-(109, NULL, '154664821965876', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', 'Trạm 49', '2020-11-29 18:09:40', '2020-11-29 20:27:05', 44, 43, 1, NULL),
-(110, NULL, '269172620474751', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', 'Trạm 52', '2020-11-29 20:27:05', '2020-11-29 20:28:32', 44, 43, 1, NULL),
-(111, '8CAAB5C5C434', '154664821965876', 20.9987, 105.866, '\"D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội\"', 'Trạm 52', '2020-11-29 20:30:13', '2020-11-29 20:30:13', 43, 43, 0, 0),
-(112, NULL, '269172620473975', 20.9668, 105.834, 'Lô 19, Ơ 2, Bán Đảo Linh Đàm', 'Trạm 9', '2020-11-26 22:38:12', '2020-11-29 20:34:15', 43, 43, 1, NULL),
-(113, NULL, '102265619723459', 20.9715, 105.828, 'P516, CT4BX2, Linh Đàm, Hoàng Mai, Hà Nội', '43', '2020-11-26 22:26:52', '2020-11-29 20:36:54', 43, 43, 1, NULL),
-(114, NULL, '87971968041456', 20.9632, 105.832, 'P810, nơ 10, bán đảo Linh Đàm, Hoàng Mai, Hà Nội', '', '2020-11-26 22:19:57', '2020-11-29 20:40:07', 43, 43, 1, NULL),
-(115, '500291E7B6B3', '87971968038579', 20.9634, 105.826, 'HH4B 2630 Linh Đàm', 'Trạm 46', '2020-11-29 20:46:16', '2020-11-29 20:46:16', 43, 43, 0, 0),
-(116, NULL, '87971959685389', 21.0054, 105.83, '', 'moi di lap 1', '2020-11-26 08:35:37', '2020-11-29 20:47:54', 44, 43, 1, NULL),
-(117, NULL, '87971959685389', 21.0054, 105.83, '', 'Trạm 47', '2020-11-29 20:47:54', '2020-11-29 21:28:30', 44, 44, 1, NULL),
-(118, '50029168410D', '87971959685389', 20.9634, 105.826, 'HH4B 2630 Linh Đàm', 'Trạm 47', '2020-11-29 21:30:20', '2020-11-29 21:30:20', 44, 44, 0, 0),
-(119, NULL, '242232439197686', 20.9668, 105.834, 'Lô 19, Ơ 2, Bán Đảo Linh Đàm', '9', '2020-11-26 22:27:39', '2020-11-29 21:34:37', 43, 44, 1, NULL),
-(120, NULL, '269172620494231', 20.972, 105.84, 'P1003, 19 Đại Từ, Hoàng Mai, Hà Nội', '', '2020-11-26 22:19:07', '2020-11-29 21:37:47', 43, 44, 1, NULL),
-(121, NULL, '207660635628244', 21.03, 105.762, 'Nhà C6 KĐT Mỹ Đình I - Trần Hữu Dực, Mỹ Đình 1, Cầu Diễn, Từ Liêm, Hà Nội, Việt Nam', 'Trạm 4', '2020-09-05 15:21:26', '2020-11-29 21:41:12', 19, 44, 1, NULL),
-(122, NULL, '207660635628230', 21.039, 105.874, '35 Đ. Tô Hiệu, P. Nguyễn Trãi, Hà Đông, Hà Nội, Việt Nam', 'Trạm 18', '2020-09-19 15:21:26', '2020-11-29 21:42:20', 19, 44, 1, NULL),
-(124, NULL, '87971968041456', 20.9632, 105.832, 'P810, nơ 10, bán đảo Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 44', '2020-11-29 20:40:07', '2020-11-29 21:57:53', 43, 44, 1, NULL),
-(125, '8CAAB5C6134D', '154664821986125', 21.0047, 105.866, 'Hà Nội', 'Trạm xx', '2020-11-29 22:00:52', '2020-11-29 22:00:52', 44, 44, 0, 0),
-(126, 'DC4f227dcd00', '242232439196928', 13.716, 109.216, 'ICISE', 'Trạm 23', '2020-12-26 12:09:22', '2020-12-26 12:09:22', 43, 46, 0, 0),
-(127, NULL, '242232439196928', 13.716, 109.216, 'ICISE', 'Climate camp', '2020-12-07 07:55:11', '2020-12-07 07:56:51', 43, 43, 1, NULL),
-(128, '50029167e731', '87971959662385', 13.7717, 109.232, 'Halo Hostel, 33 Lê Lợi, TP. Quy Nhơn', 'Halo hostel - Trạm 11', '2020-12-24 16:38:25', '2020-12-24 16:38:25', 43, 43, 0, 0),
-(129, '3C71BF63E0F8', '66459239964920', 21.0057, 105.843, 'C5 - Hanoi University of Science and Technology', 'AirSENSE V3 - C5 - INEST Project', '2020-12-30 00:03:10', '2020-12-30 00:03:10', 59, 43, 0, 0),
-(130, NULL, '66459239964920', 21.0058, 105.844, 'C5 - Hanoi University of Science and Technology', 'C5 - INEST Project', '2020-12-24 16:17:16', '2020-12-24 16:17:59', 43, 43, 1, NULL),
-(131, NULL, '87971959662478', 21.0149, 105.776, 'villa D25, Phố Trần Văn Lai, Mỹ Đình, Từ Liêm, Hà Nội, Việt Nam', 'Trạm 14', '2020-09-15 15:21:26', '2020-12-24 16:21:14', 19, 43, 1, NULL),
-(132, '50029167e78e', '87971959662478', 21.0059, 105.845, 'C5 Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - trạm 14', '2020-12-30 00:02:48', '2020-12-30 00:02:48', 43, 43, 0, 0),
-(133, '50029167ed03', '87971959663875', 21.0058, 105.844, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - trạm 20', '2020-12-24 16:25:43', '2020-12-24 16:25:43', 59, 43, 0, 0),
-(134, NULL, '87971959662385', 13.7161, 109.216, 'ICISE ', 'Climate camp - Trạm 11', '2020-12-07 07:59:14', '2020-12-24 16:38:25', 59, 43, 1, NULL),
-(135, '500291684123', '87971959685411', 21.0058, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 53', '2021-04-01 21:52:55', '2021-04-01 21:52:55', 43, 43, 0, 0),
-(136, NULL, '242232439196928', 13.716, 109.216, 'ICISE', 'Climate camp', '2020-12-07 07:55:11', '2020-12-26 12:09:22', 43, 46, 1, NULL),
-(137, NULL, '87971959662478', 21.0058, 105.844, 'C5 Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - trạm 14', '2020-12-24 16:24:03', '2020-12-30 00:02:48', 59, 43, 1, NULL),
-(138, NULL, '66459239964920', 21.0058, 105.844, 'C5 - Hanoi University of Science and Technology', 'AirSENSE V3 - C5 - INEST Project', '2020-12-24 16:17:59', '2020-12-30 00:03:10', 59, 43, 1, NULL),
-(139, '1099787', '17405831', 20.972, 105.84, 'P1003 số 19 Đại Từ, Hoàng Mai', 'Trạm 45', '2021-01-01 15:40:39', '2021-01-01 15:43:52', 43, 43, 1, 0),
-(140, '50029168417A', '87971959685498', 20.972, 105.84, 'P1003 số 19 Đại Từ, Hoàng Mai', 'Trạm 45', '2021-01-01 15:50:32', '2021-01-01 15:50:32', 43, 43, 0, 0),
-(141, '4C11AE9D76C0', '83638827710144', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'AirSENSE V3 C5 - INEST 4C11AE9D76C0', '2021-01-13 15:45:09', '2021-01-13 15:45:09', 59, 43, 0, 0),
-(142, NULL, '39628662422644', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618', '2020-11-25 22:12:43', '2021-01-23 09:01:31', 59, 59, 1, NULL),
-(143, NULL, '242172309694355', 21.0785, 105.816, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2020-11-25 11:20:57', '2021-01-23 09:06:59', 59, 59, 1, NULL),
-(144, NULL, '242232439236499', 21.0785, 105.817, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2021-01-23 09:06:59', '2021-01-23 09:15:47', 59, 59, 1, NULL),
-(145, NULL, '242232439236499', 21.0785, 105.818, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2021-01-23 09:15:47', '2021-01-23 09:17:16', 59, 59, 1, NULL),
-(146, NULL, '242232439236499', 21.0785, 105.819, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2021-01-23 09:17:16', '2021-01-23 09:26:38', 59, 59, 1, NULL),
-(147, NULL, '242232439236499', 21.0785, 105.817, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2021-01-23 09:26:38', '2021-01-23 09:26:48', 59, 59, 1, NULL),
-(148, '7c9ebdf4178c', '137021233567628', 21.1132, 105.832, 'Vĩnh Ngọc', 'Trạm 55 V3', '2021-01-31 17:24:25', '2021-01-31 17:24:25', 43, 43, 0, 0),
-(149, NULL, '137021233567628', 21.1132, 105.832, 'Vĩnh Ngọc', '', '2021-01-31 17:23:44', '2021-01-31 17:24:25', 43, 43, 1, NULL),
-(150, '500291E7B5E9', '87971968038377', 21.0046, 105.844, 'Đại học Bách Khoa Hà Nội', 'Trạm 60', '2021-02-05 10:22:28', '2021-02-05 10:22:28', 43, 43, 0, 0),
-(151, '84F3EBB331BE', '146183166308798', 21.0045, 105.844, 'Đại học Bách Khoa Hà Nội-1', 'Trạm 63', '2021-02-05 14:55:42', '2021-02-05 14:55:42', 43, 43, 0, 0),
-(152, '24A1603033E3', '40275522106339', 20.972, 105.84, 'Đại học Bách Khoa Hà Nội-2', 'Trạm 61', '2021-02-05 11:51:57', '2021-02-05 11:51:57', 43, 43, 0, 0),
-(153, NULL, '40275522106339', 20.972, 105.84, 'Đại học Bách Khoa Hà Nội-2', 'Test2', '2021-02-05 11:40:21', '2021-02-05 11:51:57', 43, 43, 1, NULL),
-(154, 'F4CFA26D4BE8', '269172620479464', 20.972, 105.84, 'Đại học Bách Khoa Hà Nội-3', 'Trạm 62', '2021-02-05 14:42:55', '2021-02-05 14:42:55', 43, 43, 0, 0),
-(155, NULL, '146183166308798', 21.0045, 105.844, 'Đại học Bách Khoa Hà Nội-1', 'Trạm 52-test', '2021-02-05 10:45:12', '2021-02-05 14:55:42', 43, 43, 1, NULL),
-(156, NULL, '102265619723459', 20.9715, 105.828, 'P516, CT4BX2, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 43', '2020-11-29 20:36:54', '2021-02-05 14:59:30', 43, 43, 1, NULL),
-(157, NULL, '102265619199171', 20.9715, 105.828, 'P516, CT4BX2, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 43', '2021-02-05 14:59:30', '2021-02-05 15:01:35', 43, 43, 1, NULL),
-(158, '24A160302F4D', '40275522105165', 20.972, 105.84, 'Đại học Bách Khoa Hà Nội', 'Trạm 64', '2021-02-05 16:40:58', '2021-02-05 16:40:58', 43, 43, 0, 0),
-(159, NULL, '40275522105165', 20.972, 105.84, 'Đại học Bách Khoa Hà Nội', '1111', '2021-02-05 15:55:49', '2021-02-05 16:40:58', 43, 43, 1, NULL),
-(160, '24A1602FF726', '40275522090790', 20.972, 105.84, 'Đại học Bách Khoa Hà Nội', 'Trạm 65', '2021-02-05 16:46:48', '2021-02-05 16:46:48', 43, 43, 0, 0),
-(161, NULL, '83638818476663', 21.1148, 105.83, 'Hà Nội', 'Trạm 25', '2020-11-26 08:24:01', '2021-02-23 16:45:29', 43, 44, 1, NULL),
-(162, 'F008D1D3F260', '263920670732896', 11.0518, 106.662, 'Nhà ở xã hội Becamex Định Hòa', 'Alphasense_test', '2021-03-28 09:06:48', '2021-03-28 09:06:48', 43, 43, 0, 0),
-(163, NULL, '263920670732896', 11.0518, 106.662, 'Nhà ở xã hội Becamex Định Hòa', '', '2021-03-27 20:46:57', '2021-03-28 09:06:48', 43, 43, 1, NULL),
-(164, NULL, '207660635671796', 21.0459, 105.784, '479 Hoàng Quốc Việt, Cổ Nhuế, Cầu Giấy, Hà Nội, Việt Nam', 'Trạm 16', '2020-09-17 15:21:26', '2021-04-01 21:48:52', 19, 43, 1, NULL),
-(165, NULL, '87971959685411', 21.0054, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 53', '2020-12-26 09:31:28', '2021-04-01 21:52:55', 43, 43, 1, NULL),
-(166, 'BCDDC26C4CF4', '207660635671796', 21.0056, 105.843, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 16', '2021-04-13 22:29:45', '2021-04-13 22:29:45', 59, 59, 0, 0),
-(167, '50029167e78e', '87971959662478', 21.0055, 105.844, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 14', '2021-04-13 22:29:27', '2021-04-13 22:29:27', 59, 59, 0, 0),
-(168, '500291684123', '87971959685411', 21.0056, 105.842, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 53', '2021-04-13 22:29:37', '2021-04-13 22:29:37', 59, 59, 0, 0),
-(169, NULL, '80', 21.0055, 105.844, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 14', '2021-04-13 22:26:48', '2021-04-13 22:29:18', 59, 59, 1, NULL),
-(170, NULL, '80', 21.0055, 105.844, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 14', '2021-04-13 22:29:18', '2021-04-13 22:29:27', 59, 59, 1, NULL),
-(171, NULL, '80', 21.0056, 105.842, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 53', '2021-04-13 22:27:18', '2021-04-13 22:29:37', 59, 59, 1, NULL),
-(172, NULL, '188', 21.0056, 105.843, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 16', '2021-04-13 22:25:31', '2021-04-13 22:29:45', 59, 59, 1, NULL),
-(173, 'AC67B2302EF0', '189561371111152', 11.0542, 106.665, 'Đại học Việt Đức, Bình Dương', 'Alphasense_test2', '2021-05-07 12:08:39', '2021-05-07 12:08:39', 43, 43, 0, 0),
-(174, 'F008D181569C', '263920665319068', 11.0559, 106.666, '49 Lê Lai, Định Hoà, Thủ Dầu Một, Bình Dương', 'AVA_01', '2021-05-14 08:46:13', '2021-05-14 08:46:13', 44, 44, 0, 0),
-(175, 'F008D181361C', '263920665310748', 11.054, 106.666, '49 Lê Lai, Định Hoà, Thủ Dầu Một, Bình Dương', 'AVA_02', '2021-05-15 10:15:23', '2021-05-15 10:15:23', 44, 44, 0, 0),
-(176, 'AC67B2F1E614', '189561383806484', 21.0054, 105.84, '49 Lê Lai, Định Hoà, Thủ Dầu Một, Bình Dương', 'AVA_03', '2021-05-26 09:19:12', '2021-05-26 09:19:12', 44, 44, 0, 0),
-(177, 'AC67B2F59CFC', '189561384049916', 20.9987, 105.866, '49 Lê Lai, Định Hoà, Thủ Dầu Một, Bình Dương', 'AVA_04', '2021-05-28 11:32:17', '2021-05-28 11:32:17', 44, 44, 0, 0),
-(178, 'AC67B2F6C198', '189561384124824', 20.9987, 105.84, '49 Lê Lai, Định Hoà, Thủ Dầu Một, Bình Dương', 'AVA_05', '2021-06-01 13:56:25', '2021-06-01 13:56:25', 44, 44, 0, 0);
+INSERT INTO `sparc_location_sensor` (`id`, `mac`, `station_id`, `location_lat`, `location_long`, `adress`, `content`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`, `id_group`) VALUES
+(3, 'DC4F227E6793', '242232439236499', 21.0785, 105.818, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2021-01-23 09:26:48', '2021-01-23 09:26:48', 43, 59, 0, 0, 0),
+(4, 'DC4F227DCCD1', '242232439196881', 21.0695, 105.855, '220 Phố Bắc Cầu, Ngọc Thụy, Long Biên, Hà Nội, Việt Nam', 'Trạm 2', '2020-09-03 15:21:26', '2020-09-03 15:21:31', 19, 19, 0, 0, 2),
+(5, 'DC4F227DC9FA', '242232439196154', 21.0087, 105.801, 'Phòng 2301 Tòa A, Nhà N04, Hoàng Đạo Thúy, Việt Nam, Trung Hoà, Cầu Giấy, Hà Nội, Việt Nam', 'Trạm 3', '2020-09-04 15:21:26', '2020-09-04 15:21:31', 19, 19, 0, 0, 3),
+(6, 'BCDDC26BA2D4', '207660635628244', 20.9714, 105.84, 'Số 33,khu tập thể 492,tổ 12Hoàng Liệt ,Hoàng Mai Hà Nội', 'Trạm 4', '2020-11-29 21:41:12', '2020-11-29 21:41:12', 19, 44, 0, 0, 0),
+(7, 'DC4F227DCC45', '242232439196741', 21.0153, 105.8, '3 Trung Yên 10A, Trung Hoà, Cầu Giấy, Hà Nội, Việt Nam', 'Trạm 5', '2020-09-06 15:21:26', '2020-09-06 15:21:31', 19, 19, 0, 0, 5),
+(8, 'DC4F227E68C4', '242232439236804', 20.9953, 105.808, '334 Nguyễn Trãi, Thanh Xuân Trung, Thanh Xuân, Hà Nội, Việt Nam', 'Trạm 6', '2020-09-07 15:21:26', '2020-09-07 15:21:31', 19, 19, 0, 0, 6),
+(9, '50029167E8F2', '87971959662834', 20.9851, 105.864, '409 Đường Tam Trinh, Hoàng Văn Thụ, Hoàng Mai, Hà Nội, Việt Nam', 'Trạm 7', '2020-09-08 15:21:26', '2020-09-08 15:21:31', 19, 19, 0, 0, 7),
+(10, 'DC4F227DCA68', '242232439196264', 21.0415, 105.815, '6 Quần Ngựa, Liễu Giai, Ba Đình, Hà Nội, Việt Nam', 'Trạm 8', '2020-09-09 15:21:26', '2020-09-09 15:21:31', 19, 19, 0, 0, 8),
+(11, 'DC4F227DCFF6', '242232439197686', 21.0469, 105.795, 'Số 1 D1, Ngõ 106 - Hoàng Quốc Việt, Nghĩa Đô, Cầu Giấy, Hà Nội, Việt Nam', 'Trạm 9', '2020-09-10 15:21:26', '2020-11-26 22:25:16', 19, 43, 1, 0, 9),
+(12, 'DC4F2222F3A0', '242232433243040', 21.0893, 105.801, '359 An Dương Vương, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 10', '2020-09-11 15:21:26', '2020-09-11 15:21:31', 19, 19, 0, 0, 10),
+(13, '50029167E731', '87971959662385', 21.0634, 105.823, '20 Hẻm 12/2/5 Đặng Thai Mai, Quảng An, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 11', '2020-09-12 15:21:26', '2020-09-12 15:21:31', 19, 19, 1, 0, 11),
+(14, 'DC4F227E65F4', '242232439236084', 20.9765, 105.834, 'P. Trịnh Đình Cửu, Định Công, Thanh Xuân, Hà Nội, Việt Nam', 'Trạm 12', '2020-09-13 15:21:26', '2020-09-13 15:21:31', 19, 19, 0, 0, 12),
+(15, 'DC4F227E57D1', '242232439232465', 21.0162, 105.952, '17A, ngõ 87, Yên Sở, Hoàng Mai, Hà Nội', 'Trạm 13', '2020-11-26 22:37:08', '2020-11-26 22:37:08', 43, 43, 0, 0, 0),
+(16, '50029167E78E', '87971959662478', 21.0149, 105.776, 'villa D25, Phố Trần Văn Lai, Mỹ Đình, Từ Liêm, Hà Nội, Việt Nam', 'Trạm 14', '2020-12-24 16:21:14', '2020-12-24 16:22:11', 19, 43, 1, 0, 0),
+(17, 'DC4F227E57DA', '242232439232474', 20.9853, 105.84, '6 Định Công, Phương Liệt, Thanh Xuân, Hà Nội, Việt Nam', 'Trạm 15', '2020-09-16 15:21:26', '2020-09-16 15:21:31', 19, 19, 0, 0, 15),
+(18, 'BCDDC26C4CF4', '207660635671796', 21.0058, 105.844, 'C5 Đại học Bách Khoa Hà Nội', 'Trạm 16', '2021-04-01 21:48:52', '2021-04-01 21:48:52', 19, 43, 0, 0, 0),
+(19, 'DC4F227DC944', '242232439195972', 20.9689, 105.78, '119 Đường Cổ Linh, Bồ Đề, Long Biên, Hà Nội, Việt Nam', 'Trạm 17', '2020-09-18 15:21:26', '2020-09-18 15:21:31', 19, 19, 0, 0, 17),
+(20, 'BCDDC26BA2C6', '207660635628230', 20.9714, 105.84, 'Số 33,khu tập thể 492,tổ 12Hoàng Liệt ,Hoàng Mai Hà Nội', 'Trạm 18', '2020-11-29 21:42:20', '2020-11-29 21:42:20', 19, 44, 0, 0, 0),
+(21, '50029167DB95', '87971959659413', 21.0153, 105.8, '3 Trung Yên 10A, Trung Hoà, Cầu Giấy, Hà Nội, Việt Nam', 'Trạm 19', '2020-09-20 15:21:26', '2020-09-20 15:21:31', 19, 19, 0, 0, 19),
+(23, '5002914ED2D3', '87971958018771', 21.0047, 105.8, 'chưa xác định', 'Trạm 21', '2020-11-02 23:12:47', '2020-11-02 23:12:47', 22, 44, 0, 0, 0),
+(29, '240AC458BC74', '39628662422644', 21.0054, 105.845, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618', '2021-01-23 09:01:31', '2021-01-23 09:01:31', 43, 59, 0, 0, 0),
+(31, '240AC458ABD4', '39628662418388', 21.1149, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-25 22:12:25', '2020-11-25 22:12:25', 44, 43, 0, 0, 0),
+(32, 'F008D1D35124', '263920670691620', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 3', '2020-11-26 08:31:18', '2020-11-26 08:31:18', 44, 44, 0, 0, 0),
+(34, NULL, '39628662418388', 21.0054, 105.03, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-10-24 00:50:22', '2020-11-02 21:17:03', 44, 43, 1, 0, NULL),
+(35, NULL, '39628662418388', 21.0054, 105.04, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 21:17:03', '2020-11-02 21:17:20', 44, 43, 1, 0, NULL),
+(36, NULL, '39628662418388', 21.0054, 105.004, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 21:17:20', '2020-11-02 21:22:33', 43, 43, 1, 0, NULL),
+(37, NULL, '39628662418388', 21.0054, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 21:22:33', '2020-11-02 21:56:12', 43, 43, 1, 0, NULL),
+(38, NULL, '39628662418388', 21.0055, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 21:56:12', '2020-11-02 21:59:24', 43, 43, 1, 0, NULL),
+(39, NULL, '39628662418388', 21.0056, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 21:59:24', '2020-11-02 22:02:05', 43, 43, 1, 0, NULL),
+(40, NULL, '39628662418388', 21.0057, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 22:02:05', '2020-11-02 22:17:44', 43, 43, 1, 0, NULL),
+(41, NULL, '87971958018771', 21, 105.8, 'chưa xác định', 'Trạm 21', '2020-10-20 16:40:51', '2020-11-02 23:12:47', 19, 44, 1, 0, NULL),
+(43, NULL, '39628662418388', 21.0055, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-02 22:17:44', '2020-11-06 12:50:05', 43, 43, 1, 0, NULL),
+(44, NULL, '39628662418388', 21.0055, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-06 12:50:05', '2020-11-06 12:50:13', 43, 43, 1, 0, NULL),
+(45, NULL, '39628662418388', 21.0055, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 3', '2020-11-06 12:50:13', '2020-11-06 12:50:57', 43, 43, 1, 0, NULL),
+(46, NULL, '39628662418388', 21.0055, 105.005, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-06 12:50:57', '2020-11-11 20:09:11', 43, 44, 1, 0, NULL),
+(47, 'DC4F227DCD00', '242232439196928', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 23', '2020-11-25 22:16:06', '2020-11-25 22:16:06', 44, 43, 1, 0, 0),
+(48, 'DC4F227E67C4', '242232439236548', 20.9721, 105.87, '17A, ngõ 87, Yên Sở, Hoàng Mai, Hà Nội', 'Trạm 24', '2020-11-26 22:32:28', '2020-11-26 22:32:28', 44, 43, 0, 0, 0),
+(49, '4C11AE109277', '83638818476663', 21.1131, 105.831, 'Hà Nội', 'Trạm 25', '2021-02-23 16:45:29', '2021-02-23 16:45:29', 43, 44, 0, 0, 0),
+(50, NULL, '242232439236548', 21.0047, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 24', '2020-11-24 11:03:22', '2020-11-25 11:15:15', 44, 46, 1, 0, NULL),
+(51, NULL, '242232439236499', 21.0785, 105.816, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2020-09-02 15:21:26', '2020-11-25 11:20:57', 19, 46, 1, 0, NULL),
+(52, NULL, '242941108840388', 21.0047, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 24', '2020-11-25 11:15:15', '2020-11-25 11:28:56', 44, 46, 1, 0, NULL),
+(53, NULL, '242232439236548', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 3', '2020-11-25 11:28:56', '2020-11-25 11:31:48', 46, 46, 1, 0, NULL),
+(54, 'DC4F227DD01F', '242232439197727', 20.972, 105.829, '2B, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 27', '2020-11-29 10:58:55', '2020-11-29 10:58:55', 43, 44, 0, 0, 0),
+(55, '3C71BF63E0F78', '1063347839438712', 21.0054, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm V3 01', '2020-11-26 08:30:34', '2020-11-26 08:30:34', 44, 44, 0, 0, 0),
+(56, NULL, '123456', 12, 105.04, 'sssss', '', '2020-11-25 21:48:03', '2020-11-25 21:50:55', 43, 43, 1, 0, 0),
+(57, NULL, '22222', 33, 33, 'dddddd', '', '2020-11-25 21:48:51', '2020-11-25 21:50:52', 43, 43, 1, 0, 0),
+(58, NULL, '333333', 33, 33, 'eeeeee', '', '2020-11-25 21:50:03', '2020-11-25 21:50:58', 43, 43, 1, 0, 0),
+(59, NULL, '44444', 22, 22, 'dddd', '', '2020-11-25 21:52:33', '2020-11-25 22:09:48', 43, 43, 1, 0, 0),
+(60, NULL, '33333', 44, 44, 'ssss', '', '2020-11-25 21:53:53', '2020-11-25 22:09:41', 43, 43, 1, 0, 0),
+(61, '333333334', '333333334', 22, 22, 'ssss', '', '2020-11-25 22:00:24', '2020-11-25 22:10:37', 43, 43, 1, 0, 0),
+(62, '788888', '788888', 44, 44, 'ffff', '', '2020-11-25 22:02:55', '2020-11-25 22:10:32', 43, 43, 1, 0, 0),
+(63, '33444343', '33444343', 33, 33, 'ddddd', '', '2020-11-25 22:03:25', '2020-11-25 22:10:34', 43, 43, 1, 0, 0),
+(64, 'qwerty', 'NaN', 33, 666, 'ddd', '', '2020-11-25 22:05:16', '2020-11-25 22:10:13', 43, 43, 1, 0, 0),
+(65, 'qqqq', 'NaN', 22, 22, 'dddd', '', '2020-11-25 22:06:23', '2020-11-25 22:10:23', 43, 43, 1, 0, 0),
+(66, 'aaaa', '43690', 22, 22, 'ddd', '', '2020-11-25 22:10:01', '2020-11-25 22:10:42', 43, 43, 1, 0, 0),
+(67, NULL, '39628662418388', 21.1149, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 2', '2020-11-11 20:09:11', '2020-11-25 22:12:25', 43, 43, 1, 0, NULL),
+(68, NULL, '39628662422644', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618', '2020-10-23 21:16:21', '2020-11-25 22:12:43', 44, 43, 1, 0, NULL),
+(69, NULL, '66459239964920', 21.0047, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 1', '2020-11-02 11:12:52', '2020-11-25 22:13:02', 44, 43, 1, 0, NULL),
+(70, NULL, '83638818476663', 21.0054, 105.83, 'Hà Nội', 'Trạm 25', '2020-11-25 10:12:47', '2020-11-25 22:13:17', 44, 43, 1, 0, NULL),
+(71, NULL, '242232439196928', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 23', '2020-11-24 10:52:09', '2020-11-25 22:16:06', 44, 43, 1, 0, NULL),
+(72, 'aaaaa12', '178956818', 55, 55, 'fff', '', '2020-11-25 22:23:30', '2020-11-25 22:23:35', 43, 43, 1, 0, 0),
+(73, NULL, '43690', 55, 55, 'fff', '', '2020-11-25 22:17:13', '2020-11-25 22:22:10', 43, 43, 1, 0, NULL),
+(74, NULL, '43690', 55, 55, 'fff', '', '2020-11-25 22:22:10', '2020-11-25 22:22:21', 43, 43, 1, 0, NULL),
+(75, NULL, '43690', 55, 55, 'fff', '', '2020-11-25 22:22:21', '2020-11-25 22:23:18', 43, 43, 1, 0, NULL),
+(76, NULL, '43690', 55, 55, 'fff', '', '2020-11-25 22:23:18', '2020-11-25 22:23:30', 43, 43, 1, 0, NULL),
+(77, NULL, '83638818476663', 21.0054, 105.83, 'Hà Nội', 'Trạm 25', '2020-11-25 22:13:17', '2020-11-26 08:24:01', 44, 44, 1, 0, NULL),
+(78, NULL, '1063347839438712', 21.0054, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm V3 01', '2020-11-25 16:50:19', '2020-11-26 08:30:34', 44, 44, 1, 0, NULL),
+(79, NULL, '263920670691620', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618 test 3', '2020-10-24 00:55:23', '2020-11-26 08:31:18', 44, 44, 1, 0, NULL),
+(80, NULL, '242232439197727', 21.1149, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 27', '2020-11-25 11:46:23', '2020-11-26 08:31:41', 46, 44, 1, 0, NULL),
+(81, NULL, '242232439232703', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 22', '2020-11-04 11:17:34', '2020-11-26 08:31:58', 44, 44, 1, 0, NULL),
+(82, NULL, '242232439236548', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 24', '2020-11-25 11:31:48', '2020-11-26 08:32:15', 46, 44, 1, 0, NULL),
+(84, NULL, '242232439197727', 21.1149, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 27', '2020-11-26 08:31:41', '2020-11-26 15:30:54', 46, 43, 1, 0, NULL),
+(85, NULL, '242232439197727', 20.9673, 105.838, 'Trường THCS Hoàng Liệt, Ngõ 2 - Hoàng Liệt, Khu đô thị Linh Đàm, Hoang Liet, Hoàng Mai, Hanoi', 'Trạm 27', '2020-11-26 15:30:54', '2020-11-26 15:32:19', 44, 43, 1, 0, NULL),
+(86, NULL, '242232439232703', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 22', '2020-11-26 08:31:58', '2020-11-26 15:33:07', 44, 43, 1, 0, NULL),
+(87, 'DC4F227E58BF', '242232439232703', 20.9676, 105.838, '2B, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 22', '2020-11-29 10:56:40', '2020-11-29 10:56:40', 43, 44, 0, 0, 0),
+(88, 'DC4F227DCFF6', '242232439197686', 20.9668, 105.834, 'Lô 19, Ơ 2, Bán Đảo Linh Đàm', 'Trạm 9', '2020-11-29 21:34:37', '2020-11-29 21:34:37', 43, 44, 0, 0, 0),
+(89, ' F4CFA26D8597', '269172620494231', 20.972, 105.84, 'P1003, 19 Đại Từ, Hoàng Mai, Hà Nội', 'Trạm 42', '2020-11-29 21:37:47', '2020-11-29 21:37:47', 43, 44, 0, 0, 0),
+(90, '500291E7C1F0', '87971968041456', 20.9632, 105.832, 'P810, nơ 10, bán đảo Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 44', '2020-11-29 21:57:53', '2020-11-29 21:57:53', 43, 44, 0, 0, 0),
+(91, '500291E7B4C3', '87971968038083', 20.9715, 105.828, 'P516, CT4BX2, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 43', '2021-02-05 15:01:35', '2021-02-05 15:01:35', 43, 43, 0, 0, 0),
+(92, NULL, '102265619723459', 20.9715, 105.828, 'P516, CT4BX2, Linh Đàm, Hoàng Mai, Hà Nội', '', '2020-11-26 22:23:48', '2020-11-26 22:26:52', 43, 43, 1, 0, NULL),
+(93, NULL, '242232439197686', 20.9668, 105.834, 'Lô 19, Ơ 2, Bán Đảo Linh Đàm', 'DC4F227DCFF6', '2020-11-26 22:01:54', '2020-11-26 22:27:39', 43, 43, 1, 0, NULL),
+(94, NULL, '242232439232703', 20.9676, 105.838, '2B, Linh Đàm, Hoàng Mai, Hà Nội', '', '2020-11-26 21:47:56', '2020-11-26 22:28:17', 43, 43, 1, 0, NULL),
+(95, NULL, '242232439236548', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 24', '2020-11-26 08:32:15', '2020-11-26 22:32:28', 46, 43, 1, 0, NULL),
+(96, NULL, '242232439197727', 20.9673, 105.838, 'sân Trường THCS Hoàng Liệt, Ngõ 2 - Hoàng Liệt, Khu đô thị Linh Đàm, Hoang Liet, Hoàng Mai, Hanoi', 'Trạm 27', '2020-11-26 15:32:19', '2020-11-26 22:34:57', 43, 43, 1, 0, NULL),
+(97, NULL, '242232439232465', 21.0162, 105.952, 'X8 - KDT Dang Xa, Đặng Xá, Gia Lâm, Hà Nội, Việt Nam', 'Trạm 13', '2020-09-14 15:21:26', '2020-11-26 22:36:05', 19, 43, 1, 0, NULL),
+(98, NULL, '242232439232465', 21.0162, 105.952, '17A, ngõ 87, Yên Sở, Hoàng Mai, Hà Nội', 'Trạm 13', '2020-11-26 22:36:05', '2020-11-26 22:37:08', 19, 43, 1, 0, NULL),
+(99, 'F4CFA26D3677', '269172620473975', 20.9668, 105.834, 'Lô 19, Ơ 2, Bán Đảo Linh Đàm', 'Trạm 40', '2020-11-29 20:34:15', '2020-11-29 20:34:15', 43, 43, 0, 0, 0),
+(100, 'ECFABCC231D5', '260561652822485', 20.9715, 105.828, 'P516, CT4BX2, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 51', '2020-11-26 22:40:51', '2020-11-26 22:40:51', 43, 43, 0, 0, 0),
+(101, '50029167CB88', '87971959655304', 20.9632, 105.832, 'P810, nơ 10, bán đảo Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 50', '2020-11-26 22:41:41', '2020-11-26 22:41:41', 43, 43, 0, 0, 0),
+(102, NULL, '242232439232703', 20.9676, 105.838, '2B, Linh Đàm, Hoàng Mai, Hà Nội', '22', '2020-11-26 22:28:17', '2020-11-29 10:56:40', 43, 44, 1, 0, NULL),
+(103, NULL, '242232439197727', 20.9676, 105.838, '2B, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 27', '2020-11-26 22:34:57', '2020-11-29 10:58:55', 43, 44, 1, 0, NULL),
+(104, 'F4CFA26D397F', '269172620474751', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', 'Trạm 49', '2020-11-29 18:06:27', '2020-11-29 18:06:27', 44, 44, 0, 0, 0),
+(105, 'F4CFA26D397F', '269172620474751', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', 'Trạm 49', '2020-11-29 20:28:32', '2020-11-29 20:29:06', 43, 43, 1, 0, 0),
+(106, NULL, '269172620474751', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', '', '2020-11-29 18:03:48', '2020-11-29 18:06:27', 44, 44, 1, 0, NULL),
+(107, NULL, '154664821965876', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', '', '2020-11-29 18:04:27', '2020-11-29 18:07:44', 44, 44, 1, 0, NULL),
+(108, NULL, '269172620474751', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', 'Trạm 52', '2020-11-29 18:07:44', '2020-11-29 18:09:40', 44, 44, 1, 0, NULL),
+(109, NULL, '154664821965876', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', 'Trạm 49', '2020-11-29 18:09:40', '2020-11-29 20:27:05', 44, 43, 1, 0, NULL),
+(110, NULL, '269172620474751', 20.9987, 105.866, 'D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội', 'Trạm 52', '2020-11-29 20:27:05', '2020-11-29 20:28:32', 44, 43, 1, 0, NULL),
+(111, '8CAAB5C5C434', '154664821965876', 20.9987, 105.866, '\"D1509, Imperia Sky Garden, Hai Bà Trưng,  Hà Nội\"', 'Trạm 52', '2020-11-29 20:30:13', '2020-11-29 20:30:13', 43, 43, 0, 0, 0),
+(112, NULL, '269172620473975', 20.9668, 105.834, 'Lô 19, Ơ 2, Bán Đảo Linh Đàm', 'Trạm 9', '2020-11-26 22:38:12', '2020-11-29 20:34:15', 43, 43, 1, 0, NULL),
+(113, NULL, '102265619723459', 20.9715, 105.828, 'P516, CT4BX2, Linh Đàm, Hoàng Mai, Hà Nội', '43', '2020-11-26 22:26:52', '2020-11-29 20:36:54', 43, 43, 1, 0, NULL),
+(114, NULL, '87971968041456', 20.9632, 105.832, 'P810, nơ 10, bán đảo Linh Đàm, Hoàng Mai, Hà Nội', '', '2020-11-26 22:19:57', '2020-11-29 20:40:07', 43, 43, 1, 0, NULL),
+(115, '500291E7B6B3', '87971968038579', 20.9634, 105.826, 'HH4B 2630 Linh Đàm', 'Trạm 46', '2020-11-29 20:46:16', '2020-11-29 20:46:16', 43, 43, 0, 0, 0),
+(116, NULL, '87971959685389', 21.0054, 105.83, '', 'moi di lap 1', '2020-11-26 08:35:37', '2020-11-29 20:47:54', 44, 43, 1, 0, NULL),
+(117, NULL, '87971959685389', 21.0054, 105.83, '', 'Trạm 47', '2020-11-29 20:47:54', '2020-11-29 21:28:30', 44, 44, 1, 0, NULL),
+(118, '50029168410D', '87971959685389', 20.9634, 105.826, 'HH4B 2630 Linh Đàm', 'Trạm 47', '2020-11-29 21:30:20', '2020-11-29 21:30:20', 44, 44, 0, 0, 0),
+(119, NULL, '242232439197686', 20.9668, 105.834, 'Lô 19, Ơ 2, Bán Đảo Linh Đàm', '9', '2020-11-26 22:27:39', '2020-11-29 21:34:37', 43, 44, 1, 0, NULL),
+(120, NULL, '269172620494231', 20.972, 105.84, 'P1003, 19 Đại Từ, Hoàng Mai, Hà Nội', '', '2020-11-26 22:19:07', '2020-11-29 21:37:47', 43, 44, 1, 0, NULL),
+(121, NULL, '207660635628244', 21.03, 105.762, 'Nhà C6 KĐT Mỹ Đình I - Trần Hữu Dực, Mỹ Đình 1, Cầu Diễn, Từ Liêm, Hà Nội, Việt Nam', 'Trạm 4', '2020-09-05 15:21:26', '2020-11-29 21:41:12', 19, 44, 1, 0, NULL),
+(122, NULL, '207660635628230', 21.039, 105.874, '35 Đ. Tô Hiệu, P. Nguyễn Trãi, Hà Đông, Hà Nội, Việt Nam', 'Trạm 18', '2020-09-19 15:21:26', '2020-11-29 21:42:20', 19, 44, 1, 0, NULL),
+(124, NULL, '87971968041456', 20.9632, 105.832, 'P810, nơ 10, bán đảo Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 44', '2020-11-29 20:40:07', '2020-11-29 21:57:53', 43, 44, 1, 0, NULL),
+(125, '8CAAB5C6134D', '154664821986125', 21.0047, 105.866, 'Hà Nội', 'Trạm xx', '2020-11-29 22:00:52', '2020-11-29 22:00:52', 44, 44, 0, 0, 0),
+(126, 'DC4f227dcd00', '242232439196928', 13.716, 109.216, 'ICISE', 'Trạm 23', '2020-12-26 12:09:22', '2020-12-26 12:09:22', 43, 46, 0, 0, 0),
+(127, NULL, '242232439196928', 13.716, 109.216, 'ICISE', 'Climate camp', '2020-12-07 07:55:11', '2020-12-07 07:56:51', 43, 43, 1, 0, NULL),
+(128, '50029167e731', '87971959662385', 13.7717, 109.232, 'Halo Hostel, 33 Lê Lợi, TP. Quy Nhơn', 'Halo hostel - Trạm 11', '2020-12-24 16:38:25', '2020-12-24 16:38:25', 43, 43, 0, 0, 0),
+(129, '3C71BF63E0F8', '66459239964920', 21.0057, 105.843, 'C5 - Hanoi University of Science and Technology', 'AirSENSE V3 - C5 - INEST Project', '2020-12-30 00:03:10', '2020-12-30 00:03:10', 59, 43, 0, 0, 0),
+(130, NULL, '66459239964920', 21.0058, 105.844, 'C5 - Hanoi University of Science and Technology', 'C5 - INEST Project', '2020-12-24 16:17:16', '2020-12-24 16:17:59', 43, 43, 1, 0, NULL),
+(131, NULL, '87971959662478', 21.0149, 105.776, 'villa D25, Phố Trần Văn Lai, Mỹ Đình, Từ Liêm, Hà Nội, Việt Nam', 'Trạm 14', '2020-09-15 15:21:26', '2020-12-24 16:21:14', 19, 43, 1, 0, NULL),
+(132, '50029167e78e', '87971959662478', 21.0059, 105.845, 'C5 Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - trạm 14', '2020-12-30 00:02:48', '2020-12-30 00:02:48', 43, 43, 0, 0, 0),
+(133, '50029167ed03', '87971959663875', 21.0058, 105.844, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - trạm 20', '2020-12-24 16:25:43', '2020-12-24 16:25:43', 59, 43, 0, 0, 0),
+(134, NULL, '87971959662385', 13.7161, 109.216, 'ICISE ', 'Climate camp - Trạm 11', '2020-12-07 07:59:14', '2020-12-24 16:38:25', 59, 43, 1, 0, NULL),
+(135, '500291684123', '87971959685411', 21.0058, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 53', '2021-04-01 21:52:55', '2021-04-01 21:52:55', 43, 43, 0, 0, 0),
+(136, NULL, '242232439196928', 13.716, 109.216, 'ICISE', 'Climate camp', '2020-12-07 07:55:11', '2020-12-26 12:09:22', 43, 46, 1, 0, NULL),
+(137, NULL, '87971959662478', 21.0058, 105.844, 'C5 Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - trạm 14', '2020-12-24 16:24:03', '2020-12-30 00:02:48', 59, 43, 1, 0, NULL),
+(138, NULL, '66459239964920', 21.0058, 105.844, 'C5 - Hanoi University of Science and Technology', 'AirSENSE V3 - C5 - INEST Project', '2020-12-24 16:17:59', '2020-12-30 00:03:10', 59, 43, 1, 0, NULL),
+(139, '1099787', '17405831', 20.972, 105.84, 'P1003 số 19 Đại Từ, Hoàng Mai', 'Trạm 45', '2021-01-01 15:40:39', '2021-01-01 15:43:52', 43, 43, 1, 0, 0),
+(140, '50029168417A', '87971959685498', 20.972, 105.84, 'P1003 số 19 Đại Từ, Hoàng Mai', 'Trạm 45', '2021-01-01 15:50:32', '2021-01-01 15:50:32', 43, 43, 0, 0, 0),
+(141, '4C11AE9D76C0', '83638827710144', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'AirSENSE V3 C5 - INEST 4C11AE9D76C0', '2021-01-13 15:45:09', '2021-01-13 15:45:09', 59, 43, 0, 0, 0),
+(142, NULL, '39628662422644', 21.0054, 105.844, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Lab 618', '2020-11-25 22:12:43', '2021-01-23 09:01:31', 59, 59, 1, 0, NULL),
+(143, NULL, '242172309694355', 21.0785, 105.816, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2020-11-25 11:20:57', '2021-01-23 09:06:59', 59, 59, 1, 0, NULL),
+(144, NULL, '242232439236499', 21.0785, 105.817, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2021-01-23 09:06:59', '2021-01-23 09:15:47', 59, 59, 1, 0, NULL),
+(145, NULL, '242232439236499', 21.0785, 105.818, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2021-01-23 09:15:47', '2021-01-23 09:17:16', 59, 59, 1, 0, NULL),
+(146, NULL, '242232439236499', 21.0785, 105.819, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2021-01-23 09:17:16', '2021-01-23 09:26:38', 59, 59, 1, 0, NULL),
+(147, NULL, '242232439236499', 21.0785, 105.817, '28 D3 A4 Ngõ 689 Lạc Long Quân,, Phú Thượng, Tây Hồ, Hà Nội, Việt Nam', 'Trạm 1', '2021-01-23 09:26:38', '2021-01-23 09:26:48', 59, 59, 1, 0, NULL),
+(148, '7c9ebdf4178c', '137021233567628', 21.1132, 105.832, 'Vĩnh Ngọc', 'Trạm 55 V3', '2021-01-31 17:24:25', '2021-01-31 17:24:25', 43, 43, 0, 0, 0),
+(149, NULL, '137021233567628', 21.1132, 105.832, 'Vĩnh Ngọc', '', '2021-01-31 17:23:44', '2021-01-31 17:24:25', 43, 43, 1, 0, NULL),
+(150, '500291E7B5E9', '87971968038377', 21.0046, 105.844, 'Đại học Bách Khoa Hà Nội', 'Trạm 60', '2021-02-05 10:22:28', '2021-02-05 10:22:28', 43, 43, 0, 0, 0),
+(151, '84F3EBB331BE', '146183166308798', 21.0045, 105.844, 'Đại học Bách Khoa Hà Nội-1', 'Trạm 63', '2021-02-05 14:55:42', '2021-02-05 14:55:42', 43, 43, 0, 0, 0),
+(152, '24A1603033E3', '40275522106339', 20.972, 105.84, 'Đại học Bách Khoa Hà Nội-2', 'Trạm 61', '2021-02-05 11:51:57', '2021-02-05 11:51:57', 43, 43, 0, 0, 0),
+(153, NULL, '40275522106339', 20.972, 105.84, 'Đại học Bách Khoa Hà Nội-2', 'Test2', '2021-02-05 11:40:21', '2021-02-05 11:51:57', 43, 43, 1, 0, NULL),
+(154, 'F4CFA26D4BE8', '269172620479464', 20.972, 105.84, 'Đại học Bách Khoa Hà Nội-3', 'Trạm 62', '2021-02-05 14:42:55', '2021-02-05 14:42:55', 43, 43, 0, 0, 0),
+(155, NULL, '146183166308798', 21.0045, 105.844, 'Đại học Bách Khoa Hà Nội-1', 'Trạm 52-test', '2021-02-05 10:45:12', '2021-02-05 14:55:42', 43, 43, 1, 0, NULL),
+(156, NULL, '102265619723459', 20.9715, 105.828, 'P516, CT4BX2, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 43', '2020-11-29 20:36:54', '2021-02-05 14:59:30', 43, 43, 1, 0, NULL),
+(157, NULL, '102265619199171', 20.9715, 105.828, 'P516, CT4BX2, Linh Đàm, Hoàng Mai, Hà Nội', 'Trạm 43', '2021-02-05 14:59:30', '2021-02-05 15:01:35', 43, 43, 1, 0, NULL),
+(158, '24A160302F4D', '40275522105165', 20.972, 105.84, 'Đại học Bách Khoa Hà Nội', 'Trạm 64', '2021-02-05 16:40:58', '2021-02-05 16:40:58', 43, 43, 0, 0, 0),
+(159, NULL, '40275522105165', 20.972, 105.84, 'Đại học Bách Khoa Hà Nội', '1111', '2021-02-05 15:55:49', '2021-02-05 16:40:58', 43, 43, 1, 0, NULL),
+(160, '24A1602FF726', '40275522090790', 20.972, 105.84, 'Đại học Bách Khoa Hà Nội', 'Trạm 65', '2021-02-05 16:46:48', '2021-02-05 16:46:48', 43, 43, 0, 0, 0),
+(161, NULL, '83638818476663', 21.1148, 105.83, 'Hà Nội', 'Trạm 25', '2020-11-26 08:24:01', '2021-02-23 16:45:29', 43, 44, 1, 0, NULL),
+(162, 'F008D1D3F260', '263920670732896', 11.0518, 106.662, 'Nhà ở xã hội Becamex Định Hòa', 'Alphasense_test', '2021-03-28 09:06:48', '2021-03-28 09:06:48', 43, 43, 0, 0, 0),
+(163, NULL, '263920670732896', 11.0518, 106.662, 'Nhà ở xã hội Becamex Định Hòa', '', '2021-03-27 20:46:57', '2021-03-28 09:06:48', 43, 43, 1, 0, NULL),
+(164, NULL, '207660635671796', 21.0459, 105.784, '479 Hoàng Quốc Việt, Cổ Nhuế, Cầu Giấy, Hà Nội, Việt Nam', 'Trạm 16', '2020-09-17 15:21:26', '2021-04-01 21:48:52', 19, 43, 1, 0, NULL),
+(165, NULL, '87971959685411', 21.0054, 105.83, 'Số 1 Đại Cồ Việt, Đại học Bách khoa Hà Nội', 'Trạm 53', '2020-12-26 09:31:28', '2021-04-01 21:52:55', 43, 43, 1, 0, NULL),
+(166, 'BCDDC26C4CF4', '207660635671796', 21.0056, 105.843, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 16', '2021-04-13 22:29:45', '2021-04-13 22:29:45', 59, 59, 0, 0, 0),
+(167, '50029167e78e', '87971959662478', 21.0055, 105.844, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 14', '2021-04-13 22:29:27', '2021-04-13 22:29:27', 59, 59, 0, 0, 0),
+(168, '500291684123', '87971959685411', 21.0056, 105.842, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 53', '2021-04-13 22:29:37', '2021-04-13 22:29:37', 59, 59, 0, 0, 0),
+(169, NULL, '80', 21.0055, 105.844, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 14', '2021-04-13 22:26:48', '2021-04-13 22:29:18', 59, 59, 1, 0, NULL),
+(170, NULL, '80', 21.0055, 105.844, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 14', '2021-04-13 22:29:18', '2021-04-13 22:29:27', 59, 59, 1, 0, NULL),
+(171, NULL, '80', 21.0056, 105.842, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 53', '2021-04-13 22:27:18', '2021-04-13 22:29:37', 59, 59, 1, 0, NULL),
+(172, NULL, '188', 21.0056, 105.843, 'C5 - Hanoi University of Science and Technology', 'AirSENSE OD2 - C5 - INEST Project - Tram 16', '2021-04-13 22:25:31', '2021-04-13 22:29:45', 59, 59, 1, 0, NULL),
+(173, 'AC67B2302EF0', '189561371111152', 11.0542, 106.665, 'Đại học Việt Đức, Bình Dương', 'Alphasense_test2', '2021-05-07 12:08:39', '2021-05-07 12:08:39', 43, 43, 0, 0, 0),
+(174, 'F008D181569C', '263920665319068', 11.0559, 106.666, '49 Lê Lai, Định Hoà, Thủ Dầu Một, Bình Dương', 'AVA_01', '2021-05-14 08:46:13', '2021-05-14 08:46:13', 44, 44, 0, 0, 0),
+(175, 'F008D181361C', '263920665310748', 11.054, 106.666, '49 Lê Lai, Định Hoà, Thủ Dầu Một, Bình Dương', 'AVA_02', '2021-05-15 10:15:23', '2021-05-15 10:15:23', 44, 44, 0, 0, 0),
+(176, 'AC67B2F1E614', '189561383806484', 21.0054, 105.84, '49 Lê Lai, Định Hoà, Thủ Dầu Một, Bình Dương', 'AVA_03', '2021-05-26 09:19:12', '2021-05-26 09:19:12', 44, 44, 0, 0, 0),
+(177, 'AC67B2F59CFC', '189561384049916', 20.9987, 105.866, '49 Lê Lai, Định Hoà, Thủ Dầu Một, Bình Dương', 'AVA_04', '2021-05-28 11:32:17', '2021-05-28 11:32:17', 44, 44, 0, 0, 0),
+(178, 'AC67B2F6C198', '189561384124824', 20.9987, 105.84, '49 Lê Lai, Định Hoà, Thủ Dầu Một, Bình Dương', 'AVA_05', '2021-06-01 13:56:25', '2021-06-01 13:56:25', 44, 44, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sparc_posts`
+-- Table structure for table `sparc_posts`
 --
 
 CREATE TABLE `sparc_posts` (
@@ -37130,13 +37197,14 @@ CREATE TABLE `sparc_posts` (
   `comment_count` int(11) DEFAULT NULL,
   `image_intro` varchar(100) DEFAULT NULL,
   `content_intro` varchar(256) DEFAULT NULL,
-  `deleteflag` int(11) DEFAULT NULL
+  `deleteflag` int(11) DEFAULT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sparc_sensor_data`
+-- Table structure for table `sparc_sensor_data`
 --
 
 CREATE TABLE `sparc_sensor_data` (
@@ -37164,7 +37232,7 @@ CREATE TABLE `sparc_sensor_data` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `sparc_sensor_data`
+-- Dumping data for table `sparc_sensor_data`
 --
 
 INSERT INTO `sparc_sensor_data` (`station_id`, `Time`, `PM2p5`, `PM10`, `PM1`, `Temperature`, `Humidity`, `Pressure`, `SO2`, `NO2`, `CO2`, `CO`, `O3`, `NO2A`, `NO2W`, `O3W`, `O3A`, `COW`, `COA`, `SO2W`, `SO2A`) VALUES
@@ -39787,7 +39855,7 @@ INSERT INTO `sparc_sensor_data` (`station_id`, `Time`, `PM2p5`, `PM10`, `PM1`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sparc_sensor_max_min`
+-- Table structure for table `sparc_sensor_max_min`
 --
 
 CREATE TABLE `sparc_sensor_max_min` (
@@ -39814,42 +39882,43 @@ CREATE TABLE `sparc_sensor_max_min` (
   `humid_max_enanble` tinyint(1) NOT NULL,
   `humid_min_enanble` tinyint(1) NOT NULL,
   `special` int(11) NOT NULL,
-  `flagdelete` int(11) NOT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `sparc_sensor_max_min`
+-- Dumping data for table `sparc_sensor_max_min`
 --
 
-INSERT INTO `sparc_sensor_max_min` (`id`, `station_id`, `pm25_max`, `pm25_min`, `pm25_max_enanble`, `pm25_min_enanble`, `pm10_max`, `pm10_min`, `pm10_max_enanble`, `pm10_min_enanble`, `pm1_max`, `pm1_min`, `pm1_max_enanble`, `pm1_min_enanble`, `temp_max`, `temp_min`, `temp_max_enanble`, `temp_min_enanble`, `humid_max`, `humid_min`, `humid_max_enanble`, `humid_min_enanble`, `special`, `flagdelete`, `createat`, `updateat`, `id_create`, `id_update`, `deleteflag`) VALUES
-(2, '242232439236499', 30, 5, 1, 1, 100, 0, 0, 0, 100, 0, 1, 1, 100, 0, 1, 1, 100, 0, 1, 1, 1, 0, '2020-09-01 16:25:53', '2020-09-01 16:25:56', 1, 1, 0);
+INSERT INTO `sparc_sensor_max_min` (`id`, `station_id`, `pm25_max`, `pm25_min`, `pm25_max_enanble`, `pm25_min_enanble`, `pm10_max`, `pm10_min`, `pm10_max_enanble`, `pm10_min_enanble`, `pm1_max`, `pm1_min`, `pm1_max_enanble`, `pm1_min_enanble`, `temp_max`, `temp_min`, `temp_max_enanble`, `temp_min_enanble`, `humid_max`, `humid_min`, `humid_max_enanble`, `humid_min_enanble`, `special`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+(2, '242232439236499', 30, 5, 1, 1, 100, 0, 0, 0, 100, 0, 1, 1, 100, 0, 1, 1, 100, 0, 1, 1, 1, '2020-09-01 16:25:53', '2020-09-01 16:25:56', 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sparc_sensor_warning`
+-- Table structure for table `sparc_sensor_warning`
 --
 
 CREATE TABLE `sparc_sensor_warning` (
   `id` int(11) NOT NULL,
   `station_id` int(11) NOT NULL,
   `content` varchar(1024) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `status_history_device`
+-- Table structure for table `status_history_device`
 --
 
 CREATE TABLE `status_history_device` (
@@ -39857,17 +39926,18 @@ CREATE TABLE `status_history_device` (
   `deviceid` int(11) NOT NULL,
   `content` varchar(2000) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `note` varchar(100) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -39890,7 +39960,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`userid`, `name`, `fullname`, `phoneNumber`, `email`, `password`, `contact`, `addrid`, `avartar`, `created_at`, `updated_at`, `id_created`, `id_updated`, `note`, `manifestid`, `deleteflag`) VALUES
@@ -39936,7 +40006,7 @@ INSERT INTO `users` (`userid`, `name`, `fullname`, `phoneNumber`, `email`, `pass
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user_manifest`
+-- Table structure for table `user_manifest`
 --
 
 CREATE TABLE `user_manifest` (
@@ -39945,17 +40015,18 @@ CREATE TABLE `user_manifest` (
   `type_manifest` int(11) NOT NULL,
   `username` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `password` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `warehouse_product`
+-- Table structure for table `warehouse_product`
 --
 
 CREATE TABLE `warehouse_product` (
@@ -39966,17 +40037,18 @@ CREATE TABLE `warehouse_product` (
   `id_user_send` int(11) NOT NULL,
   `id_adress` int(11) NOT NULL,
   `deviceid` int(11) NOT NULL,
-  `createat` datetime NOT NULL,
-  `updateat` datetime NOT NULL,
-  `id_create` int(11) NOT NULL,
-  `id_update` int(11) NOT NULL,
-  `deleteflag` int(11) NOT NULL
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_comments`
+-- Table structure for table `wp_comments`
 --
 
 CREATE TABLE `wp_comments` (
@@ -39998,7 +40070,7 @@ CREATE TABLE `wp_comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_comments`
+-- Dumping data for table `wp_comments`
 --
 
 INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `comment_author_email`, `comment_author_url`, `comment_author_IP`, `comment_date`, `comment_date_gmt`, `comment_content`, `comment_karma`, `comment_approved`, `comment_agent`, `comment_type`, `comment_parent`, `user_ID`) VALUES
@@ -40007,7 +40079,7 @@ INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `c
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_ninja_table_items`
+-- Table structure for table `wp_ninja_table_items`
 --
 
 CREATE TABLE `wp_ninja_table_items` (
@@ -40019,25 +40091,29 @@ CREATE TABLE `wp_ninja_table_items` (
   `settings` varchar(20) DEFAULT NULL,
   `value` varchar(40) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  `id_created` int(11) NOT NULL,
+  `id_updated` int(11) NOT NULL,
+  `deleteflag` int(11) NOT NULL,
+  `oldid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_ninja_table_items`
+-- Dumping data for table `wp_ninja_table_items`
 --
 
-INSERT INTO `wp_ninja_table_items` (`id`, `position`, `table_id`, `owner_id`, `attribute`, `settings`, `value`, `created_at`, `updated_at`) VALUES
-(1, NULL, 64, 1, 'value', NULL, '{\"gia_trị_aqi\":\"0-50\",\"danh_gia\":\"TỐT\",\"', '2019-11-30 22:19:17', '2020-04-04 21:10:50'),
-(2, NULL, 64, 1, 'value', NULL, '{\"gia_trị_aqi\":\"51-100\",\"danh_gia\":\"TRUN', '2019-11-30 22:20:07', '2020-04-04 21:10:58'),
-(3, NULL, 64, 1, 'value', NULL, '{\"gia_trị_aqi\":\"101-150\",\"danh_gia\":\"KÉM', '2019-11-30 22:20:53', '2020-04-04 21:11:04'),
-(4, NULL, 64, 1, 'value', NULL, '{\"gia_trị_aqi\":\"151-200\",\"danh_gia\":\"XẤU', '2019-11-30 22:22:18', '2020-04-04 21:11:10'),
-(5, NULL, 64, 1, 'value', NULL, '{\"gia_trị_aqi\":\"201-300\",\"danh_gia\":\"RẤT', '2019-11-30 22:22:57', '2020-04-04 21:11:19'),
-(6, NULL, 64, 1, 'value', NULL, '{\"gia_trị_aqi\":\"Từ 301\",\"danh_gia\":\"NGUY', '2020-04-04 21:00:23', '2020-04-04 21:11:25');
+INSERT INTO `wp_ninja_table_items` (`id`, `position`, `table_id`, `owner_id`, `attribute`, `settings`, `value`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+(1, NULL, 64, 1, 'value', NULL, '{\"gia_trị_aqi\":\"0-50\",\"danh_gia\":\"TỐT\",\"', '2019-11-30 22:19:17', '2020-04-04 21:10:50', 0, 0, 0, 0),
+(2, NULL, 64, 1, 'value', NULL, '{\"gia_trị_aqi\":\"51-100\",\"danh_gia\":\"TRUN', '2019-11-30 22:20:07', '2020-04-04 21:10:58', 0, 0, 0, 0),
+(3, NULL, 64, 1, 'value', NULL, '{\"gia_trị_aqi\":\"101-150\",\"danh_gia\":\"KÉM', '2019-11-30 22:20:53', '2020-04-04 21:11:04', 0, 0, 0, 0),
+(4, NULL, 64, 1, 'value', NULL, '{\"gia_trị_aqi\":\"151-200\",\"danh_gia\":\"XẤU', '2019-11-30 22:22:18', '2020-04-04 21:11:10', 0, 0, 0, 0),
+(5, NULL, 64, 1, 'value', NULL, '{\"gia_trị_aqi\":\"201-300\",\"danh_gia\":\"RẤT', '2019-11-30 22:22:57', '2020-04-04 21:11:19', 0, 0, 0, 0),
+(6, NULL, 64, 1, 'value', NULL, '{\"gia_trị_aqi\":\"Từ 301\",\"danh_gia\":\"NGUY', '2020-04-04 21:00:23', '2020-04-04 21:11:25', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_options`
+-- Table structure for table `wp_options`
 --
 
 CREATE TABLE `wp_options` (
@@ -40048,7 +40124,7 @@ CREATE TABLE `wp_options` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_options`
+-- Dumping data for table `wp_options`
 --
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -40242,7 +40318,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_postmeta`
+-- Table structure for table `wp_postmeta`
 --
 
 CREATE TABLE `wp_postmeta` (
@@ -40253,7 +40329,7 @@ CREATE TABLE `wp_postmeta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_postmeta`
+-- Dumping data for table `wp_postmeta`
 --
 
 INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
@@ -40534,7 +40610,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_terms`
+-- Table structure for table `wp_terms`
 --
 
 CREATE TABLE `wp_terms` (
@@ -40545,7 +40621,7 @@ CREATE TABLE `wp_terms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_terms`
+-- Dumping data for table `wp_terms`
 --
 
 INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
@@ -40561,7 +40637,7 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_term_relationships`
+-- Table structure for table `wp_term_relationships`
 --
 
 CREATE TABLE `wp_term_relationships` (
@@ -40571,7 +40647,7 @@ CREATE TABLE `wp_term_relationships` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_term_relationships`
+-- Dumping data for table `wp_term_relationships`
 --
 
 INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
@@ -40583,7 +40659,7 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_term_taxonomy`
+-- Table structure for table `wp_term_taxonomy`
 --
 
 CREATE TABLE `wp_term_taxonomy` (
@@ -40596,7 +40672,7 @@ CREATE TABLE `wp_term_taxonomy` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_term_taxonomy`
+-- Dumping data for table `wp_term_taxonomy`
 --
 
 INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
@@ -40612,7 +40688,7 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_usermeta`
+-- Table structure for table `wp_usermeta`
 --
 
 CREATE TABLE `wp_usermeta` (
@@ -40623,7 +40699,7 @@ CREATE TABLE `wp_usermeta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_usermeta`
+-- Dumping data for table `wp_usermeta`
 --
 
 INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALUES
@@ -40658,7 +40734,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wp_users`
+-- Table structure for table `wp_users`
 --
 
 CREATE TABLE `wp_users` (
@@ -40675,129 +40751,361 @@ CREATE TABLE `wp_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `wp_users`
+-- Dumping data for table `wp_users`
 --
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
 (1, 'admin', '$P$BkAviWGmbo22bujNM/DOxgLjSW2iuE.', 'admin', 'ichigo2603@gmail.com', '', '2019-11-25 07:49:24', '0000-00-00 00:00:00', 0, 'admin');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `address`
+-- Indexes for table `address`
 --
 ALTER TABLE `address`
   ADD PRIMARY KEY (`addrid`);
 
 --
--- Chỉ mục cho bảng `extended_data`
+-- Indexes for table `extended_data`
 --
 ALTER TABLE `extended_data`
   ADD PRIMARY KEY (`Time`);
 
 --
--- Chỉ mục cho bảng `location`
+-- Indexes for table `group_content`
+--
+ALTER TABLE `group_content`
+  ADD PRIMARY KEY (`group_content_id`);
+
+--
+-- Indexes for table `group_content_sub`
+--
+ALTER TABLE `group_content_sub`
+  ADD PRIMARY KEY (`group_content_sub_id`);
+
+--
+-- Indexes for table `history_delivery_warehouse_return`
+--
+ALTER TABLE `history_delivery_warehouse_return`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `location`
 --
 ALTER TABLE `location`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Chỉ mục cho bảng `sparc_access_location_sensor`
+-- Indexes for table `manifest_authen`
+--
+ALTER TABLE `manifest_authen`
+  ADD PRIMARY KEY (`manifestid`);
+
+--
+-- Indexes for table `oauthen2`
+--
+ALTER TABLE `oauthen2`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oauthen2design`
+--
+ALTER TABLE `oauthen2design`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oauthen2design_data`
+--
+ALTER TABLE `oauthen2design_data`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders_sale`
+--
+ALTER TABLE `orders_sale`
+  ADD PRIMARY KEY (`orderid`);
+
+--
+-- Indexes for table `orders_sale_historyshiper`
+--
+ALTER TABLE `orders_sale_historyshiper`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pages_content`
+--
+ALTER TABLE `pages_content`
+  ADD PRIMARY KEY (`pages_content_id`);
+
+--
+-- Indexes for table `setup_device`
+--
+ALTER TABLE `setup_device`
+  ADD PRIMARY KEY (`setupid`);
+
+--
+-- Indexes for table `setup_device_bill`
+--
+ALTER TABLE `setup_device_bill`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sparc_access_location_sensor`
 --
 ALTER TABLE `sparc_access_location_sensor`
   ADD PRIMARY KEY (`id_access`);
 
 --
--- Chỉ mục cho bảng `sparc_aqi`
+-- Indexes for table `sparc_aqi`
 --
 ALTER TABLE `sparc_aqi`
   ADD PRIMARY KEY (`station_id`);
 
 --
--- Chỉ mục cho bảng `sparc_location_sensor`
+-- Indexes for table `sparc_group_location_sensor`
+--
+ALTER TABLE `sparc_group_location_sensor`
+  ADD PRIMARY KEY (`id_group`);
+
+--
+-- Indexes for table `sparc_location_sensor`
 --
 ALTER TABLE `sparc_location_sensor`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `sparc_posts`
+-- Indexes for table `sparc_posts`
 --
 ALTER TABLE `sparc_posts`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Chỉ mục cho bảng `sparc_sensor_data`
+-- Indexes for table `sparc_sensor_data`
 --
 ALTER TABLE `sparc_sensor_data`
   ADD PRIMARY KEY (`Time`);
 
 --
--- Chỉ mục cho bảng `sparc_sensor_max_min`
+-- Indexes for table `sparc_sensor_max_min`
 --
 ALTER TABLE `sparc_sensor_max_min`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `sparc_sensor_warning`
+--
+ALTER TABLE `sparc_sensor_warning`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `status_history_device`
+--
+ALTER TABLE `status_history_device`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`userid`);
 
 --
--- Chỉ mục cho bảng `wp_comments`
+-- Indexes for table `user_manifest`
+--
+ALTER TABLE `user_manifest`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `warehouse_product`
+--
+ALTER TABLE `warehouse_product`
+  ADD PRIMARY KEY (`warehouseid`);
+
+--
+-- Indexes for table `wp_comments`
 --
 ALTER TABLE `wp_comments`
   ADD PRIMARY KEY (`comment_ID`);
 
 --
--- Chỉ mục cho bảng `wp_ninja_table_items`
+-- Indexes for table `wp_ninja_table_items`
 --
 ALTER TABLE `wp_ninja_table_items`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `wp_options`
+-- Indexes for table `wp_options`
 --
 ALTER TABLE `wp_options`
   ADD PRIMARY KEY (`option_id`);
 
 --
--- Chỉ mục cho bảng `wp_postmeta`
+-- Indexes for table `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
   ADD PRIMARY KEY (`meta_id`);
 
 --
--- Chỉ mục cho bảng `wp_terms`
+-- Indexes for table `wp_terms`
 --
 ALTER TABLE `wp_terms`
   ADD PRIMARY KEY (`term_id`);
 
 --
--- Chỉ mục cho bảng `wp_term_relationships`
+-- Indexes for table `wp_term_relationships`
 --
 ALTER TABLE `wp_term_relationships`
   ADD PRIMARY KEY (`object_id`);
 
 --
--- Chỉ mục cho bảng `wp_term_taxonomy`
+-- Indexes for table `wp_term_taxonomy`
 --
 ALTER TABLE `wp_term_taxonomy`
   ADD PRIMARY KEY (`term_taxonomy_id`);
 
 --
--- Chỉ mục cho bảng `wp_usermeta`
+-- Indexes for table `wp_usermeta`
 --
 ALTER TABLE `wp_usermeta`
   ADD PRIMARY KEY (`umeta_id`);
 
 --
--- Chỉ mục cho bảng `wp_users`
+-- Indexes for table `wp_users`
 --
 ALTER TABLE `wp_users`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `address`
+--
+ALTER TABLE `address`
+  MODIFY `addrid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `group_content`
+--
+ALTER TABLE `group_content`
+  MODIFY `group_content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `group_content_sub`
+--
+ALTER TABLE `group_content_sub`
+  MODIFY `group_content_sub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT for table `history_delivery_warehouse_return`
+--
+ALTER TABLE `history_delivery_warehouse_return`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `Id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `manifest_authen`
+--
+ALTER TABLE `manifest_authen`
+  MODIFY `manifestid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `oauthen2`
+--
+ALTER TABLE `oauthen2`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `oauthen2design`
+--
+ALTER TABLE `oauthen2design`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `oauthen2design_data`
+--
+ALTER TABLE `oauthen2design_data`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `orders_sale`
+--
+ALTER TABLE `orders_sale`
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `orders_sale_historyshiper`
+--
+ALTER TABLE `orders_sale_historyshiper`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pages_content`
+--
+ALTER TABLE `pages_content`
+  MODIFY `pages_content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=530;
+
+--
+-- AUTO_INCREMENT for table `setup_device`
+--
+ALTER TABLE `setup_device`
+  MODIFY `setupid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `setup_device_bill`
+--
+ALTER TABLE `setup_device_bill`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sparc_group_location_sensor`
+--
+ALTER TABLE `sparc_group_location_sensor`
+  MODIFY `id_group` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sparc_sensor_max_min`
+--
+ALTER TABLE `sparc_sensor_max_min`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `sparc_sensor_warning`
+--
+ALTER TABLE `sparc_sensor_warning`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `status_history_device`
+--
+ALTER TABLE `status_history_device`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_manifest`
+--
+ALTER TABLE `user_manifest`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `warehouse_product`
+--
+ALTER TABLE `warehouse_product`
+  MODIFY `warehouseid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `wp_comments`
+--
+ALTER TABLE `wp_comments`
+  MODIFY `comment_ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
