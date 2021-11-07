@@ -31,9 +31,9 @@ const UploadImage = ({ urlImage, uploadfileDataLink }) => {
         }
 
         return (
-            <Button variant="outlined" component="label" disableElevation style={{width:160,height: 100}}>
+            <Button variant="outlined" component="label" disableElevation style={{width:660,height: 228}}>
                 <PublishIcon />
-                <label style={{fontSize:8,lineHeight: 1.6 ,height: 30}}>Upload Ảnh</label>  
+                <label style={{fontSize:8,lineHeight: 1.6 ,height: 15}}>Upload Ảnh</label>  
                 <input type="file" 
                         type="file"
                         name="fileUpload1"
@@ -41,7 +41,7 @@ const UploadImage = ({ urlImage, uploadfileDataLink }) => {
                         accept=".png,.jpg,.jpeg"
                         onChange={(event)=> {uploadImageData(event)}}
                         hidden />
-                <img  src={state.link} width="100px" height="100px" />
+                <img  src={state.link} width="600px" height="228px" />
             </Button>
         );
 }

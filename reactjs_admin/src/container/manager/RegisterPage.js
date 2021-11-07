@@ -193,7 +193,11 @@ class RegisterPage extends Component {
                               {this.props.is_update?"Sửa bài":"Đăng bài"}
                         </Button>
                         </div>
-                        <div className={'register-content'}>
+                        
+                </div>
+                
+                </div>
+                <div className={'register-content'}>
                         <div className={'register-item'}>
                         <p className={'line'}>Tiêu đề bài viết</p>
                         <TextField variant="outlined" multiline className={'register-text'}  value={this.state.title}  onChange={(event) => {
@@ -208,8 +212,6 @@ class RegisterPage extends Component {
                                                                                 }} />
                         </div>
                     </div>
-                </div>
-                </div>
                 <div className={'document-editor'}>
                 <div id="toolbar-container"></div>
 
