@@ -170,12 +170,24 @@ router.get('/old', (req, res) => {
 router.get('/old_map', (req, res) => {
   res.render('old/map');
 });
+router.get('/allStation/:token', (req, res) => {
+  res.render('old/map');
+});
 router.get('/old_register', (req, res) => {
   res.render('old/Account/register');
 });
 router.get('/old_profile', (req, res) => {
   res.render('old/Account/profile');
 });
+
+router.get('/oldreportstation', (req, res) => {
+  res.render('old/reportStation');
+});
+
+router.get('/reportstation/:token', (req, res) => {
+  res.render('ManagerStation/reportStation');
+});
+
 /*
 router.get('/old_addUser', (req, res) => {
   res.render('old/Account/addUsers');

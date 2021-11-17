@@ -18,6 +18,9 @@ router.get('/register', (req, res) => {
   res.render('authen/register', { route: 'register' });
 });
 
+router.get('/giang', (req, res) => {
+  res.render('authen/sendEmailForgotPass', { route: 'register' });
+});
 
 
 // note

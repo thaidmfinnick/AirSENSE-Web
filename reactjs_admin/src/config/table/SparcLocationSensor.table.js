@@ -10,32 +10,32 @@ class SparcLocationSensor  {
             {
               field: 'id',
               headerName: 'stt',
-              width: 140,
+              width: 50,
             },
             {
               field: 'mac',
-              headerName: 'mac',
-              width: 100,
+              headerName: 'Mac',
+              width: 250,
             },
             {
               field: 'station_id',
-              headerName: 'station_id',
-              width: 100,
+              headerName: 'ID trạm',
+              width: 250,
             },
             {
               field: 'location_lat',
-              headerName: 'location_lat',
-              width: 100,
+              headerName: 'Vĩ độ',
+              width: 150,
             },
             {
               field: 'location_long',
-              headerName: 'location_long',
-              width: 100,
+              headerName: 'Kinh độ',
+              width: 150,
             },
             {
               field: 'adress',
-              headerName: 'adress',
-              width: 240,
+              headerName: 'Địa chỉ',
+              width: 600,
             },
             {
               field: 'content',
@@ -45,7 +45,7 @@ class SparcLocationSensor  {
             {
               field: 'id_group',
               headerName: 'id_group',
-              width: 240,
+              width: 140,
             },
             {
               field: 'action',
@@ -94,18 +94,18 @@ class SparcLocationSensor  {
           },
           {
             field: 'location_lat',
-            headerName: 'location_lat',
+            headerName: 'Vĩ độ',
             width: 100,
           },
           {
             field: 'location_long',
-            headerName: 'location_long',
+            headerName: 'Kinh độ',
             width: 100,
           },
           {
             field: 'adress',
-            headerName: 'adress',
-            width: 240,
+            headerName: 'Địa chỉ',
+            width: 600,
           },
           {
             field: 'content',

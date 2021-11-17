@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const express = require('express');
 const HttpStatus = require('http-status-codes');
 const knex = require('../config/knex.js');
 var squel = require("squel");
@@ -339,43 +340,11 @@ userCtrl.resetPass= async function  (req, res) {
       let URLtogetLink = 'http://' + host +':' + port + '/api/auth/resetPassword/' + userid + '/' + token;
       console.log(URLtogetLink);
       var content = '';
-    content += `
-    <div id="cover-mail" style=" width: 950px; background-color: #ccc; position: relative; margin: 0 auto;">
-    <div class="logo-ass" style="position: absolute ;width:186px ; height:46px ; background: url(./assets/font-logo/airsense.png) top center / cover no-repeat; left: 0; right: 0; top: 36px; margin: 0 auto; "></div>
-<div class="container" style="position: absolute; background-color: #fff; width: 625px; height: 267px;  left: 0; right: 0; top: 120px; margin: 0 auto;">
-    <h2 style="font-family: Whitney,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
-    font-weight: 500;
-    font-size: 20px;
-    color: #4f545c;
-    letter-spacing: 0.27px; margin-top: 56px;"${nameUser} này,</h2>
-    <p style=" margin-bottom: 35px;    color: #737f8d;
-    font-family: Whitney,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: left;">Mật khẩu Airsense của bạn có thể được reset bằng nút bên dưới. Nếu bạn không yêu cầu mật khẩu mới, hãy bỏ qua email này.</p>
-    <div style=" width:150px ; height: 44px; margin-left: auto; margin-right: auto; margin-bottom: 42px;">
-    <a href=${URLtogetLink} style=" border-radius: 1px; color: #fff; background: rgb(88, 219, 88); text-align: center; display: block; line-height: 44px; text-decoration: none;     color: white;
-        font-family: Ubuntu,Helvetica,Arial,sans-serif;
-        font-size: 15px;
-        font-weight: normal;
-        text-transform: none;">Reset Mật Khẩu</a></div>
-    <div class="line" style="margin-bottom: 39px; background-color: #bec7d4; width: 100%; height: 2px;"></div>
-    <p style="color: #747f8d;
-    font-family: Whitney,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
-    font-size: 13px;
-    line-height: 16px;
-    text-align: left;">Cần giúp đỡ? <a href="">Liên hệ nhóm hỗ trợ</a> hoặc thông qua Twitter <a href="">@discord</a>. </br>
-        Muốn cung cấp phản hồi? Hãy cho chúng tôi biết ý kiến của bạn trên <a href="">trang phản hồi</a>.</p>
-        <div id="footer-mail"  style="background-color: #f9f9f9; margin-top: 74px; color: #99aab5;
-        font-family: Whitney,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
-        font-size: 12px;
-        line-height: 24px;
-        text-align: center;">Được gửi từ hệ thống <a href="" style="text-decoration: none;">Airsense</a>
-            - Địa chỉ: Số 1, Đại Cồ Việt, Hai Bà Trưng, Hà Nội 
-        </div>
-        </div>
-    </div>
-    `;
+    content += '';
+    // const router = express.Router();
+    // content= router.get('/giang', (req, res) => {
+    //   res.render('authen/sendEmailForgotPass');
+    // });
       // thiết lập đối tượng, nội dung gửi email
     var mainOptions = { 
       from: 'NQH-Test nodemailer',

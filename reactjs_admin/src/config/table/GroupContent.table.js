@@ -11,17 +11,32 @@ class GroupContent  {
             {
               field: 'id',
               headerName: 'stt',
-              width: 140,
+              width: 100,
             },
             {
-              field: 'group_content',
-              headerName: 'group_content',
+              field: 'mac',
+              headerName: 'Mac',
               width: 200,
             },
             {
-              field: 'title',
-              headerName: 'title',
+              field: 'station_id',
+              headerName: 'ID trạm',
               width: 400,
+            },
+            {
+              field: 'location_lat',
+              headerName: 'Vĩ độ',
+              width: 400,
+            },
+            {
+              field: 'location_long',
+              headerName: 'kinh độ',
+              width: 400,
+            },
+            {
+              field: 'adress',
+              headerName: 'Địa chỉ',
+              width: 600,
             },
             {
               field: 'action',

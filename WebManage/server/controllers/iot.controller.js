@@ -157,11 +157,13 @@ iotCtrl.reportDataStationLimit = function(request, response) {
 
 iotCtrl.getReportStations = function(request, response) {
     if (request.currentUser.manifestid < 4)  {
-            var role = result[0];
+            // var role = result[0];
             var fromTime = request.body.fromTime;
             var toTime = request.body.toTime;
-            var station_id = request.body.stationId;
-            reportManager.getReportStations(fromTime, toTime, station_id,request.currentUser).then(function (result) {
+            var station_id = request.body.station_id;
+            var convertFromTime = request.body.getFromTime;
+            var convertToTime =  request.body.getToTime
+            reportManager.getReportStations(convertFromTime, convertToTime, station_id,request.currentUser).then(function (result) {
                 var workbook = new Excel.Workbook();
                 workbook.views = [
                     {
@@ -169,6 +171,7 @@ iotCtrl.getReportStations = function(request, response) {
                         firstSheet: 0, activeTab: 1, visibility: 'visible'
                     }
                 ]
+
                 var worksheet = workbook.addWorksheet('Report');
                 worksheet.columns = [
                     { header: 'Mã trạm', key: 'station_id', width: 10 },
@@ -189,8 +192,9 @@ iotCtrl.getReportStations = function(request, response) {
                     { header: 'SO2W', key: 'SO2W', width: 10 },
                     { header: 'SO2A', key: 'SO2A', width: 10 },
                 ];
-                for (var i = 0; i < result.length; i++) {
-                    var record = result[i];
+                const resultReal = result[0];
+                for (var i = 0; i < resultReal.length; i++) {
+                    var record = resultReal[i];
                     var d = new Date((record.Time) * 1000);
                     var date = d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() + ':00';
                     worksheet.addRow({
@@ -201,17 +205,17 @@ iotCtrl.getReportStations = function(request, response) {
                     });
                 }
 
-                
                 reportManager.getStation(station_id).then(function(station) {
-                    var from = reportManager.formatDate(new Date(fromTime*1000));
+                    var from = reportManager.formatDate(new Date(convertFromTime));
                     var fileName = "";
                     if(toTime!=undefined) {
-                        var to = reportManager.formatDate(new Date(toTime*1000));
-                        fileName = station.content+'_'+from+'_'+to+'.xlsx';
-                    } else fileName = station.content+'_'+from+'.xlsx';
+                        var to = reportManager.formatDate(new Date(convertToTime));
+                        fileName = station[0].content+'_'+from+'_'+to+'.xlsx';
+                    } 
+                    else fileName = station[0].content+'_'+from+'.xlsx';
                     var filePath = './public/file/'+fileName;
                     workbook.xlsx.writeFile(filePath).then(function () {
-                        return response.send(JSON.stringify(fileName));
+                        return response.send(JSON.stringify(filePath));
                     });
                 });
 
@@ -219,7 +223,7 @@ iotCtrl.getReportStations = function(request, response) {
     }
     else 
     {
-            return response.send(JSON.stringify({ logout: true }));
+        return response.send(JSON.stringify({ logout: true }));
     }    
 }
 

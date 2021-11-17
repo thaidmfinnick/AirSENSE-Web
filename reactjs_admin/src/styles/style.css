@@ -177,6 +177,9 @@ h6 {
     float: right;
 }
 
+.test-menu-input {
+  width: 300px;
+}
 
 .row-register {
     display: flex;
@@ -780,3 +783,6 @@ p.line {
 .menu-header-spacer {
   flex: 1;
 }
+
+
+
