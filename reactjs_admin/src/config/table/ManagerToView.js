@@ -30,17 +30,17 @@ import Location from './Location.table';
 import SparcAcessLocationSensor from './SparcAcessLocationSensor.table';
 import sparcGroupLocationSensor from './sparcGroupLocationSensor.table';
 import SparcLocationSensor from './SparcLocationSensor.table';
+import user_admin from './user_admin.table';
 
 
-
-const classesFactory = {User_View ,Adress,DecentralizationAccess,GroupContent,
+const classesFactory = {User_View, user_admin ,Adress,DecentralizationAccess,GroupContent,
     MqttMicroservice,MqttUser,PagesContent ,AdvertisementContent ,BillService
     ,LostProduct,Enterprise ,DetailBank ,Customer ,Company ,StoreProduct ,Product,BuyProductDetail
     ,BuyProduct,BackProduct,ReturnService ,ChargingService ,Service,GroupContentSub,SparcAqi,ExtendedData,
     Location,SparcAcessLocationSensor,sparcGroupLocationSensor,SparcLocationSensor
 
 };
-const classesFactorryMapping = {  users:"User_View", adress:"Adress" ,
+const classesFactorryMapping = {  users:"User_View", user_admin: "user_admin", adress:"Adress" ,
                                 decentralization_access:"DecentralizationAccess",group_content:"GroupContent" 
                                 , mqtt_microservice:"MqttMicroservice",
                                 mqtt_user:"MqttUser" , pages_content:"PagesContent",

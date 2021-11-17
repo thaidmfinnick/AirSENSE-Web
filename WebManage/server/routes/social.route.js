@@ -16,12 +16,16 @@ router.route('/gethome').get( (req, res) => socialCtrl.gethome(req, res));
 router.route('/mainPages').post( (req, res) => socialCtrl.gethome(req, res));
 router.route('/userdetail').post( (req, res) => socialCtrl.gethome(req, res));
 router.route('/getThreshold').get( (req, res) => iotCtrl.getThreshhold(req, res));
-router.route('/getdata').post( (req, res) => iotCtrl.reportDataSensor(req, res));
+router.route('/getdata').post( (req, res) => {
+  iotCtrl.reportDataSensor(req, res)});
 
 router.route('/getStation').get(isAuthenticated, (req, res) => iotCtrl.getStationServer(req, res));
+
 router.route('/getStationHome').get( (req, res) => iotCtrl.getStationHome(req, res));
 router.route('/getdatalimit').post(isAuthenticated, (req, res) => iotCtrl.reportDataStationLimit(req, res));
-router.route('/getReportStations').post(isAuthenticated, (req, res) => iotCtrl.getReportStations(req, res));
+router.route('/getReportStations').post(isAuthenticated, (req, res) => {
+  iotCtrl.getReportStations(req, res)
+});
 router.route('/getAbnormalData').post( (req, res) => iotCtrl.getAbnormalData(req, res));
 
 

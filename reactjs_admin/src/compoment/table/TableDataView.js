@@ -34,7 +34,7 @@ class TableDataView extends Component {
             value_fillter:"",
             dialogueEdit:false,
             dialogueDelete:false,
-            dialogueAdd:false
+            dialogueAdd:false,
         }
     }
     componentDidMount(){
@@ -43,6 +43,7 @@ class TableDataView extends Component {
         ManagerData.initdialogueCustomization(this.state.table);
         ManagerData.getLstDataPromise(this.state.table)
         .then((data)=>{
+            console.log(data);
           this.setState({ data: ManagerData.getTable(this.state.table),
           });
         });

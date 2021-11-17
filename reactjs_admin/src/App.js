@@ -26,6 +26,7 @@ import RegisterPage  from './container/manager/RegisterPage.js';
 import AdvertisementPage  from './container/manager/AdvertisementPage.js';
 import LockScreen  from './container/manager/LockScreen.js';
 import NomalTable  from './container/manager/NomalTable.js';
+import UserTable from './container/manager/UserTable.js';
 import LogoutPage  from './container/authen/LogoutPage.js';
 import ChatBoxInternal  from './container/message/ChatBoxInternal.js';
 import FormChatBox  from './compoment/chat/chatbox.js';
@@ -43,7 +44,8 @@ import messageInfo  from './reducers/index';
 import MenuHeader from './container/head/menuHeader';
 import LoginPage from './container/authen/LoginPage';
 import InfoAccount from './container/authen/account';
-import Header from './compoment/header/header.js'
+import Header from './compoment/header/header.js';
+import StationMapManager from './container/station_map/stationMapManager';
 const App = () => {
 
     return (
@@ -56,7 +58,8 @@ const App = () => {
             customReducers={{ messageInfo }}
             layout={(props) => <Layout {...props} menu={TreeMenu} appBar={MenuHeader} />}
             >
-            <Resource name="users" options={{label:'Tài khoản'  }} icon={UserIcon} list={UserList} />
+            <Resource name="users" options={{label:'Tài khoản' }} icon={UserIcon} list={UserList} />
+
             {/*  Mqtt*/}
             <Resource name="mqtt" options={{label:'Quản lý mqtt' ,"isMenuParent": true }} icon={BuildIcon} list={LockScreen} />
             <Resource name="mqtt_microservice" options={{label:'Tạo microservice',"menuParent": "mqtt"}} icon={BuildIcon} list={NomalTable} />
@@ -73,6 +76,8 @@ const App = () => {
             <Resource name="sparc_group_location_sensor" options={{label:'Nhóm vị trí',"menuParent": "service_x" }} icon={AttachMoneyIcon}  list={NomalTable} />
             <Resource name="sparc_location_sensor" options={{label:'Vị trí của sensor',"menuParent": "service_x" }} icon={KeyboardReturnIcon}  list={NomalTable} />
             <Resource name="status_history_device" options={{label:'Lịch sử thiết bị',"menuParent": "service_x" }} icon={KeyboardReturnIcon}  list={NomalTable} />
+            <Resource name="station_map" options={{label:'Quản lí trạm trên bản đồ',"menuParent": "service_x" }} icon={KeyboardReturnIcon}  list={StationMapManager} />
+
             
             {/* Giá trị sensor*/}
             <Resource name="products" options={{label:'sensor' ,"isMenuParent": true }} icon={ShoppingCartIcon}  list={LockScreen} />
@@ -86,6 +91,7 @@ const App = () => {
             <Resource name="infoUser" options={{label:'Thông tin tài khoản'  }} icon={AccountCircleIcon} list={InfoAccount} />
             <Resource name="chatbox" options={{label:'Nhắn tin'}} icon={Send} list={FormChatBox} />
             <Resource name="logout" options={{label:'Đăng xuất'  }} icon={KeyboardBackspace} list={LogoutPage} />
+
             <FooterChat />
         </Admin>
         
