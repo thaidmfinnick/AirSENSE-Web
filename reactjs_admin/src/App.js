@@ -69,6 +69,11 @@ const App = () => {
             <Resource name="group_content_sub" options={{label:'Nhóm bài báo' ,"menuParent": "sPages"}} icon={FeaturedPlayList} list={NomalTable} />
             <Resource name="managerpages" options={{label:'Quản lý bài báo',"menuParent": "sPages" }} icon={Settings} list={PagesContent} />
             <Resource name="registerPage" options={{label:'viết bài',"menuParent": "sPages" }} icon={TextFormat} list={RegisterPage} />
+            {/* Khóa học */}
+            <Resource name="groupCourse" options={{label:'Khóa học' ,"isMenuParent": true }} icon={RoomServiceIcon}  list={LockScreen} />
+            <Resource name="course" options={{label:'Nhóm bài báo' ,"menuParent": "groupCourse"}} icon={FeaturedPlayList} list={NomalTable} />
+            <Resource name="managerCourse" options={{label:'Quản lý bài báo',"menuParent": "groupCourse" }} icon={Settings} list={PagesContent} />
+            <Resource name="registerCourse" options={{label:'viết bài',"menuParent": "groupCourse" }} icon={TextFormat} list={RegisterPage} />
             {/* Trạm*/}
             <Resource name="service_x" options={{label:'Trạm' ,"isMenuParent": true }} icon={RoomServiceIcon}  list={LockScreen} />
             <Resource name="location" options={{label:'Vị trí',"menuParent": "service_x" }} icon={ListAltIcon}  list={NomalTable} />
