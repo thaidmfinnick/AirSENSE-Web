@@ -36,7 +36,7 @@ const classesFactorryMapping = {  users:"User" , adress:"Adress" , extended_data
                             sparc_access_location_sensor:"SparcAcessLocationSensor",
                             sparc_group_location_sensor:"SparcGroupLocationSensor",sparc_aqi:"SparcAqi",
                             sparc_location_sensor:"SparcLocationSensor",status_history_device:"StatusHistoryDevice",
-                            group_course: "GroupCourse", course: "Course", pages_course: "PageCourse"
+                            group_course: "GroupCourse", course: "Course", pages_course: "PagesCourse"
                         };
                         
 const classesFactorryMappingUser = {  adress:"Adress" ,extended_data:"ExtendedData",

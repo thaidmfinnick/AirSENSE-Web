@@ -17,7 +17,7 @@ const SelectCourse = ({ detailValue,onChange }) => {
    var course =ManagerData.getTable("course");
    var group_course = ManagerData.getTable("group_course");
    var idSelect = 0;
-   var item = course.filter(o=>o.course==detailValue);
+   var item = course.filter(o=>o.course_id==detailValue);
    if(item.length>0){
        var itemMainMenu = group_course.filter(o=>o.group_course_id==item[0].group_course_id);
        if(itemMainMenu.length>0){
@@ -59,8 +59,6 @@ const SelectCourse = ({ detailValue,onChange }) => {
                 onChange(content);
             }               
     }
-
-    
 
     return (
         <div className={'dp-i'}>

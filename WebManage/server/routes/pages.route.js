@@ -99,6 +99,8 @@ router.get('/group_page/:typePage', (req, res) => {
   res.render('home/groupDetail', { detail: data, route: 'tool' });
 });
 
+
+
 router.get('/about', (req, res) => {
   res.render('home/about');
 });
