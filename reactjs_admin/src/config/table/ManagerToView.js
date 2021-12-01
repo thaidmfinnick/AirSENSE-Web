@@ -32,12 +32,17 @@ import sparcGroupLocationSensor from './sparcGroupLocationSensor.table';
 import SparcLocationSensor from './SparcLocationSensor.table';
 import user_admin from './user_admin.table';
 
+// Course
+import GroupCourse from './GroupCourse.table.js'
+import Course from './Course.table.js'
+import PagesCourse from './PagesCourse.table.js'
+
 
 const classesFactory = {User_View, user_admin ,Adress,DecentralizationAccess,GroupContent,
     MqttMicroservice,MqttUser,PagesContent ,AdvertisementContent ,BillService
     ,LostProduct,Enterprise ,DetailBank ,Customer ,Company ,StoreProduct ,Product,BuyProductDetail
     ,BuyProduct,BackProduct,ReturnService ,ChargingService ,Service,GroupContentSub,SparcAqi,ExtendedData,
-    Location,SparcAcessLocationSensor,sparcGroupLocationSensor,SparcLocationSensor
+    Location,SparcAcessLocationSensor,sparcGroupLocationSensor,SparcLocationSensor, GroupCourse, Course, PagesCourse
 
 };
 const classesFactorryMapping = {  users:"User_View", user_admin: "user_admin", adress:"Adress" ,
@@ -53,6 +58,8 @@ const classesFactorryMapping = {  users:"User_View", user_admin: "user_admin", a
                                 sparc_aqi:"SparcAqi",extended_data:"ExtendedData",
                                 location:"Location",sparc_access_location_sensor:"SparcAcessLocationSensor",
                                 sparc_group_location_sensor:"sparcGroupLocationSensor",sparc_location_sensor:"SparcLocationSensor",
+                                group_course: "GroupCourse", course: "Course", pages_course: "PagesCourse"
+
                                 };   
 
 export const exportColumeData = (table,callback=null) =>{

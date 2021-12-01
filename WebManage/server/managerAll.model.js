@@ -13,12 +13,17 @@ const SparcGroupLocationSensor = require('./sparcGroupLocationSensor.model');
 const SparcAqi = require('./sparcAqi.model');
 const SparcLocationSensor = require('./sparcLocationSensor.model');
 
+// Course
+const GroupCourse = require('./groupCourse.model');
+const Course = require('./course.model');
+const PagesCourse = require('./PagesCourse.model');
+
 
 
 const classesFactory = {User ,Adress,GroupContent,
     PagesContent,GroupContentSub,
     SparcPosts,SparcSensorWarning,SparcSensorMaxMin,SparcSensorData,SparcAcessLocationSensor,
-    SparcGroupLocationSensor,SparcAqi ,SparcLocationSensor};
+    SparcGroupLocationSensor,SparcAqi ,SparcLocationSensor, GroupCourse, Course, PagesCourse};
 const classesFactorryMapping = {  users:"User" , adress:"Adress" ,
                             group_content:"GroupContent" ,
                             pages_content:"PagesContent",group_content_sub:"GroupContentSub",
@@ -26,7 +31,8 @@ const classesFactorryMapping = {  users:"User" , adress:"Adress" ,
                             sparc_sensor_max_min:"SparcSensorMaxMin",sparc_sensor_data:"SparcSensorData",
                             sparc_access_location_sensor:"SparcAcessLocationSensor",
                             sparc_group_location_sensor:"SparcGroupLocationSensor",sparc_aqi:"SparcAqi",
-                            sparc_location_sensor:"SparcLocationSensor"
+                            sparc_location_sensor:"SparcLocationSensor", 
+                            group_course: "GroupCourse", course: "Course", pages_course: "PagesCourse"
                         };
                         
 const classesFactorryMappingUser = {  adress:"Adress" ,
@@ -35,7 +41,8 @@ const classesFactorryMappingUser = {  adress:"Adress" ,
                         sparc_posts:"SparcPosts",sparc_sensor_warning:"SparcSensorWarning",
                         sparc_sensor_max_min:"SparcSensorMaxMin",sparc_sensor_data:"SparcSensorData",
                         sparc_access_location_sensor:"SparcAcessLocationSensor",
-                        sparc_group_location_sensor:"SparcGroupLocationSensor",sparc_aqi:"SparcAqi"
+                        sparc_group_location_sensor:"SparcGroupLocationSensor",sparc_aqi:"SparcAqi",
+                        group_course: "GroupCourse", course: "Course", pages_course: "PagesCourse"
                     };      
 
 

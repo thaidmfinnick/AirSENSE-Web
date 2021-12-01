@@ -45,6 +45,23 @@ router.route('/updatePages')
 .post(isAuthenticated, (req, res) => {
     documentCtrl.postUpdatePageToDataBase(req, res);
 });
+
+// update Course
+router.route('/updateCourse')
+.post(isAuthenticated, (req, res) => {
+    documentCtrl.postUpdateCourseToDataBase(req, res);
+});
+
+// writer Course
+router.route('/registerCourse')
+.get( (req, res) => {
+  res.render('course/registerCourse');
+})
+.post(isAuthenticated, (req, res) => {
+    documentCtrl.postAddCourseToDataBase(req, res);
+});
+
+
 // writer Advertisement
 router.route('/registerAdvertisement')
 .post(isAuthenticated, (req, res) => {
