@@ -40,7 +40,7 @@ const SelectCourse = ({ detailValue,onChange }) => {
             if(detail=='id')
             {
                 value.sub_id=0;
-                var course =ManagerData.getTable("course");
+                var course=ManagerData.getTable("course");
                 var group_course_select  = course.filter(o=>o.group_course_id==content.target.value);
                 setState((prev) => ({
                     ...prev,

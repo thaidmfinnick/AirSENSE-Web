@@ -16,11 +16,11 @@ import PublishIcon from '@material-ui/icons/Publish';
 import Swal from 'sweetalert2';
 import {
   uploadfileDataImage,
-  registerPageToWriter,
-  updatePageToWriter,
+  registerCourseToWriter,
+  updateCourseToWriter
 } from '../../api/httpBaseUtil.js';
 import UploadImage from '../../compoment/form/UploadImage.js';
-import SelectCourse from '../../compoment/form/SelectCourse';
+import SelectCourse from '../../compoment/form/SelectCourse.js';
 import SearchPageCourse from '../../compoment/form/SearchPageCourse.js';
 import '../../config/config.js';
 import { HOST_HTTP } from '../../config/config.js';
@@ -99,14 +99,14 @@ class RegisterCourse extends Component {
     formData.content_html = this.state.content_html;
     formData.pages_course_id = this.state.pages_course_id;
     if (this.props.is_update) {
-      updatePageToWriter(formData).then((response) => {
+      updateCourseToWriter(formData).then((response) => {
         Swal.fire('Cập nhật thông tin thành công');
         if (!!this.props.handerClose) {
           this.props.handerClose();
         }
       });
     } else {
-      registerPageToWriter(formData).then((response) => {
+      registerCourseToWriter(formData).then((response) => {
         Swal.fire('Cập nhật thông tin thành công');
       });
     }

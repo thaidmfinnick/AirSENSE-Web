@@ -167,6 +167,14 @@ export const updatePageToWriter = ( data) => {
   return  httpPostData(API_URL + 'document/updatePages' ,data);
 }
 
+export const registerCourseToWriter = ( data) => {
+  return httpPostData(API_URL + 'document/registerCourse' ,data);
+}
+
+export const updateCourseToWriter = ( data) => {
+  return  httpPostData(API_URL + 'document/updateCourse' ,data);
+}
+
 export const registerPageToAdvertisement = ( data) => {
   return httpPostData(API_URL + 'document/registerAdvertisement' ,data);
 }
