@@ -4,12 +4,12 @@ import React, { Component  } from 'react';
 import TableDataView from '../../compoment/table/TableDataView.js'
 import ManagerData from '../../actions/ManagerData.js'
 import Modal90 from '../../compoment/modol/Modal90.js';
-import RegisterPage from './RegisterPage.js';
+import RegisterCourse from './RegisterCourse';
 import { HOST_HTTP } from '../../config/config.js';
 import { httpGetData } from '../../api/httpBaseUtil.js';
 import Swal from 'sweetalert2';
 import {updatePagesToFist} from '../../api/httpBaseUtil.js'
-class PagesContent extends Component {
+class PagesCourse extends Component {
   constructor(props) {
       super(props);
       this.state = {
@@ -18,8 +18,8 @@ class PagesContent extends Component {
   }
 
   componentDidMount(){
-      ManagerData.getLstDataPromise('group_content_sub');
-      ManagerData.getLstDataPromise('group_content');
+      ManagerData.getLstDataPromise('course');
+      ManagerData.getLstDataPromise('group_course');
       ManagerData.callBackFunc =  this.changeState;
   }
   changeState = (type) => {
@@ -69,7 +69,7 @@ class PagesContent extends Component {
       <div>
          <TableDataView
           selectChange={(value)=>{ this.selectChangeValue(value);}}
-          table ={"pages_content"} />
+          table ={"pages_course"} />
           <br/>
           {this.state.enableDialogue?
             <Modal90
@@ -78,7 +78,7 @@ class PagesContent extends Component {
                 onClose={()=>{this.selectEditPages(false)}}
                 className="enterprise-form1"
             >
-              <RegisterPage 
+              <RegisterCourse
                 handerClose={()=>{this.selectClose()}}
                 is_update={true}
                 data={this.state.data}
@@ -97,4 +97,4 @@ class PagesContent extends Component {
 
 }
 
-export default PagesContent;
+export default PagesCourse;

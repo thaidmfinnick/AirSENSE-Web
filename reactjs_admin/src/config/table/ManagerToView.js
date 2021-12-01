@@ -33,9 +33,9 @@ import SparcLocationSensor from './SparcLocationSensor.table';
 import user_admin from './user_admin.table';
 
 // Course
-import GroupCourse from './GroupCourse.table'
-import Course from './Course.table'
-import PagesCourse from './PagesCourse.table'
+import GroupCourse from './GroupCourse.table.js'
+import Course from './Course.table.js'
+import PagesCourse from './PagesCourse.table.js'
 
 
 const classesFactory = {User_View, user_admin ,Adress,DecentralizationAccess,GroupContent,

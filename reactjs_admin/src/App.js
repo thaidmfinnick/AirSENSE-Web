@@ -24,6 +24,8 @@ import UserList  from './container/manager/users.js';
 import PagesContent  from './container/manager/PagesContent.js';
 import RegisterPage  from './container/manager/RegisterPage.js';
 import AdvertisementPage  from './container/manager/AdvertisementPage.js';
+import PagesCourse from './container/manager/PagesCourse';
+import RegisterCourse from './container/manager/RegisterCourse';
 import LockScreen  from './container/manager/LockScreen.js';
 import NomalTable  from './container/manager/NomalTable.js';
 import UserTable from './container/manager/UserTable.js';
@@ -70,10 +72,10 @@ const App = () => {
             <Resource name="managerpages" options={{label:'Quản lý bài báo',"menuParent": "sPages" }} icon={Settings} list={PagesContent} />
             <Resource name="registerPage" options={{label:'viết bài',"menuParent": "sPages" }} icon={TextFormat} list={RegisterPage} />
             {/* Khóa học */}
-            <Resource name="groupCourse" options={{label:'Khóa học' ,"isMenuParent": true }} icon={RoomServiceIcon}  list={LockScreen} />
-            <Resource name="course" options={{label:'Nhóm bài báo' ,"menuParent": "groupCourse"}} icon={FeaturedPlayList} list={NomalTable} />
-            <Resource name="managerCourse" options={{label:'Quản lý bài báo',"menuParent": "groupCourse" }} icon={Settings} list={PagesContent} />
-            <Resource name="registerCourse" options={{label:'viết bài',"menuParent": "groupCourse" }} icon={TextFormat} list={RegisterPage} />
+            <Resource name="groupCourses" options={{label:'Khóa học' ,"isMenuParent": true }} icon={RoomServiceIcon}  list={LockScreen} />
+            <Resource name="course" options={{label:'Nhóm khóa học' ,"menuParent": "groupCourses"}} icon={FeaturedPlayList} list={NomalTable} />
+            <Resource name="managerCourse" options={{label:'Quản lý khóa học',"menuParent": "groupCourses" }} icon={Settings} list={PagesCourse} />
+            <Resource name="registerCourse" options={{label:'viết bài',"menuParent": "groupCourses" }} icon={TextFormat} list={RegisterCourse} />
             {/* Trạm*/}
             <Resource name="service_x" options={{label:'Trạm' ,"isMenuParent": true }} icon={RoomServiceIcon}  list={LockScreen} />
             <Resource name="location" options={{label:'Vị trí',"menuParent": "service_x" }} icon={ListAltIcon}  list={NomalTable} />
