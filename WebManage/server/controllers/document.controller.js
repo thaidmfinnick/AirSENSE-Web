@@ -333,9 +333,33 @@ documentCtrl.getAllContentDetailPage  = async function(listID) {
     return [];
 }
 
+// Course 
+documentCtrl.getAllContentDetailCourse  = async function(listID) {
+    var sql= "SELECT pages_course.*,course.group_course , n FROM ( SELECT @prev := '', @n := 0 ) init JOIN ( SELECT pages_course.*, @n := if(course_id != @prev, 1, @n + 1) AS n, @prev := course_id FROM pages_course WHERE pages_course.deleteflag=0 AND pages_course.is_main_pages_id<1  and course_id IN("
+                +listID+") ORDER BY set_to_fist ,pages_course_id DESC) pages_course LEFT JOIN course on course.course_id=pages_course.course_id WHERE n <= 10 ";
+
+    var x= await knex.raw(sql);
+    if ((x!=null)&&(x.length>0)) {
+        return x[0];
+    }
+    return [];
+}
+
 documentCtrl.getAllContentLatestPage  = async function(listID) {
     var sql= "SELECT pages_content.*,group_content_sub.group_content , n FROM ( SELECT @prev := '', @n := 0 ) init JOIN ( SELECT pages_content.*, @n := if(group_content_sub_id != @prev, 1, @n + 1) AS n, @prev := group_content_sub_id FROM pages_content WHERE pages_content.deleteflag =0 AND pages_content.is_main_pages_id<1  and group_content_sub_id IN("
                 +listID+") ORDER BY id_created DESC) pages_content LEFT JOIN group_content_sub on group_content_sub.group_content_sub_id=pages_content.group_content_sub_id WHERE n <= 10 ";
+
+    var x= await knex.raw(sql);
+    if ((x!=null)&&(x.length>0)) {
+        return x[0];
+    }
+    return [];
+}
+
+// Course
+documentCtrl.getAllContentLatestCourse  = async function(listID) {
+    var sql= "SELECT pages_course.*,course.group_course , n FROM ( SELECT @prev := '', @n := 0 ) init JOIN ( SELECT pages_course.*, @n := if(course_id != @prev, 1, @n + 1) AS n, @prev := course_id FROM pages_course WHERE pages_course.deleteflag =0 AND pages_course.is_main_pages_id<1  and course_id IN("
+                +listID+") ORDER BY id_created DESC) pages_course LEFT JOIN course on course.course_id=pages_course.course_id WHERE n <= 10 ";
 
     var x= await knex.raw(sql);
     if ((x!=null)&&(x.length>0)) {
@@ -368,6 +392,25 @@ documentCtrl.getAllInGroupPage  = async function(request) {
     if ((x!=null)&&(x.length>0)) {
         for(var i=0;i<x[0].length;i++){
             x[0][i].filesave = '/detail_page/'+ x[0][i].filesave.replace('/', '+');
+        }
+        return x[0];
+    }
+    return [];
+}
+
+// Course
+documentCtrl.getAllInGroupCourse  = async function(request) {
+    console.log("sqlraw.toString() ........... request.body..",request.body);
+    var is_main_pages_id = request.body['is_main_pages_id'];
+    var sqlraw = squel.select().from('pages_course')
+        .where('deleteflag=0')
+        .where('is_main_pages_id='+is_main_pages_id
+                +" OR pages_course_id ="+is_main_pages_id );
+        console.log("sqlraw.toString() .............",sqlraw.toString());
+    var x= await knex.raw(sqlraw.toString());
+    if ((x!=null)&&(x.length>0)) {
+        for(var i=0;i<x[0].length;i++){
+            x[0][i].filesave = '/detail_lesson/'+ x[0][i].filesave.replace('/', '+');
         }
         return x[0];
     }

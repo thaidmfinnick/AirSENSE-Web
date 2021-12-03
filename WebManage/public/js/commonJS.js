@@ -113,6 +113,116 @@ function setFormToMenuShowAds(dataJson,itemToSet){
       });
     }
 
+
+
+    // Course
+    function setFormToMenuShowCourse(dataJson,itemToSet){
+      var textHtml="";
+      for(var i =0;i<dataJson.length;i++){
+          if(dataJson[i].is_main_pages_id==-1){
+              textHtml += ' <a class="side-menu-item sb-border-hust-tech"  href="../group_lesson/'+
+                 dataJson[i].pages_course_id +'" >'+setItemFormITemAds(dataJson[i])+'</a>'; 
+          }
+          else
+          {
+              var linkEdit= dataJson[i].filesave.replaceAll('/', '+');
+              textHtml += ' <a class="side-menu-item sb-border-hust-tech"  href="../detail_lesson/'+
+              linkEdit +'" >'+setItemFormITemAds(dataJson[i]) +'</a>'; 
+          }
+      }
+      $(itemToSet).html(textHtml); 
+    }
+    function setFormToShowCourse(item,urlDetail){
+      var start =  '<div class="ItemBlog">';
+      var limkUrl= '<a href="'+urlDetail;
+      if(item.is_main_pages_id==-1){
+        limkUrl += 'group_lesson/'+item.pages_course_id + '\"style="" class="btn btn-primary">Xem thêm</a>';
+        }
+        else
+        {
+          limkUrl +='detail_lesson/'+ item.filesave.replace('/', '+')+ '\"style="" class="btn btn-primary">Xem thêm</a>';
+        }
+        // console.log(limkUrl)
+        var content = 
+          '<div class="col-sm-4 col-md-4"><div class="card">'           
+        + '<img src="' +item.content_img +'" alt="images"  class="card-img-top"/> <div class="card-body">'
+        +'<h5 class="card-title">'+item.title +'</h5> <p class="card-text">' +item.content
+        + '</p>'+ limkUrl +'</div></div></div></div>';
+        console.log(content)
+      return (start+content);
+    }
+  
+  
+      function  getInfoDetailCourse(nameDivControl,dataView,urlDetail){
+          $.ajax({
+              type: 'GET',
+              enctype: 'multipart/form-data',
+              url: '/api/document/detail_lesson/'+dataView,
+              data: {},
+              processData: false, //prevent jQuery from automatically transforming the data into a query string
+              contentType: false,
+              cache: false,
+              success: (data) => {
+              console.log(data);
+                 var dataJson = JSON.parse(data);
+                 console.log(dataJson);
+                 var textHtml ="";
+                 dataJson= dataJson.sort(function (a, b) {
+                         return (a.course_id-b.course_id);
+                 });
+                 console.log(dataJson);
+                 var titleSub="";
+                 var startRow = '<div class="row" style="display: grid; grid-template-columns: repeat(3, 1fr);">'
+                 var closeRow = '</div>'
+                 for(var i =0;i<dataJson.length;i++){
+                   if(dataJson[i].group_course!=titleSub) {
+                     if (dataJson[i] == 0) {
+                      titleSub = dataJson[i].group_course;
+                      textHtml+= "<center><H2 class='heading-blog'>"+titleSub+"</H2></center>" + startRow;
+                     }
+                     else {
+                      textHtml += closeRow;
+                      titleSub = dataJson[i].group_course;
+                      textHtml+= "<center><H2 class='heading-blog'>"+titleSub+"</H2></center>" + startRow;
+                     }
+                   }
+                   textHtml += setFormToShowCourse(dataJson[i],urlDetail);
+                 }
+                 textHtml += closeRow;
+                 console.log(textHtml);
+                 $('#'+nameDivControl).html(textHtml); //.replaceAll("</p>","<br/>").replaceAll("<p>","<br/>")
+              },
+              error: (e) => {
+              console.log(e.responseText);
+              },
+          });
+      }
+  
+      function getInfoAbsCourse(nameDivControl,dataView) {
+        $.ajax({
+          type: 'GET',
+          enctype: 'multipart/form-data',
+          url: '/api/document/lastest_detail_lesson/'+dataView,
+          data: {},
+          processData: false, //prevent jQuery from automatically transforming the data into a query string
+          contentType: false,
+          cache: false,
+          success: (data) => {
+          console.log(data);
+            var dataJson = JSON.parse(data);
+            console.log(dataJson);
+            setFormToMenuShowCourse(dataJson, nameDivControl); 
+          },
+          error: (e) => {
+          console.log(e.responseText);
+          },
+        });
+      }
+
+
+    // end course common
+
+
 function checkUserAuthen2() {
   var mname = localStorage.getItem("tocken_LVC");
   $.ajax({
