@@ -4,7 +4,7 @@ import React from 'react';
 import ManagerData from '../../actions/ManagerData.js'
 import {ActionControl ,TypeDialgueShow,SelectHTml} from '../../utils/commonUtil';
 
-class PagesCourse  {
+class ExamDetail  {
     getColumeShow=(callback)=>{
         const columns = [
             {
@@ -43,8 +43,18 @@ class PagesCourse  {
               width: 240,
             },
             {
+              field: 'reply',
+              headerName: 'reply',
+              width: 240,
+            },
+            {
               field: 'set_to_fist',
               headerName: 'set_to_fist',
+              width: 240,
+            },
+            {
+              field: 'mark',
+              headerName: 'mark',
               width: 240,
             },
             {
@@ -75,7 +85,7 @@ class PagesCourse  {
     }
     getInfoToEdit(){
       return {
-        mainID:'pages_course_id',
+        mainID:'exam_detail_id',
         mainInfo:{
           field: 'title',
           headerName: 'Chi tiết bài báo',
@@ -113,34 +123,44 @@ class PagesCourse  {
             width: 240,
           },
           {
+            field: 'reply',
+            headerName: 'reply',
+            width: 120,
+          },
+          {
             field: 'set_to_fist',
             headerName: 'set_to_fist',
             width: 240,
           },
+          {
+            field: 'mark',
+            headerName: 'mark',
+            width: 240,
+          }
         ]
       }
     }
 
     getInfoToAdd(){
-      return  ["course_id","group_file","filesave","title","content","content_img","is_main_pages_id","set_to_fist"];
+      return  ["course_id","group_file","filesave","title","content","content_img","is_main_pages_id","reply","set_to_fist", "mark"];
     }
     getTitleToAdd(){
-      return  ["course_id","group_file","filesave","title","content","content_img","is_main_pages_id","set_to_fist"];
+      return  ["course_id","group_file","filesave","title","content","content_img","is_main_pages_id","reply","set_to_fist", "mark"];
     }
     getHtmlAdd(){
       return  [TypeDialgueShow.SELECT_CUSTOM,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT,
               TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT];
     }
     getTypeSelectToAdd(){
-      return  [SelectHTml.SelectCourse,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML
+      return  [SelectHTml.SelectExam,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML
                 ,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML];
     }
     getTypeSelectTabbleToAdd(){
-      return  ["course","","","","","","","" ];
+      return  ["exam","","","","","","","" ];
     }
     getColumeValidate(){
       return ["","","","leng6","","","",""];
     }
 } 
 
-export default  PagesCourse;
+export default  ExamDetail;

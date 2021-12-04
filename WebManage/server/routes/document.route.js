@@ -61,6 +61,21 @@ router.route('/registerCourse')
     documentCtrl.postAddCourseToDataBase(req, res);
 });
 
+// update Exam
+router.route('/updateExam')
+.post(isAuthenticated, (req, res) => {
+    documentCtrl.postUpdateExamToDataBase(req, res);
+});
+
+// writer Exam
+router.route('/registerExam')
+.get( (req, res) => {
+  res.render('course/registerCourse');
+})
+.post(isAuthenticated, (req, res) => {
+    documentCtrl.postAddExamToDataBase(req, res);
+});
+
 
 
 // writer Advertisement

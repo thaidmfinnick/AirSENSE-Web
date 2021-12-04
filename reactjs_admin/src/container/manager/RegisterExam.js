@@ -16,12 +16,12 @@ import PublishIcon from '@material-ui/icons/Publish';
 import Swal from 'sweetalert2';
 import {
   uploadfileDataImage,
-  registerCourseToWriter,
-  updateCourseToWriter
+  updateExamToWriter,
+  registerExamToWriter
 } from '../../api/httpBaseUtil.js';
 import UploadImage from '../../compoment/form/UploadImage.js';
-import SelectCourse from '../../compoment/form/SelectCourse.js';
-import SearchPageCourse from '../../compoment/form/SearchPageCourse.js';
+import SelectExam from '../../compoment/form/SelectExam.js';
+import SearchExamDetail from '../../compoment/form/SearchExamDetail.js';
 import '../../config/config.js';
 import PropTypes from 'prop-types';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
@@ -30,7 +30,7 @@ import { MyCustomUploadAdapterPlugin } from '../../api/uploadAdatapter.js';
 import { providers } from '../../compoment/editor/videoProviders';
 //import MediaEmbed from '../../compoment/mediaEmbed/mediaembed';
 
-class RegisterCourse extends Component {
+class RegisterExam extends Component {
   static propTypes = {
     handerClose: PropTypes.func.isRequired,
     is_update: PropTypes.bool.isRequired,
@@ -40,11 +40,11 @@ class RegisterCourse extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pages_course_id: this.props.is_update
-        ? this.props.data.pages_course_id
+      exam_detail_id: this.props.is_update
+        ? this.props.data.exam_detail_id
         : 0,
-      course_id: this.props.is_update
-        ? this.props.data.course_id
+      exam_id: this.props.is_update
+        ? this.props.data.exam_id
         : 0,
       refesh: false,
       image_head: this.props.is_update ? this.props.data.content_img : '',
@@ -55,14 +55,14 @@ class RegisterCourse extends Component {
     };
   }
   componentDidMount() {
-    ManagerData.getLstDataPromise('course').then(() => {
+    ManagerData.getLstDataPromise('exam').then(() => {
       this.setState({ refesh: false });
       console.log('componentDidMount......................');
       setTimeout(() => {
         this.setState({ refesh: true });
       }, 200);
     });
-    ManagerData.getLstDataPromise('group_course').then(() => {
+    ManagerData.getLstDataPromise('group_exam').then(() => {
       this.setState({ refesh: false });
       console.log('componentDidMount......................');
       setTimeout(() => {
@@ -88,7 +88,7 @@ class RegisterCourse extends Component {
     if (this.props.is_update) {
       formData = this.props.data;
     }
-    formData.course_id = this.state.course_id;
+    formData.exam_id = this.state.exam_id;
     formData.content_img = this.state.image_head;
     formData.group_file = 'group_file';
     formData.filesave = 'filesave';
@@ -96,25 +96,25 @@ class RegisterCourse extends Component {
     formData.content = this.state.content;
     formData.is_main_pages_id = this.state.is_main;
     formData.content_html = this.state.content_html;
-    formData.pages_course_id = this.state.pages_course_id;
+    formData.exam_detail_id = this.state.exam_detail_id;
     if (this.props.is_update) {
-      updateCourseToWriter(formData).then((response) => {
+      updateExamToWriter(formData).then((response) => {
         Swal.fire('Cập nhật thông tin thành công');
         if (!!this.props.handerClose) {
           this.props.handerClose();
         }
       });
     } else {
-      registerCourseToWriter(formData).then((response) => {
+      registerExamToWriter(formData).then((response) => {
         Swal.fire('Cập nhật thông tin thành công');
       });
     }
   }
 
   onChangeSub(content, detail) {
-    ManagerData.getLstDataPromise('pages_course', {
+    ManagerData.getLstDataPromise('exam_detail', {
       dataFind: {
-        course_id: content.target.value,
+        exam_id: content.target.value,
         is_main_pages_id: -1,
       },
     }).then(() => {
@@ -123,7 +123,7 @@ class RegisterCourse extends Component {
         this.setState({ refesh: true });
       }, 200);
     });
-    this.setState({ course_id: content.target.value });
+    this.setState({ exam_id: content.target.value });
   }
 
   onChangTitle(content) {
@@ -155,9 +155,9 @@ class RegisterCourse extends Component {
     };
     var showEditText = false;
 
-    showEditText = ManagerData.checkDataExistting('course');
+    showEditText = ManagerData.checkDataExistting('exam');
     if (!showEditText)
-      showEditText = ManagerData.checkDataExistting('group_course');
+      showEditText = ManagerData.checkDataExistting('group_exam');
 
     return (
       <div className="user-data">
@@ -174,8 +174,8 @@ class RegisterCourse extends Component {
           </div>
           <div className={'column-register-right'}>
             {this.state.refesh ? (
-              <SelectCourse
-                detailValue={this.state.course_id}
+              <SelectExam
+                detailValue={this.state.exam_id}
                 onChange={(event) => {
                   this.onChangeSub(event, 'id');
                 }}
@@ -184,9 +184,9 @@ class RegisterCourse extends Component {
               ''
             )}
 
-            <SearchPageCourse
+            <SearchExamDetail
               id_select={this.state.is_main}
-              sub_id_select={this.state.course_id}
+              sub_id_select={this.state.exam_id}
               changeID={(value) => {
                 this.choiceSubPages(value);
               }}
@@ -265,4 +265,4 @@ class RegisterCourse extends Component {
   }
 }
 
-export default RegisterCourse;
+export default RegisterExam;
