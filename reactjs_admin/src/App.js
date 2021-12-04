@@ -28,6 +28,8 @@ import RegisterPage  from './container/manager/RegisterPage.js';
 import AdvertisementPage  from './container/manager/AdvertisementPage.js';
 import PagesCourse from './container/manager/PagesCourse';
 import RegisterCourse from './container/manager/RegisterCourse';
+import ExamDetail from './container/manager/ExamDetail';
+import RegisterExam from './container/manager/RegisterExam';
 import LockScreen  from './container/manager/LockScreen.js';
 import NomalTable  from './container/manager/NomalTable.js';
 import UserTable from './container/manager/UserTable.js';
@@ -78,6 +80,12 @@ const App = () => {
             <Resource name="course" options={{label:'Nhóm khóa học' ,"menuParent": "groupCourses"}} icon={ClassIcon} list={NomalTable} />
             <Resource name="managerCourse" options={{label:'Quản lý khóa học',"menuParent": "groupCourses" }} icon={Settings} list={PagesCourse} />
             <Resource name="registerCourse" options={{label:'Đăng khóa học/bài học',"menuParent": "groupCourses" }} icon={TextFormat} list={RegisterCourse} />
+
+            {/* Bài tập */}
+            <Resource name="groupExam" options={{label:'Bài tập' ,"isMenuParent": true }} icon={CollectionsBookmarkIcon}  list={LockScreen} />
+            <Resource name="exam" options={{label:'Nhóm bài tập' ,"menuParent": "groupExam"}} icon={ClassIcon} list={NomalTable} />
+            <Resource name="managerExam" options={{label:'Quản lý bài tập',"menuParent": "groupExam" }} icon={Settings} list={ExamDetail} />
+            <Resource name="registerExam" options={{label:'Soạn bài tập',"menuParent": "groupExam" }} icon={TextFormat} list={RegisterExam} />
             {/* Trạm*/}
             <Resource name="service_x" options={{label:'Trạm' ,"isMenuParent": true }} icon={RoomServiceIcon}  list={LockScreen} />
             <Resource name="location" options={{label:'Vị trí',"menuParent": "service_x" }} icon={ListAltIcon}  list={NomalTable} />
@@ -87,7 +95,6 @@ const App = () => {
             <Resource name="status_history_device" options={{label:'Lịch sử thiết bị',"menuParent": "service_x" }} icon={KeyboardReturnIcon}  list={NomalTable} />
             <Resource name="station_map" options={{label:'Quản lí trạm trên bản đồ',"menuParent": "service_x" }} icon={KeyboardReturnIcon}  list={StationMapManager} />
 
-            
             {/* Giá trị sensor*/}
             <Resource name="products" options={{label:'sensor' ,"isMenuParent": true }} icon={ShoppingCartIcon}  list={LockScreen} />
             <Resource name="sparc_aqi" options={{label:'aQI',"menuParent": "products" }} icon={KeyboardReturnIcon}  list={NomalTable} />

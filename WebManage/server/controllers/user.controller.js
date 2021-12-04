@@ -264,6 +264,20 @@ userCtrl.updateFistPages= async  function (req, res) {
   });
 }
 
+userCtrl.updateFistCourse= async  function (req, res) {
+  var tableSelect=mangerModelAdmin('pages_course');  
+  if(!tableSelect.checkDataEditDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
+    return returnNotFound(res,{ message: "Database inval" });
+  }
+  var sqlUpdate = 'UPDATE pages_course SET set_to_fist = ( SELECT MAX(set_to_fist) + 1 ) WHERE deleteflag =0 and pages_course_id='+
+          req.body['pages_course_id']+';'; 
+  knex.raw(sqlUpdate).then(function(x) {
+    return returnOK(res,x);     
+  }).catch(function(err){
+    return returnNotFound(res,err);    
+  });
+}
+
 
 userCtrl.registerUser = async function (req, res) {
     var table ='users';

@@ -193,6 +193,99 @@ else
 }
 
 // 
+
+// Exam
+documentCtrl.postAddExamToDataBase  = function(request, res) {       
+    let content=request.body["content"] ;
+    let content_html=request.body["content_html"] ;
+    let group=request.body["group_file"];
+    let exam_id = request.body["exam_id"];
+    // save file
+    var link= documentFileAndFloder.createNewfile(content_html,'storeHtml');
+    if(link==null){
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+            error: true,
+            data: { message: err.message },
+          })
+    }
+    else
+    {
+        var addData = squel.insert().into('exam_detail')
+        // save data Sql
+        addData.set("exam_id",exam_id)
+        .set("group_file",group)
+        .set("filesave",link)
+        .set("title",request.body["title"])
+        .set("content",request.body["content"])
+        .set("is_main_pages_id",request.body["is_main_pages_id"])
+        .set("content_img",request.body["content_img"])
+        .set("id_created",request.currentUser.users_id)
+        .set("id_updated",request.currentUser.users_id)
+        .set("created_at","NOW()",{dontQuote: true}) 
+        .set("updated_at","NOW()",{dontQuote: true})
+        .set("deleteflag",0);
+        knex.raw(addData.toString()).then(function(x) {
+            return res.status(HttpStatus.OK).json({
+                data: x
+            });  
+        })
+        .catch(function(err){
+            return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+                error: true,
+                detail:err,
+                data:  "Database inval"
+            });     
+        });
+    }
+}
+
+
+documentCtrl.postUpdateExamToDataBase  = function(request, res) {       
+let content=request.body["content"] ;
+let content_html=request.body["content_html"] ;
+let group=request.body["group_file"];
+let course_id = request.body["exam_id"];
+// save file
+var link= documentFileAndFloder.createNewfile(content_html,'storeHtml');
+if(link==null){
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        error: true,
+        data: { message: err.message },
+      })
+    }
+else
+{
+    var addData = squel.update().table('exam_detail')
+    // save data Sql
+    addData.set("exam_id",exam_id)
+    .set("group_file",group)
+    .set("filesave",link)
+    .set("title",request.body["title"])
+    .set("content",request.body["content"])
+    .set("is_main_pages_id",request.body["is_main_pages_id"])
+    .set("content_img",request.body["content_img"])
+    .set("id_created",request.currentUser.users_id)
+    .set("id_updated",request.currentUser.users_id)
+    .set("updated_at","NOW()",{dontQuote: true})
+    .set("deleteflag",0)
+    .where('exam_detail_id='+request.body['exam_detail_id']);
+    knex.raw(addData.toString()).then(function(x) {
+        return res.status(HttpStatus.OK).json({
+            data: x
+        });  
+    })
+    .catch(function(err){
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+            error: true,
+            detail:err,
+            data:  "Database inval"
+        });     
+    });
+}
+}
+
+// 
+
 documentCtrl.postAddAdvertisementToDataBase  = function(request, res) {       
     let content=request.body["content"] ;
     let content_html=request.body["content_html"] ;
