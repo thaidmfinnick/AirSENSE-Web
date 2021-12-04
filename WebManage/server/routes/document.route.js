@@ -131,6 +131,28 @@ router.route('/group_lesson').post( async (req, res) => {
   res.send(JSON.stringify(data));
 });
 
+// 
+
+// Exam
+
+router.route('/detail_exam/:typePage').get( async (req, res) => {
+  var dataX = req.params.typePage;
+  console.log("e.responseText",dataX);
+  var data = await documentCtrl.getAllContentDetailExam(dataX);
+  res.send(JSON.stringify(data));
+});
+
+router.route('/lastest_detail_exam/:typePage').get( async (req, res) => {
+  var dataX = req.params.typePage;
+  console.log("e.responseText",dataX);
+  var data = await documentCtrl.getAllContentLatestExam(dataX);
+  res.send(JSON.stringify(data));
+});
+
+router.route('/group_exam').post( async (req, res) => {
+  var data =  await documentCtrl.getAllInGroupExam(req);
+  res.send(JSON.stringify(data));
+});
 router.route('/get_new').get( async (req, res) => {
   var data = await documentCtrl.getAllContentStartPage();
   res.send(JSON.stringify(data));

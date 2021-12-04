@@ -34,6 +34,19 @@ var arrayMenuCourse = [
   }
 ]
 
+var arrayMenuExam = [
+  {
+    typePage: "MathsTest",
+    route: 'exam',
+    sideMenu :{}
+  },
+
+  {
+    typePage: "PhysicsTest",
+    route: 'exam',
+    sideMenu :{}
+  }
+]
 router.get('/education/:typePage', async (req, res) => {
   var data = req.params.typePage;
   var itemvalue =["head","news", "documentary"]
@@ -89,6 +102,41 @@ router.get('/course/:typePage',async (req, res) => {
   }
   
   res.render('course/allCourse',  { detail: dataMAin, route: 'course' });
+});
+
+// Exam
+router.get('/detail_exam/:typePage', (req, res) => {
+  var data = req.params.typePage;
+  res.render('exam/viewExam', { detail: data, route: 'exam' });
+});
+
+router.get('/group_exam/:typePage', (req, res) => {
+  var data = req.params.typePage;
+  res.render('exam/viewGroupExam', { detail: data, route: 'exam' });
+});
+
+router.get('/exam/maths/:typePage',async (req, res) => {
+  var data = req.params.typePage;
+  var itemvalue =["head","geometry", "algebra"]
+  var index = itemvalue.findIndex(o=>o==data);
+  var dataMAin=index;
+  if(dataMAin<1) {
+    dataMAin = '1,2';
+  }
+  
+  res.render('exam/allExam',  { detail: dataMAin, route: 'exam' });
+});
+
+router.get('/exam/physics/:typePage',async (req, res) => {
+  var data = req.params.typePage;
+  var itemvalue =["head","power", "volumn"]
+  var index = itemvalue.findIndex(o=>o==data);
+  var dataMAin= 10 + index;
+  if(index<10) {
+    dataMAin = '11,12';
+  }
+  
+  res.render('exam/allExam',  { detail: dataMAin, route: 'exam' });
 });
 
 router.get('/about', (req, res) => {
