@@ -2,6 +2,8 @@ import * as React from 'react';
 import PostIcon from '@material-ui/icons/Book';
 import UserIcon from '@material-ui/icons/Group';
 import ExtensionIcon from '@material-ui/icons/Extension';
+import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
+import ClassIcon from '@material-ui/icons/Class';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
@@ -12,7 +14,7 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn';
 import DetailsIcon from '@material-ui/icons/Details';
-import { Comment, Settings, Send, Contacts, FeaturedPlayList, KeyboardBackspace, TextFormat, Business, GroupWork } from '@material-ui/icons';
+import { Comment, Settings, Send, Contacts, FeaturedPlayList, KeyboardBackspace, TextFormat, Business, GroupWork, DynamicFeed } from '@material-ui/icons';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -67,15 +69,15 @@ const App = () => {
             <Resource name="mqtt_microservice" options={{label:'Tạo microservice',"menuParent": "mqtt"}} icon={BuildIcon} list={NomalTable} />
             <Resource name="mqtt_user" options={{label:'mqtt khách hàng',"menuParent": "mqtt"}} icon={SupervisorAccountIcon} list={NomalTable} />
             {/* bài báo*/}
-            <Resource name="sPages" options={{label:'Nhóm bài báo' ,"isMenuParent": true }} icon={FeaturedPlayList}  list={LockScreen} />
+            <Resource name="sPages" options={{label:'Nhóm bài báo' ,"isMenuParent": true }} icon={DynamicFeed}  list={LockScreen} />
             <Resource name="group_content_sub" options={{label:'Nhóm bài báo' ,"menuParent": "sPages"}} icon={FeaturedPlayList} list={NomalTable} />
             <Resource name="managerpages" options={{label:'Quản lý bài báo',"menuParent": "sPages" }} icon={Settings} list={PagesContent} />
-            <Resource name="registerPage" options={{label:'viết bài',"menuParent": "sPages" }} icon={TextFormat} list={RegisterPage} />
+            <Resource name="registerPage" options={{label:'Viết bài',"menuParent": "sPages" }} icon={TextFormat} list={RegisterPage} />
             {/* Khóa học */}
-            <Resource name="groupCourses" options={{label:'Khóa học' ,"isMenuParent": true }} icon={RoomServiceIcon}  list={LockScreen} />
-            <Resource name="course" options={{label:'Nhóm khóa học' ,"menuParent": "groupCourses"}} icon={FeaturedPlayList} list={NomalTable} />
+            <Resource name="groupCourses" options={{label:'Khóa học' ,"isMenuParent": true }} icon={CollectionsBookmarkIcon}  list={LockScreen} />
+            <Resource name="course" options={{label:'Nhóm khóa học' ,"menuParent": "groupCourses"}} icon={ClassIcon} list={NomalTable} />
             <Resource name="managerCourse" options={{label:'Quản lý khóa học',"menuParent": "groupCourses" }} icon={Settings} list={PagesCourse} />
-            <Resource name="registerCourse" options={{label:'viết bài',"menuParent": "groupCourses" }} icon={TextFormat} list={RegisterCourse} />
+            <Resource name="registerCourse" options={{label:'Đăng khóa học/bài học',"menuParent": "groupCourses" }} icon={TextFormat} list={RegisterCourse} />
             {/* Trạm*/}
             <Resource name="service_x" options={{label:'Trạm' ,"isMenuParent": true }} icon={RoomServiceIcon}  list={LockScreen} />
             <Resource name="location" options={{label:'Vị trí',"menuParent": "service_x" }} icon={ListAltIcon}  list={NomalTable} />

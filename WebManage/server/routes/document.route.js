@@ -62,6 +62,7 @@ router.route('/registerCourse')
 });
 
 
+
 // writer Advertisement
 router.route('/registerAdvertisement')
 .post(isAuthenticated, (req, res) => {
@@ -74,7 +75,7 @@ router.route('/updateAdvertisement')
     documentCtrl.postUpdateAdvertisementToDataBase(req, res);
 });
 
-
+// Blog and Education
 router.route('/document_detail/:typePage').get( async (req, res) => {
   var dataX = req.params.typePage;
   console.log("e.responseText",dataX);
@@ -89,13 +90,34 @@ router.route('/lastest_detail/:typePage').get( async (req, res) => {
   res.send(JSON.stringify(data));
 });
 
-router.route('/get_new').get( async (req, res) => {
-  var data = await documentCtrl.getAllContentStartPage();
+router.route('/group_page').post( async (req, res) => {
+  var data =  await documentCtrl.getAllInGroupPage(req);
   res.send(JSON.stringify(data));
 });
 
-router.route('/group_page').post( async (req, res) => {
-  var data =  await documentCtrl.getAllInGroupPage(req);
+// Course
+
+router.route('/detail_lesson/:typePage').get( async (req, res) => {
+  var dataX = req.params.typePage;
+  console.log("e.responseText",dataX);
+  var data = await documentCtrl.getAllContentDetailCourse(dataX);
+  res.send(JSON.stringify(data));
+});
+
+router.route('/lastest_detail_lesson/:typePage').get( async (req, res) => {
+  var dataX = req.params.typePage;
+  console.log("e.responseText",dataX);
+  var data = await documentCtrl.getAllContentLatestCourse(dataX);
+  res.send(JSON.stringify(data));
+});
+
+router.route('/group_lesson').post( async (req, res) => {
+  var data =  await documentCtrl.getAllInGroupCourse(req);
+  res.send(JSON.stringify(data));
+});
+
+router.route('/get_new').get( async (req, res) => {
+  var data = await documentCtrl.getAllContentStartPage();
   res.send(JSON.stringify(data));
 });
 
