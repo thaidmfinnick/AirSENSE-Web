@@ -438,6 +438,18 @@ documentCtrl.getAllContentDetailCourse  = async function(listID) {
     return [];
 }
 
+// Exam 
+documentCtrl.getAllContentDetailExam  = async function(listID) {
+    var sql= "SELECT exam_detail.*,exam.group_exam , n FROM ( SELECT @prev := '', @n := 0 ) init JOIN ( SELECT exam_detail.*, @n := if(exam_id != @prev, 1, @n + 1) AS n, @prev := exam_id FROM exam_detail WHERE exam_detail.deleteflag=0 AND exam_detail.is_main_pages_id<1  and exam_id IN("
+                +listID+") ORDER BY set_to_fist ,exam_detail_id DESC) exam_detail LEFT JOIN exam on exam.exam_id=exam_detail.exam_id WHERE n <= 10 ";
+
+    var x= await knex.raw(sql);
+    if ((x!=null)&&(x.length>0)) {
+        return x[0];
+    }
+    return [];
+}
+
 documentCtrl.getAllContentLatestPage  = async function(listID) {
     var sql= "SELECT pages_content.*,group_content_sub.group_content , n FROM ( SELECT @prev := '', @n := 0 ) init JOIN ( SELECT pages_content.*, @n := if(group_content_sub_id != @prev, 1, @n + 1) AS n, @prev := group_content_sub_id FROM pages_content WHERE pages_content.deleteflag =0 AND pages_content.is_main_pages_id<1  and group_content_sub_id IN("
                 +listID+") ORDER BY id_created DESC) pages_content LEFT JOIN group_content_sub on group_content_sub.group_content_sub_id=pages_content.group_content_sub_id WHERE n <= 10 ";
@@ -453,6 +465,18 @@ documentCtrl.getAllContentLatestPage  = async function(listID) {
 documentCtrl.getAllContentLatestCourse  = async function(listID) {
     var sql= "SELECT pages_course.*,course.group_course , n FROM ( SELECT @prev := '', @n := 0 ) init JOIN ( SELECT pages_course.*, @n := if(course_id != @prev, 1, @n + 1) AS n, @prev := course_id FROM pages_course WHERE pages_course.deleteflag =0 AND pages_course.is_main_pages_id<1  and course_id IN("
                 +listID+") ORDER BY id_created DESC) pages_course LEFT JOIN course on course.course_id=pages_course.course_id WHERE n <= 10 ";
+
+    var x= await knex.raw(sql);
+    if ((x!=null)&&(x.length>0)) {
+        return x[0];
+    }
+    return [];
+}
+
+// Exam
+documentCtrl.getAllContentLatestExam  = async function(listID) {
+    var sql= "SELECT exam_detail.*,exam.group_exam , n FROM ( SELECT @prev := '', @n := 0 ) init JOIN ( SELECT exam_detail.*, @n := if(exam_id != @prev, 1, @n + 1) AS n, @prev := exam_id FROM exam_detail WHERE exam_detail.deleteflag =0 AND exam_detail.is_main_pages_id<1  and exam_id IN("
+                +listID+") ORDER BY id_created DESC) exam_detail LEFT JOIN exam on exam.exam_id=exam_detail.exam_id WHERE n <= 10 ";
 
     var x= await knex.raw(sql);
     if ((x!=null)&&(x.length>0)) {
@@ -504,6 +528,25 @@ documentCtrl.getAllInGroupCourse  = async function(request) {
     if ((x!=null)&&(x.length>0)) {
         for(var i=0;i<x[0].length;i++){
             x[0][i].filesave = '/detail_lesson/'+ x[0][i].filesave.replace('/', '+');
+        }
+        return x[0];
+    }
+    return [];
+}
+
+// Exam
+documentCtrl.getAllInGroupExam  = async function(request) {
+    console.log("sqlraw.toString() ........... request.body..",request.body);
+    var is_main_pages_id = request.body['is_main_pages_id'];
+    var sqlraw = squel.select().from('exam_detail')
+        .where('deleteflag=0')
+        .where('is_main_pages_id='+is_main_pages_id
+                +" OR exam_detail_id ="+is_main_pages_id );
+        console.log("sqlraw.toString() .............",sqlraw.toString());
+    var x= await knex.raw(sqlraw.toString());
+    if ((x!=null)&&(x.length>0)) {
+        for(var i=0;i<x[0].length;i++){
+            x[0][i].filesave = '/detail_exam/'+ x[0][i].filesave.replace('/', '+');
         }
         return x[0];
     }
