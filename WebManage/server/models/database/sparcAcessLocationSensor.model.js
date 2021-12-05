@@ -1,7 +1,7 @@
 const TypeModel= require('../middlewareDatabase/TypeModel.js');
 const TableView= require('../middlewareDatabase/TableView.js');
 const TableManifest= require('../middlewareDatabase/TableManifest.js');
-const TABLE_NAME = 'sparc_acess_location_sensor';
+const TABLE_NAME = 'sparc_access_location_sensor';
 const CommonModel= require('../middlewareDatabase/CommonModel.js');
 const  defineManifest  = require('../../middlewares/CheckManifest.js');
 const CustomerAcess= require('../middlewareDatabase/CustomerAcess.js');
@@ -50,7 +50,7 @@ class SparcAcessLocationSensor extends CommonModel {
   
   getSQLReport(currentUser){
     console.log("getSQLReport...2....... " ,currentUser.manifestid); 
-      return ('SELECT sparc_sensor_warning.* FROM sparc_sensor_warning ');
+      return ('SELECT sparc_access_location_sensor.* FROM sparc_access_location_sensor ');
        //   + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
   }
   getJsonTofind(){
