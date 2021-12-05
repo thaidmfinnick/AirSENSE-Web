@@ -122,21 +122,21 @@ class PagesCourse  {
     }
 
     getInfoToAdd(){
-      return  ["course_id","group_file","filesave","title","content","content_img","is_main_pages_id","set_to_fist"];
+      return  ["course_id","group_file","group_course_id","filesave","title","content","content_img","is_main_pages_id","set_to_fist"];
     }
     getTitleToAdd(){
-      return  ["course_id","group_file","filesave","title","content","content_img","is_main_pages_id","set_to_fist"];
+      return  ["course_id","group_file","group_course_id","filesave","title","content","content_img","is_main_pages_id","set_to_fist"];
     }
     getHtmlAdd(){
-      return  [TypeDialgueShow.SELECT_CUSTOM,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT,
+      return  [TypeDialgueShow.SELECT_CUSTOM,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.SELECT_TABLE,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT,
               TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT];
     }
     getTypeSelectToAdd(){
-      return  [SelectHTml.SelectCourse,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML
+      return  [SelectHTml.SelectCourse,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML
                 ,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML];
     }
     getTypeSelectTabbleToAdd(){
-      return  ["course","","","","","","","" ];
+      return  ["","","course","","","","","","" ];
     }
     getColumeValidate(){
       return ["","","","leng6","","","",""];

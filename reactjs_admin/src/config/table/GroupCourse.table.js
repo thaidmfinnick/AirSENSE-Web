@@ -14,30 +14,16 @@ class GroupCourse  {
               width: 100,
             },
             {
-              field: 'mac',
-              headerName: 'Mac',
+              field: 'group_course',
+              headerName: 'group_course',
               width: 200,
             },
             {
-              field: 'station_id',
-              headerName: 'ID trạm',
+              field: 'title',
+              headerName: 'title',
               width: 400,
             },
-            {
-              field: 'location_lat',
-              headerName: 'Vĩ độ',
-              width: 400,
-            },
-            {
-              field: 'location_long',
-              headerName: 'kinh độ',
-              width: 400,
-            },
-            {
-              field: 'adress',
-              headerName: 'Địa chỉ',
-              width: 600,
-            },
+            
             {
               field: 'action',
               headerName: 'Thao tác',
