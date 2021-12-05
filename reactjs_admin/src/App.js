@@ -77,7 +77,8 @@ const App = () => {
             <Resource name="registerPage" options={{label:'Viết bài',"menuParent": "sPages" }} icon={TextFormat} list={RegisterPage} />
             {/* Khóa học */}
             <Resource name="groupCourses" options={{label:'Khóa học' ,"isMenuParent": true }} icon={CollectionsBookmarkIcon}  list={LockScreen} />
-            <Resource name="course" options={{label:'Nhóm khóa học' ,"menuParent": "groupCourses"}} icon={ClassIcon} list={NomalTable} />
+            <Resource name="group_course" options={{label:'Nhóm khóa học' ,"menuParent": "groupCourses"}} icon={ClassIcon} list={NomalTable} />
+            <Resource name="course" options={{label:'Khóa học' ,"menuParent": "groupCourses"}} icon={ClassIcon} list={NomalTable} />
             <Resource name="managerCourse" options={{label:'Quản lý khóa học',"menuParent": "groupCourses" }} icon={Settings} list={PagesCourse} />
             <Resource name="registerCourse" options={{label:'Đăng khóa học/bài học',"menuParent": "groupCourses" }} icon={TextFormat} list={RegisterCourse} />
 

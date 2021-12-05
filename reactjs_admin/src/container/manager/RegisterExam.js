@@ -52,6 +52,7 @@ class RegisterExam extends Component {
       content: this.props.is_update ? this.props.data.content : '',
       is_main: this.props.is_update ? this.props.data.is_main_pages_id : 0,
       content_html: this.props.is_update ? this.props.content : '',
+      reply: this.props.reply ? this.props.reply : '',
     };
   }
   componentDidMount() {
@@ -97,6 +98,7 @@ class RegisterExam extends Component {
     formData.is_main_pages_id = this.state.is_main;
     formData.content_html = this.state.content_html;
     formData.exam_detail_id = this.state.exam_detail_id;
+    formData.reply = this.state.reply;
     if (this.props.is_update) {
       updateExamToWriter(formData).then((response) => {
         Swal.fire('Cập nhật thông tin thành công');
@@ -134,6 +136,10 @@ class RegisterExam extends Component {
   onChangeContent(content) {
     console.log('Content: ' + content);
     this.setState({ content: content.target.value });
+  }
+
+  onChangeReply(content) {
+    this.setState({ reply: content.target.reply });
   }
 
   uploadImage(url) {
@@ -227,6 +233,18 @@ class RegisterExam extends Component {
                   value={this.state.content}
                   onChange={(event) => {
                     this.onChangeContent(event);
+                  }}
+                />
+              </div>
+              <div className={'register-item'}>
+                <p className={'line'}>Câu trả lời</p>
+                <TextField
+                  variant="outlined"
+                  multiline
+                  className={'register-text'}
+                  value={this.state.reply}
+                  onChange={(event) => {
+                    this.onChangeReply(event);
                   }}
                 />
               </div>
