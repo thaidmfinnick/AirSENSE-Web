@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
 import {
   uploadfileDataImage,
   registerCourseToWriter,
-  updateCourseToWriter
+  updateCourseToWriter,
 } from '../../api/httpBaseUtil.js';
 import UploadImage from '../../compoment/form/UploadImage.js';
 import SelectCourse from '../../compoment/form/SelectCourse.js';
@@ -40,12 +40,8 @@ class RegisterCourse extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pages_course_id: this.props.is_update
-        ? this.props.data.pages_course_id
-        : 0,
-      course_id: this.props.is_update
-        ? this.props.data.course_id
-        : 0,
+      course_page_id: this.props.is_update ? this.props.data.course_page_id : 0,
+      course_id: this.props.is_update ? this.props.data.course_id : 0,
       refesh: false,
       image_head: this.props.is_update ? this.props.data.content_img : '',
       title: this.props.is_update ? this.props.data.title : '',
@@ -62,7 +58,7 @@ class RegisterCourse extends Component {
         this.setState({ refesh: true });
       }, 200);
     });
-    ManagerData.getLstDataPromise('group_course').then(() => {
+    ManagerData.getLstDataPromise('course_group').then(() => {
       this.setState({ refesh: false });
       console.log('componentDidMount......................');
       setTimeout(() => {
@@ -96,7 +92,7 @@ class RegisterCourse extends Component {
     formData.content = this.state.content;
     formData.is_main_pages_id = this.state.is_main;
     formData.content_html = this.state.content_html;
-    formData.pages_course_id = this.state.pages_course_id;
+    formData.course_page_id = this.state.course_page_id;
     if (this.props.is_update) {
       updateCourseToWriter(formData).then((response) => {
         Swal.fire('Cập nhật thông tin thành công');
@@ -112,7 +108,7 @@ class RegisterCourse extends Component {
   }
 
   onChangeSub(content, detail) {
-    ManagerData.getLstDataPromise('pages_course', {
+    ManagerData.getLstDataPromise('course_page', {
       dataFind: {
         course_id: content.target.value,
         is_main_pages_id: -1,
@@ -157,7 +153,7 @@ class RegisterCourse extends Component {
 
     showEditText = ManagerData.checkDataExistting('course');
     if (!showEditText)
-      showEditText = ManagerData.checkDataExistting('group_course');
+      showEditText = ManagerData.checkDataExistting('course_group');
 
     return (
       <div className="user-data">

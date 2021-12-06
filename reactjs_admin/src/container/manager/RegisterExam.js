@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
 import {
   uploadfileDataImage,
   updateExamToWriter,
-  registerExamToWriter
+  registerExamToWriter,
 } from '../../api/httpBaseUtil.js';
 import UploadImage from '../../compoment/form/UploadImage.js';
 import SelectExam from '../../compoment/form/SelectExam.js';
@@ -40,12 +40,8 @@ class RegisterExam extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      exam_detail_id: this.props.is_update
-        ? this.props.data.exam_detail_id
-        : 0,
-      exam_id: this.props.is_update
-        ? this.props.data.exam_id
-        : 0,
+      exam_detail_id: this.props.is_update ? this.props.data.exam_detail_id : 0,
+      exam_id: this.props.is_update ? this.props.data.exam_id : 0,
       refesh: false,
       image_head: this.props.is_update ? this.props.data.content_img : '',
       title: this.props.is_update ? this.props.data.title : '',
@@ -63,7 +59,7 @@ class RegisterExam extends Component {
         this.setState({ refesh: true });
       }, 200);
     });
-    ManagerData.getLstDataPromise('group_exam').then(() => {
+    ManagerData.getLstDataPromise('exam_group').then(() => {
       this.setState({ refesh: false });
       console.log('componentDidMount......................');
       setTimeout(() => {
@@ -163,7 +159,7 @@ class RegisterExam extends Component {
 
     showEditText = ManagerData.checkDataExistting('exam');
     if (!showEditText)
-      showEditText = ManagerData.checkDataExistting('group_exam');
+      showEditText = ManagerData.checkDataExistting('exam_group');
 
     return (
       <div className="user-data">
