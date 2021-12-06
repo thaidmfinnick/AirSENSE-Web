@@ -1,4 +1,71 @@
+function getInfoData(urlLink,callBack){
+  $.ajax({
+      type: 'GET',
+      enctype: 'multipart/form-data',
+      url: urlLink,
+      data: {},
+      processData: false, //prevent jQuery from automatically transforming the data into a query string
+      contentType: false,
+      cache: false,
+      success: (data) => {
+        var dataJson = JSON.parse(data);
+        callBack(dataJson);
+      },
+      error: (e) => {
+        console.log(e.responseText);
+        callBack([]);
+      },
+  });
+}
 
+function getInfoHtml(urlLink,callBack){
+$.ajax({
+    type: 'GET',
+    enctype: 'multipart/form-data',
+    url: urlLink,
+    data: {},
+    processData: false, //prevent jQuery from automatically transforming the data into a query string
+    contentType: false,
+    cache: false,
+    success: (data) => {
+      callBack(data);
+    },
+    error: (e) => {
+      console.log(e.responseText);
+      callBack("");
+    },
+});
+}
+
+function postInfoData(urlLink,dataInfo,callBack){
+  $.ajax({
+      type: 'post',
+      method: 'POST',
+      url: urlLink,
+      body: JSON.stringify(dataInfo), // body data type must match "Content-Type" header
+      data: JSON.stringify(dataInfo), // body data type must match "Content-Type" header
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      dataType: 'json',
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Beard ' + localStorage.getItem('token'),
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      success: function (dataReturn) {
+          callBack(dataReturn);
+      },
+      error: function (loadcofig) {
+          callBack([]);
+      }
+  });
+}
 function setItemFormITemAds(item){
     var html=' <div class="sb-img-hust-tech ">  <img class="image-hust-tech" src ="'+item.content_img+'"/>'
                 +'</div>' 
