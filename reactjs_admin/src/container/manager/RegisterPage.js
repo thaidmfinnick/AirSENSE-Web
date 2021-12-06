@@ -209,7 +209,9 @@ class RegisterPage extends Component {
                         </div>
                     </div>
                 </div>
+                
                 </div>
+                
                 <div className={'document-editor'}>
                 <div id="toolbar-container"></div>
 
