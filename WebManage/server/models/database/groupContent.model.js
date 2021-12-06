@@ -1,10 +1,10 @@
-const TypeModel= require('../middlewareDatabase/TypeModel.js');
-const TableView= require('../middlewareDatabase/TableView.js');
-const TableManifest= require('../middlewareDatabase/TableManifest.js');
-const TABLE_NAME = 'group_content';
-const CommonModel= require('../middlewareDatabase/CommonModel.js');
-const  defineManifest  = require('../../middlewares/CheckManifest.js');
-const CustomerAcess= require('../middlewareDatabase/CustomerAcess.js');
+const TypeModel = require("../middlewareDatabase/TypeModel.js");
+const TableView = require("../middlewareDatabase/TableView.js");
+const TableManifest = require("../middlewareDatabase/TableManifest.js");
+const TABLE_NAME = "content_group";
+const CommonModel = require("../middlewareDatabase/CommonModel.js");
+const defineManifest = require("../../middlewares/CheckManifest.js");
+const CustomerAcess = require("../middlewareDatabase/CustomerAcess.js");
 /**
  * User model.
  */
@@ -22,42 +22,45 @@ class GroupContent extends CommonModel {
   get hasTimestamps() {
     return true;
   }
-/*
+  /*
   verifyPassword(password) {
     return this.get('password') === password;
   } */
-  getNameTable(){ return TABLE_NAME;}
-  getTypeTable(){ return TypeModel.NEWS;}
-  customerAcess(){ 
-    return  {edit:CustomerAcess.NOT_ACESS,
-             add:CustomerAcess.NOT_ACESS,
-             view:CustomerAcess.NOT_ACESS  }; 
+  getNameTable() {
+    return TABLE_NAME;
   }
-  getFieldToAdd(){
-      return {
-          valueSetup: ["group_content","title"]
-      };
+  getTypeTable() {
+    return TypeModel.NEWS;
   }
-  getFieldToDelete(){
-      return {
-          arrayCoppy:["group_content","title" ,"created_at","id_created"],
-          locationSelect:"group_content_id",
-          valueSelect:"deleteflag",
-          userUpdate:"id_updated"
-      };
+  customerAcess() {
+    return {
+      edit: CustomerAcess.NOT_ACESS,
+      add: CustomerAcess.NOT_ACESS,
+      view: CustomerAcess.NOT_ACESS,
+    };
   }
-  
-  
-  getSQLReport(currentUser){
-    console.log("getSQLReport...2....... " ,currentUser.manifestid); 
-      return ('SELECT group_content.* FROM group_content ');
-       //   + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
+  getFieldToAdd() {
+    return {
+      valueSetup: ["content_group", "title"],
+    };
   }
-  getJsonTofind(){
-      return [];
+  getFieldToDelete() {
+    return {
+      arrayCoppy: ["content_group", "title", "created_at", "id_created"],
+      locationSelect: "content_group_id",
+      valueSelect: "deleteflag",
+      userUpdate: "id_updated",
+    };
   }
 
-
+  getSQLReport(currentUser) {
+    console.log("getSQLReport...2....... ", currentUser.manifestid);
+    return "SELECT content_group.* FROM content_group ";
+    //   + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
+  }
+  getJsonTofind() {
+    return [];
+  }
 }
 
-module.exports =  GroupContent;
+module.exports = GroupContent;

@@ -181,9 +181,9 @@
             var showDataDetail="";
             for(var k=0;k< listSelectContent.length;k++) {
                 let v=listSelectContent[k];
-                if((v["group_course"].indexOf("_")>-1)&&(v["group_course"].indexOf(group)>-1))
+                if((v["course_group"].indexOf("_")>-1)&&(v["course_group"].indexOf(group)>-1))
                 {
-                    showDataDetail+='<option value="'+v["group_course"]+'">'+v["title"] +'</option>';
+                    showDataDetail+='<option value="'+v["course_group"]+'">'+v["title"] +'</option>';
                 }
                 
             }
