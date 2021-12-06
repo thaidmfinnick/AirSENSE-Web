@@ -60,10 +60,6 @@ const App = () => {
             >
             <Resource name="users" options={{label:'Tài khoản' }} icon={UserIcon} list={UserList} />
 
-            {/*  Mqtt*/}
-            <Resource name="mqtt" options={{label:'Quản lý mqtt' ,"isMenuParent": true }} icon={BuildIcon} list={LockScreen} />
-            <Resource name="mqtt_microservice" options={{label:'Tạo microservice',"menuParent": "mqtt"}} icon={BuildIcon} list={NomalTable} />
-            <Resource name="mqtt_user" options={{label:'mqtt khách hàng',"menuParent": "mqtt"}} icon={SupervisorAccountIcon} list={NomalTable} />
             {/* bài báo*/}
             <Resource name="sPages" options={{label:'Nhóm bài báo' ,"isMenuParent": true }} icon={FeaturedPlayList}  list={LockScreen} />
             <Resource name="group_content_sub" options={{label:'Nhóm bài báo' ,"menuParent": "sPages"}} icon={FeaturedPlayList} list={NomalTable} />

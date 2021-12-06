@@ -31,13 +31,13 @@ import SparcAcessLocationSensor from './SparcAcessLocationSensor.table';
 import sparcGroupLocationSensor from './sparcGroupLocationSensor.table';
 import SparcLocationSensor from './SparcLocationSensor.table';
 import user_admin from './user_admin.table';
-
+import SparcSensorMaxMin from './SparcSensorMaxMin.table';
 
 const classesFactory = {User_View, user_admin ,Adress,DecentralizationAccess,GroupContent,
     MqttMicroservice,MqttUser,PagesContent ,AdvertisementContent ,BillService
     ,LostProduct,Enterprise ,DetailBank ,Customer ,Company ,StoreProduct ,Product,BuyProductDetail
     ,BuyProduct,BackProduct,ReturnService ,ChargingService ,Service,GroupContentSub,SparcAqi,ExtendedData,
-    Location,SparcAcessLocationSensor,sparcGroupLocationSensor,SparcLocationSensor
+    Location,SparcAcessLocationSensor,sparcGroupLocationSensor,SparcLocationSensor, SparcSensorMaxMin
 
 };
 const classesFactorryMapping = {  users:"User_View", user_admin: "user_admin", adress:"Adress" ,
@@ -53,6 +53,7 @@ const classesFactorryMapping = {  users:"User_View", user_admin: "user_admin", a
                                 sparc_aqi:"SparcAqi",extended_data:"ExtendedData",
                                 location:"Location",sparc_access_location_sensor:"SparcAcessLocationSensor",
                                 sparc_group_location_sensor:"sparcGroupLocationSensor",sparc_location_sensor:"SparcLocationSensor",
+                                sparc_sensor_max_min:"SparcSensorMaxMin"
                                 };   
 
 export const exportColumeData = (table,callback=null) =>{

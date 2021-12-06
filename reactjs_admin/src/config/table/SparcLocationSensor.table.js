@@ -8,9 +8,9 @@ class SparcLocationSensor  {
     getColumeShow=(callback)=>{
         const columns = [
             {
-              field: 'id',
+              field: 'idf',
               headerName: 'stt',
-              width: 50,
+              width: 150,
             },
             {
               field: 'mac',

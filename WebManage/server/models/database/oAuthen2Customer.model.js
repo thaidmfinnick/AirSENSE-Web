@@ -56,7 +56,7 @@ class oAuthen2Customer extends CommonModel {
         listDataContain+=current_id;
         var authen2 = squel.insert().into("oauthen2customer")
                 .set("permission_id",permission_id)
-                .set("customeid",current_id)
+                .set("customer_id",current_id)
                 .set("tocken",dataTocken)
                 .set("id_updated",current_id)
                 .set("id_created",current_id)

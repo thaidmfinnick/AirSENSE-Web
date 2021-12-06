@@ -9,6 +9,9 @@ const router = express.Router();
   router.route('/report').post(isAuthenticated, (req, res) => {
       userCtrl.getTableData(req, res);
   });
+  router.route('/getChangeLog').post(isAuthenticated, (req, res) => {
+    userCtrl.getDairyChange(req, res);
+});
 
   router.route('/report-by-group').post(isAuthenticated, (req, res) => {
     userCtrl.getTableDataByGroup(req, res);

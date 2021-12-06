@@ -3,7 +3,7 @@
 }*/
 
 import { getallInfoTable,getNumberPageOnTable,getCurUser,
-  addOneDataToTable,deleteOneDataToTable,updateOneDataInfoTable }
+  addOneDataToTable,deleteOneDataToTable,updateOneDataInfoTable, getChangeLog }
  from '../api/httpBaseUtil';
  import {ActionControl} from '../utils/commonUtil';
 
@@ -47,7 +47,27 @@ let ManagerData={
         getallInfoTable(tableName,fillter)
         .then((result) => {
           let data = result.data;
+          if(data.result[0].id !== undefined)
+          for (var i = 0; i < data.result.length; i++) data.result[i].idf = i;
+          else 
           for (var i = 0; i < data.result.length; i++) data.result[i].id = i;
+
+          ManagerData.checkTableInfoUpdate(tableName,data.result);
+          resolve(data.result);
+        })
+        .catch((error) => {reject(error)});
+      });
+    },
+    getDairyChange(tableName, fillter = null) {
+      return new Promise((resolve, reject) => {
+        getChangeLog(tableName,fillter)
+        .then((result) => {
+          let data = result.data;
+          if(data.result[0].id !== undefined)
+          for (var i = 0; i < data.result.length; i++) data.result[i].idf = i;
+          else 
+          for (var i = 0; i < data.result.length; i++) data.result[i].id = i;
+
           ManagerData.checkTableInfoUpdate(tableName,data.result);
           resolve(data.result);
         })

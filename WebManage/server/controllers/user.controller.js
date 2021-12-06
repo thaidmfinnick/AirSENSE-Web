@@ -46,6 +46,35 @@ userCtrl.getTableData =function (req, res) {
     return returnNotFound(res,{ message: "Database inval x" });
 }
 
+userCtrl.getDairyChange = (req, res) => {
+  var startPage=0;
+  if(!!req.body.startPage) startPage=req.body.startPage;
+  var tableSelect=mangerModelAdmin(req.body.table);
+  if(!!tableSelect){
+    if(!tableSelect.checkAcessGetDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
+      return returnNotFound(res,{ message: "Database inval" });
+    }
+
+    startPage =startPage*1000;
+    var itemSelect=tableSelect.getValueToSelectToFind(req.body.dataFind);
+    var dataTableSQL=tableSelect.getSQLReport(req.currentUser);
+    if(tableSelect.getFieldToDelete().valueSelect!=""){
+        dataTableSQL= dataTableSQL +" WHERE "+   tableSelect.getDairyChange(req.currentUser) +itemSelect; 
+    }
+    dataTableSQL =dataTableSQL + " LIMIT "+startPage +","+(startPage+1000);
+    console.log("dataTableSQL   ",dataTableSQL);
+    knex.raw(dataTableSQL)
+    .then(result => {
+      return returnOK(res,result[0]);
+    }
+    , error => {
+      return returnNotFound(res,error);
+    });
+  }
+  else 
+    return returnNotFound(res,{ message: "Database inval x" });
+}
+
 
                           
 userCtrl.getTableDataByGroup =function (req, res) {
@@ -168,19 +197,23 @@ userCtrl.deleteData= async function (req, res) {
 
 userCtrl.updateData= async  function (req, res) {
 
-  var tableSelect=mangerModelAdmin(req.body.table);  
+  var tableSelect=mangerModelAdmin(req.body.table); 
   console.log("req.body.table....",req.body);
+  
   if(!!!tableSelect){
     return returnNotFound(res,{ message: "Database inval" });
   }
+
   if(!tableSelect.checkDataEditDatabase(req.currentUser.manifestid,tableSelect.getTypeTable())){
 
     return returnNotFound(res,{ message: "Database not Acess 1" });
   }
+
   if(!await tableSelect.checkDataToEdit(req)){
 
     return returnNotFound(res,{ message: "Database not Acess 2" });
   }
+
 
   let data=req.body;
   var userid=req.currentUser.users_id;
@@ -195,8 +228,6 @@ userCtrl.updateData= async  function (req, res) {
       squelGet.field(item);
   }
   squelGet.where(dataUser.locationSelect+'='+data[dataUser.locationSelect]);
-
-
   var authen = squel.insert().into(tableSelect.getNameTable())
                       .fromQuery( dataUser.arrayCoppy, squelGet);
                       console.log("updateDataauthen.toString() ",authen.toString());
@@ -209,6 +240,7 @@ userCtrl.updateData= async  function (req, res) {
                         .set("oldid",data[dataUser.locationSelect])
                         .set("deleteflag",1)
                         .set("updated_at","NOW()",{dontQuote: true});
+                        console.log(authen2.toString())
   var deleteAdd= await knex.raw(authen2.toString());
   if((deleteAdd==null)||(deleteAdd.length<1)) return returnFalse(res,"Lỗi cập nhật dữ liệu"); 
   var sqlData = await tableSelect.checkSqlUpdateAdmin(req,data);   

@@ -8,7 +8,7 @@ class SparcSensorMaxMin  {
     getColumeShow=(callback)=>{
         const columns = [
             {
-              field: 'id',
+              field: 'idf',
               headerName: 'stt',
               width: 140,
             },
