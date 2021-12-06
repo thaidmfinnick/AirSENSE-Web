@@ -187,9 +187,9 @@
             var showDataDetail="";
             for(var k=0;k< listSelectContent.length;k++) {
                 let v=listSelectContent[k];
-                if((v["group_content"].indexOf("_")>-1)&&(v["group_content"].indexOf(group)>-1))
+                if((v["content_group"].indexOf("_")>-1)&&(v["content_group"].indexOf(group)>-1))
                 {
-                    showDataDetail+='<option value="'+v["group_content"]+'">'+v["title"] +'</option>';
+                    showDataDetail+='<option value="'+v["content_group"]+'">'+v["title"] +'</option>';
                 }
                 
             }
@@ -197,7 +197,7 @@
         }
         loadAllContent();
         function loadAllContent(){
-            var Link='http://localhost:3000/report/group_content';
+            var Link='http://localhost:3000/report/content_group';
                 $.ajax({
                     type: 'post',
                     dataType: 'json',
@@ -214,12 +214,12 @@
                         listSelectContent=loadcofig.result;
                         for(var k=0;k< loadcofig.result.length;k++) {
                             let v=loadcofig.result[k];
-                            if(v["group_content"].indexOf("_")<0){
-                                showData+='<option value="'+v["group_content"]+'">'+v["title"] +'</option>'
+                            if(v["content_group"].indexOf("_")<0){
+                                showData+='<option value="'+v["content_group"]+'">'+v["title"] +'</option>'
                             }
                             else
                             {
-                                showDataDetail+='<option value="'+v["group_content"]+'">'+v["title"] +'</option>';
+                                showDataDetail+='<option value="'+v["content_group"]+'">'+v["title"] +'</option>';
                             }
                             
                         }
