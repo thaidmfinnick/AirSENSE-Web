@@ -68,8 +68,8 @@ INSERT INTO `address` (`addrid`, `userid`, `name`, `contactPhoneNumber`, `provin
 
 CREATE TABLE `course` (
   `course_id` int(11) NOT NULL,
-  `group_course` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
-  `group_course_id` int(11) NOT NULL,
+  `course_group` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
+  `course_group_id` int(11) NOT NULL,
   `title` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE `course` (
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`course_id`, `group_course`, `group_course_id`, `title`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+INSERT INTO `course` (`course_id`, `course_group`, `course_group_id`, `title`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
 (1, 'Math', 1, 'Math', '2021-10-20 00:00:00', '2021-10-20 00:00:00', 0, 0, 0, 0),
 (2, 'Physics', 1, 'Physics', '2021-06-16 00:00:00', '2021-06-16 00:00:00', 0, 0, 0, 0),
 (3, 'Climate', 1, 'Khí hậu', '2021-06-16 00:00:00', '2021-06-16 00:00:00', 0, 0, 0, 0),
@@ -36594,12 +36594,12 @@ INSERT INTO `extended_data` (`NodeId`, `Time`, `CO`, `CO2`, `SO2`, `NO2`, `O3`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `group_content`
+-- Table structure for table `content_group`
 --
 
-CREATE TABLE `group_content` (
+CREATE TABLE `content_group` (
   `group_content_id` int(11) NOT NULL,
-  `group_content` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
+  `content_group` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `title` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -36610,10 +36610,10 @@ CREATE TABLE `group_content` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `group_content`
+-- Dumping data for table `content_group`
 --
 
-INSERT INTO `group_content` (`group_content_id`, `group_content`, `title`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+INSERT INTO `content_group` (`group_content_id`, `content_group`, `title`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
 (1, 'Blog', 'Blog', '2021-06-15 00:00:00', '2021-06-10 00:00:00', 0, 0, 0, 0),
 (2, 'Đào tạo', 'Đào tạo', '2021-06-15 00:00:00', '2021-06-10 00:00:00', 0, 0, 0, 0);
 
@@ -36624,8 +36624,8 @@ INSERT INTO `group_content` (`group_content_id`, `group_content`, `title`, `crea
 --
 
 CREATE TABLE `group_content_sub` (
-  `group_content_sub_id` int(11) NOT NULL,
-  `group_content` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
+  `content_sub_id` int(11) NOT NULL,
+  `content_group` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `group_content_id` int(11) NOT NULL,
   `title` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
@@ -36640,7 +36640,7 @@ CREATE TABLE `group_content_sub` (
 -- Dumping data for table `group_content_sub`
 --
 
-INSERT INTO `group_content_sub` (`group_content_sub_id`, `group_content`, `group_content_id`, `title`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+INSERT INTO `group_content_sub` (`content_sub_id`, `content_group`, `group_content_id`, `title`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
 (1, 'STEM', 1, 'STEM', '2021-10-20 00:00:00', '2021-10-20 00:00:00', 0, 0, 0, 0),
 (2, 'Environment', 1, 'Môi trường', '2021-06-16 00:00:00', '2021-06-16 00:00:00', 0, 0, 0, 0),
 (3, 'Climate', 1, 'Khí hậu', '2021-06-16 00:00:00', '2021-06-16 00:00:00', 0, 0, 0, 0),
@@ -36650,12 +36650,12 @@ INSERT INTO `group_content_sub` (`group_content_sub_id`, `group_content`, `group
 -- --------------------------------------------------------
 
 --
--- Table structure for table `group_course`
+-- Table structure for table `course_group`
 --
 
-CREATE TABLE `group_course` (
-  `group_course_id` int(11) NOT NULL,
-  `group_course` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
+CREATE TABLE `course_group` (
+  `course_group_id` int(11) NOT NULL,
+  `course_group` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `title` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -36666,10 +36666,10 @@ CREATE TABLE `group_course` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `group_course`
+-- Dumping data for table `course_group`
 --
 
-INSERT INTO `group_course` (`group_course_id`, `group_course`, `title`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+INSERT INTO `course_group` (`course_group_id`, `course_group`, `title`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
 (1, 'Coding', 'Coding', '2021-06-15 00:00:00', '2021-06-10 00:00:00', 0, 0, 0, 0),
 (2, 'Studying', 'Studying', '2021-06-15 00:00:00', '2021-06-10 00:00:00', 0, 0, 0, 0);
 
@@ -36918,12 +36918,12 @@ CREATE TABLE `orders_sale_historyshiper` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pages_content`
+-- Table structure for table `content_page`
 --
 
-CREATE TABLE `pages_content` (
-  `pages_content_id` int(11) NOT NULL,
-  `group_content_sub_id` int(11) NOT NULL,
+CREATE TABLE `content_page` (
+  `content_page_id` int(11) NOT NULL,
+  `content_sub_id` int(11) NOT NULL,
   `group_file` varchar(50) DEFAULT NULL,
   `filesave` varchar(100) DEFAULT NULL,
   `title` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
@@ -36940,10 +36940,10 @@ CREATE TABLE `pages_content` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pages_content`
+-- Dumping data for table `content_page`
 --
 
-INSERT INTO `pages_content` (`pages_content_id`, `group_content_sub_id`, `group_file`, `filesave`, `title`, `content`, `content_img`, `is_main_pages_id`, `set_to_fist`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+INSERT INTO `content_page` (`content_page_id`, `content_sub_id`, `group_file`, `filesave`, `title`, `content`, `content_img`, `is_main_pages_id`, `set_to_fist`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
 (527, 0, 'group_file', 'storeHtml/filePpjDTJLJABzSfZa1Sn0S1636114058247.html', 'a', 'b', 'http://127.0.0.1:3000/uploads/datas/1636114045913-MicrosoftTeams-image.png', 0, 0, '2021-11-05 19:07:38', '2021-11-05 19:07:38', 1, 1, 0, 0),
 (528, 0, 'group_file', 'storeHtml/fileL0Cz8yQi7M6UC9bvT01a1636135612765.html', 'a', 'b', 'http://127.0.0.1:3000/uploads/datas/1636135568238-MicrosoftTeams-image (2).png', 0, 0, '2021-11-06 01:06:52', '2021-11-06 01:06:52', 1, 1, 0, 0),
 (529, 1, 'group_file', 'storeHtml/fileMnY4UsjHR1FXE8GI7o121636160929005.html', 'a', 'b', 'http://127.0.0.1:3000/uploads/datas/1636160916989-MicrosoftTeams-image (2).png', 0, 0, '2021-11-06 08:08:49', '2021-11-06 08:08:49', 1, 1, 0, 0),
@@ -36953,11 +36953,11 @@ INSERT INTO `pages_content` (`pages_content_id`, `group_content_sub_id`, `group_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pages_course`
+-- Table structure for table `course_page`
 --
 
-CREATE TABLE `pages_course` (
-  `pages_course_id` int(11) NOT NULL,
+CREATE TABLE `course_page` (
+  `course_page_id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
   `group_file` varchar(50) DEFAULT NULL,
   `filesave` varchar(100) DEFAULT NULL,
@@ -36975,10 +36975,10 @@ CREATE TABLE `pages_course` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pages_course`
+-- Dumping data for table `course_page`
 --
 
-INSERT INTO `pages_course` (`pages_course_id`, `course_id`, `group_file`, `filesave`, `title`, `content`, `content_img`, `is_main_pages_id`, `set_to_fist`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
+INSERT INTO `course_page` (`course_page_id`, `course_id`, `group_file`, `filesave`, `title`, `content`, `content_img`, `is_main_pages_id`, `set_to_fist`, `created_at`, `updated_at`, `id_created`, `id_updated`, `deleteflag`, `oldid`) VALUES
 (527, 1, 'group_file', 'storeHtml/fileZDLVwVLB3IAO3RKi0fif1638362766094.html', 'test Course', 'test Courseee', 'http://127.0.0.1:3000/uploads/datas/1638362764082-the-structure-of-a-motivational-letter.png', 0, 0, '2021-12-01 19:46:06', '2021-12-01 19:46:06', 1, 1, 0, 0),
 (528, 12, 'group_file', 'storeHtml/fileXPMbJKeyOufENFtyZI9g1638362868448.html', 'course2', 'course2', 'http://127.0.0.1:3000/uploads/datas/1638362843068-the-structure-of-a-motivational-letter.png', 0, 0, '2021-12-01 19:47:48', '2021-12-01 19:47:48', 1, 1, 0, 0),
 (529, 1, 'group_file', 'storeHtml/filegDOXsM3gH6h7cDuNmDGM1638364337588.html', 'tessttt coursee3', 'heluu', '', 0, 0, '2021-12-01 20:12:17', '2021-12-01 20:12:17', 1, 1, 0, 0);
@@ -40926,22 +40926,22 @@ ALTER TABLE `extended_data`
   ADD PRIMARY KEY (`Time`);
 
 --
--- Indexes for table `group_content`
+-- Indexes for table `content_group`
 --
-ALTER TABLE `group_content`
+ALTER TABLE `content_group`
   ADD PRIMARY KEY (`group_content_id`);
 
 --
 -- Indexes for table `group_content_sub`
 --
 ALTER TABLE `group_content_sub`
-  ADD PRIMARY KEY (`group_content_sub_id`);
+  ADD PRIMARY KEY (`content_sub_id`);
 
 --
--- Indexes for table `group_course`
+-- Indexes for table `course_group`
 --
-ALTER TABLE `group_course`
-  ADD PRIMARY KEY (`group_course_id`);
+ALTER TABLE `course_group`
+  ADD PRIMARY KEY (`course_group_id`);
 
 --
 -- Indexes for table `history_delivery_warehouse_return`
@@ -40998,16 +40998,16 @@ ALTER TABLE `orders_sale_historyshiper`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pages_content`
+-- Indexes for table `content_page`
 --
-ALTER TABLE `pages_content`
-  ADD PRIMARY KEY (`pages_content_id`);
+ALTER TABLE `content_page`
+  ADD PRIMARY KEY (`content_page_id`);
 
 --
--- Indexes for table `pages_course`
+-- Indexes for table `course_page`
 --
-ALTER TABLE `pages_course`
-  ADD PRIMARY KEY (`pages_course_id`);
+ALTER TABLE `course_page`
+  ADD PRIMARY KEY (`course_page_id`);
 
 --
 -- Indexes for table `setup_device`
@@ -41164,22 +41164,22 @@ ALTER TABLE `course`
   MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- AUTO_INCREMENT for table `group_content`
+-- AUTO_INCREMENT for table `content_group`
 --
-ALTER TABLE `group_content`
+ALTER TABLE `content_group`
   MODIFY `group_content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `group_content_sub`
 --
 ALTER TABLE `group_content_sub`
-  MODIFY `group_content_sub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `content_sub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- AUTO_INCREMENT for table `group_course`
+-- AUTO_INCREMENT for table `course_group`
 --
-ALTER TABLE `group_course`
-  MODIFY `group_course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `course_group`
+  MODIFY `course_group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `history_delivery_warehouse_return`
@@ -41230,16 +41230,16 @@ ALTER TABLE `orders_sale_historyshiper`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `pages_content`
+-- AUTO_INCREMENT for table `content_page`
 --
-ALTER TABLE `pages_content`
-  MODIFY `pages_content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=532;
+ALTER TABLE `content_page`
+  MODIFY `content_page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=532;
 
 --
--- AUTO_INCREMENT for table `pages_course`
+-- AUTO_INCREMENT for table `course_page`
 --
-ALTER TABLE `pages_course`
-  MODIFY `pages_course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=530;
+ALTER TABLE `course_page`
+  MODIFY `course_page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=530;
 
 --
 -- AUTO_INCREMENT for table `setup_device`

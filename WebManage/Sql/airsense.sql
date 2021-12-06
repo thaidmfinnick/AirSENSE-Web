@@ -36538,12 +36538,12 @@ INSERT INTO `extended_data` (`NodeId`, `Time`, `CO`, `CO2`, `SO2`, `NO2`, `O3`) 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `group_content`
+-- Cấu trúc bảng cho bảng `content_group`
 --
 
-CREATE TABLE `group_content` (
+CREATE TABLE `content_group` (
   `id` int(11) NOT NULL,
-  `group_content` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
+  `content_group` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `title` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `createat` datetime NOT NULL,
   `updateat` datetime NOT NULL,
@@ -36765,10 +36765,10 @@ CREATE TABLE `orders_sale_historyshiper` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `pages_content`
+-- Cấu trúc bảng cho bảng `content_page`
 --
 
-CREATE TABLE `pages_content` (
+CREATE TABLE `content_page` (
   `id` int(11) NOT NULL,
   `group_file` varchar(50) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
   `filesave` varchar(100) CHARACTER SET utf32 COLLATE utf32_vietnamese_ci DEFAULT NULL,
