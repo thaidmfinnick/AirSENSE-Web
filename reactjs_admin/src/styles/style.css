@@ -168,6 +168,10 @@ h6 {
   float: right;
 }
 
+.test-menu-input {
+  width: 300px;
+}
+
 .row-register {
   display: flex;
 }
@@ -763,3 +767,4 @@ p.line {
 .ck {
   height: 400px;
 }
+

@@ -100,6 +100,191 @@ documentCtrl.postUpdatePageToDataBase  = function(request, res) {
 }
 
 
+// Document Course
+documentCtrl.postAddCourseToDataBase  = function(request, res) {       
+    let content=request.body["content"] ;
+    let content_html=request.body["content_html"] ;
+    let group=request.body["group_file"];
+    let course_id = request.body["course_id"];
+    // save file
+    var link= documentFileAndFloder.createNewfile(content_html,'storeHtml');
+    if(link==null){
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+            error: true,
+            data: { message: err.message },
+          })
+    }
+    else
+    {
+        var addData = squel.insert().into('pages_course')
+        // save data Sql
+        addData.set("course_id",course_id)
+        .set("group_file",group)
+        .set("filesave",link)
+        .set("title",request.body["title"])
+        .set("content",request.body["content"])
+        .set("is_main_pages_id",request.body["is_main_pages_id"])
+        .set("content_img",request.body["content_img"])
+        .set("id_created",request.currentUser.users_id)
+        .set("id_updated",request.currentUser.users_id)
+        .set("created_at","NOW()",{dontQuote: true}) 
+        .set("updated_at","NOW()",{dontQuote: true})
+        .set("deleteflag",0);
+        knex.raw(addData.toString()).then(function(x) {
+            return res.status(HttpStatus.OK).json({
+                data: x
+            });  
+        })
+        .catch(function(err){
+            return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+                error: true,
+                detail:err,
+                data:  "Database inval"
+            });     
+        });
+    }
+
+}
+
+
+documentCtrl.postUpdateCourseToDataBase  = function(request, res) {       
+let content=request.body["content"] ;
+let content_html=request.body["content_html"] ;
+let group=request.body["group_file"];
+let course_id = request.body["course_id"];
+// save file
+var link= documentFileAndFloder.createNewfile(content_html,'storeHtml');
+if(link==null){
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        error: true,
+        data: { message: err.message },
+      })
+}
+else
+{
+    var addData = squel.update().table('pages_course')
+    // save data Sql
+    addData.set("course_id",course_id)
+    .set("group_file",group)
+    .set("filesave",link)
+    .set("title",request.body["title"])
+    .set("content",request.body["content"])
+    .set("is_main_pages_id",request.body["is_main_pages_id"])
+    .set("content_img",request.body["content_img"])
+    .set("id_created",request.currentUser.users_id)
+    .set("id_updated",request.currentUser.users_id)
+    .set("updated_at","NOW()",{dontQuote: true})
+    .set("deleteflag",0)
+    .where('pages_content_id='+request.body['pages_course_id']);
+    knex.raw(addData.toString()).then(function(x) {
+        return res.status(HttpStatus.OK).json({
+            data: x
+        });  
+    })
+    .catch(function(err){
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+            error: true,
+            detail:err,
+            data:  "Database inval"
+        });     
+    });
+}
+
+}
+
+// 
+
+// Exam
+documentCtrl.postAddExamToDataBase  = function(request, res) {       
+    let content=request.body["content"] ;
+    let content_html=request.body["content_html"] ;
+    let group=request.body["group_file"];
+    let exam_id = request.body["exam_id"];
+    // save file
+    var link= documentFileAndFloder.createNewfile(content_html,'storeHtml');
+    if(link==null){
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+            error: true,
+            data: { message: err.message },
+          })
+    }
+    else
+    {
+        var addData = squel.insert().into('exam_detail')
+        // save data Sql
+        addData.set("exam_id",exam_id)
+        .set("group_file",group)
+        .set("filesave",link)
+        .set("title",request.body["title"])
+        .set("content",request.body["content"])
+        .set("is_main_pages_id",request.body["is_main_pages_id"])
+        .set("content_img",request.body["content_img"])
+        .set("id_created",request.currentUser.users_id)
+        .set("id_updated",request.currentUser.users_id)
+        .set("created_at","NOW()",{dontQuote: true}) 
+        .set("updated_at","NOW()",{dontQuote: true})
+        .set("deleteflag",0);
+        knex.raw(addData.toString()).then(function(x) {
+            return res.status(HttpStatus.OK).json({
+                data: x
+            });  
+        })
+        .catch(function(err){
+            return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+                error: true,
+                detail:err,
+                data:  "Database inval"
+            });     
+        });
+    }
+}
+
+
+documentCtrl.postUpdateExamToDataBase  = function(request, res) {       
+let content=request.body["content"] ;
+let content_html=request.body["content_html"] ;
+let group=request.body["group_file"];
+let course_id = request.body["exam_id"];
+// save file
+var link= documentFileAndFloder.createNewfile(content_html,'storeHtml');
+if(link==null){
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        error: true,
+        data: { message: err.message },
+      })
+    }
+else
+{
+    var addData = squel.update().table('exam_detail')
+    // save data Sql
+    addData.set("exam_id",exam_id)
+    .set("group_file",group)
+    .set("filesave",link)
+    .set("title",request.body["title"])
+    .set("content",request.body["content"])
+    .set("is_main_pages_id",request.body["is_main_pages_id"])
+    .set("content_img",request.body["content_img"])
+    .set("id_created",request.currentUser.users_id)
+    .set("id_updated",request.currentUser.users_id)
+    .set("updated_at","NOW()",{dontQuote: true})
+    .set("deleteflag",0)
+    .where('exam_detail_id='+request.body['exam_detail_id']);
+    knex.raw(addData.toString()).then(function(x) {
+        return res.status(HttpStatus.OK).json({
+            data: x
+        });  
+    })
+    .catch(function(err){
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+            error: true,
+            detail:err,
+            data:  "Database inval"
+        });     
+    });
+}
+}
+
+// 
 
 documentCtrl.postAddAdvertisementToDataBase  = function(request, res) {       
     let content=request.body["content"] ;
@@ -241,9 +426,57 @@ documentCtrl.getAllContentDetailPage  = async function(listID) {
     return [];
 }
 
+// Course 
+documentCtrl.getAllContentDetailCourse  = async function(listID) {
+    var sql= "SELECT pages_course.*,course.group_course , n FROM ( SELECT @prev := '', @n := 0 ) init JOIN ( SELECT pages_course.*, @n := if(course_id != @prev, 1, @n + 1) AS n, @prev := course_id FROM pages_course WHERE pages_course.deleteflag=0 AND pages_course.is_main_pages_id<1  and course_id IN("
+                +listID+") ORDER BY set_to_fist ,pages_course_id DESC) pages_course LEFT JOIN course on course.course_id=pages_course.course_id WHERE n <= 10 ";
+
+    var x= await knex.raw(sql);
+    if ((x!=null)&&(x.length>0)) {
+        return x[0];
+    }
+    return [];
+}
+
+// Exam 
+documentCtrl.getAllContentDetailExam  = async function(listID) {
+    var sql= "SELECT exam_detail.*,exam.group_exam , n FROM ( SELECT @prev := '', @n := 0 ) init JOIN ( SELECT exam_detail.*, @n := if(exam_id != @prev, 1, @n + 1) AS n, @prev := exam_id FROM exam_detail WHERE exam_detail.deleteflag=0 AND exam_detail.is_main_pages_id<1  and exam_id IN("
+                +listID+") ORDER BY set_to_fist ,exam_detail_id DESC) exam_detail LEFT JOIN exam on exam.exam_id=exam_detail.exam_id WHERE n <= 10 ";
+
+    var x= await knex.raw(sql);
+    if ((x!=null)&&(x.length>0)) {
+        return x[0];
+    }
+    return [];
+}
+
 documentCtrl.getAllContentLatestPage  = async function(listID) {
     var sql= "SELECT pages_content.*,group_content_sub.group_content , n FROM ( SELECT @prev := '', @n := 0 ) init JOIN ( SELECT pages_content.*, @n := if(group_content_sub_id != @prev, 1, @n + 1) AS n, @prev := group_content_sub_id FROM pages_content WHERE pages_content.deleteflag =0 AND pages_content.is_main_pages_id<1  and group_content_sub_id IN("
                 +listID+") ORDER BY id_created DESC) pages_content LEFT JOIN group_content_sub on group_content_sub.group_content_sub_id=pages_content.group_content_sub_id WHERE n <= 10 ";
+
+    var x= await knex.raw(sql);
+    if ((x!=null)&&(x.length>0)) {
+        return x[0];
+    }
+    return [];
+}
+
+// Course
+documentCtrl.getAllContentLatestCourse  = async function(listID) {
+    var sql= "SELECT pages_course.*,course.group_course , n FROM ( SELECT @prev := '', @n := 0 ) init JOIN ( SELECT pages_course.*, @n := if(course_id != @prev, 1, @n + 1) AS n, @prev := course_id FROM pages_course WHERE pages_course.deleteflag =0 AND pages_course.is_main_pages_id<1  and course_id IN("
+                +listID+") ORDER BY id_created DESC) pages_course LEFT JOIN course on course.course_id=pages_course.course_id WHERE n <= 10 ";
+
+    var x= await knex.raw(sql);
+    if ((x!=null)&&(x.length>0)) {
+        return x[0];
+    }
+    return [];
+}
+
+// Exam
+documentCtrl.getAllContentLatestExam  = async function(listID) {
+    var sql= "SELECT exam_detail.*,exam.group_exam , n FROM ( SELECT @prev := '', @n := 0 ) init JOIN ( SELECT exam_detail.*, @n := if(exam_id != @prev, 1, @n + 1) AS n, @prev := exam_id FROM exam_detail WHERE exam_detail.deleteflag =0 AND exam_detail.is_main_pages_id<1  and exam_id IN("
+                +listID+") ORDER BY id_created DESC) exam_detail LEFT JOIN exam on exam.exam_id=exam_detail.exam_id WHERE n <= 10 ";
 
     var x= await knex.raw(sql);
     if ((x!=null)&&(x.length>0)) {
@@ -276,6 +509,44 @@ documentCtrl.getAllInGroupPage  = async function(request) {
     if ((x!=null)&&(x.length>0)) {
         for(var i=0;i<x[0].length;i++){
             x[0][i].filesave = '/detail_page/'+ x[0][i].filesave.replace('/', '+');
+        }
+        return x[0];
+    }
+    return [];
+}
+
+// Course
+documentCtrl.getAllInGroupCourse  = async function(request) {
+    console.log("sqlraw.toString() ........... request.body..",request.body);
+    var is_main_pages_id = request.body['is_main_pages_id'];
+    var sqlraw = squel.select().from('pages_course')
+        .where('deleteflag=0')
+        .where('is_main_pages_id='+is_main_pages_id
+                +" OR pages_course_id ="+is_main_pages_id );
+        console.log("sqlraw.toString() .............",sqlraw.toString());
+    var x= await knex.raw(sqlraw.toString());
+    if ((x!=null)&&(x.length>0)) {
+        for(var i=0;i<x[0].length;i++){
+            x[0][i].filesave = '/detail_lesson/'+ x[0][i].filesave.replace('/', '+');
+        }
+        return x[0];
+    }
+    return [];
+}
+
+// Exam
+documentCtrl.getAllInGroupExam  = async function(request) {
+    console.log("sqlraw.toString() ........... request.body..",request.body);
+    var is_main_pages_id = request.body['is_main_pages_id'];
+    var sqlraw = squel.select().from('exam_detail')
+        .where('deleteflag=0')
+        .where('is_main_pages_id='+is_main_pages_id
+                +" OR exam_detail_id ="+is_main_pages_id );
+        console.log("sqlraw.toString() .............",sqlraw.toString());
+    var x= await knex.raw(sqlraw.toString());
+    if ((x!=null)&&(x.length>0)) {
+        for(var i=0;i<x[0].length;i++){
+            x[0][i].filesave = '/detail_exam/'+ x[0][i].filesave.replace('/', '+');
         }
         return x[0];
     }

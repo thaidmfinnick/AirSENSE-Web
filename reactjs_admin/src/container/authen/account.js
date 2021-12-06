@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ManagerData from '../../actions/ManagerData.js'
 import { updateInfomation, changePassword } from '../../api/authen.js';
-
 const InfoAccount = () => {
   // change information user
     const user = ManagerData.saveInfoUser;
@@ -10,6 +9,8 @@ const InfoAccount = () => {
     const [fullname, setFullname] = useState(user.fullname);
     const [phone, setPhone] = useState(user.phoneNumber);
     const [contact, setContact] = useState(user.contact);
+
+
 
     const updateInfo = (e) => {
       e.preventDefault();

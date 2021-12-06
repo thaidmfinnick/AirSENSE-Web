@@ -45,6 +45,39 @@ router.route('/updatePages')
 .post(isAuthenticated, (req, res) => {
     documentCtrl.postUpdatePageToDataBase(req, res);
 });
+
+// update Course
+router.route('/updateCourse')
+.post(isAuthenticated, (req, res) => {
+    documentCtrl.postUpdateCourseToDataBase(req, res);
+});
+
+// writer Course
+router.route('/registerCourse')
+.get( (req, res) => {
+  res.render('course/registerCourse');
+})
+.post(isAuthenticated, (req, res) => {
+    documentCtrl.postAddCourseToDataBase(req, res);
+});
+
+// update Exam
+router.route('/updateExam')
+.post(isAuthenticated, (req, res) => {
+    documentCtrl.postUpdateExamToDataBase(req, res);
+});
+
+// writer Exam
+router.route('/registerExam')
+.get( (req, res) => {
+  res.render('course/registerCourse');
+})
+.post(isAuthenticated, (req, res) => {
+    documentCtrl.postAddExamToDataBase(req, res);
+});
+
+
+
 // writer Advertisement
 router.route('/registerAdvertisement')
 .post(isAuthenticated, (req, res) => {
@@ -57,7 +90,7 @@ router.route('/updateAdvertisement')
     documentCtrl.postUpdateAdvertisementToDataBase(req, res);
 });
 
-
+// Blog and Education
 router.route('/document_detail/:typePage').get( async (req, res) => {
   var dataX = req.params.typePage;
   console.log("e.responseText",dataX);
@@ -72,13 +105,56 @@ router.route('/lastest_detail/:typePage').get( async (req, res) => {
   res.send(JSON.stringify(data));
 });
 
-router.route('/get_new').get( async (req, res) => {
-  var data = await documentCtrl.getAllContentStartPage();
+router.route('/group_page').post( async (req, res) => {
+  var data =  await documentCtrl.getAllInGroupPage(req);
   res.send(JSON.stringify(data));
 });
 
-router.route('/group_page').post( async (req, res) => {
-  var data =  await documentCtrl.getAllInGroupPage(req);
+// Course
+
+router.route('/detail_lesson/:typePage').get( async (req, res) => {
+  var dataX = req.params.typePage;
+  console.log("e.responseText",dataX);
+  var data = await documentCtrl.getAllContentDetailCourse(dataX);
+  res.send(JSON.stringify(data));
+});
+
+router.route('/lastest_detail_lesson/:typePage').get( async (req, res) => {
+  var dataX = req.params.typePage;
+  console.log("e.responseText",dataX);
+  var data = await documentCtrl.getAllContentLatestCourse(dataX);
+  res.send(JSON.stringify(data));
+});
+
+router.route('/group_lesson').post( async (req, res) => {
+  var data =  await documentCtrl.getAllInGroupCourse(req);
+  res.send(JSON.stringify(data));
+});
+
+// 
+
+// Exam
+
+router.route('/detail_exam/:typePage').get( async (req, res) => {
+  var dataX = req.params.typePage;
+  console.log("e.responseText",dataX);
+  var data = await documentCtrl.getAllContentDetailExam(dataX);
+  res.send(JSON.stringify(data));
+});
+
+router.route('/lastest_detail_exam/:typePage').get( async (req, res) => {
+  var dataX = req.params.typePage;
+  console.log("e.responseText",dataX);
+  var data = await documentCtrl.getAllContentLatestExam(dataX);
+  res.send(JSON.stringify(data));
+});
+
+router.route('/group_exam').post( async (req, res) => {
+  var data =  await documentCtrl.getAllInGroupExam(req);
+  res.send(JSON.stringify(data));
+});
+router.route('/get_new').get( async (req, res) => {
+  var data = await documentCtrl.getAllContentStartPage();
   res.send(JSON.stringify(data));
 });
 

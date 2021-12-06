@@ -30,6 +30,9 @@ const router = express.Router();
   router.route('/fist_pages').post(isAuthenticated, (req, res) => {
     userCtrl.updateFistPages(req, res);
   });
+  router.route('/fist_course').post(isAuthenticated, (req, res) => {
+    userCtrl.updateFistCourse(req, res);
+  });
 
   
 

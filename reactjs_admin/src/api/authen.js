@@ -12,7 +12,8 @@ export const  updateInfomation = (data) => {
     return new Promise((resolve, reject) => {
         axios
           .put(
-            API_URL + 'auth/changeInfo',Object.assign(data),
+            API_URL + 'auth/changeInfo',
+            Object.assign(data),
             {
               headers: {
                 Accept: 'application/json',

@@ -399,21 +399,25 @@ class ReportManager extends CommonModel{
     getReportStations(fromTime, toTime,station_id,role) {
         var query = squel.select().from("sparc_sensor_data");
         if(fromTime!=undefined) {
-            query = query.where("time>='" + fromTime+"'");
+            query = query.where("Time>=" + fromTime/1000);
         }
         if(toTime!=undefined) {
-            query = query.where("time<'" + toTime+"'");
+            query = query.where("Time<" + toTime/1000);
         }
         var privilege;
-        if(DataTableRole.sparc_location_sensor[role.role] == undefined || DataTableRole.sparc_location_sensor[role.role].view==undefined) return;
-        var privilege = DataTableRole.sparc_location_sensor[role.role].view;
-        if(privilege=="own") {
-            query.join( "sparc_location_sensor", null, squel.expr().and("sparc_location_sensor.station_id = sparc_sensor_data.station_id"));
-            query.where("sparc_location_sensor.id_create = "+"'"+role.userid+"'");
-        }
+    // check manifest
+        // if(DataTableRole.sparc_location_sensor[role.role] == undefined || DataTableRole.sparc_location_sensor[role.role].view==undefined) return;
+        // var privilege = DataTableRole.sparc_location_sensor[role.role].view;
+        // var privilege = DataTableRole.sparc_location_sensor[role.manifestid].view;
+    // when you are the suppoter
+        // if(privilege=="own") {
+        //     query.join( "sparc_location_sensor", null, squel.expr().and("sparc_location_sensor.station_id = sparc_sensor_data.station_id"));
+        //     query.where("sparc_location_sensor.id_create = "+"'"+role.userid+"'");
+        // }
         if(station_id.includes(",")) {
             query = query.where("sparc_sensor_data.station_id IN "+station_id);
-        } else query = query.where("sparc_sensor_data.station_id = '"+station_id+"'");
+        } 
+        else query = query.where("sparc_sensor_data.station_id = '"+station_id+"'");
         return new Promise( ( resolve, reject ) => {
             knex.raw(query.toString()).then(function(result) {  
                 resolve( result);

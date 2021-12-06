@@ -157,7 +157,10 @@
     <!-- Active js -->
     <script src="/old/training_library/js/active.js"></script>
     <script>
-        var mname = localStorage.getItem("tocken_LVC");
+        const url = location.href;
+        const itemUrl = url.split('/');
+        const tokenAdmin = itemUrl[itemUrl.length-1];
+        var mname = tokenAdmin;
         console.log("mname .................. mname",mname);
         var mapObj=null;
         var NewMarker=null;
@@ -178,7 +181,7 @@
         {
             var IIcon=L.Icon.extend({
                 options:{
-                    iconSize:     [30, 60],
+                    iconSize:     [13, 20],
                     shadowSize:   [50, 64],
                     iconAnchor:   [22, 94],
                     popupAnchor:  [-3, -76]
@@ -207,12 +210,11 @@
             var content='';           
             content+=`<div class='left'><img src='/training_library/img/core-img/codexact.png' /></div>`;
             content+=`<div class='right'><b>Detailed Index:</div><div class='right'><b>Station : `;
-            content+=station.station_id +`- `+station.content+`- `+station.adress;
+            content+=station.station_id +` - `+station.content+` - `+station.adress;
             for(var k=data.result.length-1;k>0;k--)
             {
                 let v=data.result[k];
                 if(v.station_id===station.station_id){
-                    
                     content+=`</div><div class='right'><b>Date and Time:`;
                     content=content+v.time +`</div>`;
                     content=content+`<div class='right'><b>Vbatt: `+ v.vbat+ `mV</div>`;
@@ -285,7 +287,6 @@
     
 
             function loadAllContent(){
-                //var mname=localStorage.getItem("tocken_LVC");
                 var Link='/api/social/getStation';
                     $.ajax({
                         type: 'get',
@@ -300,6 +301,7 @@
                         console.log(loadcofig);
                         dataStation= loadcofig.result;
                         setTimeout(function(){ loadAllData(); }, 300);
+                        // loadAllData();
                     },
                       error: function (loadcofig) {
                         console.log('error');

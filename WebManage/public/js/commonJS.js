@@ -1,4 +1,71 @@
+function getInfoData(urlLink,callBack){
+  $.ajax({
+      type: 'GET',
+      enctype: 'multipart/form-data',
+      url: urlLink,
+      data: {},
+      processData: false, //prevent jQuery from automatically transforming the data into a query string
+      contentType: false,
+      cache: false,
+      success: (data) => {
+        var dataJson = JSON.parse(data);
+        callBack(dataJson);
+      },
+      error: (e) => {
+        console.log(e.responseText);
+        callBack([]);
+      },
+  });
+}
 
+function getInfoHtml(urlLink,callBack){
+$.ajax({
+    type: 'GET',
+    enctype: 'multipart/form-data',
+    url: urlLink,
+    data: {},
+    processData: false, //prevent jQuery from automatically transforming the data into a query string
+    contentType: false,
+    cache: false,
+    success: (data) => {
+      callBack(data);
+    },
+    error: (e) => {
+      console.log(e.responseText);
+      callBack("");
+    },
+});
+}
+
+function postInfoData(urlLink,dataInfo,callBack){
+  $.ajax({
+      type: 'post',
+      method: 'POST',
+      url: urlLink,
+      body: JSON.stringify(dataInfo), // body data type must match "Content-Type" header
+      data: JSON.stringify(dataInfo), // body data type must match "Content-Type" header
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      dataType: 'json',
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Beard ' + localStorage.getItem('token'),
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      success: function (dataReturn) {
+          callBack(dataReturn);
+      },
+      error: function (loadcofig) {
+          callBack([]);
+      }
+  });
+}
 function setItemFormITemAds(item){
     var html=' <div class="sb-img-hust-tech ">  <img class="image-hust-tech" src ="'+item.content_img+'"/>'
                 +'</div>' 
@@ -112,6 +179,223 @@ function setFormToMenuShowAds(dataJson,itemToSet){
         },
       });
     }
+
+
+
+    // Course
+    function setFormToMenuShowCourse(dataJson,itemToSet){
+      var textHtml="";
+      for(var i =0;i<dataJson.length;i++){
+          if(dataJson[i].is_main_pages_id==-1){
+              textHtml += ' <a class="side-menu-item sb-border-hust-tech"  href="../group_lesson/'+
+                 dataJson[i].pages_course_id +'" >'+setItemFormITemAds(dataJson[i])+'</a>'; 
+          }
+          else
+          {
+              var linkEdit= dataJson[i].filesave.replaceAll('/', '+');
+              textHtml += ' <a class="side-menu-item sb-border-hust-tech"  href="../detail_lesson/'+
+              linkEdit +'" >'+setItemFormITemAds(dataJson[i]) +'</a>'; 
+          }
+      }
+      $(itemToSet).html(textHtml); 
+    }
+    function setFormToShowCourse(item,urlDetail){
+      var start =  '<div class="ItemBlog">';
+      var limkUrl= '<a href="'+urlDetail;
+      if(item.is_main_pages_id==-1){
+        limkUrl += 'group_lesson/'+item.pages_course_id + '\"style="" class="btn btn-primary">Xem thêm</a>';
+        }
+        else
+        {
+          limkUrl +='detail_lesson/'+ item.filesave.replace('/', '+')+ '\"style="" class="btn btn-primary">Xem thêm</a>';
+        }
+        // console.log(limkUrl)
+        var content = 
+          '<div class="col-sm-4 col-md-4"><div class="card">'           
+        + '<img src="' +item.content_img +'" alt="images"  class="card-img-top"/> <div class="card-body">'
+        +'<h5 class="card-title">'+item.title +'</h5> <p class="card-text">' +item.content
+        + '</p>'+ limkUrl +'</div></div></div></div>';
+        console.log(content)
+      return (start+content);
+    }
+  
+  
+      function  getInfoDetailCourse(nameDivControl,dataView,urlDetail){
+          $.ajax({
+              type: 'GET',
+              enctype: 'multipart/form-data',
+              url: '/api/document/detail_lesson/'+dataView,
+              data: {},
+              processData: false, //prevent jQuery from automatically transforming the data into a query string
+              contentType: false,
+              cache: false,
+              success: (data) => {
+              console.log(data);
+                 var dataJson = JSON.parse(data);
+                 console.log(dataJson);
+                 var textHtml ="";
+                 dataJson= dataJson.sort(function (a, b) {
+                         return (a.course_id-b.course_id);
+                 });
+                 console.log(dataJson);
+                 var titleSub="";
+                 var startRow = '<div class="row" style="display: grid; grid-template-columns: repeat(3, 1fr);">'
+                 var closeRow = '</div>'
+                 for(var i =0;i<dataJson.length;i++){
+                   if(dataJson[i].group_course!=titleSub) {
+                     if (dataJson[i] == 0) {
+                      titleSub = dataJson[i].group_course;
+                      textHtml+= "<center><H2 class='heading-blog'>"+titleSub+"</H2></center>" + startRow;
+                     }
+                     else {
+                      textHtml += closeRow;
+                      titleSub = dataJson[i].group_course;
+                      textHtml+= "<center><H2 class='heading-blog'>"+titleSub+"</H2></center>" + startRow;
+                     }
+                   }
+                   textHtml += setFormToShowCourse(dataJson[i],urlDetail);
+                 }
+                 textHtml += closeRow;
+                 console.log(textHtml);
+                 $('#'+nameDivControl).html(textHtml); //.replaceAll("</p>","<br/>").replaceAll("<p>","<br/>")
+              },
+              error: (e) => {
+              console.log(e.responseText);
+              },
+          });
+      }
+  
+      function getInfoAbsCourse(nameDivControl,dataView) {
+        $.ajax({
+          type: 'GET',
+          enctype: 'multipart/form-data',
+          url: '/api/document/lastest_detail_lesson/'+dataView,
+          data: {},
+          processData: false, //prevent jQuery from automatically transforming the data into a query string
+          contentType: false,
+          cache: false,
+          success: (data) => {
+          console.log(data);
+            var dataJson = JSON.parse(data);
+            console.log(dataJson);
+            setFormToMenuShowCourse(dataJson, nameDivControl); 
+          },
+          error: (e) => {
+          console.log(e.responseText);
+          },
+        });
+      }
+
+
+    // end course common
+
+
+// Exam
+function setFormToMenuShowExam(dataJson,itemToSet){
+  var textHtml="";
+  for(var i =0;i<dataJson.length;i++){
+      if(dataJson[i].is_main_pages_id==-1){
+          textHtml += ' <a class="side-menu-item sb-border-hust-tech"  href="../group_exam/'+
+             dataJson[i].exam_detail_id +'" >'+setItemFormITemAds(dataJson[i])+'</a>'; 
+      }
+      else
+      {
+          var linkEdit= dataJson[i].filesave.replaceAll('/', '+');
+          textHtml += ' <a class="side-menu-item sb-border-hust-tech"  href="../detail_exam/'+
+          linkEdit +'" >'+setItemFormITemAds(dataJson[i]) +'</a>'; 
+      }
+  }
+  $(itemToSet).html(textHtml); 
+}
+function setFormToShowExam(item,urlDetail){
+  var start =  '<div class="ItemBlog">';
+  var limkUrl= '<a href="'+urlDetail;
+  if(item.is_main_pages_id==-1){
+    limkUrl += 'group_exam/'+item.exam_detail_id + '\"style="" class="btn btn-primary">Xem thêm</a>';
+    }
+    else
+    {
+      limkUrl +='detail_exam/'+ item.filesave.replace('/', '+')+ '\"style="" class="btn btn-primary">Xem thêm</a>';
+    }
+    // console.log(limkUrl)
+    var content = 
+      '<div class="col-sm-4 col-md-4"><div class="card">'           
+    + '<img src="' +item.content_img +'" alt="images"  class="card-img-top"/> <div class="card-body">'
+    +'<h5 class="card-title">'+item.title +'</h5> <p class="card-text">' +item.content
+    + '</p>'+ limkUrl +'</div></div></div></div>';
+    console.log(content)
+  return (start+content);
+}
+
+
+  function  getInfoDetailExam(nameDivControl,dataView,urlDetail){
+      $.ajax({
+          type: 'GET',
+          enctype: 'multipart/form-data',
+          url: '/api/document/detail_exam/'+dataView,
+          data: {},
+          processData: false, //prevent jQuery from automatically transforming the data into a query string
+          contentType: false,
+          cache: false,
+          success: (data) => {
+          console.log(data);
+             var dataJson = JSON.parse(data);
+             console.log(dataJson);
+             var textHtml ="";
+             dataJson= dataJson.sort(function (a, b) {
+                     return (a.exam_id-b.exam_id);
+             });
+             console.log(dataJson);
+             var titleSub="";
+             var startRow = '<div class="row" style="display: grid; grid-template-columns: repeat(3, 1fr);">'
+             var closeRow = '</div>'
+             for(var i =0;i<dataJson.length;i++){
+               if(dataJson[i].group_exam!=titleSub) {
+                 if (dataJson[i] == 0) {
+                  titleSub = dataJson[i].group_exam;
+                  textHtml+= "<center><H2 class='heading-blog'>"+titleSub+"</H2></center>" + startRow;
+                 }
+                 else {
+                  textHtml += closeRow;
+                  titleSub = dataJson[i].group_exam;
+                  textHtml+= "<center><H2 class='heading-blog'>"+titleSub+"</H2></center>" + startRow;
+                 }
+               }
+               textHtml += setFormToShowExam(dataJson[i],urlDetail);
+             }
+             textHtml += closeRow;
+             console.log(textHtml);
+             $('#'+nameDivControl).html(textHtml); //.replaceAll("</p>","<br/>").replaceAll("<p>","<br/>")
+          },
+          error: (e) => {
+          console.log(e.responseText);
+          },
+      });
+  }
+
+  function getInfoAbsExam(nameDivControl,dataView) {
+    $.ajax({
+      type: 'GET',
+      enctype: 'multipart/form-data',
+      url: '/api/document/lastest_detail_exam/'+dataView,
+      data: {},
+      processData: false, //prevent jQuery from automatically transforming the data into a query string
+      contentType: false,
+      cache: false,
+      success: (data) => {
+      console.log(data);
+        var dataJson = JSON.parse(data);
+        console.log(dataJson);
+        setFormToMenuShowExam(dataJson, nameDivControl); 
+      },
+      error: (e) => {
+      console.log(e.responseText);
+      },
+    });
+  }
+
+
+// end exam common
 
 function checkUserAuthen2() {
   var mname = localStorage.getItem("tocken_LVC");
