@@ -56,6 +56,10 @@ router.route('/login').post(validate(schema.login), (req, res) => {
   authCtrl.login(req, res);
 });
 
+router.route('/loginCustomer').post(validate(schema.login), (req, res) => {
+  authCtrl.loginCustomer(req, res);
+});
+
 router.route('/resetPassword').post(validate(schema.resetPassword), (req, res) => {
   userCtrl.resetPass(req, res);
 });
