@@ -236,26 +236,23 @@ function setFormToShowCourse(item, urlDetail) {
     limkUrl +=
       "group_lesson/" +
       item.course_page_id +
-      '"style="" class="btn btn-primary">Xem thêm</a>';
+      '"style="" class="to-preview-course"></a>';
   } else {
     limkUrl +=
       "detail_lesson/" +
       item.filesave.replace("/", "+") +
-      '"style="" class="btn btn-primary">Xem thêm</a>';
+      '"style="" class="to-preview-course"></a>';
   }
   // console.log(limkUrl)
   var content =
-    '<div class="col-sm-4 col-md-4"><div class="card">' +
-    '<img src="' +
-    item.content_img +
-    '" alt="images"  class="card-img-top"/> <div class="card-body">' +
-    '<h5 class="card-title">' +
+    '<div class="course-new__item-wrapper col l-3"><div class="course-new__item">' +
+    limkUrl + '<div class="course-new__img" style="background-image: url(' + item.content_img + ');">' +
+    limkUrl + '</div>' +
+    '<div class="course-new__main"><div class="course-new__info"><h5 class="course-new__name-course">' +
     item.title +
-    '</h5> <p class="card-text">' +
+    '</h5> <span class="course-new__author">' +
     item.content +
-    "</p>" +
-    limkUrl +
-    "</div></div></div></div>";
+    '</span><div class="course-new__rating-icon"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fal fa-star"></i></div></div><i class="course-new__heart-icon-liked course-new__heart-icon--active fas fa-heart"></i><i class="course-new__heart-icon-default course-new__heart-icon--active fal fa-heart"></i></div><div class="course-new__time"><div class="course-new__time-left"><i class="fal fa-clock"></i>12 hours</div><div class="course-new__lecture"><i class="fal fa-play-circle"></i>12 lessons</div></div></div></div></div>';
   console.log(content);
   return start + content;
 }
@@ -280,25 +277,19 @@ function getInfoDetailCourse(nameDivControl, dataView, urlDetail) {
       console.log(dataJson);
       var titleSub = "";
       var startRow =
-        '<div class="row" style="display: grid; grid-template-columns: repeat(3, 1fr);">';
+        '<div class="row" style="display: grid; grid-template-columns: repeat(4, 1fr);">';
       var closeRow = "</div>";
       for (var i = 0; i < dataJson.length; i++) {
         if (dataJson[i].course_group != titleSub) {
           if (dataJson[i] == 0) {
             titleSub = dataJson[i].course_group;
             textHtml +=
-              "<center><H2 class='heading-blog'>" +
-              titleSub +
-              "</H2></center>" +
-              startRow;
+              '<div class="course__heading-wrapper"><h2 class="course__heading">' + titleSub + '</h2><div class="course__separator"></div></div>' + startRow;
           } else {
             textHtml += closeRow;
             titleSub = dataJson[i].course_group;
             textHtml +=
-              "<center><H2 class='heading-blog'>" +
-              titleSub +
-              "</H2></center>" +
-              startRow;
+            '<div class="course__heading-wrapper"><h2 class="course__heading">' + titleSub + '</h2><div class="course__separator"></div></div>' + startRow;
           }
         }
         textHtml += setFormToShowCourse(dataJson[i], urlDetail);
