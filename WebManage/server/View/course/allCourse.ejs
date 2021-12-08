@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
   <% include ../Layout/header.ejs %>
-  <link rel="stylesheet" href="/assets/css/blog/styles.css">
+  <link rel="stylesheet" href="/assets/css/course/styles-all-course.css">
   <body class="defult-home">
     <!-- Main content Start -->
     <div class="main-content">
@@ -14,64 +14,223 @@
       </div>
       <!--Full width header End-->
       <div class="main-page" style="padding-top: 100px">
-        <div class="row">
-          <div class="col-2">
-            <div class="sidenav">
-              <a href="#about"><i class="fas fa-home"></i>About</a>
-              <a href="#services"><i class="fas fa-home"></i>Services</a>
-              <a href="#clients"><i class="fas fa-home"></i>Clients</a>
-              <a href="#contact"><i class="fas fa-home"></i>Contact</a>
+    
+        <div class="course-container grid wide">
+            <div class="continue-section-wrapper">
+                <div class="continue-section">
+                    <div>
+                        <h3 class="continue__heading">Lập trình arduino</h3>
+                        <div class="continue__time">
+                            <div class="continue__time-left"><i class="fal fa-clock"></i>50 minutes left</div>
+                            <div class="continue__lecture"><i class="fal fa-play-circle"></i>12 lessons</div>
+                        </div>
+                        <div class="continue__button-wrapper">
+                            <button class="continue__button continue__button-continue">Tiếp tục</button>
+                            <button class="continue__button continue__button-repeat">Bắt đầu lại</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-10">
-            <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-              </div>
-              <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="4000">
-                  <img src="/img/pic1.jpg" class="d-block w-100 slideimg" alt="...">
-                  <div class="carousel-caption d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                  </div>
+            <div class="advertisement">
+                <div class="advertisement__info-wrapper">
+                    <img class="advertisement__img" src="/img/forest.jpg" alt="">
+                    <div class="advertisement__info">
+                        <h5 class="advertisement__name-course">Angular</h5>
+                        <span class="advertisement__author">with Trường</span>
+                    </div>
                 </div>
-                <div class="carousel-item" data-bs-interval="4000">
-                  <img src="/img/pic2.jpg" class="d-block w-100" alt="...">
-                  <div class="carousel-caption d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
-                  </div>
+                <div class="advertisement__rating">
+                    <span>Your rating</span>
+                    <div class="advertisement__rating-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                    </div>
+                    <span>4/5</span>
                 </div>
-                <div class="carousel-item">
-                  <img src="/img/forest.jpg" class="d-block w-100" alt="...">
-                  <div class="carousel-caption d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
-                  </div>
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
             </div>
-          </div>
+
+            <div class="course-section course-registration">
+                <div class="course__heading-wrapper">
+                    <h2 class="course__heading">Khoá học đã đăng ký</h2>
+                    <div class="course__separator"></div>
+                </div>
+                <div class="row">
+                    <div class="course-registration-item-wrapper col l-4">
+                        <div class="course-registration-item">
+                            <div class="course-registration__info-wrapper">
+                                <img src="/img/forest.jpg" alt="" class="course-registration__img">
+                                <div class="course-registration__info">
+                                    <h5 class="course-registration__name-course">Angular</h5>
+                                    <span class="course-registration__quantity">18 courses</span>
+                                </div>
+                            </div>
+                            <button class="course-registration__resume-btn">RESUME</button>
+                        </div>
+                    </div>
+                    <div class="course-registration-item-wrapper col l-4">
+                        <div class="course-registration-item">
+                            <div class="course-registration__info-wrapper">
+                                <img src="/img/forest.jpg" alt="" class="course-registration__img">
+                                <div class="course-registration__info">
+                                    <h5 class="course-registration__name-course">Angular</h5>
+                                    <span class="course-registration__quantity">18 courses</span>
+                                </div>
+                            </div>
+                            <button class="course-registration__resume-btn">RESUME</button>
+                        </div>
+                    </div>
+                    <div class="course-registration-item-wrapper col l-4">
+                        <div class="course-registration-item">
+                            <div class="course-registration__info-wrapper">
+                                <img src="/img/forest.jpg" alt="" class="course-registration__img">
+                                <div class="course-registration__info">
+                                    <h5 class="course-registration__name-course">Angular</h5>
+                                    <span class="course-registration__quantity">18 courses</span>
+                                </div>
+                            </div>
+                            <button class="course-registration__resume-btn">RESUME</button>
+                        </div>
+                    </div>
+                    <div class="course-registration-item-wrapper col l-4">
+                        <div class="course-registration-item">
+                            <div class="course-registration__info-wrapper">
+                                <img src="/img/forest.jpg" alt="" class="course-registration__img">
+                                <div class="course-registration__info">
+                                    <h5 class="course-registration__name-course">Angular</h5>
+                                    <span class="course-registration__quantity">18 courses</span>
+                                </div>
+                            </div>
+                            <button class="course-registration__resume-btn">RESUME</button>
+                        </div>
+                    </div>
+                    <div class="course-registration-item-wrapper col l-4">
+                        <div class="course-registration-item">
+                            <div class="course-registration__info-wrapper">
+                                <img src="/img/forest.jpg" alt="" class="course-registration__img">
+                                <div class="course-registration__info">
+                                    <h5 class="course-registration__name-course">Angular</h5>
+                                    <span class="course-registration__quantity">18 courses</span>
+                                </div>
+                            </div>
+                            <button class="course-registration__resume-btn">RESUME</button>
+                        </div>
+                    </div>
+                    <div class="course-registration-item-wrapper col l-4">
+                        <div class="course-registration-item">
+                            <div class="course-registration__info-wrapper">
+                                <img src="/img/forest.jpg" alt="" class="course-registration__img">
+                                <div class="course-registration__info">
+                                    <h5 class="course-registration__name-course">Angular</h5>
+                                    <span class="course-registration__quantity">18 courses</span>
+                                </div>
+                            </div>
+                            <button class="course-registration__resume-btn">RESUME</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="course__control-page">
+                    <div class="course__prev-page course__control-page--disable">
+                        <i class="fal fa-chevron-left"></i>
+                        <span class="">PREV</span>
+                    </div>
+                    <div>
+                        <span class="course__page-number course__control-page--active">1</span><span
+                            class="course__page-number">2</span>
+                    </div>
+                    <div class="course__next-page">
+                        <span>NEXT</span>
+                        <i class="fal fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
         </div>
-        
         <!-- <div class="test" style="display: grid; grid-template-columns: repeat(3, 1fr);"> -->
-          <div class="row">
-            <div class="col-2"></div>
-            <div class="inner-content col-10" id="htmlToView">
-              <!-- About Section Start -->
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="inner-content col-11" id="htmlToView">
+
             </div>
-          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-11">
+                <div class="course-section">
+                    <div class="course__heading-wrapper">
+                        <h2 class="course__heading">Hoàn thành</h2>
+                        <div class="course__separator"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="course-section">
+        <div class="course-complete__list">
+            <button class="complete-scroll-prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="complete-scroll-next-btn"><i class="fas fa-chevron-right"></i></button>
+            <div class="row-nowrap js-complete-scroll">
+                <div class="course-complete__item-wrapper col l-6 m-6 c-12">
+                    <div class="course-complete__item"
+                        style="background-image: url(/img/forest.jpg);">
+                        <div class="course-complete__content">
+                            <div class="course-complete__notification">
+                                <!-- <h5 class="course-complete__title">Hoàn thành</h5>
+                                <p class="course-complete__description">Jun 5, 2018</p>
+                                <img src="/img/forest.jpg" alt="" class="course-complete__complete-img"> -->
+                            </div>
+                            <div class="course-complete__reward">
+                                <!-- <i class="course-complete__reward-img fal fa-trophy-alt"></i>
+                                <h5 class="course-complete__title">Flinto</h5>
+                                <p class="course-complete__description">Introduction to The App Design
+                                    Application
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-complete__item-wrapper col l-6 m-6 c-12">
+                    <div class="course-complete__item"
+                        style="background-image: url(/img/forest.jpg);">
+                        <div class="course-complete__content">
+                            <div class="course-complete__notification">
+                                <!-- <h5 class="course-complete__title">Hoàn thành</h5>
+                                <p class="course-complete__description">Jun 5, 2018</p>
+                                <img src="/img/forest.jpg" alt="" class="course-complete__complete-img"> -->
+                            </div>
+                            <div class="course-complete__reward">
+                                <!-- <i class="course-complete__reward-img fal fa-trophy-alt"></i>
+                                <h5 class="course-complete__title">Flinto</h5>
+                                <p class="course-complete__description">Introduction to The App Design
+                                    Application
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-complete__item-wrapper col l-6 m-6 c-12">
+                    <div class="course-complete__item"
+                        style="background-image: url(./img/background-reward.png);">
+                        <div class="course-complete__content">
+                            <div class="course-complete__notification">
+                                <!-- <h5 class="course-complete__title">Hoàn thành</h5>
+                                <p class="course-complete__description">Jun 5, 2018</p>
+                                <img src="/img/forest.jpg" alt="" class="course-complete__complete-img"> -->
+                            </div>
+                            <div class="course-complete__reward">
+                                <!-- <i class="course-complete__reward-img fal fa-trophy-alt"></i>
+                                <h5 class="course-complete__title">Flinto</h5>
+                                <p class="course-complete__description">Introduction to The App Design
+                                    Application
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
         <!-- </div> -->
 
