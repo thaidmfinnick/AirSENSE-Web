@@ -2,6 +2,49 @@
 <html lang="zxx">
 <% include ../Layout/header.ejs %>
 
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+      integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+    <style>
+      .content-playlist-heading-bold {
+        font-weight: 600;
+      }
+
+      .content-column p,
+      .playlist-column p {
+        margin: unset;
+      }
+
+      .unset-style-container {
+        max-width: 100% !important;
+        padding: 60px 0 0 !important;
+      }
+
+      :root {
+        --font-size-heading: 10px;
+      }
+
+      * {
+        box-sizing: inherit;
+      }
+
+      html {
+        font-size: 100%;
+        box-sizing: border-box;
+      }
+
+      body {
+        line-height: 1.4;
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+  </head>
+
   <body class="defult-home">
     <!-- Main content Start -->
     <div class="main-content">
@@ -16,218 +59,312 @@
         <div class="inner-content ">
           <!-- About Section Start -->
           <div class=" style9 md-pt-100">
-            <div class="container" style="padding-top: 100px">
-              <br />
-
-              <div class="content-wrapper">
-                <div class="blog-aside-wrapper">
-                  <div class="blog-aside">
-                    <h4 class="blog-aside__username">Đăng Trường</h4>
-                    <hr>
-                    <div class="blog-aside__action">
-                      <div class="blog-aside__like">
-                        <i class="blog-aside__like-icon blog-aside__like-icon--active  fal fa-heart"></i>
-                        <span class="blog-aside__like-quantity">69</span>
-                      </div>
-                      <div class="blog-aside__comment">
-                        <i class="blog-aside__comment-icon fal fa-comment"></i>
-                        <span class="blog-aside__comment-quantity">69</span>
-                      </div>
+            <div class="container unset-style-container" style="padding-top: 100px">
+              <div class="playlist-content-wrapper">
+                <div class="content-column">
+                  <div class="video-content-wrapper">
+                    <div class="video-prev-btn">
+                      <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="video-content"></div>
+                    <div class="video-next-btn">
+                      <i class="fas fa-chevron-right"></i>
                     </div>
                   </div>
-                </div>
-                <h1 class="blog-heading">[Cơ bản] Life cycle của Component trong Reactjs</h1>
-
-                <div class="blog-detail">
-                  <div class="blog-detail__user">
-                    <img src="/img/avatar5.png" alt="avatar" class="detail__avatar">
-                    <div class="blog-detail__info">
-                      <p class="blog-detail__name">Đăng Trường</p>
-                      <p class="blog-detail__time">
-                        3 ngày trước
-                        <span class="blog-detail__dot-icon">•</span>
-                        3 phút đọc
-                      </p>
-                    </div>
+                  <div class="lesson-overview">
+                    <h3 class="lesson-overview-heading content-playlist-heading-bold">Tổng quan</h3>
+                    <p class="lesson-overview-description">👉👉👉 Nội dung "Làm việc với JSX" chính xác là có 3 phần nhé
+                      anh em.
+                      Trong video này chúng ta cùng đi chữa bài tập ở video trước và học cách làm việc với DOM events
+                      nhé
+                      😍😍
+                    </p>
                   </div>
-                  <div class="blog-detail__action">
-                    <div class="blog-detail__bookmark">
-                      <i class="blog-detail__icon-bookmark blog-detail__icon-bookmark--active fal fa-bookmark"></i>
-                    </div>
-                    <div class="blog-detail__ellipsis">
-                      <i class="blog-detail__icon-ellipsis fal fa-ellipsis-h"></i>
-                    </div>
-                    <div class="blog-detail__option">
-                      <ul class="blog-detail__option-list">
-                        <li class="blog-detail__option-item">
-                          <i class="blog-detail__option-icon fab fa-facebook"></i>
-                          <span class="blog-detail__option-description">Chia sẻ lên Facebook</span>
-                        </li>
-                        <li class="blog-detail__option-item">
-                          <i class="blog-detail__option-icon fab fa-twitter"></i>
-                          <span class="blog-detail__option-description">Chia sẻ lên Twitter</span>
-                        </li>
-                        <li class="blog-detail__option-item">
-                          <i class="blog-detail__option-icon fas fa-envelope"></i>
-                          <span class="blog-detail__option-description">Chia sẻ tới Email</span>
-                        </li>
-                        <li class="blog-detail__option-item">
-                          <i class="blog-detail__option-icon fas fa-link"></i>
-                          <span class="blog-detail__option-description">Sao chép liên kết</span>
-                        </li>
-                        <li class="blog-detail__option-item">
-                          <i class="blog-detail__option-icon fas fa-flag"></i>
-                          <span class="blog-detail__option-description">Báo cáo bài viết</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row blog-content" style="display: flex; flex-direction: column" id="htmlToView">
-
-                </div>
-
-                <br />
-                <div class="blog-bottom">
-                  <div class="blog-bottom__action">
-                    <div class="blog-bottom__like">
-                      <i class="blog-bottom__like-icon blog-bottom__like-icon--active fal fa-heart"></i>
-                      <span class="blog-bottom__like-quantity">69</span>
-                    </div>
-                    <div class="blog-bottom__comment">
-                      <i class="blog-bottom__comment-icon fal fa-comment"></i>
-                      <span class="blog-bottom__comment-quantity">69</span>
-                    </div>
-                  </div>
-
-                  <div class="blog-bottom__tag-wrapper">
-                    <a href="#" class="blog-bottom__tag-item">Front-end</a>
-                    <a href="#" class="blog-bottom__tag-item">Javascript</a>
-                  </div>
-
-                  <div class="post-with-same-author">
-                    <h3 class="post-with-same-author__heading">Bài đăng cùng tác giả</h3>
-                    <ul class="post-with-same-author__post-list">
-                      <li class="post-with-same-author__post-item">
-                        <a href="" class="post-with-same-author__post-link">[Cơ bản]Object trong Javascript Tổng
-                          quan lập trình Synchronous và Asynchronous</a>
-                      </li>
-                      <li class="post-with-same-author__post-item">
-                        <a href="" class="post-with-same-author__post-link">[Cơ bản]Object trong Javascript</a>
-                      </li>
-                      <li class="post-with-same-author__post-item">
-                        <a href="" class="post-with-same-author__post-link">[Cơ bản]Object trong Javascript</a>
-                      </li>
-                      <li class="post-with-same-author__post-item">
-                        <a href="" class="post-with-same-author__post-link">[Cơ bản]Object trong Javascript</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="modal">
-                  <div class="comment-container">
-                    <div class="comment-close">
-                      <i class="fal fa-times"></i>
-                    </div>
-                    <div class="comment-heading">
-                      <h4>10 Bình luận</h4>
-                    </div>
+                  <div class="comment-content-wrapper">
+                    <h3 class="comment-content-heading content-playlist-heading-bold">Bình luận</h3>
                     <div class="my-comment-wrapper">
-                      <div class="my-comment">
-                        <img src="/img/avatar5.png" alt="" class="my-comment__my-avatar-img">
-                        <input class="my-comment__input" type="text" placeholder="Viết bình luận của bạn...">
+                      <img src="/img/avatar5.png" alt="" class="my-avatar">
+                      <input type="text" class="my-comment-box" placeholder="Viết bình luận của bạn..." required>
+                      <div class="comment-action-wrapper">
+                        <button class="comment-cancel-btn">Huỷ</button>
+                        <button class="comment-submit-btn">Bình luận</button>
                       </div>
-                      <button class="my-comment__btn">BÌNH LUẬN</button>
                     </div>
-                    <div class="comment-body">
-                      <ul class="comment-list">
-                        <li class="comment-item">
-                          <img src="/img/avatar5.png" alt="" class="comment-avatar">
-                          <div class="comment-box">
-                            <h5 class="comment-author">Trung</h5>
-                            <span class="comment-content">Bài tổng hợp rất chi tiết. Cảm ơn bác đã chia sẻ </span>
+                    <div class="other-comment-list">
+                      <div class="other-comment-item">
+                        <img src="/img/avatar5.png" alt="" class="other-commnet-avatar">
+                        <div class="other-comment-body">
+                          <div class="other-comment-box">
+                            <h5 class="other-commnet-author content-playlist-heading-bold">Triệu Nguyễn</h5>
+                            <p class="other-comment-content">có chỗ nào thả tim cho video không ta? giá như like video ở
+                              đây thì video youtube cũng được like luôn. hic hic. như like video ở đây thì video
+                              youtube cũng được like luôn. hic hi </p>
                           </div>
-                        </li>
-                        <li class="comment-item">
-                          <img src="/img/avatar5.png" alt="" class="comment-avatar">
-                          <div class="comment-box">
-                            <h5 class="comment-author">Trung</h5>
-                            <span class="comment-content">Bài tổng hợp rất chi tiết. Cảm ơn bác đã chia sẻ </span>
+                        </div>
+                      </div>
+                      <div class="other-comment-item">
+                        <img src="/img/avatar5.png" alt="" class="other-commnet-avatar">
+                        <div class="other-comment-body">
+                          <div class="other-comment-box">
+                            <h5 class="other-commnet-author content-playlist-heading-bold">Triệu Nguyễn</h5>
+                            <p class="other-comment-content">có chỗ nào thả tim cho video không ta? giá như like video ở
+                              đây thì video youtube cũng được like luôn. hic hic. như like video ở đây thì video
+                              youtube cũng được like luôn. hic hi </p>
                           </div>
-                        </li>
-                        <li class="comment-item">
-                          <img src="/img/avatar5.png" alt="" class="comment-avatar">
-                          <div class="comment-box">
-                            <h5 class="comment-author">Trung</h5>
-                            <span class="comment-content">Bài tổng hợp rất chi tiết. Cảm ơn bác đã chia sẻ </span>
+                        </div>
+                      </div>
+                      <div class="other-comment-item">
+                        <img src="/img/avatar5.png" alt="" class="other-commnet-avatar">
+                        <div class="other-comment-body">
+                          <div class="other-comment-box">
+                            <h5 class="other-commnet-author content-playlist-heading-bold">Triệu Nguyễn</h5>
+                            <p class="other-comment-content">có chỗ nào thả tim cho video không ta? giá như like video ở
+                              đây thì video youtube cũng được like luôn. hic hic. như like video ở đây thì video
+                              youtube cũng được like luôn. hic hi </p>
                           </div>
-                        </li>
-                        <li class="comment-item">
-                          <img src="/img/avatar5.png" alt="" class="comment-avatar">
-                          <div class="comment-box">
-                            <h5 class="comment-author">Trung</h5>
-                            <span class="comment-content">Bài tổng hợp rất chi tiết. Cảm ơn bác đã chia sẻ </span>
+                        </div>
+                      </div>
+                      <div class="other-comment-item">
+                        <img src="/img/avatar5.png" alt="" class="other-commnet-avatar">
+                        <div class="other-comment-body">
+                          <div class="other-comment-box">
+                            <h5 class="other-commnet-author content-playlist-heading-bold">Triệu Nguyễn</h5>
+                            <p class="other-comment-content">có chỗ nào thả tim cho video không ta? giá như like video ở
+                              đây thì video youtube cũng được like luôn. hic hic. như like video ở đây thì video
+                              youtube cũng được like luôn. hic hi </p>
                           </div>
-                        </li>
-                        <li class="comment-item">
-                          <img src="/img/avatar5.png" alt="" class="comment-avatar">
-                          <div class="comment-box">
-                            <h5 class="comment-author">Trung</h5>
-                            <span class="comment-content">Bài tổng hợp rất chi tiết. Cảm ơn bác đã chia sẻ </span>
+                        </div>
+                      </div>
+                      <div class="other-comment-item">
+                        <img src="/img/avatar5.png" alt="" class="other-commnet-avatar">
+                        <div class="other-comment-body">
+                          <div class="other-comment-box">
+                            <h5 class="other-commnet-author content-playlist-heading-bold">Triệu Nguyễn</h5>
+                            <p class="other-comment-content">có chỗ nào thả tim cho video không ta? giá như like video ở
+                              đây thì video youtube cũng được like luôn. hic hic. như like video ở đây thì video
+                              youtube cũng được like luôn. hic hi </p>
                           </div>
-                        </li>
-                        <li class="comment-item">
-                          <img src="/img/avatar5.png" alt="" class="comment-avatar">
-                          <div class="comment-box">
-                            <h5 class="comment-author">Trung</h5>
-                            <span class="comment-content">Bài tổng hợp rất chi tiết. Cảm ơn bác đã chia sẻ </span>
+                        </div>
+                      </div>
+                      <div class="other-comment-item">
+                        <img src="/img/avatar5.png" alt="" class="other-commnet-avatar">
+                        <div class="other-comment-body">
+                          <div class="other-comment-box">
+                            <h5 class="other-commnet-author content-playlist-heading-bold">Triệu Nguyễn</h5>
+                            <p class="other-comment-content">có chỗ nào thả tim cho video không ta? giá như like video ở
+                              đây thì video youtube cũng được like luôn. hic hic. như like video ở đây thì video
+                              youtube cũng được like luôn. hic hi </p>
                           </div>
-                        </li>
-                        <li class="comment-item">
-                          <img src="/img/avatar5.png" alt="" class="comment-avatar">
-                          <div class="comment-box">
-                            <h5 class="comment-author">Trung</h5>
-                            <span class="comment-content">Bài tổng hợp rất chi tiết. Cảm ơn bác đã chia sẻ </span>
-                          </div>
-                        </li>
-                        <li class="comment-item">
-                          <img src="/img/avatar5.png" alt="" class="comment-avatar">
-                          <div class="comment-box">
-                            <h5 class="comment-author">Trung</h5>
-                            <span class="comment-content">Bài tổng hợp rất chi tiết. Cảm ơn bác đã chia sẻ Bài tổng hợp
-                              rất chi tiết. Cảm ơn bác đã chia sẻ Bài tổng hợp rất chi tiết. Cảm ơn bác đã chia
-                              sẻ</span>
-                          </div>
-                        </li>
-                        <li class="comment-item">
-                          <img src="/img/avatar5.png" alt="" class="comment-avatar">
-                          <div class="comment-box">
-                            <h5 class="comment-author">Trung</h5>
-                            <span class="comment-content">Bài tổng hợp rất chi tiết. Cảm ơn bác đã chia sẻ </span>
-                          </div>
-                        </li>
-                        <li class="comment-item">
-                          <img src="/img/avatar5.png" alt="" class="comment-avatar">
-                          <div class="comment-box">
-                            <h5 class="comment-author">Trung</h5>
-                            <span class="comment-content">Bài tổng hợp rất chi tiết. Cảm ơn bác đã chia sẻ </span>
-                          </div>
-                        </li>
-                        <li class="comment-item">
-                          <img src="/img/avatar5.png" alt="" class="comment-avatar">
-                          <div class="comment-box">
-                            <h5 class="comment-author">Trung</h5>
-                            <span class="comment-content">Bài tổng hợp rất chi tiết. Cảm ơn bác đã chia sẻ </span>
-                          </div>
-                        </li>
-                      </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+                <div class="playlist-column">
+                  <div class="playlist-header">
+                    <h1 class="playlist-heading content-playlist-heading-bold">Javascript Cơ Bản</h1>
+                    <p class="playlist-course-info">Hoàn thành <strong>114/120</strong> bài học (<strong>95%</strong>)
+                    </p>
+                  </div>
+                  <div class="playlist-section-list">
+                    <div class="playlist-section-item">
+                      <div class="section-title-wrapper">
+                        <div>
+                          <h3 class="section-title content-playlist-heading-bold">Phần 1: GIới thiệu</h3>
+                          <p class="section-completed-wrapper">
+                            <span class="section-completed">2/2</span>
+                            <span class="section-time">6:28</span>
+                          </p>
+                        </div>
+                        <i class="section-title-icon-up fas fa-chevron-up"></i>
+                      </div>
+                      <div class="learn-list">
+                        <div class="learn-item">
+                          <div class="learn-status">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <div class="learn-info">
+                            <h3 class="learn-name">1. JSX là gì? Tại sao cần JSX?</h3>
+                            <p class="learn-description"><i class="icon-playing fas fa-compact-disc"></i><i
+                                class="icon-not-playing fas fa-play-circle"></i>15:59</p>
+                          </div>
+                        </div>
+                        <div class="learn-item">
+                          <div class="learn-status">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <div class="learn-info">
+                            <h3 class="learn-name">17. JSX là gì? Tại sao cần JSX? Quy ước
+                              đặt tên components</h3>
+                            <p class="learn-description">
+                              <i class="icon-playing fas fa-compact-disc"></i><i
+                                class="icon-not-playing icon-not-playing fas fa-play-circle"></i>15:59
+                            </p>
+                          </div>
+                        </div>
+                        <div class="learn-item learning">
+                          <div class="learn-status not-complete">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <div class="learn-info">
+                            <h3 class="learn-name">1. JSX là gì? Tại sao cần JSX?</h3>
+                            <p class="learn-description"><i class="icon-playing fas fa-compact-disc"></i><i
+                                class="icon-not-playing fas fa-play-circle"></i>15:59</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="playlist-section-item">
+                      <div class="section-title-wrapper">
+                        <div>
+                          <h3 class="section-title content-playlist-heading-bold">Phần 1: GIới thiệu</h3>
+                          <p class="section-completed-wrapper">
+                            <span class="section-completed">2/2</span>
+                            <span class="section-time">6:28</span>
+                          </p>
+                        </div>
+                        <i class="section-title-icon-up fas fa-chevron-up"></i>
+                      </div>
+                      <div class="learn-list">
+                        <div class="learn-item">
+                          <div class="learn-status">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <div class="learn-info">
+                            <h3 class="learn-name">1. JSX là gì? Tại sao cần JSX?</h3>
+                            <p class="learn-description"><i class="icon-playing fas fa-compact-disc"></i><i
+                                class="icon-not-playing fas fa-play-circle"></i>15:59</p>
+                          </div>
+                        </div>
+                        <div class="learn-item">
+                          <div class="learn-status">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <div class="learn-info">
+                            <h3 class="learn-name">17. JSX là gì? Tại sao cần JSX? Quy ước
+                              đặt tên components</h3>
+                            <p class="learn-description">
+                              <i class="icon-playing fas fa-compact-disc"></i><i
+                                class="icon-not-playing icon-not-playing fas fa-play-circle"></i>15:59
+                            </p>
+                          </div>
+                        </div>
+                        <div class="learn-item">
+                          <div class="learn-status not-complete">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <div class="learn-info">
+                            <h3 class="learn-name">1. JSX là gì? Tại sao cần JSX?</h3>
+                            <p class="learn-description"><i class="icon-playing fas fa-compact-disc"></i><i
+                                class="icon-not-playing fas fa-play-circle"></i>15:59</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="playlist-section-item">
+                      <div class="section-title-wrapper">
+                        <div>
+                          <h3 class="section-title content-playlist-heading-bold">Phần 1: GIới thiệu</h3>
+                          <p class="section-completed-wrapper">
+                            <span class="section-completed">2/2</span>
+                            <span class="section-time">6:28</span>
+                          </p>
+                        </div>
+                        <i class="section-title-icon-up fas fa-chevron-up"></i>
+                      </div>
+                      <div class="learn-list">
+                        <div class="learn-item">
+                          <div class="learn-status">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <div class="learn-info">
+                            <h3 class="learn-name">1. JSX là gì? Tại sao cần JSX?</h3>
+                            <p class="learn-description"><i class="icon-playing fas fa-compact-disc"></i><i
+                                class="icon-not-playing fas fa-play-circle"></i>15:59</p>
+                          </div>
+                        </div>
+                        <div class="learn-item">
+                          <div class="learn-status">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <div class="learn-info">
+                            <h3 class="learn-name">17. JSX là gì? Tại sao cần JSX? Quy ước
+                              đặt tên components</h3>
+                            <p class="learn-description">
+                              <i class="icon-playing fas fa-compact-disc"></i><i
+                                class="icon-not-playing icon-not-playing fas fa-play-circle"></i>15:59
+                            </p>
+                          </div>
+                        </div>
+                        <div class="learn-item">
+                          <div class="learn-status not-complete">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <div class="learn-info">
+                            <h3 class="learn-name">1. JSX là gì? Tại sao cần JSX?</h3>
+                            <p class="learn-description"><i class="icon-playing fas fa-compact-disc"></i><i
+                                class="icon-not-playing fas fa-play-circle"></i>15:59</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="playlist-section-item">
+                      <div class="section-title-wrapper">
+                        <div>
+                          <h3 class="section-title content-playlist-heading-bold">Phần 1: GIới thiệu</h3>
+                          <p class="section-completed-wrapper">
+                            <span class="section-completed">2/2</span>
+                            <span class="section-time">6:28</span>
+                          </p>
+                        </div>
+                        <i class="section-title-icon-up fas fa-chevron-up"></i>
+                      </div>
+                      <div class="learn-list">
+                        <div class="learn-item">
+                          <div class="learn-status">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <div class="learn-info">
+                            <h3 class="learn-name">1. JSX là gì? Tại sao cần JSX?</h3>
+                            <p class="learn-description"><i class="icon-playing fas fa-compact-disc"></i><i
+                                class="icon-not-playing fas fa-play-circle"></i>15:59</p>
+                          </div>
+                        </div>
+                        <div class="learn-item">
+                          <div class="learn-status">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <div class="learn-info">
+                            <h3 class="learn-name">17. JSX là gì? Tại sao cần JSX? Quy ước
+                              đặt tên components</h3>
+                            <p class="learn-description">
+                              <i class="icon-not-playing fas fa-play-circle"></i>15:59
+                            </p>
+                          </div>
+                        </div>
+                        <div class="learn-item">
+                          <div class="learn-status not-complete">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <div class="learn-info">
+                            <h3 class="learn-name">1. JSX là gì? Tại sao cần JSX?</h3>
+                            <p class="learn-description"><i class="icon-playing fas fa-compact-disc"></i><i
+                                class="icon-not-playing fas fa-play-circle"></i>15:59</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
+
+              <div class="row blog-content" style="display: flex; flex-direction: column" id="htmlToView">
 
               </div>
+
+
+
             </div>
           </div>
         </div>
@@ -242,141 +379,30 @@
 
   <script type="text/javascript">
 
-    var dataView = '<%= detail %>';
-    var linkAcess =
-      'http://' + window.location.hostname + ':' + window.location.port + '/' +
-      dataView.replaceAll('+', '/');
-    console.log(linkAcess);
-    // document.getElementById("htmlToView").src = linkAcess;
+    const myCommentBox = document.querySelector('.my-comment-box');
+    const commentActionWrapper = document.querySelector('.comment-action-wrapper');
 
-    $.ajax({
-      type: 'GET',
-      enctype: 'multipart/form-data',
-      url: linkAcess,
-      data: {},
-      processData: false, //prevent jQuery from automatically transforming the data into a query string
-      contentType: false,
-      cache: false,
-      success: (data) => {
-        console.log(data);
-        $('#htmlToView').html(data); //.replaceAll("</p>","<br/>").replaceAll("<p>","<br/>")
-        $('html, body').animate({ scrollTop: 0 }, 'fast');
-      },
-      error: (e) => {
-        console.log(e.responseText);
-      },
+    myCommentBox.oninput = () => {
+      if (!!myCommentBox.value) {
+        commentActionWrapper.style = 'display:flex';
+      } else {
+        commentActionWrapper.style = 'display:none';
+      }
+    };
+    const sectionTitleWrapper = document.querySelectorAll('.section-title-wrapper');
+    const learnList = document.querySelectorAll('.learn-list');
+    const sectionTitleIcon = document.querySelectorAll('.section-title-icon-up');
+
+    sectionTitleWrapper.forEach((item, index) => {
+      sectionTitleWrapper[index].onclick = () => {
+        learnList[index].classList.toggle('learn-list--hidden');
+        sectionTitleIcon[index].classList.toggle(
+          'section-title-icon-up--rotate180deg'
+        );
+      };
     });
 
-    // Bookmark
-    const bookmark = document.querySelector('.blog-detail__icon-bookmark');
-    bookmark.onclick = () =>
-      bookmark.classList.toggle('blog-detail__icon-bookmark--active');
 
-    // Like
-    const likeAside = document.querySelector('.blog-aside__like');
-    const likeBottom = document.querySelector('.blog-bottom__like');
-    const likeAsideIcon = document.querySelector('.blog-aside__like-icon');
-    const likeBottomIcon = document.querySelector('.blog-bottom__like-icon');
-
-    likeBottom.onclick = () => {
-      likeBottomIcon.classList.toggle('blog-bottom__like-icon--active');
-      likeAsideIcon.classList.toggle('blog-aside__like-icon--active');
-    };
-
-    likeAside.onclick = () => {
-      likeBottomIcon.classList.toggle('blog-bottom__like-icon--active');
-      likeAsideIcon.classList.toggle('blog-aside__like-icon--active');
-    };
-
-    // Option
-    const ellipsis = document.querySelector('.blog-detail__ellipsis');
-    const option = document.querySelector('.blog-detail__option');
-    const optionList = document.querySelector('.blog-detail__option-list');
-    const optionItems = document.querySelectorAll('.blog-detail__option-item');
-    const optionIcons = document.querySelectorAll('.blog-detail__option-icon');
-    const optionDescriptions = document.querySelectorAll('.blog-detail__option-description');
-    ellipsis.onclick = () => {
-      option.classList.add('blog-detail__option--show');
-    };
-
-    const check = function (eventTarget, optionElements) {
-      let i = 0;
-      optionElements.forEach(function (item) {
-        if (item != eventTarget) i++;
-      });
-      if (i == optionElements.length) {
-        return true;
-      } else {
-        return false;
-      }
-    };
-
-    window.onclick = (event) => {
-      if (
-        event.target != ellipsis &&
-        event.target.parentNode != ellipsis
-      ) {
-        option.classList.remove('blog-detail__option--show');
-      }
-    };
-
-    // Comment
-    const messageButtons = [document.querySelector('.blog-aside__comment'), document.querySelector('.blog-bottom__comment')];
-    const closeButton = document.querySelector('.comment-close');
-    const modal = document.querySelector('.modal');
-    const commentContainer = document.querySelector('.comment-container');
-
-    const showComment = () => {
-      Object.assign(commentContainer.style, {
-        transform: 'translateX(0%)',
-        opacity: '1',
-      });
-
-
-      modal.classList.add('modal--show')
-
-    };
-
-    messageButtons.forEach((messageButton) => {
-      messageButton.addEventListener('click', showComment);
-    });
-
-    // const closeComment = () => {
-
-    //   modal.classList.add('modal--show')
-    // };
-    // messageButtons.forEach((messageButton) => {
-    //   messageButton.addEventListener('click', showComment);
-    // });
-    const closeComment = () => {
-
-      if (document.body.offsetWidth >= 970) {
-        Object.assign(commentContainer.style, {
-          transform: 'translateX(200%)',
-          opacity: '0',
-        });
-      } else {
-        Object.assign(commentContainer.style, {
-          transform: 'translateY(-200%)',
-          opacity: '0',
-        });
-      }
-
-      setTimeout(function () {
-        modal.classList.remove('modal--show')
-      }, 200);
-    };
-
-
-    closeButton.onclick = () => closeComment();
-
-    modal.onclick = () => closeComment();
-
-    commentContainer.onclick = (event) => event.stopPropagation();
-
-    closeButton.onclick = () => closeComment();
-    modal.onclick = () => closeComment();
-    commentContainer.onclick = (event) => event.stopPropagation();
   </script>
 
 </html>
