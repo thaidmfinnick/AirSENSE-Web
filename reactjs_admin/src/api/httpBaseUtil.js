@@ -168,12 +168,32 @@ export const updatePagesToFist = (data) => {
   return  httpPostData(API_URL + 'users/fist_pages' ,data);
 }
 
+export const updateCourseToFist = (data) => {
+  return  httpPostData(API_URL + 'users/fist_course' ,data);
+}
+
 export const registerPageToWriter = ( data) => {
   return httpPostData(API_URL + 'document/registerPages' ,data);
 }
 
 export const updatePageToWriter = ( data) => {
   return  httpPostData(API_URL + 'document/updatePages' ,data);
+}
+
+export const registerCourseToWriter = ( data) => {
+  return httpPostData(API_URL + 'document/registerCourse' ,data);
+}
+
+export const updateCourseToWriter = ( data) => {
+  return  httpPostData(API_URL + 'document/updateCourse' ,data);
+}
+
+export const registerExamToWriter = ( data) => {
+  return httpPostData(API_URL + 'document/registerExam' ,data);
+}
+
+export const updateExamToWriter = ( data) => {
+  return  httpPostData(API_URL + 'document/updateExam' ,data);
 }
 
 export const registerPageToAdvertisement = ( data) => {

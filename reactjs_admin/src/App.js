@@ -2,6 +2,8 @@ import * as React from 'react';
 import PostIcon from '@material-ui/icons/Book';
 import UserIcon from '@material-ui/icons/Group';
 import ExtensionIcon from '@material-ui/icons/Extension';
+import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
+import ClassIcon from '@material-ui/icons/Class';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
@@ -12,7 +14,7 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn';
 import DetailsIcon from '@material-ui/icons/Details';
-import { Comment, Settings, Send, Contacts, FeaturedPlayList, KeyboardBackspace, TextFormat, Business, GroupWork } from '@material-ui/icons';
+import { Comment, Settings, Send, Contacts, FeaturedPlayList, KeyboardBackspace, TextFormat, Business, GroupWork, DynamicFeed } from '@material-ui/icons';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -24,6 +26,10 @@ import UserList  from './container/manager/users.js';
 import PagesContent  from './container/manager/PagesContent.js';
 import RegisterPage  from './container/manager/RegisterPage.js';
 import AdvertisementPage  from './container/manager/AdvertisementPage.js';
+import PagesCourse from './container/manager/PagesCourse';
+import RegisterCourse from './container/manager/RegisterCourse';
+import ExamDetail from './container/manager/ExamDetail';
+import RegisterExam from './container/manager/RegisterExam';
 import LockScreen  from './container/manager/LockScreen.js';
 import NomalTable  from './container/manager/NomalTable.js';
 import UserTable from './container/manager/UserTable.js';
@@ -61,10 +67,22 @@ const App = () => {
             <Resource name="users" options={{label:'Tài khoản' }} icon={UserIcon} list={UserList} />
 
             {/* bài báo*/}
-            <Resource name="sPages" options={{label:'Nhóm bài báo' ,"isMenuParent": true }} icon={FeaturedPlayList}  list={LockScreen} />
+            <Resource name="sPages" options={{label:'Nhóm bài báo' ,"isMenuParent": true }} icon={DynamicFeed}  list={LockScreen} />
             <Resource name="group_content_sub" options={{label:'Nhóm bài báo' ,"menuParent": "sPages"}} icon={FeaturedPlayList} list={NomalTable} />
             <Resource name="managerpages" options={{label:'Quản lý bài báo',"menuParent": "sPages" }} icon={Settings} list={PagesContent} />
-            <Resource name="registerPage" options={{label:'viết bài',"menuParent": "sPages" }} icon={TextFormat} list={RegisterPage} />
+            <Resource name="registerPage" options={{label:'Viết bài',"menuParent": "sPages" }} icon={TextFormat} list={RegisterPage} />
+            {/* Khóa học */}
+            <Resource name="groupCourses" options={{label:'Khóa học' ,"isMenuParent": true }} icon={CollectionsBookmarkIcon}  list={LockScreen} />
+            <Resource name="group_course" options={{label:'Nhóm khóa học' ,"menuParent": "groupCourses"}} icon={ClassIcon} list={NomalTable} />
+            <Resource name="course" options={{label:'Khóa học' ,"menuParent": "groupCourses"}} icon={ClassIcon} list={NomalTable} />
+            <Resource name="managerCourse" options={{label:'Quản lý khóa học',"menuParent": "groupCourses" }} icon={Settings} list={PagesCourse} />
+            <Resource name="registerCourse" options={{label:'Đăng khóa học/bài học',"menuParent": "groupCourses" }} icon={TextFormat} list={RegisterCourse} />
+
+            {/* Bài tập */}
+            <Resource name="groupExam" options={{label:'Bài tập' ,"isMenuParent": true }} icon={CollectionsBookmarkIcon}  list={LockScreen} />
+            <Resource name="exam" options={{label:'Nhóm bài tập' ,"menuParent": "groupExam"}} icon={ClassIcon} list={NomalTable} />
+            <Resource name="managerExam" options={{label:'Quản lý bài tập',"menuParent": "groupExam" }} icon={Settings} list={ExamDetail} />
+            <Resource name="registerExam" options={{label:'Soạn bài tập',"menuParent": "groupExam" }} icon={TextFormat} list={RegisterExam} />
             {/* Trạm*/}
             <Resource name="service_x" options={{label:'Trạm' ,"isMenuParent": true }} icon={RoomServiceIcon}  list={LockScreen} />
             <Resource name="location" options={{label:'Vị trí',"menuParent": "service_x" }} icon={ListAltIcon}  list={NomalTable} />
@@ -74,7 +92,6 @@ const App = () => {
             <Resource name="status_history_device" options={{label:'Lịch sử thiết bị',"menuParent": "service_x" }} icon={KeyboardReturnIcon}  list={NomalTable} />
             <Resource name="station_map" options={{label:'Quản lí trạm trên bản đồ',"menuParent": "service_x" }} icon={KeyboardReturnIcon}  list={StationMapManager} />
 
-            
             {/* Giá trị sensor*/}
             <Resource name="products" options={{label:'sensor' ,"isMenuParent": true }} icon={ShoppingCartIcon}  list={LockScreen} />
             <Resource name="sparc_aqi" options={{label:'aQI',"menuParent": "products" }} icon={KeyboardReturnIcon}  list={NomalTable} />

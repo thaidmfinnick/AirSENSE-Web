@@ -181,9 +181,9 @@
             var showDataDetail="";
             for(var k=0;k< listSelectContent.length;k++) {
                 let v=listSelectContent[k];
-                if((v["group_content"].indexOf("_")>-1)&&(v["group_content"].indexOf(group)>-1))
+                if((v["content_group"].indexOf("_")>-1)&&(v["content_group"].indexOf(group)>-1))
                 {
-                    showDataDetail+='<option value="'+v["group_content"]+'">'+v["title"] +'</option>';
+                    showDataDetail+='<option value="'+v["content_group"]+'">'+v["title"] +'</option>';
                 }
                 
             }

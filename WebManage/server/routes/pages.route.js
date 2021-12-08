@@ -1,191 +1,227 @@
-const express = require('express');
-const documentCtrl = require('../controllers/document.controller.js');
+const express = require("express");
+const documentCtrl = require("../controllers/document.controller.js");
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('home/home', { route: 'home' });
+router.get("/", (req, res) => {
+  res.render("home/home", { route: "home" });
 });
 
-var arrayMenuPages =[
+var arrayMenuPages = [
   {
     typePage: "Đào tạo",
-    route: 'tech',
-    sideMenu :{}
+    route: "tech",
+    sideMenu: {},
   },
 
   {
     typePage: "Blog",
-    route: 'document',
-    sideMenu :{}
-  }
-] 
+    route: "document",
+    sideMenu: {},
+  },
+];
 
-router.get('/education/:typePage', async (req, res) => {
-  var data = req.params.typePage;
-  var itemvalue =["head","news", "documentary"]
-  var index = itemvalue.findIndex(o=>o==data);
-  var dataMAin=10+index;
-  if(index<10) {
-    dataMAin = '11,12';
-  }
-  res.render('tech/tech' , { detail: dataMAin, route: 'tech' });
-});
-
-
-router.get('/blog/:typePage',async (req, res) => {
-  var data = req.params.typePage;
-  var itemvalue =["head","stem", "environment", "climate"]
-  var index = itemvalue.findIndex(o=>o==data);
-  var dataMAin=index;
-  if(dataMAin<1) {
-    dataMAin = '1,2,3';
-  }
-  
-  res.render('document/blog',  { detail: dataMAin, route: 'document' });
-});
-
-router.get('/curriculum/:typePage',async (req, res) => {
-  var data = req.params.typePage;
-  var itemvalue =["head","maths", "program","electric","phy"]
-  var index = itemvalue.findIndex(o=>o==data);
-  var dataMAin=30+index;
-  if(dataMAin<31) {
-    dataMAin = '31,32,33,34';
-  }
-  res.render('blog/document', { detail: dataMAin, route: 'curriculum' });
-});
-
-router.get('/tool/:typePage',async (req, res) => {
-  var data = req.params.typePage;
-  var itemvalue =["head","math","economy", "image","design","iot"]
-  var index = itemvalue.findIndex(o=>o==data);
-  var dataMAin=40+index;
-  if(dataMAin<41) {
-    dataMAin = '41,42,43,44,45';
-  }
-  res.render('tool/tool',  { detail: dataMAin, route: 'tool' });
-});
-
-router.get('/traning/:typePage',async (req, res) => {
-  var data = req.params.typePage;
-  var itemvalue =["head","electric","program", "telecommunication","computer","biomedical","air","phy"]
-  var index = itemvalue.findIndex(o=>o==data);
-  var dataMAin=arrayMenuPages[2];
-  if(index<1) {
-    var dataAdd = await documentCtrl.getAllInMenuPage([21,22,23,24,25,26,27,28]);
-    dataMAin.sideMenu.subjects =dataAdd;
-  }
-  else
+var arrayMenuCourse = [
   {
-    var dataAdd = await documentCtrl.getAllInMenuPage([20+index]);
-    dataMAin.sideMenu.subjects =dataAdd;
+    typePage: "Maths",
+    route: "course",
+    sideMenu: {},
+  },
+
+  {
+    typePage: "Physics",
+    route: "course",
+    sideMenu: {},
+  },
+];
+
+var arrayMenuExam = [
+  {
+    typePage: "MathsTest",
+    route: "exam",
+    sideMenu: {},
+  },
+
+  {
+    typePage: "PhysicsTest",
+    route: "exam",
+    sideMenu: {},
+  },
+];
+router.get("/education/:typePage", async (req, res) => {
+  var data = req.params.typePage;
+  var itemvalue = ["head", "news", "documentary"];
+  var index = itemvalue.findIndex((o) => o == data);
+  var dataMAin = 10 + index;
+  if (index < 10) {
+    dataMAin = "11,12";
   }
-  res.render('traning/traning', { detail: dataMAin, route: 'traning' });
+  res.render("tech/tech", { detail: dataMAin, route: "tech" });
 });
 
-router.get('/tool/detail/:typePage', (req, res) => {
+router.get("/blog/:typePage", async (req, res) => {
   var data = req.params.typePage;
-  console.log('...................data ................ ', data);
-  res.render('tool/toolDetail', { detail: data, route: 'tool' });
+  var itemvalue = ["head", "stem", "environment", "climate"];
+  var index = itemvalue.findIndex((o) => o == data);
+  var dataMAin = index;
+  if (dataMAin < 1) {
+    dataMAin = "1,2,3";
+  }
+
+  res.render("document/blog", { detail: dataMAin, route: "document" });
 });
 
-router.get('/detail_page/:typePage', (req, res) => {
+router.get("/detail_page/:typePage", (req, res) => {
   var data = req.params.typePage;
-  res.render('home/viewDetail', { detail: data, route: 'tool' });
+  res.render("home/viewDetail", { detail: data, route: "tool" });
 });
 
-router.get('/group_page/:typePage', (req, res) => {
+router.get("/group_page/:typePage", (req, res) => {
   var data = req.params.typePage;
-  res.render('home/groupDetail', { detail: data, route: 'tool' });
+  res.render("home/groupDetail", { detail: data, route: "tool" });
 });
 
-router.get('/about', (req, res) => {
-  res.render('home/about');
+// Course
+router.get("/detail_lesson/:typePage", (req, res) => {
+  var data = req.params.typePage;
+  res.render("course/viewLesson", { detail: data, route: "course" });
 });
 
-router.get('/map', (req, res) => {
-  res.render('home/map');
+router.get("/group_lesson/:typePage", (req, res) => {
+  var data = req.params.typePage;
+  res.render("course/viewCourse", { detail: data, route: "course" });
 });
 
-router.get('/sale', (req, res) => {
-  res.render('sale/Sale');
+router.get("/course/:typePage", async (req, res) => {
+  var data = req.params.typePage;
+  var itemvalue = ["head", "maths", "physics", "english"];
+  var index = itemvalue.findIndex((o) => o == data);
+  var dataMAin = index;
+  if (dataMAin < 1) {
+    dataMAin = "1,2,3";
+  }
+
+  res.render("course/allCourse", { detail: dataMAin, route: "course" });
 });
 
-router.get('/sale/product', (req, res) => {
-  console.log("req /sale/product ",req._parsedOriginalUrl.query);
-  res.render('sale/GroupProduct',{ detail: req._parsedOriginalUrl.query });
+// Exam
+router.get("/detail_exam/:typePage", (req, res) => {
+  var data = req.params.typePage;
+  res.render("exam/viewExam", { detail: data, route: "exam" });
 });
 
-router.get('/sale/product_detail', (req, res) => {
-  res.render('sale/DetailProduct',{ detail: req._parsedOriginalUrl.query });
+router.get("/exam_group/:typePage", (req, res) => {
+  var data = req.params.typePage;
+  res.render("exam/viewGroupExam", { detail: data, route: "exam" });
 });
 
+router.get("/exam/maths/:typePage", async (req, res) => {
+  var data = req.params.typePage;
+  var itemvalue = ["head", "geometry", "algebra"];
+  var index = itemvalue.findIndex((o) => o == data);
+  var dataMAin = index;
+  if (dataMAin < 1) {
+    dataMAin = "1,2";
+  }
 
-router.get('/sale/cart', (req, res) => {
-  res.render('sale/invoiceInfoProduct');
+  res.render("exam/allExam", { detail: dataMAin, route: "exam" });
 });
 
+router.get("/exam/physics/:typePage", async (req, res) => {
+  var data = req.params.typePage;
+  var itemvalue = ["head", "power", "volumn"];
+  var index = itemvalue.findIndex((o) => o == data);
+  var dataMAin = 10 + index;
+  if (index < 10) {
+    dataMAin = "11,12";
+  }
 
-router.get('/sale/finish', (req, res) => {
-  res.render('sale/finishInvoiceProduct',{ detail: req._parsedOriginalUrl.query });
-});
-
-
-router.get('/service', (req, res) => {
-  res.render('service/service');
-});
-
-router.get('/service/detail', (req, res) => {
-  res.render('service/detailService');
+  res.render("exam/allExam", { detail: dataMAin, route: "exam" });
 });
 
-
-router.get('/service/bill', (req, res) => {
-  res.render('service/billService');
+router.get("/about", (req, res) => {
+  res.render("home/about");
 });
 
-router.get('/service/charging', (req, res) => {
-  res.render('service/chargingService');
+router.get("/map", (req, res) => {
+  res.render("home/map");
 });
 
-
-router.get('/test2', (req, res) => {
-  res.render('sale/DetaileSalePages');
+router.get("/sale", (req, res) => {
+  res.render("sale/Sale");
 });
 
-router.get('/test3', (req, res) => {
-  res.render('sale/Sale');
-});
-router.get('/test4', (req, res) => {
-  res.render('sale/SaleGroupPages');
+router.get("/sale/product", (req, res) => {
+  console.log("req /sale/product ", req._parsedOriginalUrl.query);
+  res.render("sale/GroupProduct", { detail: req._parsedOriginalUrl.query });
 });
 
-router.get('/test5', (req, res) => {
-  res.render('sale/SalePages');
+router.get("/sale/product_detail", (req, res) => {
+  res.render("sale/DetailProduct", { detail: req._parsedOriginalUrl.query });
 });
 
-router.get('/old', (req, res) => {
-  res.render('old/home');
-});
-router.get('/old_map', (req, res) => {
-  res.render('old/map');
-});
-router.get('/allStation/:token', (req, res) => {
-  res.render('old/map');
-});
-router.get('/old_register', (req, res) => {
-  res.render('old/Account/register');
-});
-router.get('/old_profile', (req, res) => {
-  res.render('old/Account/profile');
+router.get("/sale/cart", (req, res) => {
+  res.render("sale/invoiceInfoProduct");
 });
 
-router.get('/oldreportstation', (req, res) => {
-  res.render('old/reportStation');
+router.get("/sale/finish", (req, res) => {
+  res.render("sale/finishInvoiceProduct", {
+    detail: req._parsedOriginalUrl.query,
+  });
 });
 
-router.get('/reportstation/:token', (req, res) => {
-  res.render('ManagerStation/reportStation');
+router.get("/service", (req, res) => {
+  res.render("service/service");
+});
+
+router.get("/service/detail", (req, res) => {
+  res.render("service/detailService");
+});
+
+router.get("/service/bill", (req, res) => {
+  res.render("service/billService");
+});
+
+router.get("/service/charging", (req, res) => {
+  res.render("service/chargingService");
+});
+
+router.get("/test2", (req, res) => {
+  res.render("sale/DetaileSalePages");
+});
+
+router.get("/test3", (req, res) => {
+  res.render("sale/Sale");
+});
+router.get("/test4", (req, res) => {
+  res.render("sale/SaleGroupPages");
+});
+
+router.get("/test5", (req, res) => {
+  res.render("sale/SalePages");
+});
+
+router.get("/old", (req, res) => {
+  res.render("old/home");
+});
+router.get("/old_map", (req, res) => {
+  res.render("old/map");
+});
+router.get("/allStation/:token", (req, res) => {
+  res.render("old/map");
+});
+router.get("/old_register", (req, res) => {
+  res.render("old/Account/register");
+});
+router.get("/old_profile", (req, res) => {
+  res.render("old/Account/profile");
+});
+
+router.get("/oldreportstation", (req, res) => {
+  res.render("old/reportStation");
+});
+
+router.get("/reportstation/:token", (req, res) => {
+  res.render("ManagerStation/reportStation");
 });
 
 /*
@@ -216,9 +252,8 @@ router.get('/old_blog', (req, res) => {
 router.get('/old_manageBlog', (req, res) => {
   res.render('old/Manager/BlogManager');
 });*/
-router.get('/old_login', (req, res) => {
-  res.render('old/Account/login');
+router.get("/old_login", (req, res) => {
+  res.render("old/Account/login");
 });
 
 module.exports = router;
-

@@ -1,0 +1,184 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.Exercise__header {
+    display: flex;
+    background-color: #fff;
+    align-items: center;
+    margin: 10px 0 10px 20px;
+}
+
+.back-icon,
+.Exercise__back,
+.Exercise__Course-title {
+    padding: 10px;
+}
+
+.back-icon:hover {
+    cursor: pointer;
+}
+
+.Exercise__Course-title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.Exercise__question {
+    background-color: rgba(0, 0, 255, 0.6);
+    min-height: 300px;
+    border-radius: 10px;
+}
+
+.Question-order,
+.Exercise__Progressbar {
+    color: white;
+}
+
+.Question-order {
+    text-align: center;
+    padding-top: 100px;
+    font-size: 40px;
+}
+
+.Question-content {
+    color: rgba(255, 255, 255, 0.8);
+    padding-top: 20px;
+    margin: 0 135px;
+    text-align: center;
+}
+
+.Exercise__Progressbar {
+    padding-top: 20px;
+}
+
+.Exercise__Progressbar li {
+    float: left;
+    list-style: none;
+    position: relative;
+    text-align: center;
+    width: calc(100% / 5);
+}
+
+.Exercise__Progressbar li::before {
+    background: #fff;
+    border: 2px solid #bebebe;
+    border-radius: 50%;
+    color: #bebebe;
+    content: "";
+    display: block;
+    font-weight: 700;
+    height: 30px;
+    line-height: 27px;
+    margin: 0 auto 10px;
+    text-align: center;
+    width: 30px;
+}
+
+.Exercise__Progressbar li::after {
+    background: #979797;
+    content: "";
+    height: 3px;
+    left: -50%;
+    position: absolute;
+    top: 15px;
+    width: 100%;
+    z-index: -1;
+}
+
+.Exercise__Progressbar li:first-child::after {
+    content: none;
+}
+
+.Exercise__Progressbar li.active::after,
+.Exercise__Progressbar li.complete::after {
+    background: #3aac5d;
+}
+
+.Exercise__Progressbar li.active::before,
+.Exercise__Progressbar li.complete::before {
+    background: #3aac5d;
+    border-color: #3aac5d;
+    color: #fff;
+}
+
+.Exercise__Progressbar li.active {
+    color: yellow;
+    font-weight: 700;
+}
+
+.Exercise__Progressbar li.complete {
+    color: #333;
+    font-weight: 700;
+}
+
+.Exercise__option {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+}
+
+.Exercise-choose {
+    padding-right: 500px;
+    padding-top: 10px;
+}
+
+.Skip-quiz,
+.Review-video,
+.Next-question {
+    display: inline-block;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 10px 40px;
+    border-radius: 5px;
+}
+
+.Skip-quiz,
+.Review-video {
+    background-color: white;
+    border: 1px solid;
+    margin-right: 10px;
+}
+
+.Skip-quiz:hover,
+.Review-video:hover {
+    background-color: rgba(128, 128, 128, 0.63);
+    cursor: pointer;
+}
+
+.Next-question {
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+}
+
+.Next-question:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.Exercise__answer {
+    min-height: 300px;
+    background-color: rgba(128, 128, 128, 0.08);
+    padding-left: 135px;
+}
+
+.Your-answer {
+    padding: 20px 0;
+    font-size: 30px;
+    color: rgba(255, 0, 0, 0.644);
+    font-weight: bold;
+}
+
+.answer1,
+.answer2,
+.answer3 {
+    padding: 10px 0;
+    font-size: 20px;
+}
