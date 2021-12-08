@@ -62,6 +62,11 @@ class User extends CommonModel {
     return "users.deleteflag=0 AND users.manifestid>="+info.manifestid+ " ";
   }
 
+  getDairyChange(info) {
+    return "users.deleteflag=1 AND users.manifestid>="+info.manifestid+ " ";
+
+  }
+
   getJsonTofind(){
       return [];
   }

@@ -35,6 +35,7 @@ import SparcAcessLocationSensor from './SparcAcessLocationSensor.table';
 import sparcGroupLocationSensor from './sparcGroupLocationSensor.table';
 import SparcLocationSensor from './SparcLocationSensor.table';
 import user_admin from './user_admin.table';
+import SparcSensorMaxMin from './SparcSensorMaxMin.table';
 
 // Course
 import GroupCourse from './GroupCourse.table.js';
@@ -77,6 +78,7 @@ const classesFactory = {
   SparcAcessLocationSensor,
   sparcGroupLocationSensor,
   SparcLocationSensor,
+  SparcSensorMaxMin,
   GroupCourse,
   Course,
   PagesCourse,
@@ -115,6 +117,7 @@ const classesFactorryMapping = {
   sparc_access_location_sensor: 'SparcAcessLocationSensor',
   sparc_group_location_sensor: 'sparcGroupLocationSensor',
   sparc_location_sensor: 'SparcLocationSensor',
+  sparc_sensor_max_min:"SparcSensorMaxMin",
   course_group: 'GroupCourse',
   course: 'Course',
   course_page: 'PagesCourse',

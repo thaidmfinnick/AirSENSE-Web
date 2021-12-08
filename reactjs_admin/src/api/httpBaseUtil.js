@@ -108,6 +108,15 @@ export const getallInfoTable = (table,addInfo=null) => {
   else  dataUpload={ table: table };
   return httpPostData(API_URL + 'users/report',dataUpload);
 }
+export const getChangeLog = (table,addInfo=null) => {
+  var dataUpload= null;
+  if(addInfo!=null) {
+    addInfo["table"]=table;
+    dataUpload=addInfo;
+  }
+  else  dataUpload={ table: table };
+  return httpPostData(API_URL + 'users/getChangeLog',dataUpload);
+}
 
 export const getNumberPageOnTable = (table,addInfo=null) => {
   var dataUpload= null;
