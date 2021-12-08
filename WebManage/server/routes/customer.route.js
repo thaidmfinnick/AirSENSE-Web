@@ -38,8 +38,6 @@ router.route('/import-image').post(isAuthenticated, uploadImage.single('file'), 
 });
 
 
-
-
 router.route('/report').post(isAuthenticatedCustomer, (req, res) => {
   customerCtrl.getTableData(req, res);
 });

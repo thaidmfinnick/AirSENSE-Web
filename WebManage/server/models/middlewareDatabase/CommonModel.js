@@ -245,7 +245,7 @@ class CommonModel extends bookshelf.Model {
         }
         if(req.body.table=='users'){
         //console.log(" req.currentUser req.currentUser  2",req.currentUser,result[0][0]);
-        console.log(" req.currentUser req.currentUser 2",result[0][0].permission_id,req.currentUser.manifestid);
+        console.log(" req.currentUser req.currentUser 2",result[0][0].manifestid,req.currentUser.manifestid);
             if(result[0][0].permission_id==req.currentUser.manifestid){
                 console.log(" req.currentUser req.currentUser 1");
                 if(result[0][0].users_id==req.currentUser.users_id)  return true;

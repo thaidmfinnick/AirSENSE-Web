@@ -4,13 +4,14 @@
 <body class="defult-home">
     <!-- Main content Start -->
     <% include ../Layout/topbar.ejs %>
-    <p>Hello Giang</p>
-    <p>Hello Giang</p>
-    <p>Hello Giang</p>
-    <p>Hello Giang</p>
-    <p>Hello Giang</p>
-    <p>Hello Giang</p>
-    <p>Hello Giang</p>
+    <p>Hướng dẫn lấy số liệu</p>
+    <p>Hướng dẫn lấy số liệu</p>
+    <p>Hướng dẫn lấy số liệu</p>
+    <p>Hướng dẫn lấy số liệu</p>
+    <p>Ý nghĩa các số</p>
+
+
+    
 
     <section class="mag-posts-area d-flex flex-wrap">
 
@@ -18,7 +19,7 @@
         <div class="mag-posts-content mt-30 mb-30 p-30 box-shadow">
             <div style=" width: 100%;" class="select-section">
 
-                <label class="label-header"> Danh sách trạm </label>  <select class="browser-default custom-select" id="selectTable" style="width: 200px;"   onchange="onSelectClick()"  ></select>
+                <label class="label-header"> Danh sách trạm </label>  <select class="browser-default custom-select" id="selectTable" style="width: 200px;" onchange="onSelectClick()"  ></select>
     
                 <label class="label-header">From</label> 
                 <input type="datetime-local" class="date-input" id="fromTime" >
@@ -33,12 +34,27 @@
             <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Giờ cập nhật</th>
-                        <th>Nhiệt độ oC</th>
-                        <th>CH1 oC</th>
-                        <th>CH2 oC</th>
-                        <th>CH1 Hz</th>
-                        <th>CH2 Hz</th>
+                       <th>Tên trạm</th>
+                       <th>Thời gian</th>
+                       <th>PM2p5</th>
+                       <th>PM10</th>
+                       <th>PM1</th>
+                       <th>Nhiệt độ</th>
+                       <th>Độ ẩm</th>
+                       <th>Pressure</th>
+                       <th>SO2</th>
+                       <th>NO2</th>
+                       <th>CO2</th>
+                       <th>CO</th>
+                       <th>O3</th>
+                       <th>NO2A</th>
+                       <th>NO2W</th>
+                       <th>O3W</th>
+                       <th>O3A</th>
+                       <th>COW</th>
+                       <th>COA</th>
+                       <th>SO2W</th>
+                       <th>SO2A</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,122 +79,6 @@
         const tokenAdmin = itemUrl[itemUrl.length-1];
         var mname = tokenAdmin;
         var allInfoStation = null;
-
-
-            var lisItemStation="";
-		    var tableReport='sparc_sensor_max_min';
-            // gotoCheckUser(tableReport);
-
-
-            var actionDataSelect=null;
-            var dataSelectEdit=null;
-            var dataClick=null;
-
-            // gotoCheckUserStorage();
-        //     function onSelectClick(){
-        //         var stringvalue=document.getElementById("selectTable").value;
-        //         if(stringvalue.length>1)
-        //             gotoCheckData(stringvalue);
-        //     }
-
-        //     function gotoCheckData(data){  
-        //         var Link='/api/social/getdata';
-        //         $.ajax({
-        //             type: 'post',
-        //             dataType: 'json',
-        //             url: Link,
-        //             data: {data:data },
-        //             beforeSend: function (xhr) {
-        //                 xhr.setRequestHeader('Authorization', 'Bearer '+mname);
-        //             },
-        //             success: function (loadcofig) {
-        //                 console.log(loadcofig);
-        //                 assetDataBase(loadcofig);
-        //                 console.log('ssssssssssss');
-        //             },
-        //               error: function (loadcofig) {
-        //                 console.log('error');
-        //                   console.log(loadcofig);
-        //                   console.log('end error');
-        //               }
-        //         });
-        // }
-
-        //     function assetDataBase(result){
-               
-        //         $('#datatable').DataTable( { destroy: true } ).destroy();
-        //         var showData= '<thead> <tr> <th data-field="time">Giờ cập nhật</th><th data-field="broad_temp"> nhiệt độ oC</th>'
-        //             +'<th data-field="ch1_temp">CH1 oC</th><th data-field="ch2_temp">CH2 oC</th>'
-        //             +'<th data-field="ch1_freq">CH1 Hz</th><th data-field="ch2_freq">CH2 Hz</th></tr></thead>';
-        //         var columeShow=[ {data: "time"}, {data: "broad_temp"}, {data: "ch1_temp"}, {data: "ch2_temp"},
-        //                      {data: "ch1_freq"}, {data: "ch2_freq"}];
-
-        //         $('#datatable').html(showData);
-        //         var table = $('#datatable').DataTable ({"data" : result.result, columns: columeShow});
-        //         $('#datatable tbody').on( 'click', 'td',
-        //             function ()
-        //             {
-        //                 console.log(this);
-        //                 var idx = table.cell( this ).index().row;
-        //                 console.log(idx);
-        //                 var data = table.row( idx ).data();
-        //                 console.log(data);
-        //                 dataClick=data; 
-        //             }
-        //         );
-
-        //     }
-
-       
-      
-
-        function exportReport() {
-            var fromTime = new Date($('#fromTime').val());
-            const getFromTime = fromTime.getTime();
-            var toTime = new Date($('#toTime').val());
-            const getToTime = toTime.getTime();
-            var station_id = document.getElementById("selectTable").value;
-            if(!station_id) {
-                alert("Vui lòng chọn trạm để xuất báo cáo");
-                return;
-            }
-            if(isNaN(fromTime.getFullYear())) {
-                fromTime = undefined;
-            } else fromTime = fromTime.getFullYear() +'-'+ fromTime.getMonth() +'-'+ fromTime.getDate() +' '+ fromTime.getHours() +':'+ fromTime.getMinutes() +':00';
-            if(isNaN(toTime.getFullYear())) {
-                toTime = undefined;
-            } else toTime = toTime.getFullYear() +'-'+ toTime.getMonth() +'-'+ toTime.getDate() +' '+ toTime.getHours() +':'+ toTime.getMinutes() +':00';            
-            var data = {'fromTime': fromTime, 'toTime': toTime, 'station_id': station_id};
-            var link = '/api/social/getReportStations';
-            console.log(data)
-            $.ajax({
-                    type: 'post',
-                    method: 'POST',
-                    url: link,
-                    data: JSON.stringify( {station_id: station_id, fromTime: fromTime, toTime: toTime, getFromTime: getFromTime, getToTime: getToTime}),
-                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                        credentials: 'same-origin', // include, *same-origin, omit
-                        redirect: 'follow', // manual, *follow, error
-                        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                        dataType: 'json',
-                        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                        credentials: 'same-origin', // include, *same-origin, omit
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                            'Authorization': 'Beard ' + mname,
-                            // 'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                    success: function(result) {
-                        //  window.location = 'http://localhost:3000/file/sparc_sensor_data.xlsx';
-                        // window.location = result.filePath;
-                        alert('Xuất báo cáo thành công');
-                    }
-                })
-
-        }
-
         loadAllContent();
         function loadAllContent(){
             var Link='/api/social/getStationHome';
@@ -227,6 +127,232 @@
                       }
                 });
         }
+
+
+            var lisItemStation="";
+		    var tableReport='sparc_sensor_max_min';
+            // gotoCheckUser(tableReport);
+
+
+            var actionDataSelect=null;
+            var dataSelectEdit=null;
+            var dataClick=null;
+
+        //     // gotoCheckUserStorage();
+        //     function onSelectClick(){
+        //         var stringvalue=document.getElementById("selectTable").value;
+        //         if(stringvalue.length>1)
+        //             gotoCheckData(stringvalue);
+        //     }
+        // function gotoCheckData(isShowLoader){  
+        //     console.log("go to check data");
+        //     var data=document.getElementById("selectTable").value;
+        //     var Link='/api/social/getdata';
+        //     var fromTime = new Date($('#fromTime').val());
+        //     var now = new Date().getTime()/1000;
+        //     if(fromTime==undefined || now-fromTime/1000>3*24*60*60) {
+        //         $("#fromTime").val(new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toJSON().slice(0,19));
+        //     }
+        //     var toTime = new Date($('#toTime').val());
+        //     if(isNaN(fromTime.getFullYear())) {
+        //         fromTime = undefined;
+        //     } else fromTime = fromTime.getTime()/1000;
+        //     if(isNaN(toTime.getFullYear())) {
+        //         toTime = undefined;
+        //     } else toTime = toTime.getTime()/1000;
+        //     if(isShowLoader != false) {
+        //         // showLoader();
+        //     }
+        //     // document.getElementsByClassName("dashboard")[0].style.display = "none";
+        //     $.ajax({    type: 'post',
+        //                 method: 'POST',
+        //                 url: Link,
+        //                 data: JSON.stringify( {data:data, fromTime: fromTime, toTime: toTime}), // body data type must match "Content-Type" header
+        //                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        //                 credentials: 'same-origin', // include, *same-origin, omit
+        //                 redirect: 'follow', // manual, *follow, error
+        //                 referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        //                 dataType: 'json',
+        //                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        //                 credentials: 'same-origin', // include, *same-origin, omit
+        //                 headers: {
+        //                     'Content-Type': 'application/json',
+        //                     'Accept': 'application/json',
+        //                     'Content-Type': 'application/json',
+        //                     'Authorization': 'Beard ' + localStorage.getItem('LVC_tocken'),
+        //                     // 'Content-Type': 'application/x-www-form-urlencoded',
+        //                 },
+        //         success: function (loadcofig) {
+        //             // hideLoader();
+        //             document.getElementsByClassName("dashboard")[0].style.display = "block";
+        //             console.log('loadcofig: ',loadcofig);
+        //             // drawSensor(loadcofig);
+        //             assetDataBase(loadcofig);
+        //         },
+        //         error: function (loadcofig) {
+        //             hideLoader();
+        //             console.log('error');
+        //             console.log(loadcofig);
+        //         }
+        //     });
+        // }
+
+        //     function gotoCheckData(data){  
+        //         var Link='/api/social/getdata';
+        //         $.ajax({
+        //             type: 'post',
+        //             dataType: 'json',
+        //             url: Link,
+        //             data: {data:data },
+        //             beforeSend: function (xhr) {
+        //                 xhr.setRequestHeader('Authorization', 'Bearer '+mname);
+        //             },
+        //             success: function (loadcofig) {
+        //                 console.log(loadcofig);
+        //                 assetDataBase(loadcofig);
+        //                 console.log('ssssssssssss');
+        //             },
+        //               error: function (loadcofig) {
+        //                 console.log('error');
+        //                   console.log(loadcofig);
+        //                   console.log('end error');
+        //               }
+        //         });
+        // }
+
+            function assetDataBase(result){
+               
+               var showData = `<thead>
+                    <tr>
+                       <th>Tên trạm</th>
+                       <th>Thời gian</th>
+                       <th>PM2p5</th>
+                       <th>PM10</th>
+                       <th>PM1</th>
+                       <th>Nhiệt độ</th>
+                       <th>Độ ẩm</th>
+                       <th>Pressure</th>
+                       <th>SO2</th>
+                       <th>NO2</th>
+                       <th>CO2</th>
+                       <th>CO</th>
+                       <th>O3</th>
+                       <th>NO2A</th>
+                       <th>NO2W</th>
+                       <th>O3W</th>
+                       <th>O3A</th>
+                       <th>COW</th>
+                       <th>COA</th>
+                       <th>SO2W</th>
+                       <th>SO2A</th>
+                    </tr>
+                </thead>
+                <tbody>`
+                result.map((item)=>{
+                    var d = new Date((item.Time) * 1000);
+                    var date = d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() + ':00';
+                    showData+='<tr>';
+                    showData+='<td>'+item.station_id+'</td>'
+                    showData+='<td>'+date+'</td>'
+                    showData+='<td>'+item.PM2p5+'</td>'
+                    showData+='<td>'+item.PM10+'</td>'
+                    showData+='<td>'+item.PM1+'</td>'
+                    showData+='<td>'+item.Temperature+'</td>'
+                    showData+='<td>'+item.Humidity+'</td>'
+                    showData+='<td>'+item.Pressure+'</td>'
+                    showData+='<td>'+item.SO2+'</td>'
+                    showData+='<td>'+item.NO2+'</td>'
+                    showData+='<td>'+item.CO2+'</td>'
+                    showData+='<td>'+item.CO+'</td>'
+                    showData+='<td>'+item.O3+'</td>'
+                    showData+='<td>'+item.NO2A+'</td>'
+                    showData+='<td>'+item.NO2W+'</td>'
+                    showData+='<td>'+item.O3W+'</td>'
+                    showData+='<td>'+item.O3A+'</td>'
+                    showData+='<td>'+item.COW+'</td>'
+                    showData+='<td>'+item.COA+'</td>'
+                    showData+='<td>'+item.SO2W+'</td>'
+                    showData+='<td>'+item.SO2A+'</td>'
+                    showData+='</tr>'
+                });
+                $('#datatable').html(showData);
+                // $('#datatable').DataTable( { destroy: true } ).destroy();
+                // var showData= '<thead> <tr> <th data-field="time">Giờ cập nhật</th><th data-field="broad_temp"> nhiệt độ oC</th>'
+                //     +'<th data-field="ch1_temp">CH1 oC</th><th data-field="ch2_temp">CH2 oC</th>'
+                //     +'<th data-field="ch1_freq">CH1 Hz</th><th data-field="ch2_freq">CH2 Hz</th></tr></thead>';
+                // var columeShow=[ {data: "time"}, {data: "broad_temp"}, {data: "ch1_temp"}, {data: "ch2_temp"},
+                //              {data: "ch1_freq"}, {data: "ch2_freq"}];
+
+                // $('#datatable').html(showData);
+                // var table = $('#datatable').DataTable ({"data" : result, columns: columeShow});
+                // $('#datatable tbody').on( 'click', 'td',
+                //     function ()
+                //     {
+                //         console.log(this);
+                //         var idx = table.cell( this ).index().row;
+                //         console.log(idx);
+                //         var data = table.row( idx ).data();
+                //         console.log(data);
+                //         dataClick=data; 
+                //     }
+                // );
+
+            }
+
+       
+      
+
+        function exportReport() {
+            var fromTime = new Date($('#fromTime').val());
+            const getFromTime = fromTime.getTime();
+            var toTime = new Date($('#toTime').val());
+            const getToTime = toTime.getTime();
+            var station_id = document.getElementById("selectTable").value;
+            if(!station_id) {
+                alert("Vui lòng chọn trạm để xuất báo cáo");
+                return;
+            }
+            if(isNaN(fromTime.getFullYear())) {
+                fromTime = undefined;
+            } else fromTime = fromTime.getFullYear() +'-'+ fromTime.getMonth() +'-'+ fromTime.getDate() +' '+ fromTime.getHours() +':'+ fromTime.getMinutes() +':00';
+            if(isNaN(toTime.getFullYear())) {
+                toTime = undefined;
+            } else toTime = toTime.getFullYear() +'-'+ toTime.getMonth() +'-'+ toTime.getDate() +' '+ toTime.getHours() +':'+ toTime.getMinutes() +':00';            
+            var data = {'fromTime': fromTime, 'toTime': toTime, 'station_id': station_id};
+            var link = '/api/social/getReportStations';
+            console.log(data)
+            $.ajax({
+                    type: 'post',
+                    method: 'POST',
+                    url: link,
+                    data: JSON.stringify( {station_id: station_id, fromTime: fromTime, toTime: toTime, getFromTime: getFromTime, getToTime: getToTime}),
+                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                        credentials: 'same-origin', // include, *same-origin, omit
+                        redirect: 'follow', // manual, *follow, error
+                        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                        dataType: 'json',
+                        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                        credentials: 'same-origin', // include, *same-origin, omit
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Beard ' + mname,
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                    success: function(result) {
+                        // console.log(result.slice(8));
+                        console.log(result);
+                        const nameExcel = result.filePath.slice(8);
+                        assetDataBase(result.data)
+                        window.location = 'http://localhost:3000' + nameExcel;
+
+                    }
+                })
+
+        }
+
+
 
     </script>
 

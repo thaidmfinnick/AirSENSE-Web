@@ -50,11 +50,15 @@ class SparcLocationSensor extends CommonModel {
   
   getSQLReport(currentUser){
     console.log("getSQLReport...2....... " ,currentUser); 
-      return ('SELECT sparc_location_sensor.* FROM sparc_location_sensor ');
+      return ('SELECT sparc_location_sensor.id, sparc_location_sensor.mac, sparc_location_sensor.station_id, sparc_location_sensor.location_lat, sparc_location_sensor.location_long, sparc_location_sensor.adress, sparc_location_sensor.id_group, sparc_location_sensor.content FROM sparc_location_sensor');
        //   + defineManifest.checkManifestTableUser(currentUser.manifestid,currentUser.users_id,currentUser.value_manifest));
-  }
+      }
   getJsonTofind(){
       return [];
+  }
+  getDairyChange(info) {
+    return "sparc_location_sensor.deleteflag=1";
+
   }
 
 

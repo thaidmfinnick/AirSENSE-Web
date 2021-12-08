@@ -44,10 +44,18 @@ class TableDataView extends Component {
         ManagerData.getLstDataPromise(this.state.table)
         .then((data)=>{
             console.log(data);
-          this.setState({ data: ManagerData.getTable(this.state.table),
+          this.setState({ data: ManagerData.getTable(this.state.table)
           });
         });
     }
+    getDairyChange = () => {
+        ManagerData.getDairyChange(this.state.table)
+        .then((data)=>{
+            console.log(data);
+          this.setState({ data: ManagerData.getTable(this.state.table)
+          });
+    });
+}
 
     callBackEdit = (type) => {
         console.log(".............changeState",type);
@@ -100,6 +108,13 @@ class TableDataView extends Component {
                             disableElevation
                             onClick={()=>{this.callBackEdit(ActionControl.ACTION_ADD)}} >
                             Thêm mới
+                        </Button>
+                        <Button 
+                            variant="outlined" 
+                            component="label" 
+                            disableElevation 
+                            onClick={()=>{this.getDairyChange()}}>
+                            Nhật kí thay đổi số liệu
                         </Button>
                 </div>
                 <div style={{ height: 400, width: "100%" }}>
