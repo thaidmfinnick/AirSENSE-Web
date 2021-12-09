@@ -68,7 +68,7 @@ const App = () => {
 
             {/* bài báo*/}
             <Resource name="sPages" options={{label:'Nhóm bài báo' ,"isMenuParent": true }} icon={DynamicFeed}  list={LockScreen} />
-            <Resource name="group_content_sub" options={{label:'Nhóm bài báo' ,"menuParent": "sPages"}} icon={FeaturedPlayList} list={NomalTable} />
+            <Resource name="content_sub" options={{label:'Nhóm bài báo' ,"menuParent": "sPages"}} icon={FeaturedPlayList} list={NomalTable} />
             <Resource name="managerpages" options={{label:'Quản lý bài báo',"menuParent": "sPages" }} icon={Settings} list={PagesContent} />
             <Resource name="registerPage" options={{label:'Viết bài',"menuParent": "sPages" }} icon={TextFormat} list={RegisterPage} />
             {/* Khóa học */}

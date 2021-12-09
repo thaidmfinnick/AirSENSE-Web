@@ -75,7 +75,7 @@ class PagesContent  {
     }
     getInfoToEdit(){
       return {
-        mainID:'pages_content_id',
+        mainID:'content_page_id',
         mainInfo:{
           field: 'title',
           headerName: 'Chi tiết bài báo',
@@ -122,10 +122,10 @@ class PagesContent  {
     }
 
     getInfoToAdd(){
-      return  ["group_content_sub_id","group_file","filesave","title","content","content_img","is_main_pages_id","set_to_fist"];
+      return  ["content_sub_id","group_file","filesave","title","content","content_img","is_main_pages_id","set_to_fist"];
     }
     getTitleToAdd(){
-      return  ["group_content_sub_id","group_file","filesave","title","content","content_img","is_main_pages_id","set_to_fist"];
+      return  ["content_sub_id","group_file","filesave","title","content","content_img","is_main_pages_id","set_to_fist"];
     }
     getHtmlAdd(){
       return  [TypeDialgueShow.SELECT_CUSTOM,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT,
@@ -136,7 +136,7 @@ class PagesContent  {
                 ,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML];
     }
     getTypeSelectTabbleToAdd(){
-      return  ["group_content_sub","","","","","","","" ];
+      return  ["content_sub","","","","","","","" ];
     }
     getColumeValidate(){
       return ["","","","leng6","","","",""];

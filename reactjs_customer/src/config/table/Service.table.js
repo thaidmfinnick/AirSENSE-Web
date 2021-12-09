@@ -111,7 +111,7 @@ export default class Service  {
                ,SelectHTml.NOT_CHECK_HTML];
     }
     getTypeSelectTabbleToAdd(){
-      return  ["","","pages_content","",""];
+      return  ["","","content_page","",""];
     }
     getColumeValidate(){
       return ["","","","number",""];
