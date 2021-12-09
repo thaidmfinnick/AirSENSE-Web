@@ -102,10 +102,10 @@ class AdvertisementContent  {
     }
 
     getInfoToAdd(){
-      return  ["group_content_sub_id","group_file","filesave","title","content","content_img"];
+      return  ["content_sub_id","group_file","filesave","title","content","content_img"];
     }
     getTitleToAdd(){
-      return  ["group_content_sub_id","group_file","filesave","title","content","content_img"];
+      return  ["content_sub_id","group_file","filesave","title","content","content_img"];
     }
     getHtmlAdd(){
       return  [TypeDialgueShow.SELECT_CUSTOM,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT,TypeDialgueShow.EDIT_TEXT,
@@ -116,7 +116,7 @@ class AdvertisementContent  {
                 ,SelectHTml.NOT_CHECK_HTML,SelectHTml.NOT_CHECK_HTML];
     }
     getTypeSelectTabbleToAdd(){
-      return  ["group_content_sub","","","","","" ];
+      return  ["content_sub","","","","","" ];
     }
     getColumeValidate(){
       return ["","","leng6","","",""];
