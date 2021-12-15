@@ -28,7 +28,25 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import { MyCustomUploadAdapterPlugin } from '../../api/uploadAdatapter.js';
 import { providers } from '../../compoment/editor/videoProviders';
+import SelectMultipleChoice from '../../compoment/form/SelectMultipleChoice.js';
 //import MediaEmbed from '../../compoment/mediaEmbed/mediaembed';
+
+
+function getInfoExam(type_question,contentHtml,isMainQuestion){
+    var content_reply=`<xml>`+contentHtml+ `</xml>`;
+    if(type_question==1){
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(content_reply, "text/xml"); 
+      var aNodes = doc.getElementById('div');
+      console.log("aNodes",aNodes);
+      if(isMainQuestion)
+        content_reply = aNodes[1].outerHTML;
+      else content_reply = aNodes[0].outerHTML;
+    }
+    console.log("content_reply",content_reply);
+    return content_reply;
+}
+
 
 class RegisterExam extends Component {
   static propTypes = {
@@ -49,9 +67,20 @@ class RegisterExam extends Component {
       is_main: this.props.is_update ? this.props.data.is_main_pages_id : 0,
       content_html: this.props.is_update ? this.props.content : '',
       reply: this.props.reply ? this.props.reply : '',
+      content_reply:"",
     };
   }
   componentDidMount() {
+    var example = ` <div> sample Info data </div>
+                    <div id="check_question_id">
+                      <ul class="selct_resspose" seclectCange="myfunction()">
+                          <li>A. câu trả lời A</li>
+                          <li>A. câu trả lời A</li>
+                          <li>A. câu trả lời A</li>
+                          <li>A. câu trả lời A</li>
+                      </ul>
+                    </div>`;
+    getInfoExam(1,example,false);
     ManagerData.getLstDataPromise('exam').then(() => {
       this.setState({ refesh: false });
       console.log('componentDidMount......................');
@@ -195,17 +224,19 @@ class RegisterExam extends Component {
             />
 
             <div className={'register-button'}>
-              <Button
-                variant="outlined"
-                component="label"
-                disableElevation
-                style={{ width: 135, height: 70, color: 'blue' }}
-                onClick={() => {
-                  this.saveContentPageToDataBase();
-                }}
-              >
-                {this.props.is_update ? 'Sửa bài' : 'Đăng bài'}
-              </Button>
+                
+                <br/>
+                <Button
+                  variant="outlined"
+                  component="label"
+                  disableElevation
+                  style={{ width: 135, height: 70, color: 'blue' }}
+                  onClick={() => {
+                    this.saveContentPageToDataBase();
+                  }}
+                >
+                  {this.props.is_update ? 'Sửa bài' : 'Đăng bài'}
+                </Button>
             </div>
             <div className={'register-content'}>
               <div className={'register-item'}>
@@ -220,6 +251,7 @@ class RegisterExam extends Component {
                   }}
                 />
               </div>
+              
               <div className={'register-item'}>
                 <p className={'line'}>Mô tả cụ thể</p>
                 <TextField
@@ -273,7 +305,9 @@ class RegisterExam extends Component {
               console.log('Focus.', editor);
             }}
           />
+          
         </div>
+        <SelectMultipleChoice/>
       </div>
     );
   }
