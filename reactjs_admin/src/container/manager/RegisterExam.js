@@ -37,7 +37,7 @@ function getInfoExam(type_question,contentHtml,isMainQuestion){
     if(type_question==1){
       var parser = new DOMParser();
       var doc = parser.parseFromString(content_reply, "text/xml"); 
-      var aNodes = doc.getElementById('div');
+      var aNodes = doc.getElementsByTagName('div');
       console.log("aNodes",aNodes);
       if(isMainQuestion)
         content_reply = aNodes[1].outerHTML;
@@ -73,7 +73,7 @@ class RegisterExam extends Component {
   componentDidMount() {
     var example = ` <div> sample Info data </div>
                     <div id="check_question_id">
-                      <ul class="selct_resspose" seclectCange="myfunction()">
+                      <ul class="selct_resspose" seclectChange="myfunction()">
                           <li>A. câu trả lời A</li>
                           <li>A. câu trả lời A</li>
                           <li>A. câu trả lời A</li>
@@ -222,22 +222,6 @@ class RegisterExam extends Component {
                 this.choiceSubPages(value);
               }}
             />
-
-            <div className={'register-button'}>
-                
-                <br/>
-                <Button
-                  variant="outlined"
-                  component="label"
-                  disableElevation
-                  style={{ width: 135, height: 70, color: 'blue' }}
-                  onClick={() => {
-                    this.saveContentPageToDataBase();
-                  }}
-                >
-                  {this.props.is_update ? 'Sửa bài' : 'Đăng bài'}
-                </Button>
-            </div>
             <div className={'register-content'}>
               <div className={'register-item'}>
                 <p className={'line'}>Tiêu đề bài viết</p>
@@ -261,18 +245,6 @@ class RegisterExam extends Component {
                   value={this.state.content}
                   onChange={(event) => {
                     this.onChangeContent(event);
-                  }}
-                />
-              </div>
-              <div className={'register-item'}>
-                <p className={'line'}>Câu trả lời</p>
-                <TextField
-                  variant="outlined"
-                  multiline
-                  className={'register-text'}
-                  value={this.state.reply}
-                  onChange={(event) => {
-                    this.onChangeReply(event);
                   }}
                 />
               </div>
@@ -308,6 +280,20 @@ class RegisterExam extends Component {
           
         </div>
         <SelectMultipleChoice/>
+        <div className={'register-button'}>
+                <br/>
+                <Button
+                  variant="outlined"
+                  component="label"
+                  disableElevation
+                  style={{ width: 135, height: 70, color: 'blue' }}
+                  onClick={() => {
+                    this.saveContentPageToDataBase();
+                  }}
+                >
+                  {this.props.is_update ? 'Sửa bài' : 'Đăng bài'}
+                </Button>
+            </div>
       </div>
     );
   }
