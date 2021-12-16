@@ -150,6 +150,10 @@ router.get("/sale", (req, res) => {
   res.render("sale/Sale");
 });
 
+router.get("/faq", (req, res) => {
+  res.render("service/faq");
+});
+
 router.get("/sale/product", (req, res) => {
   console.log("req /sale/product ", req._parsedOriginalUrl.query);
   res.render("sale/GroupProduct", { detail: req._parsedOriginalUrl.query });
