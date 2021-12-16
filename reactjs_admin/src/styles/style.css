@@ -133,7 +133,8 @@ h6 {
   min-height: 400px;
   border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  min-height: 600px;
+  height: 960px;
+  height: auto;
   overflow: hidden;
 }
 
@@ -187,13 +188,15 @@ h6 {
 }
 
 .register-button {
-  position: absolute;
-  bottom: 45px;
-  left: 278px;
+  margin-left: 20px
 }
 
 .dp-i {
   display: inline-flex;
+}
+
+.dp-i__type-answer {
+  margin-bottom: 40px;
 }
 
 .register-label {

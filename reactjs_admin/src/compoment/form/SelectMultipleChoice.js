@@ -23,7 +23,7 @@ function convertHTML(lstQuestion,mode,responseText){
         var response=[];
         lstQuestion.foreach((item,index)=>{
             html =html+`<li>`+item.id+'. '+item.info+`</li>`;
-            if(item.isTrue) response.push(indexQuestinon[index]);
+            if(item.isTrue) response.push(indexQuestion[index]);
         })
         html =html+`</ul> </div>`;
         return {mode:1,html:html,response:response.tostring()};
@@ -62,7 +62,7 @@ const SelectMultipleChoice = ({ detailValue,onchange}) => {
 
     return (
         <div className={'dp-i'}>
-            <FormControl variant="outlined" className={'input-pages-register'}>
+            <FormControl variant="outlined" className={'dp-i__type-answer'}>
                 <InputLabel
                     className={'register-label'}
                     shrink
@@ -93,7 +93,7 @@ const SelectMultipleChoice = ({ detailValue,onchange}) => {
                 <div className={'messages-dm-message'}>
                     {(!!lstQuestion&&lstQuestion.length>0)?lstQuestion.map((item, index) => (
                         <div className={'title-dm-message'}>
-                            <div onClick={() => { removeInfoQuestion(index);}}>
+                            <div onClick={() => {removeInfoQuestion(index)}}>
                                     <RemoveCircleOutlineIcon />
                                     {item.id}
                                     <Input name="name_image_detail" value={item.info}
