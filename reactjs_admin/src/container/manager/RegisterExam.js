@@ -31,17 +31,32 @@ import { providers } from '../../compoment/editor/videoProviders';
 import SelectMultipleChoice from '../../compoment/form/SelectMultipleChoice.js';
 //import MediaEmbed from '../../compoment/mediaEmbed/mediaembed';
 
-
+var TextIndex =['A','B','C','D','E','F','G','H'];
 function getInfoExam(type_question,contentHtml,isMainQuestion){
     var content_reply=`<xml>`+contentHtml+ `</xml>`;
     if(type_question==1){
       var parser = new DOMParser();
       var doc = parser.parseFromString(content_reply, "text/xml"); 
-      var aNodes = doc.getElementsByTagName('div');
-      console.log("aNodes",aNodes);
-      if(isMainQuestion)
-        content_reply = aNodes[1].outerHTML;
-      else content_reply = aNodes[0].outerHTML;
+      var aNodes = doc.querySelector("[id=check_question_id]");
+      console.log("aNodes",aNodes.outerHTML);
+     // doc = parser.parseFromString(aNodes, "text/xml"); 
+      var bNodes = aNodes.getElementsByTagName('li');
+      console.log("bNodes bNodes",bNodes);
+      console.log("bNodes html info",bNodes.outerHTML);
+      if(isMainQuestion){
+        var stringInfoValue=[];
+        for(var i=0;i<bNodes.length;i++) {
+          console.log("bNodes textContent",bNodes[i].textContent);
+          stringInfoValue.push(bNodes[i].textContent.replaceAll((TextIndex[i]+'. '), '')) 
+        };
+        return stringInfoValue;
+      }
+      else
+      {
+        var infoContent = contentHtml.replaceAll(aNodes.outerHTML, '');
+        console.log("bNodes infoContent",infoContent);
+        return infoContent;
+      }
     }
     console.log("content_reply",content_reply);
     return content_reply;
@@ -68,19 +83,13 @@ class RegisterExam extends Component {
       content_html: this.props.is_update ? this.props.content : '',
       reply: this.props.reply ? this.props.reply : '',
       content_reply:"",
+      array_question:[]
     };
   }
   componentDidMount() {
-    var example = ` <div> sample Info data </div>
-                    <div id="check_question_id">
-                      <ul class="selct_resspose" seclectChange="myfunction()">
-                          <li>A. câu trả lời A</li>
-                          <li>A. câu trả lời A</li>
-                          <li>A. câu trả lời A</li>
-                          <li>A. câu trả lời A</li>
-                      </ul>
-                    </div>`;
-    getInfoExam(1,example,false);
+    //var example = `  <p>bạn đã yêu ai bao giờ chưa</p><div id="check_question_id"><ul class="selct_resspose" id="valueSelect" ><ul><li> <input type="checkbox"  value="A"/>A. ví dụ 1</li><li> <input type="checkbox"  value="B"/>B. ví dụ 3</li><li> <input type="checkbox"  value="C"/>C. ví dụ 4</li><li> <input type="checkbox"  value="D"/>D. thêm câu hỏi</li></ul> </div>`;
+    this.setState({ array_question:  getInfoExam(1,this.state.content_html,true) });
+    this.setState({ content_html:  getInfoExam(1,this.state.content_html,false) });
     ManagerData.getLstDataPromise('exam').then(() => {
       this.setState({ refesh: false });
       console.log('componentDidMount......................');
@@ -114,6 +123,8 @@ class RegisterExam extends Component {
     if (this.props.is_update) {
       formData = this.props.data;
     }
+    
+
     formData.exam_id = this.state.exam_id;
     formData.content_img = this.state.image_head;
     formData.group_file = 'group_file';
@@ -122,8 +133,17 @@ class RegisterExam extends Component {
     formData.content = this.state.content;
     formData.is_main_pages_id = this.state.is_main;
     formData.content_html = this.state.content_html;
+    formData.reply = "";
+    if((!!this.state.content_reply.mode)&&(this.state.content_reply.mode==1)){
+      formData.content_html=formData.content_html+ this.state.content_reply.html;
+      formData.reply = this.state.content_reply.response;
+    }
+    if(!!this.state.content_reply.response){
+      formData.reply = this.state.content_reply.response;
+    }
+   
     formData.exam_detail_id = this.state.exam_detail_id;
-    formData.reply = this.state.reply;
+    
     if (this.props.is_update) {
       updateExamToWriter(formData).then((response) => {
         Swal.fire('Cập nhật thông tin thành công');
@@ -175,6 +195,10 @@ class RegisterExam extends Component {
     console.log('Content: ' + value);
     this.setState({ is_main: value });
   };
+
+  onQuestionDetail=(html)=>{
+    this.setState({ content_reply: html });
+  }
 
   render() {
     const custom_config = {
@@ -279,7 +303,7 @@ class RegisterExam extends Component {
           />
           
         </div>
-        <SelectMultipleChoice/>
+        <SelectMultipleChoice  onChange={(val)=>this.onQuestionDetail(val)}/>
         <div className={'register-button'}>
                 <br/>
                 <Button
