@@ -34,6 +34,10 @@ import SelectMultipleChoice from '../../compoment/form/SelectMultipleChoice.js';
 var TextIndex =['A','B','C','D','E','F','G','H'];
 function getInfoExam(type_question,contentHtml,isMainQuestion){
     var content_reply=`<xml>`+contentHtml+ `</xml>`;
+    if((contentHtml==null)||(contentHtml.length<1)) 
+    {
+      if(isMainQuestion) return []; else return "";
+    }
     if(type_question==1){
       var parser = new DOMParser();
       var doc = parser.parseFromString(content_reply, "text/xml"); 
@@ -42,7 +46,6 @@ function getInfoExam(type_question,contentHtml,isMainQuestion){
      // doc = parser.parseFromString(aNodes, "text/xml"); 
       var bNodes = aNodes.getElementsByTagName('li');
       console.log("bNodes bNodes",bNodes);
-      console.log("bNodes html info",bNodes.outerHTML);
       if(isMainQuestion){
         var stringInfoValue=[];
         for(var i=0;i<bNodes.length;i++) {
