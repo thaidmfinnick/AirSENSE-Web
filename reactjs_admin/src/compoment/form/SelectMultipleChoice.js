@@ -19,14 +19,18 @@ var TextIndex =['A','B','C','D','E','F','G','H'];
 
 function convertHTML(lstQuestion,mode,responseText){
     if(mode==1){
-        var html=`<div id="check_question_id"><ul class="selct_resspose" seclectCange="myfunction()">`;
+        var html=`<div id="check_question_id"><ul class="selct_resspose" id="valueSelect" ><ul>`;
         var response=[];
-        lstQuestion.foreach((item,index)=>{
-            html =html+`<li>`+item.id+'. '+item.info+`</li>`;
-            if(item.isTrue) response.push(indexQuestion[index]);
-        })
+        if(!!lstQuestion)
+        lstQuestion.forEach((item,index) => {
+            html =html+`<li> <input type="checkbox"  value="`
+                        +item.id+`"/>`
+                        +item.id+'. '
+                        +item.info+`</li>`;
+            if(item.isTrue) response.push(TextIndex[index]);
+        });
         html =html+`</ul> </div>`;
-        return {mode:1,html:html,response:response.tostring()};
+        return {mode:1,html:html,response:response.toString()};
     }
     return {mode:0,html:"",response:responseText};
 }
@@ -34,7 +38,7 @@ function convertHTML(lstQuestion,mode,responseText){
 
 
 
-const SelectMultipleChoice = ({ detailValue,onchange}) => {
+const SelectMultipleChoice = ({ onChange}) => {
     // const [ handleClose] = useState()
     const [selectQuestion, setSelectQuestion] = useState(0);
     const [lstQuestion, setLstQuestion] = useState([]);
@@ -43,21 +47,32 @@ const SelectMultipleChoice = ({ detailValue,onchange}) => {
 
     const onChangeQuestion = (content) => {
         setSelectQuestion(content);
-        onchange(convertHTML(lstQuestion,selectQuestion,responseQuestion));
+        onChange(convertHTML(lstQuestion,selectQuestion,responseQuestion));
     }
     const editInfoQuestion = (index,name,value) => {
-        var prevContent = lstQuestion;
+        var prevContent = [...lstQuestion];
         prevContent[index][name] =value;
         setLstQuestion(prevContent);
-        onchange(convertHTML(lstQuestion,selectQuestion,responseQuestion));
+        onChange(convertHTML(lstQuestion,selectQuestion,responseQuestion));
     }
-    const removeInfoQuestion = (id) => {
-        onchange(convertHTML(lstQuestion,selectQuestion,responseQuestion));
+    const removeInfoQuestion = (index) => {
+        var prevContent = [...lstQuestion];
+        var counter=0;
+        var newContent=[];
+        prevContent.forEach((element,number) => {
+            if(number!=index){
+                element.id =TextIndex[counter];
+                newContent.push(element);
+                counter= counter+1;
+            }
+        });
+        setLstQuestion(newContent);
+        onChange(convertHTML(lstQuestion,selectQuestion,responseQuestion));
     }
     const addInfoQuestion = () => {
         setLstQuestion(lstQuestion.concat({id:TextIndex[lstQuestion.length],info:"thêm câu hỏi",isTrue:false})); 
         console.log("lstQuestion",lstQuestion);
-        onchange(convertHTML(lstQuestion,selectQuestion,responseQuestion));
+        onChange(convertHTML(lstQuestion,selectQuestion,responseQuestion));
     }
 
     return (
@@ -88,28 +103,28 @@ const SelectMultipleChoice = ({ detailValue,onchange}) => {
             </FormControl>
             <br/>
             {selectQuestion==0? <Input name="name_image_detail" value={responseQuestion}
-                                    onChange={(e)=>setResponseQuestion(e.target.value)} />:""}
-            {selectQuestion==1?
+                                    onChange={(e)=>setResponseQuestion(e.target.value)} />:
                 <div className={'messages-dm-message'}>
-                    {(!!lstQuestion&&lstQuestion.length>0)?lstQuestion.map((item, index) => (
-                        <div className={'title-dm-message'}>
-                            <div onClick={() => {removeInfoQuestion(index)}}>
-                                    <RemoveCircleOutlineIcon />
-                                    {item.id}
+                    {lstQuestion.map((item, index) => (
+                        <div className={'title-dm-message'} key={item.id}>
+                            <div >
+                                    <RemoveCircleOutlineIcon  onClick={() => {removeInfoQuestion(index)}}/>
+                                    {item.id+" . "}
                                     <Input name="name_image_detail" value={item.info}
-                                        onChange={(e)=>editInfoQuestion(index,"info",e.target.value)} />
+                                        onChange={(e)=>{
+                                            editInfoQuestion(index,"info",e.target.value);
+                                        }} />
                                     Chọn câu trả lời 
-                                    <Checkbox value={item.isTrue}
-                                            onChange={(e)=>editInfoQuestion(index,"isTrue",e.target.value)}/>
+                                    <Checkbox checked={item.isTrue}
+                                            onChange={(e)=>editInfoQuestion(index,"isTrue",e.target.checked )}/>
                             </div>
                            
                         </div>
-                    )):""}
+                    ))}
                     <div onClick={addInfoQuestion}>
                         <AddCircleOutlineIcon />
                     </div>
                 </div>
-                :""
             }
         </div>
     );
