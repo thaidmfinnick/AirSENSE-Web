@@ -32,35 +32,55 @@ import SelectMultipleChoice from '../../compoment/form/SelectMultipleChoice.js';
 //import MediaEmbed from '../../compoment/mediaEmbed/mediaembed';
 
 var TextIndex =['A','B','C','D','E','F','G','H'];
-function getInfoExam(type_question,contentHtml,isMainQuestion){
+function getInfoExam(type_question,contentHtml){
     var content_reply=`<xml>`+contentHtml+ `</xml>`;
     if((contentHtml==null)||(contentHtml.length<1)) 
     {
-      if(isMainQuestion) return []; else return "";
+        return "";
     }
-    if(type_question==1){
+
+    // get question
+    if(type_question==0){
       var parser = new DOMParser();
-      var doc = parser.parseFromString(content_reply, "text/xml"); 
+      var doc = parser.parseFromString(content_reply, "text/html"); 
       var aNodes = doc.querySelector("[id=check_question_id]");
-      console.log("aNodes",aNodes.outerHTML);
-     // doc = parser.parseFromString(aNodes, "text/xml"); 
       var bNodes = aNodes.getElementsByTagName('li');
-      console.log("bNodes bNodes",bNodes);
-      if(isMainQuestion){
+      if(bNodes.length>0) return 1;
+      return 0;
+    } 
+    else if(type_question==1){
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(content_reply, "text/html"); 
+        var aNodes = doc.querySelector("[id=check_question_id]");
+        var bNodes = aNodes.getElementsByTagName('li');
+        
         var stringInfoValue=[];
         for(var i=0;i<bNodes.length;i++) {
           console.log("bNodes textContent",bNodes[i].textContent);
-          stringInfoValue.push(bNodes[i].textContent.replaceAll((TextIndex[i]+'. '), '')) 
+          var info={id:TextIndex[i],info:bNodes[i].textContent.replaceAll((TextIndex[i]+'. '), '') ,isTrue:false};
+          stringInfoValue.push(info); 
         };
+        console.log("bNodes stringInfoValue",stringInfoValue);
         return stringInfoValue;
-      }
-      else
-      {
-        var infoContent = contentHtml.replaceAll(aNodes.outerHTML, '');
+    } // get info html
+    else if(type_question==2){
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(content_reply, "text/html"); 
+        var aNodes = doc.querySelector("[id=main_exam_data]");     
+        var infoContent = aNodes.outerHTML;
         console.log("bNodes infoContent",infoContent);
+        console.log("bNodes infoContent...................................................",infoContent);
         return infoContent;
-      }
+    } 
+    else if(type_question==3){
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(content_reply, "text/html"); 
+      var aNodes = doc.querySelector("[id=check_question_id]");     
+      var infoContent = aNodes.outerHTML;
+      console.log("bNodes infoContent",infoContent);
+      return infoContent;
     }
+    
     console.log("content_reply",content_reply);
     return content_reply;
 }
@@ -86,13 +106,18 @@ class RegisterExam extends Component {
       content_html: this.props.is_update ? this.props.content : '',
       reply: this.props.reply ? this.props.reply : '',
       content_reply:"",
-      array_question:[]
+      array_question:[],
+      typeQuestion:0,
     };
   }
   componentDidMount() {
-    //var example = `  <p>bạn đã yêu ai bao giờ chưa</p><div id="check_question_id"><ul class="selct_resspose" id="valueSelect" ><ul><li> <input type="checkbox"  value="A"/>A. ví dụ 1</li><li> <input type="checkbox"  value="B"/>B. ví dụ 3</li><li> <input type="checkbox"  value="C"/>C. ví dụ 4</li><li> <input type="checkbox"  value="D"/>D. thêm câu hỏi</li></ul> </div>`;
-    this.setState({ array_question:  getInfoExam(1,this.state.content_html,true) });
-    this.setState({ content_html:  getInfoExam(1,this.state.content_html,false) });
+    //var example = `<div id="main_exam_data">  <p>bạn đã yêu ai bao giờ chưa</p></div> <div id="check_question_id"><ul class="selct_resspose" id="valueSelect" ><ul><li> <input type="checkbox"  value="A"/>A. ví dụ 1</li><li> <input type="checkbox"  value="B"/>B. ví dụ 3</li><li> <input type="checkbox"  value="C"/>C. ví dụ 4</li><li> <input type="checkbox"  value="D"/>D. thêm câu hỏi</li></ul> </div>`;
+    this.setState({ typeQuestion:  getInfoExam(0,this.state.content_html) }); //this.state.content_html
+    this.setState({ array_question:  getInfoExam(1,this.state.content_html) });
+    this.setState({ content_reply:  getInfoExam(3,this.state.content_html) });
+    this.setState({ content:  getInfoExam(2,this.state.content_html) }); //this.state.content_html
+    this.setState({ content_html:  getInfoExam(2,this.state.content_html) }); //this.state.content_html
+    
     ManagerData.getLstDataPromise('exam').then(() => {
       this.setState({ refesh: false });
       console.log('componentDidMount......................');
@@ -135,7 +160,7 @@ class RegisterExam extends Component {
     formData.title = this.state.title;
     formData.content = this.state.content;
     formData.is_main_pages_id = this.state.is_main;
-    formData.content_html = this.state.content_html;
+    formData.content_html = `<div id="main_exam_data">  `+ this.state.content_html + `</div>`;
     formData.reply = "";
     if((!!this.state.content_reply.mode)&&(this.state.content_reply.mode==1)){
       formData.content_html=formData.content_html+ this.state.content_reply.html;
@@ -306,7 +331,11 @@ class RegisterExam extends Component {
           />
           
         </div>
-        <SelectMultipleChoice  onChange={(val)=>this.onQuestionDetail(val)}/>
+        <SelectMultipleChoice  
+          typeQuestion={this.state.typeQuestion}
+          question={this.state.array_question}
+          reply={this.state.reply}
+          onChange={(val)=>this.onQuestionDetail(val)}/>
         <div className={'register-button'}>
                 <br/>
                 <Button

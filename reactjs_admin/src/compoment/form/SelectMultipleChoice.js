@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   FormControl,
@@ -38,12 +38,17 @@ function convertHTML(lstQuestion,mode,responseText){
 
 
 
-const SelectMultipleChoice = ({ onChange}) => {
+const SelectMultipleChoice = ({typeQuestion,question,reply,onChange}) => {
     // const [ handleClose] = useState()
     const [selectQuestion, setSelectQuestion] = useState(0);
     const [lstQuestion, setLstQuestion] = useState([]);
-    const [responseQuestion, setResponseQuestion] = useState("");
-
+    const [responseQuestion, setResponseQuestion] = useState(reply);
+    //useEffect
+    useEffect(() => {
+        setSelectQuestion(typeQuestion);
+        setLstQuestion(question);
+        setResponseQuestion(reply);
+    },[typeQuestion,question,reply]);
 
     const onChangeQuestion = (content) => {
         setSelectQuestion(content);
