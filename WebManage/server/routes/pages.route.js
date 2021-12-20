@@ -109,6 +109,11 @@ router.get("/detail_exam/:typePage", (req, res) => {
   res.render("exam/viewExam", { detail: data, route: "exam" });
 });
 
+router.get("/detail_exam_sp/:typePage", (req, res) => {
+  var data = req.params.typePage;
+  res.render("exam/viewExam1", { detail: data, route: "exam" });
+});
+
 router.get("/exam_group/:typePage", (req, res) => {
   var data = req.params.typePage;
   res.render("exam/viewGroupExam", { detail: data, route: "exam" });
