@@ -37,20 +37,23 @@ const UserMenuData = (props) => {
 
 const MenuHeader = props => {
     
-
-    const dataPath = [
-        { title: 'Trang chủ', link: '/' },
-        { title: 'Tài khoản', link: '/account' }
-      ];
+    // useEffect(() => {
+    //     ManagerData.getInfoUser();
+    //     }, [])
+    
+    // const dataPath = [
+    //     { title: 'Trang chủ', link: '/' },
+    //     { title: 'Tài khoản', link: '/account' }
+    //   ];
     return (
         <>
             <Header />
-
+{/* 
         <AppBar {...props} className='header-customer'  userMenu={<UserMenuData />} >
 
             <PathDirect data={dataPath} />
             <span className={'menu-header-spacer'} />
-        </AppBar>
+        </AppBar> */}
         </>
     );
 };

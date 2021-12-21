@@ -135,7 +135,7 @@ export const getNumberPageOnTable = (table,addInfo=null) => {
 }
 
 export const getCurUser = () => {
-  return  httpGetData(API_URL + 'auth/user');
+  return  httpGetData(API_URL + 'auth/customer');
 }
 
 export const Register = () => {
@@ -200,6 +200,33 @@ export const uploadfileDataImage = (data) => {
       });
   });
 };
+
+
+export const uploadImgUser = (data) => {
+  showLoadding();
+  return new Promise((resolve, reject) => {
+    axios
+      .post(
+        API_URL + 'customers/image-user',Object.assign(data),
+        {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'X-XSRF-TOKEN': getLocalStorage(JWT_TOKEN),
+            authorization: 'Beard ' + getLocalStorage(JWT_TOKEN),
+          },
+        }
+      )
+      .then((response) => {
+        Swal.close();
+        resolve(response);
+      })
+      .catch((error) => {
+        checkErrorRetun(error);
+        reject(error);
+      });
+  });
+}
 
 
 

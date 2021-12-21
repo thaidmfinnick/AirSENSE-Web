@@ -23,6 +23,20 @@ const storage = multer.diskStorage({
   },
 });
 
+const storageImgUser = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const folder = 'public/uploads/ProfileImgage';
+    if (!fs.existsSync(folder)) {
+      fs.mkdirSync(folder, { recursive: true });
+    }
+
+    cb(null, folder);
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  },
+});
+
 let upload = multer({ storage: storage, fileFilter: files.excelFilter });
 
 router.route('/import-data').post(isAuthenticated, upload.single('file'), (req, res) => {
@@ -35,6 +49,16 @@ router.route('/import-image').post(isAuthenticated, uploadImage.single('file'), 
   res.send(JSON.stringify({path:req.file.path,
                             file:req.file,
                             url:urlStaticLink+ '/uploads/datas/'+ req.file.filename}));
+});
+
+
+let uploadImageUser = multer({ storage: storageImgUser, fileFilter: files.imageFilter });
+
+router.route('/image-user').post(isAuthenticated, uploadImageUser.single('file'), (req, res) => {
+  console.log('send request successfully');
+  res.send(JSON.stringify({path:req.file.path,
+                            file:req.file,
+                            url:urlStaticLink+ '/uploads/ProfileImgage/'+ req.file.filename}));
 });
 
 

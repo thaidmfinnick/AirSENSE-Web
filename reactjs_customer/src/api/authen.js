@@ -12,7 +12,7 @@ export const  updateInfomation = (data) => {
     return new Promise((resolve, reject) => {
         axios
           .put(
-            API_URL + 'auth/changeInfo',
+            API_URL + 'auth/changeInfoCustomer',
             Object.assign(data),
             {
               headers: {

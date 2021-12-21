@@ -64,7 +64,7 @@ const App = () => {
             customReducers={{ messageInfo }}
             layout={(props) => <Layout {...props} menu={TreeMenu} appBar={MenuHeader} />}
             >
-            <Resource name="users" options={{label:'Tài khoản' }} icon={UserIcon} list={UserList} />
+             <Resource name="users" options={{label:'Tài khoản' }} icon={UserIcon} list={UserList} />
 
             {/* bài báo*/}
             <Resource name="sPages" options={{label:'Nhóm bài báo' ,"isMenuParent": true }} icon={DynamicFeed}  list={LockScreen} />
@@ -105,7 +105,7 @@ const App = () => {
             <Resource name="chatbox" options={{label:'Nhắn tin'}} icon={Send} list={FormChatBox} />
             <Resource name="logout" options={{label:'Đăng xuất'  }} icon={KeyboardBackspace} list={LogoutPage} />
 
-            <FooterChat />
+            <FooterChat /> 
         </Admin>
         
     </div>

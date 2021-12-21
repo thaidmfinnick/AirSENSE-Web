@@ -147,7 +147,7 @@ h6 {
 .MuiDrawer-root {
   width: 18%;
   margin-top: -26px;
-  background-color: #31313b;
+  /* background-color: #31313b; */
   height: 100%;
   z-index: 1;
 }
@@ -849,5 +849,62 @@ p.line {
   flex: 1;
 }
 
+/* dashboard */
 
+
+.cus-dashboard-abi {
+  color: #fff;
+}
+
+.dh-item-blue {
+  background-color: #69B0FE;
+}
+
+.dh-item-green {
+  background-color: #35B198;
+}
+
+.dh-item-orange {
+  background-color: #FEC066;
+}
+
+.dh-item-red {
+  background-color: #FF6D84;
+}
+
+.cus-dh-abi-item {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 100px;
+
+}
+
+.cus-dh-item-title {
+  position: absolute;
+  top: 2%;
+  left: 3%;
+}
+
+.cus-dh-item-icon {
+  position: absolute;
+  top: 40%;
+  left: 3%;
+}
+
+.cus-dh-item-quan {
+  position: absolute;
+  top: 15%;
+  left: 75%;
+  font-size: 23px;
+}
+
+.cus-dh-item-des {
+  position: absolute;
+  left: 3%;
+  top: 60%;
+}
+.cus-dh-item-des > span {
+  margin-left: 55px;
+}
 
