@@ -34,55 +34,84 @@ import SelectMultipleChoice from '../../compoment/form/SelectMultipleChoice.js';
 var TextIndex =['A','B','C','D','E','F','G','H'];
 function getInfoExam(type_question,contentHtml){
     var content_reply=`<xml>`+contentHtml+ `</xml>`;
-    if((contentHtml==null)||(contentHtml.length<1)) 
-    {
-        return "";
-    }
-
+   
     // get question
     if(type_question==0){
-      var parser = new DOMParser();
-      var doc = parser.parseFromString(content_reply, "text/html"); 
-      var aNodes = doc.querySelector("[id=check_question_id]");
-      var bNodes = aNodes.getElementsByTagName('li');
-      if(bNodes.length>0) return 1;
-      return 0;
+      try {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(content_reply, "text/html"); 
+        var aNodes = doc.querySelector("[id=check_question_id]");
+        var bNodes = aNodes.getElementsByTagName('li');
+        if(bNodes.length>0) return 1;
+        return 0;
+      }
+      catch (exception_var) {
+        return 0;
+      }
+      finally {
+        return 0;
+      }
     } 
     else if(type_question==1){
+      var stringInfoValue=[];
+      try {
         var parser = new DOMParser();
         var doc = parser.parseFromString(content_reply, "text/html"); 
         var aNodes = doc.querySelector("[id=check_question_id]");
         var bNodes = aNodes.getElementsByTagName('li');
         
-        var stringInfoValue=[];
+        
         for(var i=0;i<bNodes.length;i++) {
           console.log("bNodes textContent",bNodes[i].textContent);
           var info={id:TextIndex[i],info:bNodes[i].textContent.replaceAll((TextIndex[i]+'. '), '') ,isTrue:false};
           stringInfoValue.push(info); 
         };
         console.log("bNodes stringInfoValue",stringInfoValue);
+      }
+      catch (exception_var) {
+       
+      }
+      finally {
+      }
+
+        
         return stringInfoValue;
     } // get info html
     else if(type_question==2){
+      try {
         var parser = new DOMParser();
         var doc = parser.parseFromString(content_reply, "text/html"); 
         var aNodes = doc.querySelector("[id=main_exam_data]");     
         var infoContent = aNodes.outerHTML;
-        console.log("bNodes infoContent",infoContent);
-        console.log("bNodes infoContent...................................................",infoContent);
         return infoContent;
+      }
+      catch (exception_var) {
+        return "";
+      }
+      finally {
+        return "";
+      }
+        
     } 
     else if(type_question==3){
-      var parser = new DOMParser();
-      var doc = parser.parseFromString(content_reply, "text/html"); 
-      var aNodes = doc.querySelector("[id=check_question_id]");     
-      var infoContent = aNodes.outerHTML;
-      console.log("bNodes infoContent",infoContent);
-      return infoContent;
+      try {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(content_reply, "text/html"); 
+        var aNodes = doc.querySelector("[id=check_question_id]");     
+        var infoContent = aNodes.outerHTML;
+        console.log("bNodes infoContent",infoContent);
+        return infoContent;
+      }
+      catch (exception_var) {
+        return "";
+      }
+      finally {
+        return "";
+      }
     }
     
     console.log("content_reply",content_reply);
-    return content_reply;
+    return "";
 }
 
 
