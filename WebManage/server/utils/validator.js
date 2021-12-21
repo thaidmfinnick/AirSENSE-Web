@@ -22,6 +22,7 @@ module.exports =  {
     fullname: Joi.string().required(),
     phone: Joi.string().required(),
     contact: Joi.string().required(),
+    avartar: Joi.string()
   }),
 
   changePassword: Joi.object({

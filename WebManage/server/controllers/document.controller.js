@@ -54,6 +54,7 @@ documentCtrl.postAddPageToDataBase = function (request, res) {
 };
 
 documentCtrl.postUpdatePageToDataBase = function (request, res) {
+  console.log(request.body);
   let content = request.body["content"];
   let content_html = request.body["content_html"];
   let group = request.body["group_file"];

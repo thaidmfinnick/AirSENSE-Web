@@ -1,26 +1,30 @@
 import React, { useState } from 'react';
 import ManagerData from '../../actions/ManagerData.js'
 import { updateInfomation, changePassword } from '../../api/authen.js';
+import ProfileImage from '../../compoment/form/ProfileImage.js';
 const InfoAccount = () => {
   // change information user
+  ManagerData.getInfoUser();
     const user = ManagerData.saveInfoUser;
+    console.log(user);
     const [changePasswordBlock, setChangePasswordBlock] = useState(0);
-    const [name, setName] = useState(user.name);
+    const [name, setName] = useState(user.username);
     const [fullname, setFullname] = useState(user.fullname);
-    const [phone, setPhone] = useState(user.phoneNumber);
-    const [contact, setContact] = useState(user.contact);
-
+    const [phone, setPhone] = useState(user.phone);
+    const [contact, setContact] = useState(user.address);
+    const [imgUser, setImgUser] = useState(user.avatar);
 
 
     const updateInfo = (e) => {
       e.preventDefault();
       const data = {
-        table: 'users',
+        table: 'customer',
         userid: user.userid,
-        name: name,
+        username: username,
         fullname: fullname,
         phone: phone,
-        contact: contact
+        address: contact, 
+        avatar: imgUser,
       };
       console.log(data);
       updateInfomation(data);
@@ -71,10 +75,15 @@ const InfoAccount = () => {
       <label className='account-label'>Địa chỉ</label>
       <input className='account-field' type="text" placeholder value={contact} onChange={(e) => setContact(e.target.value) }/>
       <label className='account-label'>Vai trò</label>
-      <input className='account-field' type="text" placeholder />
+      <input className='account-field' type="text" placeholder value={'Quản trị viên'} readOnly />
       
       <div className="account-image">
+        {!!imgUser? (
+    <img className='account-img' src={imgUser} />
+        ):(
     <img className='account-img' src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg' />
+
+        )}
     <a href="#" >Chọn ảnh đại diện khác</a>
   </div>
   <div className="account-button">
@@ -83,6 +92,10 @@ const InfoAccount = () => {
 
     </form>
     <p className='displayChangePass' onClick={()=>setChangePasswordBlock(1)}>Thay đổi mật khẩu</p>
+    <ProfileImage
+    urlImage={imgUser}
+    uploadfileDataLink={(url) => setImgUser(url)}
+    />
 
   </div>
   {changePasswordBlock === 1 ? (

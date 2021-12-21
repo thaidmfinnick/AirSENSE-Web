@@ -6,6 +6,7 @@ const authenNewUser = require('../middlewares/authenNewUser.js');
 const validate = require('../config/joi.validate.js');
 const schema = require('../utils/validator.js');
 const User = require('../models/database/user.model.js');
+const Customer = require('../models/database/customer.model.js');
 const router = express.Router();
 
 // authen
@@ -28,8 +29,14 @@ router.route('/register').post(validate(schema.register), authenNewUser, (req, r
   userCtrl.registerUser(req, res);
 });
 
-//change information
+//change information for admin
 router.route('/changeInfo').put(validate(schema.updateInfoUser), isAuthenticated, (req, res) => {  
+  userCtrl.updateUser(req, res);
+})
+
+// change information for customer
+
+router.route('/changeInfoCustomer').put(validate(schema.updateInfoUser), isAuthenticated, (req, res) => {  
   userCtrl.updateUser(req, res);
 })
 
@@ -91,6 +98,42 @@ router.route('/user').get(isAuthenticated, (req, res) => {
       'avartar',
       'note',
       'manifestid'
+    ],
+  })
+  .fetch({ require: false })
+  .then((user) => {
+      if (!user) {
+        res.status(HttpStatus.NOT_FOUND).json({ error: 'No such user' });
+      } else {
+        res.status(200).json({
+          user: user,
+        });
+      }
+  });
+});
+
+
+
+
+
+
+// router.route('/customer').get(isAuthenticated, (req, res) => {
+router.route('/customer').get((req, res) => {
+
+  console.log("req.currentUser",req.currentUser)
+  console.log(isAuthenticated);
+  Customer.query({
+    where: { customer_id: '1' },
+    select: [
+      'customer_id',
+      'username',
+      'fullname',
+      'phone',
+      'email',
+      'address',
+      'avatar',
+      'note',
+      'permission_id'
     ],
   })
   .fetch({ require: false })

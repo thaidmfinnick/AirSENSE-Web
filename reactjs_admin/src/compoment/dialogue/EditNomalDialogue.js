@@ -67,11 +67,19 @@ const EditNomalDialogue = ({ table, dataInput,handleClose }) => {
      const onchangeValue=(value,type)=>{
          var stateValue = state.value;
          console.log(type,value,stateValue);
+        if(typeof value === 'string' || value instanceof String) {
+            stateValue[type] = value;
+        }
+        else {
          stateValue[type] = value.target.value;
+        }
          setState((prev) => ({
-             ...prev,
-             value: stateValue
-           }));
+            ...prev,
+            value: stateValue
+          }));
+        console.log(state.value);
+
+        
      };
      
     

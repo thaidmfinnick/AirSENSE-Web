@@ -273,6 +273,7 @@ userCtrl.updateData = async function (req, res) {
                         .set("oldid",data[dataUser.locationSelect])
                         .set("deleteflag",1)
                         .set("updated_at","NOW()",{dontQuote: true});
+                        console.log('oauthen2');
                         console.log(authen2.toString())
   var deleteAdd= await knex.raw(authen2.toString());
   if((deleteAdd==null)||(deleteAdd.length<1)) return returnFalse(res,"Lỗi cập nhật dữ liệu"); 
@@ -299,28 +300,57 @@ userCtrl.updateUser = async (req, res) => {
   ) {
     return returnNotFound(res, { message: "Database not Acess 1" });
   }
+
+
   let data = req.body;
   var userid = req.currentUser.users_id;
   let dataUser = tableSelect.getFieldToDelete();
-  //var userid=data[dataUser.locationSelect];
-  var authen = squel.update().table(tableSelect.getNameTable());
-  authen
-    .where(dataUser.locationSelect + "=" + userid)
-    .set("name", data.name)
-    .set("fullname", data.fullname)
-    .set("phoneNumber", data.phone)
-    .set("contact", data.contact)
-    .set("oldid", data[dataUser.locationSelect])
-    .set("updated_at", "NOW()", { dontQuote: true });
-  console.log("updateDataauthen.toString() ", authen.toString());
-  knex
-    .raw(authen.toString())
-    .then(function (x) {
-      return returnOK(res, "Cập nhật dữ liệu thành công");
-    })
-    .catch(function (err) {
-      return returnFalse(res, err);
-    });
+  var squelGet = squel.select().from(tableSelect.getNameTable());
+  for (var i = 0; i < dataUser.arrayCoppy.length; i++) {
+    let item = dataUser.arrayCoppy[i];
+    /*    if(!!!data[item]) squelGet.set(item,null);
+       else
+        authen.set(item,data[item]);
+     */
+    squelGet.field(item);
+  }
+  squelGet.where(dataUser.locationSelect+'='+data[dataUser.locationSelect]);
+  var authen = squel.insert().into(tableSelect.getNameTable())
+                      .fromQuery( dataUser.arrayCoppy, squelGet);
+                      console.log("updateDataauthen.toString() ",authen.toString());
+  var dataAdd= await knex.raw(authen.toString());
+  if((dataAdd==null)||(dataAdd.length<1)) return returnNotFound(res,"Không tồn tại bản ghi dữ liệu này");     
+  var authen2 = squel.update().table(tableSelect.getNameTable());
+                        authen2.where(dataUser.locationSelect+'='+dataAdd[0].insertId)
+                        .set(dataUser.valueSelect,1) 
+                        .set("id_updated",userid)
+                        .set("oldid",data[dataUser.locationSelect])
+                        .set("deleteflag",1)
+                        .set("updated_at","NOW()",{dontQuote: true});
+                        console.log('oauthen2');
+                        console.log(authen2.toString())
+  var deleteAdd= await knex.raw(authen2.toString());
+  if((deleteAdd==null)||(deleteAdd.length<1)) return returnFalse(res,"Lỗi cập nhật dữ liệu"); 
+  var authen3 = squel.update().table(tableSelect.getNameTable());
+  authen3.where(dataUser.locationSelect+'='+userid)
+              .set('name', data.name)
+              .set('fullname', data.fullname)
+              .set('phoneNumber', data.phone)
+              .set('contact', data.contact)
+              .set('avartar', data.avartar)
+              .set("oldid", 0)
+              .set("deleteflag", 0)
+              .set('updated_at', 'NOW()',{dontQuote: true})
+  console.log("updateDataauthen.toString() ",authen3.toString());
+  knex.raw(authen3.toString()).then(function(x) {
+    return returnOK(res,'Cập nhật dữ liệu thành công');
+}).catch(function(err){
+    return returnFalse(res,err);
+});
+  
+  
+   
+
 };
 
 userCtrl.updateFistPages = async function (req, res) {
@@ -385,32 +415,32 @@ userCtrl.registerUser = async function (req, res) {
   }
   var newUser = squel
     .insert()
-    .into("users")
-    .set("name", req.body.name)
+    .into("customer")
+    .set("username", req.body.name)
     .set("fullname", req.body.fullname)
     .set("email", req.body.email)
     .set("password", req.body.password)
-    .set("phoneNumber", req.body.phoneNumber)
-    .set("contact", req.body.contact)
-    .set("addrid", "0")
-    .set("avartar", "")
+    .set("phone", req.body.phoneNumber)
+    .set("address", req.body.contact)
+    .set("avatar", "")
     .set("created_at", "NOW()", { dontQuote: true })
     .set("updated_at", "NOW()", { dontQuote: true })
     .set("id_created", 0)
     .set("id_updated", 0)
     .set("note", "")
-    .set("manifestid", req.currentUser.manifestid)
+    .set("permission_id", 4)
     .set("deleteflag", "0")
     .set("oldid", "0");
   console.log(newUser.toString());
   knex.raw(newUser.toString()).then(
     (result) => {
       return returnOK(res, { result: "Please waitting admin comfirm" });
-    },
-    (error) => {
-      return returnFalse(res, error);
-    }
-  );
+    })
+  .catch((error) => {
+    console.log('error');
+    console.log(error);
+    return returnFalse(res, error);
+  })
 };
 
 userCtrl.resetPass = async function (req, res) {

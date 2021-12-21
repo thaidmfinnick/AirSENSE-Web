@@ -94,11 +94,11 @@ class User_View  {
     }
     
     getInfoToAdd(){
-      return  ["name","email","password","phoneNumber","avatar","fullname","manifestid","contact","note" ];
+      return  ["name","email","password","phoneNumber","avartar","fullname","manifestid","contact","note" ];
     }
     getTitleToAdd(){
       return  ["name","email","password","phoneNumber",
-                "avatar","fullname","manifestid","contact",
+                "avartar","fullname","manifestid","contact",
                 "note"];
     }
     getHtmlAdd(){

@@ -9,19 +9,20 @@ import {
     TextField
   } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
-import { uploadfileDataImage } from '../../api/httpBaseUtil.js';
+import { uploadImgUser } from '../../api/httpBaseUtil.js';
 import Swal from 'sweetalert2';
 import {HOST_HTTP}  from '../../config/config.js';
 
-const UploadImage = ({ urlImage, uploadfileDataLink }) => {
+const ProfileImage = ({ urlImage, uploadfileDataLink }) => {
         const [state, setState] = useState({link:urlImage});
 
         const uploadImageData=(event)=>{
             console.log("Content: " + event);
             event.preventDefault();
             const data = new FormData() 
-            data.append('file', event.target.files[0]);   
-            uploadfileDataImage(data).then((response)=>{
+            data.append('file', event.target.files[0]);  
+            console.log(data);  
+            uploadImgUser(data).then((response)=>{
                 var value = response.data.url;
                 console.log("uploadfileDataImage.....................",response,response.data.path,value);
                 Swal.fire("Cập nhật thông tin thành công");
@@ -46,5 +47,5 @@ const UploadImage = ({ urlImage, uploadfileDataLink }) => {
         );
 }
 
-export default UploadImage;
+export default ProfileImage;
 
