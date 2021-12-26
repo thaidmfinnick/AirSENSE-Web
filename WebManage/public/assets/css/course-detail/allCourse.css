@@ -1,9 +1,13 @@
-
-
 .course-container-wrapper {
     background-color: #f5f7fa;
     padding-top: 50px;
     margin-top: -60px;
+}
+
+.course-container-wrapper h2,
+.course-container-wrapper h5,
+.course-container-wrapper p {
+    margin-bottom: 0;
 }
 
 .continue-section {
@@ -21,7 +25,7 @@
 
 .continue__heading {
     text-align: center;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 600;
     line-height: 1.6;
     margin-bottom: 8px;
@@ -29,6 +33,7 @@
 
 .continue__time {
     display: flex;
+    justify-content: center;
     color: #fff;
     font-size: 14px;
     font-weight: 300;
@@ -93,12 +98,14 @@
 }
 
 .advertisement__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin-left: 8px;
 }
 
 .advertisement__name-course {
     font-weight: 600;
-    margin-bottom: 8px;
     font-size: 18px;
     color: #272c33;
 }
@@ -145,13 +152,17 @@
     font-weight: 600;
     display: flex;
     align-items: center;
+    line-height: 1 !important;
 }
 
 .course__heading {
     height: var(--font-size-heading) !important;
+    font-size: var(--font-size-heading) !important;
     margin-right: 24px;
     font-weight: 600;
     color: #303840;
+    margin-bottom: 0 !important;
+    line-height: 1 !important;
 }
 
 .course__separator {
@@ -205,6 +216,14 @@
 .course-registration__info-wrapper {
     display: flex;
     align-items: center;
+}
+
+.course-registration__info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 1;
 }
 
 .course-registration__img {
@@ -321,6 +340,7 @@
     cursor: pointer;
     background-color: #fff;
     transition: all 0.1s ease-in-out;
+    margin-bottom: 20px;
     /* overflow: hidden; */
 }
 
@@ -377,9 +397,12 @@
 }
 
 .course-new__name-course {
-    font-size: 16px;
+    --fz: 16px;
+    --lh: 1.4;
+    font-size: var(--fz);
     font-weight: 600;
-    line-height: 1.4;
+    line-height: var(--lh);
+    height: calc(2 * var(--fz) * var(--lh));
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
