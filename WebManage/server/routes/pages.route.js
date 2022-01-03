@@ -194,8 +194,8 @@ router.get("/service/charging", (req, res) => {
   res.render("service/chargingService");
 });
 
-router.get("/test2", (req, res) => {
-  res.render("sale/DetaileSalePages");
+router.get("/test1", (req, res) => {
+  res.render("document/comment");
 });
 
 router.get("/test3", (req, res) => {
