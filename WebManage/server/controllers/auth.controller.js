@@ -75,5 +75,34 @@ authCtrl.logOut = function(req, res) {
 
 }
 
+authCtrl.loginCustomer = function(req, res) {
+  const { email, password } = req.body;
+  
+
+  Customer.query({
+    where: {email:email, deleteflag: 0}
+  })
+    .fetch({ require: false })
+    .then((user) => {
+      if (user) {
+        
+        console.log(user);
+        const userPassword = user.get('password');
+        console.log("user Inval",userPassword);
+        if(password==userPassword) {
+          oauthen2.responseLogin(res,user); 
+        }
+        else{
+            return returnNotAuthen(res,{success: false,message:'Authentication failed. Invalid password'});
+        }
+
+      } 
+        else {
+        lstLogin.push({email:email,count:1,time:Date.now()});
+        return returnNotAuthen(res,{success: false,message:'Invalid username or password.'});
+      }
+    });
+}
+
 
 module.exports =authCtrl;

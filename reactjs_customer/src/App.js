@@ -8,7 +8,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Comment, Settings, Send, Contacts, FeaturedPlayList, KeyboardBackspace, TextFormat, Business, GroupWork } from '@material-ui/icons';
 import LockScreen  from './container/manager/LockScreen.js';
 import NomalTable  from './container/manager/NomalTable.js';
-
+import LogoutPage from '../../reactjs_admin/src/container/authen/LogoutPage';
 import InfoAccount from './container/authen/account';
 import TreeMenu from '@bb-tech/ra-treemenu';
 import MenuHeader from './container/head/menuHeader';
@@ -35,7 +35,7 @@ const App = () => {
         <Resource name="service_x" options={{label:'Trạm' ,"isMenuParent": true }}   list={LockScreen} />
         <Resource name="sparc_access_location_sensor" options={{label:'Đăng kí trạm', "menuParent": "service_x" }} list={NomalTable} />
         <Resource name="sparc_access_location_sensor" options={{label:'Các trạm đã đăng kí', "menuParent": "service_x" }} list={NomalTable} />
-
+        <Resource name="logout" options={{label:'Đăng xuất'  }} icon={KeyboardBackspace} list={LogoutPage} />
         </Admin>
         </div>
     );

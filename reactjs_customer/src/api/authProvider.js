@@ -1,23 +1,24 @@
-
+import axios from 'axios';
+import { resolve } from 'path/posix';
+import {API_URL, JWT_TOKEN} from '../config/config.js';
+import { checkErrorRetun } from '../utils/commonUtil.js';
+import { setLocalStorage } from '../utils/storageUtil.js';
 import { login } from './httpBaseUtil.js';
 
 export default {
     // called when the user attempts to log in
     login: ({ username ,password }) => {
-        return new Promise((resolve, reject) =>
-                { login({email:username , password: password})
-                    .then((value)=>{
-                        console.log(value);
-                        localStorage.setItem('username', username);
-                        // localStorage.setItem('tocken_LVC', token)
-                        resolve(value);
-                    })
-                    .catch((err)=>{
-                        console.log("err.... ",err.response.request.response);
-                        reject(err);
-                    });
-                });
-      //  return Promise.resolve();
+        axios
+        .post(API_URL + 'auth/loginCustomer', {username, password})
+        .then((response) => {
+            setLocalStorage(JWT_TOKEN, response.data.token);
+            resolve(response);
+
+        })
+        .catch((error) => {
+            checkErrorRetun(error);
+            reject(error);
+        })
     },
     // called when the user clicks on the logout button
     logout: () => {

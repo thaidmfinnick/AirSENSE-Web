@@ -37,6 +37,11 @@ module.exports =  {
     password: Joi.string().min(6).required(),
   }),
 
+  loginCustomer: Joi.object({
+    email: Joi.string().required(),
+    password: Joi.string().min(6).required(),
+  }),
+
   register: Joi.object({
     name: Joi.string().required(),
     fullname: Joi.string().min(4).required(),
