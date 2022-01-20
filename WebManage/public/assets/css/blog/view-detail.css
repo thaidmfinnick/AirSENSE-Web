@@ -30,6 +30,10 @@ h6 {
     font-family: 'Josefin Sans', sans-serif;
 }
 
+.media iframe {
+    height: 100% !important;
+}
+
 .content-wrapper {
     margin: 0 auto;
 }
@@ -524,7 +528,14 @@ hr {
         width: 64%;
     }
 }
-
+@media (min-width: 975px) {
+    .comment-container {
+        padding-top: 120px;
+    }
+    .comment-close {
+        top: 112px;
+    }
+}
 @media (max-width: 975px) {
     .blog-aside-wrapper {
         display: none;
@@ -542,7 +553,7 @@ hr {
     .comment-container {
         position: static;
         margin: 0 auto;
-        margin-top: 12px;
+        margin-top: 125px;
         background-color: #fff;
         height: 74%;
         width: calc(100% - 24px);

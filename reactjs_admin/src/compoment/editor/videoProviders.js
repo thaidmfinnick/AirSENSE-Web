@@ -48,9 +48,9 @@ export const providers = [
     html: (match) => {
       const id = match[1];
       return (
-        '<div style="position: relative;  width: 640px; height: 480px; padding-bottom: 56.2493%; margin: 0 auto;">' +
+        '<div style="position: relative;  max-width: 640px; max-height: 480px; padding-bottom: 56.2493%; margin: 0 auto;">' +
         `<iframe src="https://www.youtube.com/embed/${id}" ` +
-        ' style="position: absolute;top: 0;left: 0;width: 640px;height: 480px;"' +
+        ' style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"' +
         'title="YouTube video player" frameborder="0"  ' +
         'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>' +
         '</iframe>' +
