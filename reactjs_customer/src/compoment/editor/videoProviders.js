@@ -48,7 +48,7 @@ export const providers = [
     html: (match) => {
       const id = match[1];
       return (
-        '<div style="position: relative;  width: 640px; height: 480px; padding-bottom: 56.2493%; margin: 0 auto;">' +
+        '<div style="position: relative;  width: 640px; height: 480px; padding-bottom: 56.2493%; margin: 0 auto 50px;">' +
         `<iframe src="https://www.youtube.com/embed/${id}" ` +
         ' style="position: absolute;top: 0;left: 0;width: 640px;height: 480px;"' +
         'title="YouTube video player" frameborder="0"  ' +
