@@ -66,6 +66,7 @@ router.route('/report').post(isAuthenticatedCustomer, (req, res) => {
   customerCtrl.getTableData(req, res);
 });
 
+
 router.route('/report-by-group').post(isAuthenticatedCustomer, (req, res) => {
   customerCtrl.getTableDataByGroup(req, res);
 });
@@ -87,6 +88,12 @@ router.route('/manager_update').post(isAuthenticatedCustomer, (req, res) => {
 router.route('/register').post(isAuthenticated, (req, res) => {
   customerCtrl.registerUser(req, res);
 });
+
+// education
+
+router.route('/getAllCourses').get(isAuthenticatedCustomer, (req, res) => {
+  customerCtrl.getAllCourses(req, res);
+})
 
 router.route('/advertisement').get((req, res) => {
   customerCtrl.getAllAdvertisementContent(req, res);

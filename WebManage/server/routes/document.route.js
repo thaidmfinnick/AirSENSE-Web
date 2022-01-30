@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const router = express.Router();
 const isAuthenticated = require("../middlewares/authenticate.js");
+const path = require('path');
 
 const documentCtrl = require("../controllers/document.controller.js");
 const urlStaticLink = require("../config/urlSetting.js");
@@ -29,6 +30,19 @@ router.post("/uploadimage", upload.single("resumeFileBrowser"), function (
     "http://" + urlStaticLink + "/img/" + req.file.filename;
   res.send(req.file);
 });
+
+
+router.route('/uploadFile').post((req, res) => {
+  let image = req.files.uploadFile;
+  console.log(image);
+  image.mv(path.resolve(__dirname, '/public/upload', image.name), (error) => {
+    let fileName = '/upload/'+ image.name;
+    console.log(fileName)
+    res.send(fileName);
+  })
+})
+
+
 
 // writer pages
 router

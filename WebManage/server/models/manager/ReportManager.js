@@ -567,6 +567,7 @@ class ReportManager extends CommonModel {
       query = query.where(
         "sparc_sensor_data.station_id = '" + station_id + "'"
       );
+      console.log(query.toString());
     return new Promise((resolve, reject) => {
       knex
         .raw(query.toString())

@@ -36,9 +36,9 @@ class oAuthen2Customer extends CommonModel {
                         .where("deleteflag = 0")
                         .where("time_relase > NOW()");
         return new Promise( ( resolve, reject ) => {
-            //console.log(authen.toString(),tocken);
+            console.log(authen.toString(),tocken);
             knex.raw(authen.toString()).then(function(result) {
-              //  console.log("checkInvalUserExistingTocken ok",result[0]);
+               console.log("checkInvalUserExistingTocken ok",result[0]);
                 resolve( result[0] );
             }).catch(function(err){
                 console.log("checkInvalUserExistingTocken erro");

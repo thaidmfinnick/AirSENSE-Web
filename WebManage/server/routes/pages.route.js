@@ -80,6 +80,10 @@ router.get("/group_page/:typePage", (req, res) => {
   res.render("home/groupDetail", { detail: data, route: "tool" });
 });
 
+router.get("/register", (req, res) => {
+  res.render("authen/register", { route: 'register' });
+});
+
 // Course
 router.get("/detail_lesson/:typePage", (req, res) => {
   var data = req.params.typePage;
@@ -264,5 +268,9 @@ router.get('/old_manageBlog', (req, res) => {
 router.get("/old_login", (req, res) => {
   res.render("old/Account/login");
 });
+
+router.get('/comment', (req, res) => {
+  res.render('home/comment');
+})
 
 module.exports = router;
