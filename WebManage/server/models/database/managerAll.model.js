@@ -24,7 +24,8 @@ const PagesCourse = require("./PagesCourse.model.js");
 const GroupExam = require("./groupExam.model");
 const Exam = require("./exam.model");
 const ExamDetail = require("./examDetail.model");
-
+// customer
+const Customer = require('./customer.model.js')
 const classesFactory = {
   User,
   Adress,
@@ -48,9 +49,11 @@ const classesFactory = {
   GroupExam,
   Exam,
   ExamDetail,
+  Customer
 };
 const classesFactorryMapping = {
   users: "User",
+  customer: "customer",
   adress: "Adress",
   extended_data: "ExtendedData",
   content_group: "GroupContent",

@@ -2,6 +2,7 @@ const express = require('express');
 const  authCtrl = require('../controllers/auth.controller.js');
 const userCtrl = require('../controllers/user.controller');
 const isAuthenticated = require('../middlewares/authenticate.js');
+const isAuthenticateCustomer = require('../middlewares/authenticateCustomer.js');
 const authenNewUser = require('../middlewares/authenNewUser.js');
 const validate = require('../config/joi.validate.js');
 const schema = require('../utils/validator.js');
@@ -14,10 +15,7 @@ const router = express.Router();
 router.get('/login', (req, res) => {
   res.render('authen/login', { route: 'login' });
 });
-// register -> ok
-router.get('/register', (req, res) => {
-  res.render('authen/register', { route: 'register' });
-});
+
 
 router.get('/giang', (req, res) => {
   res.render('authen/sendEmailForgotPass', { route: 'register' });
@@ -118,12 +116,12 @@ router.route('/user').get(isAuthenticated, (req, res) => {
 
 
 // router.route('/customer').get(isAuthenticated, (req, res) => {
-router.route('/customer').get((req, res) => {
+  router.route('/customer').get(isAuthenticateCustomer, (req, res) => {
 
   console.log("req.currentUser",req.currentUser)
-  console.log(isAuthenticated);
+  console.log(isAuthenticateCustomer);
   Customer.query({
-    where: { customer_id: '1' },
+    where: { customer_id: req.currentUser.customer_id },
     select: [
       'customer_id',
       'username',
@@ -147,6 +145,32 @@ router.route('/customer').get((req, res) => {
       }
   });
 });
+router.route('/getInfo').post((req, res) => {
+  User.query({
+    where: { userid: req.body.userid },
+    select: [
+      'userid',
+      'name',
+      'fullname',
+      'avartar',
+      'manifestid'
+    ],
+  })
+  .fetch({ require: false })
+  .then((user) => {
+      if (!user) {
+        res.status(HttpStatus.NOT_FOUND).json({ error: 'No such user' });
+      } else {
+        res.status(200).json({
+          user: user,
+        });
+      }
+  });
+  
+})
+
+router.route('/tocken').get( authCtrl.getTocken);
+
 
 var tockenToCheck=[];
 

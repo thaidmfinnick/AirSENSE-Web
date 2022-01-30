@@ -108,16 +108,16 @@ function setFormToShowPages(item, urlDetail) {
     limkUrl +=
       "group_page/" +
       item.content_page_id +
-      '"><span class="link"></span></a>';
+      '"style="" class="btn btn-primary">Xem thêm</a>';
   } else {
     limkUrl +=
       "detail_page/" +
       item.filesave.replace("/", "+") +
-      '"><span class="link"></span></a>';
+      '"style="" class="btn btn-primary">Xem thêm</a>';
   }
   // console.log(limkUrl)
   var content =
-    '<div ><div class="card">' +
+    '<div class="col-sm-4 col-md-4"><div class="card">' +
     '<img src="' +
     item.content_img +
     '" alt="images"  class="card-img-top"/> <div class="card-body">' +
@@ -131,8 +131,6 @@ function setFormToShowPages(item, urlDetail) {
   console.log(content);
   return start + content;
 }
-
-
 
 function getInfoDetailPages(nameDivControl, dataView, urlDetail) {
   $.ajax({
@@ -152,10 +150,9 @@ function getInfoDetailPages(nameDivControl, dataView, urlDetail) {
         return a.content_sub_id - b.content_sub_id;
       });
       console.log(dataJson);
-      // var car = '<div class=""><div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel"><div class="carousel-indicators"><button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button><button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button><button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button></div><div class="carousel-inner"><div class="carousel-item active" data-bs-interval="4000"><img src="/img/pic1.jpg" class="d-block w-100 slideimg" alt="..."><div class="carousel-caption d-md-block"><h5>First slide label</h5><p>Some representative placeholder content for the first slide.</p></div></div><div class="carousel-item" data-bs-interval="4000"><img src="/img/pic2.jpg" class="d-block w-100" alt="..."><div class="carousel-caption d-md-block"><h5>Second slide label</h5><p>Some representative placeholder content for the second slide.</p></div></div><div class="carousel-item"><img src="/img/forest.jpg" class="d-block w-100" alt="..."><div class="carousel-caption d-md-block"><h5>Third slide label</h5><p>Some representative placeholder content for the third slide.</p></div></div></div><button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button><button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button></div></div></div>';
       var titleSub = "";
       var startRow =
-        '<div class="row" style="display: grid; grid-template-columns: repeat(4, 1fr);">';
+        '<div class="row" style="display: grid; grid-template-columns: repeat(3, 1fr);">';
       var closeRow = "</div>";
       for (var i = 0; i < dataJson.length; i++) {
         if (dataJson[i].content_group != titleSub) {
@@ -169,7 +166,7 @@ function getInfoDetailPages(nameDivControl, dataView, urlDetail) {
           } else {
             textHtml += closeRow;
             titleSub = dataJson[i].content_group;
-            textHtml += 
+            textHtml +=
               "<center><H2 class='heading-blog'>" +
               titleSub +
               "</H2></center>" +
@@ -259,9 +256,6 @@ function setFormToShowCourse(item, urlDetail) {
   console.log(content);
   return start + content;
 }
-
-
-
 
 function getInfoDetailCourse(nameDivControl, dataView, urlDetail) {
   $.ajax({

@@ -2,12 +2,18 @@ const path = require('path');
 const app = require('./config/express.js');
 const routes = require('./routes/index.route.js');
 const pagesRouters = require('./routes/pages.route.js');
+const express = require('express');
 //const swagger = require('./config/swagger.js');
 
 // Swagger API documentation
 /*app.get('/swagger.json', (req, res) => {
   res.json(swagger);
 });*/
+const fileUpload = require('express-fileupload')
+app.use(fileUpload());
+app.use(express.static('public'));
+
+
 // Router
 app.use('/api', routes);
 app.use('', pagesRouters);
