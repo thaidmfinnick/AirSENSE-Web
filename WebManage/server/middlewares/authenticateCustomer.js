@@ -22,7 +22,7 @@ module.exports =  (req, res, next) => {
     oauthen2.checkInvalUserExistingTocken(token).then((user) => {
         req.currentUser = {
           permission_id:user[0].permission_id,
-          users_id:user[0].customeid,
+          customer_id:user[0].customer_id,
           enterprise_id:user[0].enterprise_id,
           value_manifest:user[0].value_manifest
         };

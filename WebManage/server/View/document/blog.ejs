@@ -2,10 +2,6 @@
 <html lang="zxx">
   <% include ../Layout/header.ejs %>
   <link rel="stylesheet" href="/assets/css/blog/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&family=Merriweather+Sans:wght@300;500&display=swap" rel="stylesheet">
-
   <body class="defult-home">
     <!-- Main content Start -->
     <div class="main-content">
@@ -18,9 +14,16 @@
       </div>
       <!--Full width header End-->
       <div class="main-page" style="padding-top: 100px">
-        <div class="container-fluid">
-          
-          <div class="">
+        <div class="row">
+          <div class="col-2">
+            <div class="sidenav">
+              <a href="#about"><i class="fas fa-home"></i>About</a>
+              <a href="#services"><i class="fas fa-home"></i>Services</a>
+              <a href="#clients"><i class="fas fa-home"></i>Clients</a>
+              <a href="#contact"><i class="fas fa-home"></i>Contact</a>
+            </div>
+          </div>
+          <div class="col-10">
             <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -60,17 +63,14 @@
               </button>
             </div>
           </div>
-          
         </div>
         
         <!-- <div class="test" style="display: grid; grid-template-columns: repeat(3, 1fr);"> -->
-          <div class="container-fluid">
-            
-            
-            <div class="inner-content" id="htmlToView">
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="inner-content col-10" id="htmlToView">
               <!-- About Section Start -->
             </div>
-            
           </div>
 
         <!-- </div> -->

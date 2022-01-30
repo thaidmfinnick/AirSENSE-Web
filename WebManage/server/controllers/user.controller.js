@@ -402,7 +402,7 @@ userCtrl.updateFistCourse = async function (req, res) {
 };
 
 userCtrl.registerUser = async function (req, res) {
-  var table = "users";
+  var table = "customer";
   var tableSelect = mangerModelAdmin(table);
   var exittingUser = await tableSelect.checkInvalUserExistingToRegister(
     req.body
@@ -640,5 +640,66 @@ userCtrl.changePassword = async (req, res) => {
       }
     });
 };
+
+
+userCtrl.listUser = async (req, res) => {
+  var table ='users';
+  var tableSelect=mangerModelAdmin(table);
+  var dataInfo = await tableSelect.queryDatabase(tableSelect.getAllInfoToChat());
+  if(dataInfo){
+    console.log(dataInfo)
+    return returnOK(res,dataInfo);
+  }
+  else{
+    return returnFalse(res,{ message: "phone and email is existing" } );
+  }
+}
+
+userCtrl.listComment = async (req, res) => {
+  var mySql = squel
+  .select()
+  .from("content_page")
+  .where("deleteflag=0");
+  var result = await knex.raw(mySql.toString());
+  if (result == null || result.length == 0) {
+    return returnNotFound(res, { message: "No article" });
+  }
+  console.log(result[0]);
+  // fake data
+
+  const result1 = {
+    result: [
+      {
+        users_id: 1,
+        username: "cuong",
+        email: "cuong@gmail.com",
+        phone: "123456789",
+        avatar: "https://1.bp.blogspot.com/-n_bFzL9lPUU/Xp23H9Sk8yI/AAAAAAAAhyA/JYfvZhwguxc8vT_YS3w14Xi3YWf3hxqIQCLcBGAsYHQ/s1600/Hinh-Anh-Dep-Tren-Mang%2B%25282%2529.jpg",
+        fullname: "123456789"
+      },
+      {
+        users_id: 13,
+        username: "cuong1",
+        email: "luvancuong0105@gmail.com",
+        phone: "0389992137",
+        avatar: "https://imgt.taimienphi.vn/cf/images/li/2017/9/26/hinh-anh-vui-hai-huoc.jpg",
+        fullname: "Lu van"
+      },
+      {
+        users_id: 14,
+        username: "levan cuong",
+        email: "luvan1@gmail.com",
+        phone: "0988891234",
+        avatar: "https://i.pinimg.com/236x/be/81/a2/be81a2314054d5effd7ea90e8375fbfe.jpg",
+        fullname: "anhban"
+      },
+     
+   
+    ]
+  }
+  res.json({
+    data: result1
+  });
+}
 
 module.exports = userCtrl;

@@ -71,6 +71,11 @@ class User extends CommonModel {
       return [];
   }
 
+  getAllInfoToChat(){
+    return ('SELECT users.userid, users.name,users.email,users.phoneNumber,users.avartar,users.fullname FROM users where users.deleteflag=0 ');
+ //       + defineManifest.checkManifestTableUser(currentUser.permission_id,currentUser.users_id,currentUser.value_manifest));
+}
+
   async checkValueEmailData(email){
     var squelGet=squel.select().from('users').where('email="' + email +'"').where('deleteflag=0');
     var info= await knex.raw(squelGet.toString());

@@ -57,6 +57,28 @@ var authCtrl={};
 }
 
 
+authCtrl.getTocken = function(req, res) {
+  const authorizationHeader = req.headers['authorization'];
+  let token;
+  
+  if (authorizationHeader) {
+      token = authorizationHeader.split(' ')[1];
+  }
+  console.log("checkInvalUserExistingTocken token erro",token);
+  if (token) {
+      oauthen2.checkInvalUserExistingTocken(token).then((user) => {
+        console.log("checkInvalUserExistingTocken token user",user);
+        res.status(HttpStatus.OK).json({ user:user[0]});
+      })
+      .catch(function(err){
+        return returnNotAuthen(res,{success: false,message:'No token ex'});
+      });
+  } else {
+    return returnNotAuthen(res,{success: false,message:'No token False'});
+  }
+}
+
+
 authCtrl.loginCustomer = function(req, res) {
   const { email, password } = req.body;
   lstLogin =lstLogin.filter(o=>((Date.now() - o.time)<2000));

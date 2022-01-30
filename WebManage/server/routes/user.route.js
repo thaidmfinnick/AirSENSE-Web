@@ -37,6 +37,12 @@ const router = express.Router();
     userCtrl.updateFistCourse(req, res);
   });
 
+  // comment
+
+  router.route('/lst_user').get(isAuthenticated, (req, res) => {
+    userCtrl.listUser(req, res);
+  })
+
   
 
 module.exports =  router;

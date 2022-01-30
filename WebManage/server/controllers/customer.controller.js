@@ -560,4 +560,9 @@ customerCtrl.getDetailTheBill = async function (req, res) {
   return returnOK(res, []);
 };
 
+customerCtrl.getAllCourses = async function (req, res) {
+  console.log('get all courses');
+  var sql = 'SELECT '
+}
+
 module.exports = customerCtrl;
