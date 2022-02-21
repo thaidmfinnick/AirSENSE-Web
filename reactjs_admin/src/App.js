@@ -175,7 +175,7 @@ const App = () => {
           icon={RoomServiceIcon}
           list={LockScreen}
         />
-        <Resource
+        {/* <Resource
           name="location"
           options={{ label: 'Vị trí', menuParent: 'service_x' }}
           icon={ListAltIcon}
@@ -186,7 +186,7 @@ const App = () => {
           options={{ label: 'Vị trí quản lý sensor', menuParent: 'service_x' }}
           icon={ReceiptIcon}
           list={NomalTable}
-        />
+        /> */}
         <Resource
           name="sparc_group_location_sensor"
           options={{ label: 'Nhóm vị trí', menuParent: 'service_x' }}
@@ -259,12 +259,12 @@ const App = () => {
           icon={AccountCircleIcon}
           list={InfoAccount}
         />
-        <Resource
+        {/* <Resource
           name="chatbox"
           options={{ label: 'Nhắn tin' }}
           icon={Send}
           list={FormChatBox}
-        />
+        /> */}
         <Resource
           name="logout"
           options={{ label: 'Đăng xuất' }}
@@ -272,7 +272,7 @@ const App = () => {
           list={LogoutPage}
         />
 
-        <FooterChat />
+        {/* <FooterChat /> */}
       </Admin>
     </div>
   );

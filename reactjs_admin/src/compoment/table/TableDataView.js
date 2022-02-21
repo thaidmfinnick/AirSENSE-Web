@@ -89,12 +89,14 @@ class TableDataView extends Component {
     }
 // rowHeight={125}
     render() {
+        console.log(this.state.columns)
+        console.log(this.state.data)
         return (
             <div className="user-data">
                 <div>
                         <TextField variant="outlined"  
                             value={this.state.value_fillter}  
-                            onChange={(event) => {}} />
+                            onChange={(event) => {value = event.target.value}} />
                         <Button 
                             variant="outlined" 
                             component="label" 

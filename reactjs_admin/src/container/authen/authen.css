@@ -83,13 +83,16 @@
 }
 
 .account-img {
-  width: 60%;
+  object-fit: cover;
+  z-index: 5;
+}
+
+.account-none-img {
+    width: 60%;
   display: block;
   padding-top: 11px;
   padding-bottom: 15px;
   margin: 0 auto;
-
-
 }
 
 .displayChangePass {
