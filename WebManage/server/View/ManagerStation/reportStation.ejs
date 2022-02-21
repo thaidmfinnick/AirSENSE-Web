@@ -1,24 +1,86 @@
 <!DOCTYPE html>
 <html lang="zxx"> 
 <% include ../Layout/header.ejs %>
+<Head>
+    <style>
+    .sub-use {
+        width: 1080px;
+        margin: 0 auto;
+        }
+        
+        .use-heading {
+        margin-top: 30px;
+        /* font-size: 40px; */
+        opacity: 0.9;
+        /* font-weight: 600; */
+        }
+        
+        .use-sub-heading {
+        opacity: 0.9;
+        line-height: 25px;
+        /* font-size: 20px; */
+        }
+        
+        .list-check-sub >li {
+            /* font-size: 20px; */
+            line-height: 25px;
+            margin-top: 20px;
+        
+        }
+        </style>
+</Head>
 <body class="defult-home">
     <!-- Main content Start -->
     <% include ../Layout/topbar.ejs %>
-    <p>Hướng dẫn lấy số liệu</p>
-    <p>Hướng dẫn lấy số liệu</p>
-    <p>Hướng dẫn lấy số liệu</p>
-    <p>Hướng dẫn lấy số liệu</p>
-    <p>Ý nghĩa các số</p>
+    <div style="height: 84px;"></div>
+    <div class="sub-use">
+        <h5 class="use-heading"> Hướng dẫn cách xem biểu đồ dữ liệu trạm</h5>
+        <p class="use-sub-heading">Biểu đồ dữ liệu trạm ở một Trạm nào đó là bao
+            gồm thông tin chi tiết các thông số như:
+            chỉ số chất lượng không khí, nhiệt độ, độ ẩm  là thước đo đơn giản 
+           hóa mức độ ô nhiễm 
+           không khí hiện tại hoặc dự báo mức độ ô nhiễm không khí trong tương 
+           lai.</p>
+        <h5>Để tiến hành xem Biểu đồ ở một trạm nào đó ta tiến hành theo các
+            bước sau: </h5>
+        <ul class="list-check-sub">
+            <li> Bước 1: Chọn vào ô "Danh sách trạm" lúc này sẽ hiện lên các trạm, 
+                nơi mà các thiết bị đo 
+                đạc chất lượng không khí được đặt, sau đó chọn vào trạm mà bạn muốn
+                 kiểm tra.</li>
+            <li>Bước 2:  click vào biểu tượng "date" ở dưới ô from,  lúc này một 
+                cửa sổ nhỏ hiện lên bao
+                 gồm chi tiết ngày, giờ, tháng, năm, tiếp đó chọn ngày mà bạn muốn 
+                bắt đầu kiểm tra.</li>
+            <li> Bước 3: click vào biểu tượng "date" ở dưới ô from đây, tương tự như bước 2, chọn ngày kết 
+                thúc kiểm tra.</li>
+            <li> Bước 4: click vào ô "Xem biểu đồ" lúc này một biểu đồ thông tin 
+                chi tiết về chất lượng 
+                không khí ở trạm đó sẽ được hiển thị, kèm theo nhiệt độ, độ ẩm, đặc
+                 biệt cái bạn cần quan 
+                tâm sẽ là chỉ số AOI  là thước đo đơn giản hóa mức độ ô nhiễm không 
+                khí hiện tại hoặc dự báo 
+                mức độ ô nhiễm không khí trong tương lai. sau đó bạn có thể nhìn vào
+                 bảng Quy 
+                đổi giá trị AQI để đánh giá được chất lượng không khí tại trạm đó.</li>
+                
+        </ul>
+        <h5> Cuối cùng bạn có thể nhìn vào
+            bảng Quy 
+           đổi giá trị AQI để đánh giá được chất lượng không khí tại trạm đó.</h5>
+    </div>
 
+    <div style="height: 24px;"></div>
 
     
 
     <section class="mag-posts-area d-flex flex-wrap">
 
         <!-- content -->
-        <div class="mag-posts-content mt-30 mb-30 p-30 box-shadow">
-            <div style=" width: 100%;" class="select-section">
-
+        <!-- <div class="mag-posts-content mt-30 mb-30 p-30 box-shadow">
+            <div style=" width: 100%;" class="select-section"> -->
+    <div class="sub-use">
+    <div>
                 <label class="label-header"> Danh sách trạm </label>  <select class="browser-default custom-select" id="selectTable" style="width: 200px;" onchange="onSelectClick()"  ></select>
     
                 <label class="label-header">From</label> 
@@ -31,7 +93,7 @@
     
             <br/>
             <br/>
-            <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+            <!-- <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
                        <th>Tên trạm</th>
@@ -59,7 +121,7 @@
                 </thead>
                 <tbody>
                 </tbody>
-            </table>
+            </table> -->
             <br/>
         </div>
         

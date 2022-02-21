@@ -199,12 +199,12 @@ const App = () => {
           icon={KeyboardReturnIcon}
           list={NomalTable}
         />
-        <Resource
+        {/* <Resource
           name="status_history_device"
           options={{ label: 'Lịch sử thiết bị', menuParent: 'service_x' }}
           icon={KeyboardReturnIcon}
           list={NomalTable}
-        />
+        /> */}
         <Resource
           name="station_map"
           options={{
@@ -224,7 +224,7 @@ const App = () => {
         />
         <Resource
           name="sparc_aqi"
-          options={{ label: 'aQI', menuParent: 'products' }}
+          options={{ label: 'AQI', menuParent: 'products' }}
           icon={KeyboardReturnIcon}
           list={NomalTable}
         />
