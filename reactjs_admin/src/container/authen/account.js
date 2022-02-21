@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ManagerData from '../../actions/ManagerData.js'
 import { updateInfomation, changePassword } from '../../api/authen.js';
 import ProfileImage from '../../compoment/form/ProfileImage.js';
 const InfoAccount = () => {
   // change information user
+    useEffect(() => {
+    ManagerData.getInfoUser();
+    }, [])
     const user = ManagerData.saveInfoUser;
     console.log(user);
     const [changePasswordBlock, setChangePasswordBlock] = useState(0);
@@ -77,13 +80,19 @@ const InfoAccount = () => {
       <input className='account-field' type="text" placeholder value={'Quản trị viên'} readOnly />
       
       <div className="account-image">
-        {!!imgUser? (
-    <img className='account-img' src={imgUser} />
+        {/* {!!imgUser? (
+    <ProfileImage
+    urlImage={imgUser}
+    uploadfileDataLink={(url) => setImgUser(url)}
+    />
         ):(
-    <img className='account-img' src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg' />
+    <img className='account-none-img' src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg' />
 
-        )}
-    <a href="#" >Chọn ảnh đại diện khác</a>
+        )} */}
+        <ProfileImage
+    urlImage={imgUser}
+    uploadfileDataLink={(url) => setImgUser(url)}
+    />
   </div>
   <div className="account-button">
       <button type='submit' className="account-button-item">Lưu thay đổi</button>
@@ -91,10 +100,6 @@ const InfoAccount = () => {
 
     </form>
     <p className='displayChangePass' onClick={()=>setChangePasswordBlock(1)}>Thay đổi mật khẩu</p>
-    <ProfileImage
-    urlImage={imgUser}
-    uploadfileDataLink={(url) => setImgUser(url)}
-    />
 
   </div>
   {changePasswordBlock === 1 ? (

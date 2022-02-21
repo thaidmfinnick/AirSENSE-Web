@@ -33,8 +33,8 @@ const ProfileImage = ({ urlImage, uploadfileDataLink }) => {
 
         return (
             <Button variant="outlined" component="label" disableElevation style={{width:160,height: 160}}>
-                <PublishIcon />
-                <label style={{fontSize:8,lineHeight: 1.6 ,height: 15}}>Upload Ảnh</label>  
+                {/* <PublishIcon /> */}
+                {/* <label style={{fontSize:8,lineHeight: 1.6 ,height: 15}}>Cập nhật</label>   */}
                 <input type="file" 
                         type="file"
                         name="fileUpload1"
@@ -42,7 +42,8 @@ const ProfileImage = ({ urlImage, uploadfileDataLink }) => {
                         accept=".png,.jpg,.jpeg"
                         onChange={(event)=> {uploadImageData(event)}}
                         hidden />
-                <img  src={state.link} width="100px" height="160px" />
+                <img  src={state.link} className='account-img' width="160px" height="160px" />
+                
             </Button>
         );
 }

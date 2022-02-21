@@ -8,33 +8,38 @@ class ExtendedData  {
     getColumeShow=(callback)=>{
         const columns = [
             {
-              field: 'id',
+              field: 'NodeId',
               headerName: 'stt',
               width: 140,
             },
             {
-              field: 'group_file',
-              headerName: 'group_file',
+              field: 'Time',
+              headerName: 'Thời gian',
               width: 200,
             },
             {
-              field: 'filesave',
-              headerName: 'filesave',
+              field: 'CO',
+              headerName: 'CO',
               width: 200,
             },
             {
-              field: 'title',
-              headerName: 'Số title thoại',
+              field: 'CO2',
+              headerName: 'CO2',
               width: 240,
             },
             {
-              field: 'content',
-              headerName: 'content',
+              field: 'SO2',
+              headerName: 'SO2',
               width: 240,
             },
             {
-              field: 'content_img',
-              headerName: 'content_img',
+              field: 'NO2',
+              headerName: 'NO2',
+              width: 240,
+            },
+            {
+              field: 'O3',
+              headerName: 'O3',
               width: 240,
             },
             {
