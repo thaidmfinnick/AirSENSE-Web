@@ -1,5 +1,5 @@
 var moment = require('moment');
-
+import { getParentCommentId } from '../api/httpBaseUtil';
 
 class ChatMessage{
     timeConverter=(UNIX_timestamp)=>{
@@ -92,8 +92,10 @@ class ChatMessage{
     }
 
     findDataComnet=(data,id)=>{
-        var found = data.findIndex(o => o.content.comment_id ==id);
-        if(found>-1)  return data[found];
+        var found = data.findIndex(o => o.comment_id ==id);
+        if(found>-1) { 
+            return found;
+        }
         return  null;
     }
 
@@ -103,6 +105,8 @@ class ChatMessage{
         return null;
     }
 
+   
+
     informChatboxDataChat(data,lisUser){
             var messageInfo=[];
             data.forEach(element => {
@@ -110,14 +114,20 @@ class ChatMessage{
                 var day = moment(dataInsert.time);
                 dataInsert['timeSend']=day.utc().format();
                 dataInsert['author']=this.findNameUserDetail(lisUser,dataInsert.content.author_id);
-                //element.element=element;
-                if(dataInsert.content.comment_parent_id>0){
-                    dataInsert.content.parent_data=this.findDataComnet(data,dataInsert.content.comment_parent_id);
+                dataInsert['children'] = [];
+                //element.element=element; -> giang fix
+                if(dataInsert.content.comment_reply_id>0){
+                    let idPrent = this.findDataComnet(data,dataInsert.content.comment_parent_id);
+                    messageInfo[idPrent].children.push(dataInsert);
+                    return messageInfo;
                 }
                 messageInfo.push(dataInsert);
+
             });
         return messageInfo;
     }
+
+    
     informCommentboxDataComment(data) {
         var messageInfo = [];
         data.forEach(e => {
@@ -125,9 +135,8 @@ class ChatMessage{
         })
     }
 
-    insertChatboxDataChat(messageInfo,element,lisUser){
-        var infoExisting = messageInfo.findIndex(o=>(o.content.comment_id==element.content.comment_id));
-        
+    insertChatboxDataChat(messageInfo,element,lisUser, all_comment){
+        var infoExisting = messageInfo.findIndex(o=>(o.comment_id==element.comment_id));
         var messageInfoData= JSON.parse(JSON.stringify(messageInfo));
         if(infoExisting>-1) return messageInfoData;
         if(!!!element.timeSend)
@@ -136,13 +145,18 @@ class ChatMessage{
             element.timeSend=day.utc().format();
         }
         element['author']=this.findNameUserDetail(lisUser,element.content.author_id);
-        //element.element=element;
-        if(element.content.comment_parent_id>0){
-            element.content.parent_data=this.findDataComnet(messageInfoData,element.content.comment_parent_id);
+        element['children'] = [];
+        if(element.content.comment_reply_id>0 && element.content.comment_parent_id >0){
+            let idPrent = this.findDataComnet(messageInfo,element.content.comment_parent_id);
+            messageInfoData[idPrent].children.push(element);
+            console.log('chan doi',messageInfoData);
+            return messageInfoData;
         }
         messageInfoData.push(element);
         return messageInfoData;
     }
+
+    
 
 }
 

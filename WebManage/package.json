@@ -31,7 +31,6 @@
     "esm": "^3.2.25",
     "exceljs": "^4.3.0",
     "express": "^5.0.0-alpha.7",
-    "express-fileupload": "^1.2.1",
     "helmet": "^3.23.3",
     "history": "^4.10.1",
     "http-status-codes": "^1.4.0",

@@ -67,7 +67,7 @@ const Comment = () => {
 
     return (
         <div className="user-data">
-        <p>This is the comment</p>
+        <h5>Bình luận</h5>
         <ListComment />
         </div>
     );

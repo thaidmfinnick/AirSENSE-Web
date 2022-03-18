@@ -52,10 +52,10 @@ router.route('/import-image').post(isAuthenticated, uploadImage.single('file'), 
 });
 
 
+
 let uploadImageUser = multer({ storage: storageImgUser, fileFilter: files.imageFilter });
 
 router.route('/image-user').post(isAuthenticated, uploadImageUser.single('file'), (req, res) => {
-  console.log('send request successfully');
   res.send(JSON.stringify({path:req.file.path,
                             file:req.file,
                             url:urlStaticLink+ '/uploads/ProfileImgage/'+ req.file.filename}));
