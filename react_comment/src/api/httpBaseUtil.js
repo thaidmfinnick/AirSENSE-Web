@@ -177,10 +177,23 @@ export const uploadfileDataImageAdmin = (data) => {
   });
 };
 
+
 export const uploadfileDataImage = (data) => {
   showLoadding();
   return new Promise((resolve, reject) => {
-    axios.post(API_URL + 'customers/import-image',Object.assign(data),getHeader())
+    console.log('giang upload', data)
+    axios
+      .post(
+        API_URL + 'customers/import-image',Object.assign(data),
+        {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'X-XSRF-TOKEN': getLocalStorage(JWT_TOKEN),
+            authorization: 'Beard ' + getLocalStorage(JWT_TOKEN),
+          },
+        }
+      )
       .then((response) => {
         Swal.close();
         resolve(response);
@@ -210,6 +223,10 @@ export const sendMessageChat = (data) => {
 
 export const getListFindChat = ( data) => {
   return httpPostData(HOST_HTTP_CHAT + 'find_chat' ,data);
+}
+
+export const getParentCommentId = (data) => {
+  return httpPostData(HOST_HTTP_CHAT + 'find_parent_comment_id', data)
 }
 
 export const getInfoArticle = (data) => {

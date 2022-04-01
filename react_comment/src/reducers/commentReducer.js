@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import ChatMessage from '../utils/ChatMessage';
-import ManagerData from '../actions/ManagerData.js'
+
 var newInfo = new ChatMessage();
 
 
@@ -14,7 +14,7 @@ export const commentReducer = createSlice({
         infoArticle: '',
         selectedConversation: [],
         list_user: [],
-
+        sub_data_comment: {},
     },
     reducers: {
         initComment: (state, action) => {
@@ -28,21 +28,36 @@ export const commentReducer = createSlice({
         loadConversation: (state, action) => {
             console.log("loadConversation   ...........   ",state.infoArticle);
             console.log('list user .......', state.list_user)
-          state.selectedConversation = newInfo.informChatboxDataChat(action.payload,state.list_user);// action.payload;
+            state.selectedConversation = newInfo.informChatboxDataChat(action.payload,state.list_user);// action.payload;
           console.log(state.selectedConversation);
+
+
         },
         initUserList: (state,action) => {
             state.list_user =action.payload ;   
-            console.log('truong giang', state.list_user);
 
         },
         addMessageToConverSation: (state, action) => {
-            var infoData= newInfo.insertChatboxDataChat(state.selectedConversation,action.payload,state.list_user);
-                console.log("addMessageToConverSation   ...........   ",infoData);
-              state.selectedConversation =infoData;
+            var infoData= newInfo.insertChatboxDataChat(state.selectedConversation,action.payload,state.list_user, state.all_comment);
+            console.log("addMessageToConverSation   ...........   ",infoData);
+            state.selectedConversation =infoData;
+            state.sub_data_comment = {};
+        },
+        commentTagUser: (state, action) => {
+            console.log(action.payload.userid)
+            state.sub_data_comment.comment_tag = action.payload.userid;
+
+        },
+        uploadImgComment: (state, action) => {
+            console.log(action.payload)
+            state.sub_data_comment.link_img = action.payload;
+        },
+        replyComment: (state, action) => {
+            console.log(action.payload)
+            state.sub_data_comment.reply_id = action.payload.content.comment_id;
         },
     }
 });
 
-export const {initComment, loadConversation, initUserList, addMessageToConverSation} = commentReducer.actions;
+export const {initComment, loadConversation, initUserList, addMessageToConverSation, commentTagUser, uploadImgComment, replyComment} = commentReducer.actions;
 export default commentReducer.reducer;

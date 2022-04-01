@@ -9,41 +9,42 @@ import {
     TextField
   } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
-import { uploadImgUser } from '../../api/httpBaseUtil.js';
+import { uploadfileDataImage } from '../../api/httpBaseUtil.js';
 import Swal from 'sweetalert2';
 import {HOST_HTTP}  from '../../config/config.js';
-
-const ProfileImage = ({ urlImage, uploadfileDataLink }) => {
-        const [state, setState] = useState({link:urlImage});
-
+import ImageIcon from '@material-ui/icons/Image';
+import { uploadImgComment } from '../../reducers/commentReducer.js';
+import { useDispatch } from 'react-redux';
+const ProfileImage = () => {
+        const [state, setState] = useState({link:''});
+        const dispatch = useDispatch();
         const uploadImageData=(event)=>{
             console.log("Content: " + event);
             event.preventDefault();
             const data = new FormData() 
             data.append('file', event.target.files[0]);  
             console.log(data);  
-            uploadImgUser(data).then((response)=>{
+            uploadfileDataImage(data).then((response)=>{
                 var value = response.data.url;
                 console.log("uploadfileDataImage.....................",response,response.data.path,value);
                 Swal.fire("Cập nhật thông tin thành công");
                 setState({ link:value});
-                uploadfileDataLink(value);
+                dispatch(uploadImgComment(value));
             });
         }
 
         return (
-            <Button variant="outlined" component="label" disableElevation style={{width:160,height: 160}}>
-                <PublishIcon />
-                <label style={{fontSize:8,lineHeight: 1.6 ,height: 15}}>Upload Ảnh</label>  
+            <div className='upload-imgage-block'>
+            <Button variant="outlined" component="label" disableElevation style={{width:20,height: 20}}>
+                <ImageIcon />
                 <input type="file" 
-                        type="file"
                         name="fileUpload1"
                         id="fileUpload1"
                         accept=".png,.jpg,.jpeg"
                         onChange={(event)=> {uploadImageData(event)}}
                         hidden />
-                <img  src={state.link} width="100px" height="160px" />
             </Button>
+            </div>
         );
 }
 

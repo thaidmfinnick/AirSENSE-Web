@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import ChatWindow from './ChatWindow';
 import launcherIcon from './../assets/logo-no-bg.svg';
 import incomingMessageSound from './../assets/sounds/notification.mp3';
-import launcherIconActive from './../assets/close-icon.png';
-
 
 class Launcher extends Component {
 
@@ -57,11 +55,8 @@ class Launcher extends Component {
           messageList={this.props.messageList}
           onUserInputSubmit={this.props.onMessageWasSent}
           onFilesSelected={this.props.onFilesSelected}
-          agentProfile={this.props.agentProfile}
-          replyMessage={this.props.replyMessage}
           isOpen={'opened'}
           onClose={this.handleClick.bind(this)}
-          showEmoji={this.props.showEmoji}
           listUser = {this.props.listUser}
           ref={this.child}
         />

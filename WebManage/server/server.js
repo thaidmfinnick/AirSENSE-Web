@@ -9,9 +9,9 @@ const express = require('express');
 /*app.get('/swagger.json', (req, res) => {
   res.json(swagger);
 });*/
-const fileUpload = require('express-fileupload')
-app.use(fileUpload());
-app.use(express.static('public'));
+// const fileUpload = require('express-fileupload')
+// app.use(fileUpload());
+// app.use(express.static('public'));
 
 
 // Router
