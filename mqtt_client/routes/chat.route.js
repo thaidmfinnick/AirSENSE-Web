@@ -5,7 +5,8 @@ const adminAuthenticated = require('../middlewares/authenticate.js');
 const customerAuthenticated = require('../middlewares/authenticateCustomer');
 const chatCtrl = require('../controllers/chat.controller');
 const mqtt = require('mqtt');
-
+const checkParentId = require('../middlewares/getParentCommentId');
+const getParentCommentId = require('../middlewares/getParentCommentId');
 var option={
 	port:3002,
 	clientId : 'message_' + Math.random().toString(16).substr(2, 8),
@@ -20,14 +21,17 @@ client.on('connect', function(){
 });
 
 
-router.route('/chat').post(adminAuthenticated, (req, res) => {
+router.route('/chat').post(adminAuthenticated, checkParentId, (req, res) => {
   console.log("chat",req.body);
   var currentTime = (new Date()).getTime()/1000;
   var currentPost = currentTime*1000 + req.currentUser.users_id;
+  let commentParentId = currentPost;
+  if(req.parentId !==0) commentParentId = req.parentId;
+  
   var infoSave ={
     topic:"/comment/"+req.body.post_id,
+    comment_id:currentPost,
     content:{
-      comment_id:currentPost,
       post_id:req.body.post_id,
       author_id:req.currentUser.users_id,
       author_IP:req.body.author_IP,
@@ -35,9 +39,11 @@ router.route('/chat').post(adminAuthenticated, (req, res) => {
       content:req.body.content,
       coment_tag:req.body.coment_tag, 
       comment_atack:req.body.comment_atack,
-      comment_parent_id:req.body.comment_parent_id
+      comment_parent_id: commentParentId,
+      comment_reply_id: req.body.id_comment_reply
     },
     time:currentTime
+
   };
 
   console.log(infoSave);
@@ -69,6 +75,18 @@ router.route('/find_comment').post(adminAuthenticated, (req, res) => {
   res.json({
     data: name
   })
+})
+
+router.route('/find_parent_comment_id').post(adminAuthenticated, (req, res) => {
+  let chatRoom = '/comment/' + req.body.content.post_id;
+  console.log(req.body);
+    Chat.find({topic:chatRoom, comment_id: req.body.content.comment_reply_id}, (error, result) => {
+        console.log('comment parent', result);
+        const abc = result[0].content.comment_parent_id;
+  res.send(JSON.stringify({comment_parent_id: abc}));
+
+    });
+  
 })
 // router.route('/find_chat').post(adminAuthenticated, (req, res) => {
 //   var result = {
