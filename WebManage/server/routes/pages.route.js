@@ -269,8 +269,8 @@ router.get("/old_login", (req, res) => {
   res.render("old/Account/login");
 });
 
-router.get('/comment', (req, res) => {
-  res.render('home/comment');
-})
+// router.get('/comment', (req, res) => {
+//   res.render('home/comment');
+// })
 
 module.exports = router;
