@@ -959,11 +959,12 @@ a:hover {
   opacity: 0;
 }
 #fh5co-title-box {
-  width: 38.2%;
   z-index: 555;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  padding-top: 100px;
+  text-align: center;
 }
 .single #fh5co-title-box {
   position: relative;
@@ -980,10 +981,6 @@ a:hover {
   background: rgba(0, 0, 0, 0.5);
 }
 #fh5co-title-box .page-title {
-  z-index: 12;
-  position: absolute;
-  bottom: 0;
-  padding: 30px;
 }
 .single #fh5co-title-box .page-title {
   width: 100%;
@@ -991,7 +988,7 @@ a:hover {
   text-align: center;
 }
 #fh5co-title-box .page-title h2 {
-  color: white;
+  color: black;
   font-weight: 300;
 }
 .single #fh5co-title-box .page-title h2 {
