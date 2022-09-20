@@ -48,7 +48,7 @@
 }
 
 .container-fluid {
-  padding: 7% 10%;
+  padding: 7% 10% 0% 10% !important
 }
 
 #title .container-fluid {

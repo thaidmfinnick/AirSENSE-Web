@@ -11,12 +11,12 @@ body {
 
 a {
     color: #27e450;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 a:hover {
     color: #3291e6;
-    text-decoration: none;
+    /* text-decoration: none; */
 }
 
 h1,
