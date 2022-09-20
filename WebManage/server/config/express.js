@@ -30,5 +30,6 @@ app.use(express.static(path.join(__dirname, '../../public')));
 app.engine('ejs', require('ejs-locals'));
 app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, '../View'));
+console.log(__dirname + '../View');
 
 module.exports =  app;

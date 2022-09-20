@@ -58,17 +58,37 @@ router.get("/education/:typePage", async (req, res) => {
   res.render("tech/tech", { detail: dataMAin, route: "tech" });
 });
 
-router.get("/blog/:typePage", async (req, res) => {
-  var data = req.params.typePage;
-  var itemvalue = ["head", "stem", "environment", "climate"];
-  var index = itemvalue.findIndex((o) => o == data);
-  var dataMAin = index;
-  if (dataMAin < 1) {
-    dataMAin = "1,2,3";
-  }
+// router.get("/blog/:typePage", async (req, res) => {
+//   var data = req.params.typePage;
+//   var itemvalue = ["head", "stem", "environment", "climate"];
+//   var index = itemvalue.findIndex((o) => o == data);
+//   var dataMAin = index;
+//   if (dataMAin < 1) {
+//     dataMAin = "1,2,3";
+//   }
 
-  res.render("document/blog", { detail: dataMAin, route: "document" });
-});
+//   res.render("document/blog", { detail: dataMAin, route: "document" });
+// });
+
+router.get("/blog/detail-blog/:id", async (req, res) => {
+  var data = req.params.id;
+  console.log(typeof data);
+  if (data == 1) {
+    res.render("document/blog-detail-1");
+  }
+  else if (data == 2) {
+    res.render("document/blog-detail-2")
+  }
+  else if (data == 3) {
+    res.render("document/blog-detail-3")
+  }
+})
+
+router.get("/blog", async (req, res) => {
+  res.render("document/blog");
+})
+
+
 
 router.get("/detail_page/:typePage", (req, res) => {
   var data = req.params.typePage;
