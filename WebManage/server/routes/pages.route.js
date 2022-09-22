@@ -183,55 +183,55 @@ router.get("/faq", (req, res) => {
   res.render("service/faq");
 });
 
-router.get("/sale/product", (req, res) => {
-  console.log("req /sale/product ", req._parsedOriginalUrl.query);
-  res.render("sale/GroupProduct", { detail: req._parsedOriginalUrl.query });
-});
+// router.get("/sale/product", (req, res) => {
+//   console.log("req /sale/product ", req._parsedOriginalUrl.query);
+//   res.render("sale/GroupProduct", { detail: req._parsedOriginalUrl.query });
+// });
 
-router.get("/sale/product_detail", (req, res) => {
-  res.render("sale/DetailProduct", { detail: req._parsedOriginalUrl.query });
-});
+// router.get("/sale/product_detail", (req, res) => {
+//   res.render("sale/DetailProduct", { detail: req._parsedOriginalUrl.query });
+// });
 
-router.get("/sale/cart", (req, res) => {
-  res.render("sale/invoiceInfoProduct");
-});
+// router.get("/sale/cart", (req, res) => {
+//   res.render("sale/invoiceInfoProduct");
+// });
 
-router.get("/sale/finish", (req, res) => {
-  res.render("sale/finishInvoiceProduct", {
-    detail: req._parsedOriginalUrl.query,
-  });
-});
+// router.get("/sale/finish", (req, res) => {
+//   res.render("sale/finishInvoiceProduct", {
+//     detail: req._parsedOriginalUrl.query,
+//   });
+// });
 
-router.get("/service", (req, res) => {
-  res.render("service/service");
-});
+// router.get("/service", (req, res) => {
+//   res.render("service/service");
+// });
 
-router.get("/service/detail", (req, res) => {
-  res.render("service/detailService");
-});
+// router.get("/service/detail", (req, res) => {
+//   res.render("service/detailService");
+// });
 
-router.get("/service/bill", (req, res) => {
-  res.render("service/billService");
-});
+// router.get("/service/bill", (req, res) => {
+//   res.render("service/billService");
+// });
 
-router.get("/service/charging", (req, res) => {
-  res.render("service/chargingService");
-});
+// router.get("/service/charging", (req, res) => {
+//   res.render("service/chargingService");
+// });
 
-router.get("/test2", (req, res) => {
-  res.render("sale/DetaileSalePages");
-});
+// router.get("/test2", (req, res) => {
+//   res.render("sale/DetaileSalePages");
+// });
 
-router.get("/test3", (req, res) => {
-  res.render("sale/Sale");
-});
-router.get("/test4", (req, res) => {
-  res.render("sale/SaleGroupPages");
-});
+// router.get("/test3", (req, res) => {
+//   res.render("sale/Sale");
+// });
+// router.get("/test4", (req, res) => {
+//   res.render("sale/SaleGroupPages");
+// });
 
-router.get("/test5", (req, res) => {
-  res.render("sale/SalePages");
-});
+// router.get("/test5", (req, res) => {
+//   res.render("sale/SalePages");
+// });
 
 router.get("/old", (req, res) => {
   res.render("old/home");
