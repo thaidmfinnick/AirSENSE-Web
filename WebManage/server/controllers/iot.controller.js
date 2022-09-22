@@ -163,7 +163,7 @@ iotCtrl.getReportStations = function(request, response) {
             var convertFromTime = request.body.getFromTime;
             var convertToTime =  request.body.getToTime
             reportManager.getReportStations(convertFromTime, convertToTime, station_id,request.currentUser).then(function (result) {
-                console.log(result);
+                // console.log(result);
                 var workbook = new Excel.Workbook();
                 workbook.views = [
                     {
@@ -219,14 +219,18 @@ iotCtrl.getReportStations = function(request, response) {
                         data: resultReal
                     };
                     workbook.xlsx.writeFile(filePath).then(function () {
+                        // console.log(JSON.stringify(responData));
+                        console.log(filePath);
                         return response.send(JSON.stringify(responData));
+                        // return response.send(JSON.stringify({ fileExcel: filePath }));
                     });
                 });
 
-            }).catch(function (err1) { return response.send("false"); });
+            })
+            .catch(function (err1) { return response.send("false"); });
     
     
-        return response.send(JSON.stringify({ logout: true }));
+        // return response.send(JSON.stringify({ logout: true }));
      
 }
 
