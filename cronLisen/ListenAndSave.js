@@ -131,7 +131,7 @@ clients.map(client => {
     client.on('message', function (topic, message, packet) {
         try{
             message = JSON.parse(message.toString('utf-8'));
-            console.log(message);
+            // console.log(message);
             var record = Object.assign({}, config.fields);
             for(property in record) {
                 if(message[property] != undefined) {
@@ -142,11 +142,11 @@ clients.map(client => {
             console.log(current);
             current = current/1000;
             //bo qua ban ghi co thoi gian lon hon thoi gian hien tai 24h
+            record.Time = record.Time - 7*60*60;
             if(record.Time>(current+24*60*3600)) {
-                console.log('eoor')
                 return;
             }
-            console.log(message)
+            // console.log(message)
             if(message.station_id!=null && message.station_id != '' ) {
                 record.station_id = parseInt(message.station_id, 16);
                 console.log('ok',record);
