@@ -1,4 +1,4 @@
-{
+ {
     "database": {
         "host": "103.1.238.170",
         "database": "admin_python",
@@ -30,18 +30,11 @@
     },
     "mqtt": [
         {
-            "port": 1883,
-            "clientId": "mqtt_1883_default_key",
-            "username": "sparc",
+            "port": 1885,
+            "clientId": "mqtt_1885_default_key",
+            "username": "test",
             "useNewUrlParser": true,
-            "password": "sparcXZAairsenseATU"
-        },
-        {
-            "port": 1884,
-            "clientId": "mqtt_1884_default_key",
-            "username": "sparc",
-            "useNewUrlParser": true,
-            "password": "sparcXZAairsenseATU"
+            "password": "testadmin"
         }
     ],
     "maxItemMemory": 1
