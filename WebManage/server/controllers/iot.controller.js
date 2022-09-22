@@ -156,7 +156,6 @@ iotCtrl.reportDataStationLimit = function(request, response) {
 };
 
 iotCtrl.getReportStations = function(request, response) {
-    if (request.currentUser.manifestid < 4)  {
             // var role = result[0];
             var fromTime = request.body.fromTime;
             var toTime = request.body.toTime;
@@ -225,11 +224,10 @@ iotCtrl.getReportStations = function(request, response) {
                 });
 
             }).catch(function (err1) { return response.send("false"); });
-    }
-    else 
-    {
+    
+    
         return response.send(JSON.stringify({ logout: true }));
-    }    
+     
 }
 
 

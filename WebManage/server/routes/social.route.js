@@ -23,7 +23,7 @@ router.route('/getStation').get(isAuthenticated, (req, res) => iotCtrl.getStatio
 
 router.route('/getStationHome').get( (req, res) => iotCtrl.getStationHome(req, res));
 router.route('/getdatalimit').post(isAuthenticated, (req, res) => iotCtrl.reportDataStationLimit(req, res));
-router.route('/getReportStations').post(isAuthenticated, (req, res) => {
+router.route('/getReportStations').post( (req, res) => {
   iotCtrl.getReportStations(req, res)
 });
 router.route('/getAbnormalData').post( (req, res) => iotCtrl.getAbnormalData(req, res));

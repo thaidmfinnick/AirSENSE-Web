@@ -5,6 +5,10 @@ const validate = require('../config/joi.validate.js');
 const schema = require('../utils/validator.js');
 const router = express.Router();
 
+  router.route('/mqtt').post((req, res) => {
+    userCtrl.mqtt(req, res);
+  })
+
 
   router.route('/report').post(isAuthenticated, (req, res) => {
       userCtrl.getTableData(req, res);
