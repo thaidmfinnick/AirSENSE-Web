@@ -1,10 +1,10 @@
 var mqtt = require('mqtt')
 var events = require('events');
 emitter = new events.EventEmitter();
-const config = require('config');
+const config = require('./config/default.json');
 var mysql = require('mysql');
 
-var con = mysql.createConnection(config.get('database'));
+var con = mysql.createConnection(config.database);
 
 var connectStatus = 'idle';
 
@@ -52,6 +52,7 @@ class BlockMemory {
             fields.push(values);
         })
         fields = fields.join();
+        console.log(fields);
         var sql = "INSERT INTO sparc_sensor_data "+ columns +" VALUES " + fields;
         if (connectStatus === 'idle') {
             connectStatus = 'busy';
@@ -107,10 +108,12 @@ var mqttConfig = config.mqtt;
 var clients = [];
 mqttConfig.map(config => {
     config.clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8);
-    var client = mqtt.connect('http://mqtt.airsense.vn/', config);
+    var client = mqtt.connect('mqtt://103.1.238.175/', config);
     clients.push(client);
     client.on('connect', function () {
-        client.subscribe('#', function (err) {
+        console.log(config.port)
+        client.subscribe('/V3/3c610511', function (err) {
+            // console.log(config.port)
             if (!err) {
                 console.log("Connect mqtt successfully in port:", config.port);
             }
@@ -124,9 +127,11 @@ mqttConfig.map(config => {
 var save = SaveFactory.getInstance();
 
 clients.map(client => {
+    console.log('hello');
     client.on('message', function (topic, message, packet) {
         try{
             message = JSON.parse(message.toString('utf-8'));
+            console.log(message);
             var record = Object.assign({}, config.fields);
             for(property in record) {
                 if(message[property] != undefined) {
@@ -134,14 +139,17 @@ clients.map(client => {
                 }
             }
             var current = + new Date();
+            console.log(current);
             current = current/1000;
             //bo qua ban ghi co thoi gian lon hon thoi gian hien tai 24h
             if(record.Time>(current+24*60*3600)) {
+                console.log('eoor')
                 return;
             }
-            if(message.StationId!=null && message.StationId != '' ) {
-                record.station_id = parseInt(message.StationId, 16);
-                // console.log(record);
+            console.log(message)
+            if(message.station_id!=null && message.station_id != '' ) {
+                record.station_id = parseInt(message.station_id, 16);
+                console.log('ok',record);
                 save.save(record);
             }
         } catch(e) {
